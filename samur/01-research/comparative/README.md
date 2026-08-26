@@ -16,6 +16,8 @@ No real-world institution may be transplanted into canon directly. Every major S
 
 A Samur institution that is merely a **renamed historical counterpart** (no structural difference, no differing conditions) is a redesign candidate and is flagged in the influence register.
 
+Each completed transformation is logged in `transformations/<canon-id>.md` (one file per canon element), recording all five steps plus the resulting influence-register row.
+
 ## Model Register
 
 | Model | File | Status | Extracted mechanisms (see file §5) |
@@ -33,7 +35,7 @@ Every significant CANON element gets a row here. Purpose: detect and correct dri
 
 | Canon ID | Samur institution/event | Historical counterpart(s) | Structural difference (load-bearing) | Drift-check date |
 |---|---|---|---|---|
-| _(empty — first entries land with Phase 2/4 production)_ | | | | |
+| GEO-01 | the Samur physical base (the Oren / the Sareth / the Khor / the Veth / the Tarn) | Mughal (multi-front, resource-scarcity, the river spine), Maratha (defensible core/projection), Vijayanagara (standing frontier), Qing (tiered frontier, "inner colony"), Mysore ("too big" neighbor), British (maritime/chartered access, seasonal sea-lanes) | the three scarce resources lie on **several different borders** (no single dominant frontier); the "too big" neighbor is a **compact coastal state**, not a large interior one; the maritime power arrives **via the delta**, not adjacent land | 2026-08-26 |
 
 ## Rules
 

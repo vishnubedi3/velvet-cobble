@@ -18,14 +18,14 @@ A Samur institution that is merely a **renamed historical counterpart** (no stru
 
 ## Model Register
 
-| Model | File | Status | Working extraction list |
+| Model | File | Status | Extracted mechanisms (see file §5) |
 |---|---|---|---|
-| Mughal Empire | `mughal.md` | NOT STARTED | mansabdari vs. hereditary jagirdari; land-revenue assessment (zabt, assignment); religious policy shifts as elite management; the imperial court as institution |
-| Vijayanagara Empire | `vijayanagara.md` | NOT STARTED | agrarian-military aristocracy; temple economy and land grants; coastal trade polities; fragmentation after royal defeat; Deccan plateau frontier warfare |
-| Maratha Confederacy | `maratha.md` | NOT STARTED | peshwa bureaucratic center vs. sardar/royal-house autonomy; chauth and sardeshmukhi as quasi-revenue systems; guerrilla logistics and war; commercial networks financing military |
-| Kingdom of Mysore | `mysore.md` | NOT STARTED | court as economic engine; irrigation and wet-rice agriculture; state workshops (silk, steel, firearms); frontier military and artillery; oscillating patronage |
-| British Empire | `british.md` | NOT STARTED | fiscal-military state; chartered company as state-within-state; indirect rule and tributary systems; naval logistics and the cost of empire; debt-financed war |
-| Qing dynasty | `qing.md` | NOT STARTED | banner/standard-field dual household system; inner provinces vs. "inner colonies" (Xiangnan); tribute vs. annexation at the frontier; Manchu/Chinese institutional duality |
+| Mughal Empire | `mughal.md` | **DRAFT v1** (2026-08-26) | ranked salaried office vs. hereditary tenure (jagirdari crisis); cash-revenue monetization chain; religion as elite-coalition tool; the court as single-point-of-failure; conquest-without-integration overstretch; composite-monarchy fragmentation |
+| Vijayanagara Empire | `vijayanagara.md` | **DRAFT v1** (2026-08-26) | chiefdom absorption into revenue-military districts; temple/institutional economy as fiscal sink + parallel landholding; layered jurisdiction w/ clerical class; standing frontier as permanent condition; defeat that contracts not ends; signature weapon (elephant) |
+| Maratha Confederacy | `maratha.md` | **DRAFT v1** (2026-08-26) | tribute-without-administration (chauth) + its limit; merchant-banked war + growth imperative; defensible terrain core; contractual confederacy + collapse mode; adoption to install bureaucratic center; irregular system that can't stand down |
+| Kingdom of Mysore | `mysore.md` | **DRAFT v1** (2026-08-26) | court as economic engine (state demand as market anchor); state-directed demand-driven industrialization; irrigation surplus base; frontier diplomatic jiu-jitsu; "state too strong for its size" containment; patronage oscillation; craft-guild city |
+| British Empire | `british.md` | **DRAFT v1** (2026-08-26) | fiscal-military virtuous circle + structural growth imperative; chartered-company state-within-state; indirect rule/paramountcy + need for a standing threat; debt as rentier faction; naval/riverine logistics as binding constraint; war must be financeable |
+| Qing dynasty | `qing.md` | **DRAFT v1** (2026-08-26) | dual-elite/dual-household + its fragility; tiered sovereignty; "inner colony" fiscal decoupling; examination/co-opted bureaucracy with overseers; tribute-vs-annexation by admin-cost vs. threat; demographic boom + fiscal rigidity decline |
 
 ## Influence Register
 

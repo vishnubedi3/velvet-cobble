@@ -10,12 +10,12 @@ In Samur canon, a religion is an institution with: a **material base** (land, pa
 
 ## Register
 
-| System | File | Status | Working extraction list |
+| System | File | Status | Extracted mechanisms (see file §5) |
 |---|---|---|---|
-| Sanatan | `sanatan.md` | NOT STARTED | varna/jati as labor and social organization; dharma-shastra legal pluralism; bhakti/revival movements as anti-institutional forces; the temple as economic institution; regional variation (not a monolith) |
-| Islam | `islam.md` | NOT STARTED | madhhab and fiqh pluralism; ulema–sultan negotiation; Sufi orders as grassroots infrastructure; endowment (waqf) as institutional economics; sectarian dispute as political fault line |
-| Judaism | `judaism.md` | NOT STARTED | halakha as portable stateless institution; diaspora community autonomy under host powers; yeshiva as knowledge monopoly; trade-diaspora networks; landlessness vs. urban commerce |
-| Christianity | `christianity.md` | NOT STARTED | papal–imperial dualism and investiture; monastic orders as institutional innovators; canon law as a parallel legal system; schism as political weapon; crusade/just-war theology as imperial tool |
+| Sanatan | `sanatan.md` | **DRAFT v1** (2026-08-26) | varna/jāti as decentralized division of labor + corporate mosaic; dharma-shastra legal pluralism; recurring orthodoxy-vs-revival; temple as economic institution; guru/matha as mobile node; king-as-protector-of-dharma (no theocracy); no single negotiable body |
+| Islam | `islam.md` | **DRAFT v1** (2026-08-26) | ulema as self-reproducing parallel elite; ulema–sultan symbiosis w/ friction; Sufi order as mobile grassroots power broker; waqf as tax-exempt parallel fiscal base; madhhab bounded legal pluralism; caliph/sultan tension; Sunni–Shia political fault line; fixed text + derived fiqh |
+| Judaism | `judaism.md` | **DRAFT v1** (2026-08-26) | halakha as portable stateless institution ("portable state"); diaspora community as self-governing fiscal-legal-social corporation; yeshiva as knowledge monopoly; trade-diaspora network (land-exclusion → urban commerce); revocable "protected minority"; scholarly vs. communal authority |
+| Christianity | `christianity.md` | **DRAFT v1** (2026-08-26) | papal–imperial dualism / "two swords" / investiture; monastic order as parallel institutional base + urban mendicant; canon law as parallel legal system + central court; schism as political weapon (antipope); crusade/just-war as institutionalized mobilization; tithes fiscal base; interdict/excommunication sanctions; "state within a state" |
 
 ## Rules
 

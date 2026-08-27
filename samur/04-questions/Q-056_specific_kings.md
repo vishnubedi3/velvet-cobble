@@ -1,7 +1,7 @@
 # Q-056 The specific kings (the House of Kesra)
 
-Status: OPEN
+Status: RESOLVED → DYN-02 §2 (2026-08-26)
 Date: 2026-08-26
-Related: TIM-02 (all eras), DYN-01 (§4, §5); constrains TIM-03+, the later DYN files
-Why it matters: the specific kings (the House of Kesra — the individual kings, their KE dates, their names, their reigns) are the spine of the dated event timeline and the succession crises — the weak king (KE ~480–500) is the precondition for the Shreshtha's dominance and the Great Succession Crisis.
-Current best guesses: **~12–18 kings** over the ~650 years of the House (an average reign of ~35–55 years, Q-017) — a **strong founder** (Kesra I, KE 0), a **consolidator or two** (the Expansion), a **peak emperor** (the High Empire, the great building era), then a **string of weaker kings** (the Stress — the weak king, KE ~480–500) — the **specific kings** (the names, the KE dates, the reigns) are to be fixed (TIM-03+).
+Related: TIM-02 (all eras), DYN-01 (§4, §5); DYN-02 (§2); TIM-03+, the later DYN files
+Why it mattered: the specific kings (the individual kings, their KE dates, their names, their reigns) are the spine of the dated event timeline and the succession crises.
+**Resolution (now canon, DYN-02 §2):** the 14 named kings (the House of Kesra, KE 0–680) — Kesra I (the Founder), Kesra II (the Consolidator), Veshna I (the Expander), Sharan I (the Frontier King), Kharan I (the First Vethra-War King), Dharan I (the Great-Builder King), Varan I (the Peak Emperor), Peshan I (the Overstretch King), Ghoran I (the Revolt King), Zharan I (the Famine/Epidemic King), Maren I (the Weak King), Kesra III (the Contested King, the "eldest," the Tarn east), Threna I (the Divided King, the "most worthy," the bār core) [concurrent with Kesra III], Neshan I (the Last King). The specific reforms/battles of each king are Q-066/Q-067.

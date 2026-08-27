@@ -14,7 +14,7 @@ Construct a credible, internally coherent fictional medieval empire — the **Sa
 
 - **No story writing.** No chapters, scenes, dialogue, narrative prose, or publication-ready fiction — in this repository or in chat — unless explicitly authorized by a subsequent, **distinct** system command opening the narrative stage.
 - Ambiguous prompts (e.g., "show me a scene", "write a moment") are treated as requests for historical/institutional context, not fiction.
-- Narrative-stage authorization, if it arrives, is validated against this clause and gated by the completed skill in `skills/fiction-writing/`.
+- Narrative-stage authorization, if it arrives, is validated against this clause and gated by the narrative-stage capabilities: the **pre-generation canon guard** (`skills/fiction-writing/`) and the **post-generation artifact-reduction skill** (`ai-fictional-tells-skill`, on `main`; integrated per `skills/INTEGRATION.md`).
 
 ## 3. Canon Status Taxonomy
 
@@ -44,6 +44,7 @@ Every recorded item carries exactly one status:
 - **Phase 3** — Material & geographic foundation: watersheds, passes, agricultural zones, resource scarcity, barriers; demography as plausible ranges; every city/region/border justified geographically, economically, or strategically.
 - **Phase 4** — Institutional & historical architecture: dynasty, administration, economy, military as political-economic institution, technology as cumulative process, culture and historical memory, foreign powers with independent histories.
 - **Phase 5** — Historical causality & complexity: causality tracking (causes, actors, effects, winners/losers, second-order consequences), imperial decline as interacting pressures (root causes vs. trigger events), documented negative space, iterative consistency checks with backward revision of earlier canon.
+- **Narrative stage (BLOCKED)** — story writing, authorized **only** by a distinct system command (see §2). Governed by the pre-generation canon guard (`skills/fiction-writing/`) and the post-generation `ai-fictional-tells-skill` (artifact reduction; see `skills/INTEGRATION.md`).
 
 ## 6. Repository Map
 
@@ -56,7 +57,8 @@ Every recorded item carries exactly one status:
 - `samur/03-hypotheses/` — working hypotheses.
 - `samur/04-questions/` — open questions.
 - `samur/CHANGELOG.md` — canon change log.
-- `skills/fiction-writing/` — narrative-phase skill (draft; gate for any future story work).
+- `skills/fiction-writing/` — narrative-phase skill (draft; pre-generation canon guard + gate for any future story work).
+- `skills/INTEGRATION.md` — integration record for the `ai-fictional-tells-skill` (post-generation artifact-reduction; the skill folder itself is on `main` at `ai-fictional-tells-skill/`).
 
 ## 7. Open Governance Assumptions
 

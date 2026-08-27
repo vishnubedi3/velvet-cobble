@@ -4,6 +4,14 @@ One entry per canon change (add / revise / retire), newest first. Each entry rec
 
 ## 2026-08-26
 
+- **Skill integration — `ai-fictional-tells-skill` (inspected, documented, NOT invoked).**
+  - **Inspected `main`:** a new skill, `ai-fictional-tells-skill/` (v1.0.0, 60 files), was uploaded to `main` (PR #1, merge `5d3e078`). Read in full from `origin/main` (SKILL.md, README, MANIFEST, CONFIG, glossary, spec/02,03,04,05,11,13, interventions/01,02, taxonomy index + tell catalog).
+  - **What it is:** a standalone, model-agnostic, **post-generation** literary quality / artifact-reduction layer for AI-generated fiction — detects ~95 "AI fictional tells" (15+ clusters), identifies their cause (K1–K9), applies **minimal, preservation-checked** interventions (Levels 0–6; **Level 0 = no edit = default**; 14 preservation dimensions PV-1…PV-14). **Not** a detector-evasion tool; no inserted errors/randomness; no detector feedback.
+  - **Workflow stage:** the **narrative stage** (post-generation quality layer) — operates on narrative drafts, **not canon**. Complements (does not replace) the pre-generation canon guard in `skills/fiction-writing/`.
+  - **Effect on canon:** **none** — it cannot modify canon; its PV-5/PV-6 preservation protects the canon-consistency of a narrative draft.
+  - **Actions:** created recovery point tag `recovery/pre-skill-integration` at `bd5da9e` (before any integration change); repaired a sandbox branch-reset (verified working tree byte-identical to remote, re-anchored); wrote `skills/INTEGRATION.md` (the full integration record); updated `PROJECT.md` (§2 gate, §5 phases, §6 map) and `skills/fiction-writing/STATUS.md` (the relationship).
+  - **NOT invoked** (narrative stage BLOCKED per PROJECT.md §2); **no next worldbuilding stage begun** (per instruction). **No canon revised or retired.**
+
 - **Refinement continued — FOR-02 (The Foreign Powers' Named Rulers).**
   - Added `02-canon/FOR-02_foreign_rulers.md` (CANON, high-impact): the **foreign powers' named rulers** — the **Vethra's rulers** (the Veth royal house — Vethan I the Founder, Pelan I the First War Ruler, Kesveth I the High Ruler, Tarnesh I the Stress Ruler, Vethan II the Riser); the **Khor's assembly leaders** (the seasonal assembly — Khesh Ur, Ghoran Ur, Zhan Ur, Maren Ur, Khesh Ur II — re-elected, not hereditary); the **Phre's company leaders** (the chartered company — Phrean, Shoran, Phrean II — re-chartered, not hereditary); the **foreign language registers** (the Veth language, the Khor language, the Phre language); the **foreign institutions** (the Veth court, the Khor assembly, the Phre company). The rulers' reigns are consistent with TIM-02's dated events.
   - Transformation log: `transformations/FOR-02.md`. **Influence Register:** FOR-02 row added; drift check passed (the Vethra survives and rises, the Khor is multiple horse peoples + the re-elected seasonal assembly, the Phre's riverine-reach bound).

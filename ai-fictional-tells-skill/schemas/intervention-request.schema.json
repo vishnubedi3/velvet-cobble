@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://velvet-cobble/schemas/intervention-request.schema.json",
+  "title": "InterventionRequestAndLog",
+  "description": "One intervention entry: proposal, preservation results, outcome. Covers both the pre-apply request (preservation checks present, outcome empty) and the post-apply log entry (outcome filled).",
+  "type": "object",
+  "required": ["id", "finding_ref", "level", "spans_before", "spans_after", "rationale", "preservation_checks"],
+  "properties": {
+    "id": { "type": "string" },
+    "finding_ref": { "type": "string" },
+    "level": { "type": "integer", "minimum": 0, "maximum": 6 },
+    "spans_before": { "type": "array", "items": { "type": "string" } },
+    "spans_after": { "type": "array", "items": { "type": "string" } },
+    "rationale": {
+      "type": "object",
+      "required": ["cause"],
+      "properties": {
+        "cause": { "type": "string" },
+        "why_lower_levels_insufficient": { "type": "string", "description": "required for level >= 2 per interventions/01 §2" },
+        "per_sentence_rationale": { "type": "string", "description": "required for level >= 5" }
+      }
+    },
+    "preservation_checks": {
+      "type": "object",
+      "description": "PV-1..PV-14: 'pass' | 'reject' | 'n/a'",
+      "properties": {
+        "PV-1": { "type": "string" }, "PV-2": { "type": "string" }, "PV-3": { "type": "string" },
+        "PV-4": { "type": "string" }, "PV-5": { "type": "string" }, "PV-6": { "type": "string" },
+        "PV-7": { "type": "string" }, "PV-8": { "type": "string" }, "PV-9": { "type": "string" },
+        "PV-10": { "type": "string" }, "PV-11": { "type": "string" }, "PV-12": { "type": "string" },
+        "PV-13": { "type": "string" }, "PV-14": { "type": "string" }
+      }
+    },
+    "causality_audit": { "type": "object", "description": "required for level >= 4; frameworks/05 §4", "properties": {
+      "before_chain": { "type": "array", "items": { "type": "string" } },
+      "after_chain": { "type": "array", "items": { "type": "string" } },
+      "verdict": { "enum": ["pass", "reject"] },
+      "notes": { "type": "string" }
+    } },
+    "author_consent": { "type": ["object", "null"], "description": "required for worldview-touching edits (N07/F03/E05/F05 class)", "properties": {
+      "requested": { "type": "string" },
+      "granted": { "type": "boolean" },
+      "by": { "type": "string" }
+    } },
+    "outcome": {
+      "type": "object",
+      "properties": {
+        "status": { "enum": ["applied", "rejected", "reverted", "kept", "pending"] },
+        "reason": { "type": "string" },
+        "post_edit_findings": { "type": "array", "items": { "type": "string" } },
+        "reevaluation": { "enum": ["fixed", "improved", "unchanged", "reverted"] }
+      }
+    }
+  }
+}

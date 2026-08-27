@@ -1,7 +1,7 @@
 # Q-049 The specific Vethra/Khor/Phre institutions
 
-Status: OPEN
+Status: RESOLVED → FOR-02 §5 (2026-08-26)
 Date: 2026-08-26
-Related: FOR-01 (§2.2, §3.2, §4.2); constrains the later FOR files
-Why it matters: the specific Vethra/Khor/Phre institutions (the Veth court, the Khor assembly, the Phre chartered company — the details) define each foreign power's internal structure — the institutions are the foreign powers' independent political/economic/religious systems.
-Current best guesses: the **Veth court** (the economic engine, the market anchor), the **Khor seasonal assembly** (the loose confederation, the trade/raiding/marriage), the **Phre chartered company** (the state-within-a-state, the private monopoly) + the **navy** (the naval logistics, the delta mouth) — the **specific institutions** are to be fixed (the later FOR files).
+Related: FOR-01 (§2.2, §3.2, §4.2), FOR-02 (§5); the foreign powers' independent systems
+Why it mattered: the specific Vethra/Khor/Phre institutions (the Veth court, the Khor assembly, the Phre chartered company — the details) define each foreign power's internal structure.
+**Resolution (now canon, FOR-02 §5):** the Vethra's institutions (the Veth court, the Veth faith, the craft-guilds, the irrigation), the Khor's institutions (the seasonal assembly, the horse trade, the Khor faith, the pastoral mobility), the Phre's institutions (the chartered company, the naval logistics, the paramountcy, the Phre faith/language).

@@ -1,7 +1,7 @@
 # Q-046 The specific Vethra history
 
-Status: OPEN
+Status: RESOLVED → FOR-02 §2 (2026-08-26)
 Date: 2026-08-26
-Related: FOR-01 (§2); constrains the later FOR/TIM files, the Vethra wars
-Why it matters: the specific Vethra history (the founding, the rise, the Vethra wars — the dates, the Vethra's rulers, the outcomes) defines the "state too big" and the post-imperial southern power — the Vethra's rise is the long-term geopolitical consequence of the Fragmentation (TIM-01).
-Current best guesses: the **Vethra founding** (the consolidation of the Veth coast — the pepper, the irrigation, the craft-guilds), the **rise** (the compact irrigated craft-rich state), the **Vethra wars** (the first war ~KE 200–240, TIM-01; recurring in the High Empire + the Stress), the **rise** (the Fragmentation — the dominant southern power) — the **specific dates** and the **Vethra's rulers** are to be fixed (the later FOR/TIM files).
+Related: FOR-01 (§2), TIM-02, FOR-02 (§2); the Vethra wars
+Why it mattered: the specific Vethra history (the founding, the rise, the Vethra wars — the dates, the Vethra's rulers, the outcomes) defines the "state too big" and the post-imperial southern power.
+**Resolution (now canon, FOR-02 §2):** the Vethra's rulers (the Veth royal house) — **Vethan I** (the Founder, ~150–220, the consolidation of the Veth coast), **Pelan I** (the First War Ruler, ~220–300, the First Vethra War), **Kesveth I** (the High Ruler, ~300–420, the Vethra's High Empire), **Tarnesh I** (the Stress Ruler, ~420–550, the Vethra's Stress), **Vethan II** (the Riser, ~550–680, the Vethra's Rise — the dominant southern power). The specific Vethra rulers' reigns are Q-071.

@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://velvet-cobble/schemas/analysis-report.schema.json",
+  "title": "AnalysisReport",
+  "description": "Output of the Analyze stage (skill/04 §2). Findings are evidence-bound; observations are non-actionable. No AI-score field exists by design.",
+  "type": "object",
+  "required": ["contract", "story_model", "findings", "observations", "calibration", "priority_queue"],
+  "properties": {
+    "contract": {
+      "type": "object",
+      "required": ["genre", "perspective", "intent"],
+      "properties": {
+        "genre": { "type": "string" },
+        "subgenre": { "type": ["string", "null"] },
+        "genre_gate_verdicts": { "type": "object", "additionalProperties": { "enum": ["contract", "over-executed", "non-contractual", "provisional"] } },
+        "perspective": { "type": "string" },
+        "intent": { "type": "object", "properties": {
+          "style_anchors": { "type": "array", "items": { "type": "string" } },
+          "declared_devices": { "type": "array", "items": { "type": "string" } },
+          "content_boundaries": { "type": "array", "items": { "type": "string" } },
+          "worldview_constraints": { "type": "array", "items": { "type": "string" } }
+        } }
+      }
+    },
+    "story_model": { "$ref": "story-model.schema.json" },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "tell_ids", "spans", "pattern_evidence", "confidence", "cause", "function_test", "intentionality", "proposed_level"],
+        "properties": {
+          "id": { "type": "string" },
+          "tell_ids": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+          "spans": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+          "pattern_evidence": { "type": "string", "description": "objective: counts, distributions, ledger diffs, cluster ids. Adjectives alone are invalid." },
+          "evidence_refs": { "type": "array", "items": { "type": "string" }, "description": "source IDs from research/03" },
+          "confidence": { "enum": ["high", "medium", "low"] },
+          "cause": { "type": "string", "description": "K1..K9 + mechanism" },
+          "function_test": { "type": "string", "description": "taxonomy/20 §20.2 result" },
+          "intentionality": { "enum": ["deliberate", "accidental", "undetermined"] },
+          "intentionality_reasoning": { "type": "string" },
+          "proposed_level": { "type": "integer", "minimum": 0, "maximum": 6 },
+          "preservation_risks": { "type": "array", "items": { "type": "string" }, "description": "PV dimensions the fix would touch" },
+          "calibration_status": { "enum": ["calibrated", "uncalibrated"] }
+        }
+      }
+    },
+    "observations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "note", "reason"],
+        "properties": {
+          "id": { "type": "string" },
+          "note": { "type": "string" },
+          "reason": { "enum": ["low_confidence", "folklore", "intentional", "contractual", "uncalibrated", "below_threshold"] }
+        }
+      }
+    },
+    "calibration": {
+      "type": "object",
+      "properties": {
+        "baseline_source": { "enum": ["internal", "corpus", "none"] },
+        "thresholds": { "type": "object", "additionalProperties": { "type": "number" } },
+        "generator_metadata": { "type": ["object", "null"] },
+        "notes": { "type": "string" }
+      }
+    },
+    "priority_queue": { "type": "array", "items": { "$ref": "#/properties/findings/items" } }
+  }
+}

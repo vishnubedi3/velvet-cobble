@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://velvet-cobble/schemas/story-model.schema.json",
+  "title": "StoryModel",
+  "description": "Structural representation of the fiction draft. Descriptive only: every field must be grounded in draft text or marked unknown. Used by preservation checks (interventions/02) and long-form ledgers (frameworks/06).",
+  "type": "object",
+  "required": ["characters", "facts", "timeline", "events", "scenes", "information_state", "themes", "motifs", "foreshadowing", "conflicts", "world_rules", "perspective", "emotional_state"],
+  "properties": {
+    "characters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "role"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "role": { "enum": ["protagonist", "antagonist", "secondary", "utility", "unknown"] },
+          "goals": { "type": "array", "items": { "type": "object", "properties": { "goal": { "type": "string" }, "priority": { "type": "integer" }, "evidence_span": { "type": "string" } }, "required": ["goal", "evidence_span"] } },
+          "values": { "type": "array", "items": { "type": "object", "properties": { "value": { "type": "string" }, "evidence_span": { "type": "string" } }, "required": ["value", "evidence_span"] } },
+          "knowledge_by_chapter": { "type": "object", "additionalProperties": { "type": "array", "items": { "type": "string" } } },
+          "voice_profile": { "type": ["object", "null"], "description": "frameworks/02 §3 features; null = unknown (re-voicing disabled)", "properties": {
+            "mean_sentence_length": { "type": "number" },
+            "sentence_length_variance": { "type": "number" },
+            "fragment_rate": { "type": "number" },
+            "hedge_density": { "type": "number" },
+            "formality": { "type": "number" },
+            "humor_profile": { "type": ["string", "null"] },
+            "notices": { "type": "array", "items": { "type": "string" } },
+            "taboo_words": { "type": "array", "items": { "type": "string" } }
+          } },
+          "blind_spots": { "type": "array", "items": { "type": "object", "properties": { "claim": { "type": "string" }, "evidence_span": { "type": "string" } }, "required": ["claim", "evidence_span"] } },
+          "relationships": { "type": "array", "items": { "type": "object", "properties": { "with": { "type": "string" }, "history": { "type": "string" }, "power": { "type": "string" }, "wants": { "type": "string" }, "evidence_span": { "type": "string" } }, "required": ["with", "evidence_span"] } },
+          "backstory_established": { "type": "array", "items": { "type": "object", "properties": { "fact": { "type": "string" }, "evidence_span": { "type": "string" } }, "required": ["fact", "evidence_span"] } },
+          "demographic_markers": { "type": "array", "items": { "type": "string" } },
+          "arc_state": { "type": "object", "additionalProperties": { "type": "string" }, "description": "act-boundary trait states" }
+        }
+      }
+    },
+    "facts": { "type": "array", "items": { "type": "object", "properties": { "fact": { "type": "string" }, "span": { "type": "string" }, "kind": { "enum": ["name", "age", "date", "place", "object_state", "other"] } }, "required": ["fact", "span"] } },
+    "timeline": { "type": "object", "properties": {
+      "events": { "type": "array", "items": { "type": "object", "properties": { "event_id": { "type": "string" }, "at": { "type": "string" }, "duration": { "type": "string" } }, "required": ["event_id", "at"] } },
+      "causal_graph": { "type": "array", "items": { "type": "object", "properties": { "from": { "type": "string" }, "to": { "type": "string" } }, "required": ["from", "to"] } }
+    } },
+    "events": { "type": "array", "items": { "type": "object", "properties": { "id": { "type": "string" }, "description": { "type": "string" }, "span": { "type": "string" }, "causes": { "type": "array", "items": { "type": "string" } }, "consequences": { "type": "array", "items": { "type": "string" } } }, "required": ["id", "description", "span"] } },
+    "scenes": { "type": "array", "items": { "type": "object", "properties": {
+      "id": { "type": "string" }, "type": { "enum": ["action", "dialogue", "interior", "transition", "rest", "climax", "resolution", "unknown"] },
+      "purpose": { "type": "array", "items": { "enum": ["plot", "character", "world", "rhythm"] } },
+      "pov": { "type": "string" }, "span": { "type": "string" },
+      "state_record": { "type": "object", "description": "positions, held objects, injuries, mood at scene boundaries", "additionalProperties": true },
+      "beat_sequence": { "type": "array", "items": { "type": "string" } },
+      "act_position": { "type": "string" }
+    }, "required": ["id", "span"] } },
+    "information_state": { "type": "object", "properties": {
+      "reader_knows": { "type": "array", "items": { "type": "object", "properties": { "fact": { "type": "string" }, "learned_at": { "type": "string" } }, "required": ["fact", "learned_at"] } },
+      "character_knows": { "type": "object", "additionalProperties": { "type": "array", "items": { "type": "object", "properties": { "fact": { "type": "string" }, "learned_at": { "type": "string" } }, "required": ["fact", "learned_at"] } } }
+    } },
+    "themes": { "type": "array", "items": { "type": "object", "properties": { "theme": { "type": "string" }, "carriers": { "type": "array", "items": { "type": "string" } }, "statements": { "type": "array", "items": { "type": "string" } } }, "required": ["theme"] } },
+    "motifs": { "type": "array", "items": { "type": "object", "properties": { "motif": { "type": "string" }, "intended": { "type": "boolean" }, "variation_pattern": { "type": "string" }, "occurrences": { "type": "array", "items": { "type": "string" } } }, "required": ["motif", "intended", "occurrences"] } },
+    "foreshadowing": { "type": "array", "items": { "type": "object", "properties": { "plant_span": { "type": "string" }, "payoff_span": { "type": ["string", "null"] }, "kind": { "enum": ["fair", "signposted", "unknown"] } }, "required": ["plant_span"] } },
+    "conflicts": { "type": "array", "items": { "type": "object", "properties": { "id": { "type": "string" }, "type": { "enum": ["physical", "social", "informational", "internal"] }, "participants": { "type": "array", "items": { "type": "string" } }, "opens_at": { "type": "string" }, "closes_at": { "type": ["string", "null"] } }, "required": ["id", "type", "opens_at"] } },
+    "world_rules": { "type": "array", "items": { "type": "object", "properties": { "rule": { "type": "string" }, "span": { "type": "string" }, "cost": { "type": "string" } }, "required": ["rule", "span"] } },
+    "perspective": { "type": "object", "properties": {
+      "mode": { "enum": ["first", "close-third", "limited-third", "omniscient", "second", "mixed", "unknown"] },
+      "contract_notes": { "type": "string" },
+      "distance_policy": { "type": "string", "description": "where zoom changes, if anywhere" },
+      "narrator_quirks": { "type": "array", "items": { "type": "string" }, "description": "PV-4 protected voice features" }
+    } },
+    "emotional_state": { "type": "object", "properties": {
+      "per_character": { "type": "object", "additionalProperties": { "type": "object", "additionalProperties": { "type": "string" } } },
+      "valence_arc_notes": { "type": "string" },
+      "deliberate_jaggedness": { "type": "array", "items": { "type": "string" } }
+    } },
+    "unknown_fields": { "type": "array", "items": { "type": "string" }, "description": "fields not present in the draft; must never be invented" }
+  }
+}

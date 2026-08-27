@@ -31,6 +31,7 @@ All world material lives here. **Strict separation of research (real) and canon 
 | REL | Religion and religious institutions |
 | CUL | Language, culture, society, historical memory |
 | FOR | Foreign powers and geopolitics |
+| NS | Historical negative space (why certain things did **not** happen) |
 
 ## Canon File Template
 

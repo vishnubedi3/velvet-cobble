@@ -43,7 +43,7 @@ Each domain has a **-01 foundation** file (the structure) and one or more **-02/
 | DEM | DEM-01 (the demography) | DEM-02 (the city tiering, the urban/rural split, the sex/age structure, the epidemic complex) |
 | CUL | CUL-01 (the culture, the fixed toponymy, the historical memory) | CUL-02 (the languages + scripts, the foreign registers) |
 | REL | REL-01 (the Veshna faith, the pluralism) | REL-02 (the corpus, the theology, the temple network, the revivals, the myths, the de-consecrations) |
-| DYN | DYN-01 (the founding dynasty), DYN-02 (the dynastic list, the name pool) | DYN-03 (the houses + lineages, the Tarn houses, the Khor clans) |
+| DYN | DYN-01 (the founding dynasty), DYN-02 (the dynastic list, the name pool) | DYN-03 (the houses + lineages, the Tarn houses, the Khor clans), DYN-04 (the Dhaneshra Period — the sixth epoch, post-KE 675, the post-fragmentation matha politics), DYN-05 (the Dhaneshra Period's succession resolution — the Empty Throne's filling, the Gheshar-Temple Line resolution) |
 | ADM | ADM-01 (the administration, the tiered control, the four-law pluralism) | ADM-02 (the 7 central offices, the legal codes, the Tarn tribute governance) |
 | ECO | ECO-01 (the economy, the monetization chain) | ECO-02 (the tax rates, the monopoly, the mint, the pepper, the trade partners, the workshops, the irrigation) |
 | MIL | MIL-01 (the military, the Khor dependency, the overstretch) | MIL-02 (the army sizes, the cavalry, the navy/marines, the artillery/metallurgy, the guilds, the logistics) |

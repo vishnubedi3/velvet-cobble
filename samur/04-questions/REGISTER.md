@@ -1,6 +1,6 @@
 # The Open-Question Register (updated)
 
-Date: 2026-08-28 (the TIM-08 operation — the Quiet Long, the tens of thousands of years)
+Date: 2026-08-28 (the DYN-05 operation — the Dhaneshra Period's succession resolution, Q-080)
 Status: the authoritative register of the `04-questions/` state.
 
 ## The status taxonomy
@@ -16,14 +16,14 @@ Status: the authoritative register of the `04-questions/` state.
 
 | Status | Count | Questions |
 |---|---|---|
-| **Resolved** | **76** | the original 16 + the 58 resolved in the question-resolution operation + **Q-079** (the post-fragmentation matha politics — the Dhaneshra Period, the DYN-04) + **Q-083** (the Veshna faith's pre-KE-0 antiquity — the scale of the pre-imperial history — resolved in the TIM-05 operation, the Pre-Kesra Age, the TIM-05 §1; extended in TIM-06 — the civilizational depth from at least ~KE −5000) |
+| **Resolved** | **77** | the original 16 + the 58 resolved in the question-resolution operation + **Q-079** (the post-fragmentation matha politics — the Dhaneshra Period, the DYN-04) + **Q-080** (the Empty Throne's filling — the succession resolution, the DYN-05 — the Gheshar-Temple Line resolution is the most causally viable mechanism) + **Q-083** (the Veshna faith's pre-KE-0 antiquity — the scale of the pre-imperial history — resolved in the TIM-05 operation, the Pre-Kesra Age, the TIM-05 §1; extended in TIM-06 — the civilizational depth from at least ~KE −5000) |
 | **Partially resolved** | **1** | Q-027 (the trade volumes — the directions + the relative scale are fixed; the absolute volumes are a deliberate range) |
 | **Intentionally unresolved** | **3** | Q-076 (the distant western partner), Q-077 (the hidden history), Q-078 (the Kesra Charter's full text) — **NOT resolved by Q-079, TIM-05, TIM-06, or TIM-07** (the TIM-05/TIM-06/TIM-07 add the Q-076 rumor ancestor [unchanged] + the Q-077 source-tradition layers [the third — the rite-records — + the fourth — the old stone] + the Q-077 physical-deep hidden layer [the world's own truth hidden beneath the world's moral knowledge], without resolution) |
-| **Open (the next development unit + narrative details)** | **6** | Q-080 (the Empty Throne's filling — the next development unit), Q-081 (the Dhaneshra Period's named rulers — a narrative detail), Q-082 (the Dhaneshra Period's polities' internal politics — a narrative detail), Q-085 (the pre-imperial named agents and polity internals — a narrative detail; the individuals are deliberately forgotten in the world's record), Q-086 (the deep's named agents and ruins' details — a narrative detail; the strata's individuals/details are the layer of what was forgotten; the old stone's readable fragments' content is the Q-077 deep layer), **Q-087** (the deep's named forms and the deep record layer's details — a deep unknown / narrative detail; the great-bone's specific forms, the other deep lineages' specifics, the deep sea's life, the deep wind regimes' details, the precise deep geology — constrained by the no-Earth rule + the no-false-precision rule) |
+| **Open (the next development unit + narrative details)** | **4** | Q-081 (the Dhaneshra Period's named rulers — a narrative detail), Q-082 (the Dhaneshra Period's polities' internal politics — a narrative detail), Q-085 (the pre-imperial named agents and polity internals — a narrative detail; the individuals are deliberately forgotten in the world's record), Q-086 (the deep's named agents and ruins' details — a narrative detail; the strata's individuals/details are the layer of what was forgotten; the old stone's readable fragments' content is the Q-077 deep layer), **Q-087** (the deep's named forms and the deep record layer's details — a deep unknown / narrative detail; the great-bone's specific forms, the other deep lineages' specifics, the deep sea's life, the deep wind regimes' details, the precise deep geology — constrained by the no-Earth rule + the no-false-precision rule) |
 | **NOT READY (left alone)** | **1** | **Q-084** (the wider world's timescale — the **relative strata** (TIM-06 §2) + the **orders** (TIM-07 §1–§2 — the planet the order of billions of years; the landmass billions → the current arrangement [the Younging] millions; the landlife millions; the current ecosystems hundreds of thousands) are ESTABLISHED (the ready parts resolved completely); the **precise ages** (the planet's precise age, the cosmos's age, the precise deep dates) remain NOT READY — the deep unknown; the world has no means of measuring them; no false precision; no cosmogony invented — per the stewardship principle) |
 | **Blocked by missing information** | **0** | (documented: none — every actionable question is resolved or intentionally unresolved; no question is blocked by a missing dependency or an external input) |
 | **Rejected premise** | **0** | (none — the 10 consolidations are duplicates, not rejected premises) |
-| **Total** | **87** | Q-001 → Q-087 (the 76 resolved + 1 partially resolved + 3 intentionally unresolved + 6 open + 1 NOT READY) |
+| **Total** | **86** | Q-001 → Q-087 (the 77 resolved + 1 partially resolved + 3 intentionally unresolved + 4 open + 1 NOT READY; Q-080 resolved → DYN-05; no new questions raised) |
 
 ## The Q-079 operation (the Dhaneshra Period)
 
@@ -106,7 +106,14 @@ Status: the authoritative register of the `04-questions/` state.
 - **The new question created by TIM-07** — **Q-087** (the deep's named forms and the deep record layer's details — a deep unknown / narrative detail; the great-bone's specific forms, the other deep lineages' specifics, the deep sea's life, the deep wind regimes' details, the precise deep geology — constrained by the no-Earth rule + the no-false-precision rule + the in-world epistemology).
 - **Bookkeeping:** the total question count is 87 (Q-001 → Q-087).
 
-## The TIM-08 operation (the Quiet Long — the tens of thousands of years)
+## The DYN-05 operation (the Dhaneshra Period's succession resolution — Q-080)
+
+- **Q-080 (the Empty Throne's filling — the next development unit)** — **RESOLVED → DYN-05** (the succession resolution — the Gheshar-Temple Line resolution is the most causally viable mechanism [the Temple Line provides the legitimacy; the Gheshar house provides the power; satisfies all four consecration requirements; aligns with the matha's institutional interest; enabled by the settled-phase wind regime]; the fallback is the Gheshar-Threnath coalition; the wind-law reset is the Threnath resolution; the Keshath resolution is causally blocked; the specific timing, named figures, and events are narrative details [Q-081/Q-082]).
+- **The deliberate mysteries (Q-076/Q-077/Q-078)** — **NOT resolved by DYN-05** (the resolution mechanisms are derived from the established canonical structure, not from the mysteries; the Q-076/Q-077/Q-078 content is untouched).
+- **No new questions raised** — the specific timing (the wind law's agency), the named figures (Q-081), and the specific events (Q-082) are narrative details, not new questions.
+- **Bookkeeping:** the total question count is 87 (Q-001 → Q-087 — Q-080 resolved; no new questions raised; the remaining open questions are Q-081/Q-082/Q-085/Q-086 [narrative details] + Q-084 [NOT READY] + Q-087 [deep unknown]).
+
+
 
 - **Q-084 (the wider world's timescale)** — **unchanged** (the Quiet Long is a sub-layer of the Quiet Land [the hundreds of thousands of years → the present] — the tens of thousands of years is a sub-order within the Quiet Land's established order, not a new order — the Q-084 orders [the planet billions; the landmass billions → the current arrangement millions; the landlife millions; the current ecosystems hundreds of thousands] are unchanged).
 - **The deliberate mysteries (Q-076/Q-077/Q-078)** — **NOT resolved by TIM-08** (the Quiet Long does not reach the Q-076 western partner; the Q-077 structure is extended further — the standing state [the current ecosystem stood for the tens of thousands of years without the Orenic kind in the basin] as a further hidden layer — the content untouched; the Q-078 text untouched).

@@ -1,0 +1,9 @@
+# Q-083 The Veshna faith's pre-KE-0 antiquity
+
+Status: LEFT ALONE UNTIL READY (the established canon does not specify the scale)
+Date: 2026-08-26
+Related: TIM-04 §2 (the pre-imperial history), REL-02 §1 (the Kesra Charter, "the oldest text... orthography is frozen"), CUL-02 §2 (the Veshna sacred script, "older" and "frozen"), DYN-01 §2 #3 (the founding co-opted the Veshna temple)
+Why it matters: the established canon demonstrates that the Veshna faith/temple pre-dated the founding (KE 0) (DYN-01 §2 #3 "the founding co-opted the Veshna temple, the founding faith's center"; REL-02 §1 "the Kesra Charter... is the oldest text (its orthography is frozen)"; CUL-02 §2 "the Veshna sacred script — an older abugida... conservative... frozen"). This is a genuine internal-causality implication of pre-imperial history. But the **scale of that pre-imperial antiquity is not specified** in the established canon.
+Why it remains unresolved: the established canon does not specify the scale of the Veshna faith's pre-KE-0 antiquity. The Kesra Charter (the oldest text) is "attributed to the founding era (KE 0–35)," and the Veshna sacred script is "older" and "frozen" (older than the Orenic script, conservative), but the **scale of the pre-imperial history is not specified**.
+What would permit a proper resolution: establishing the Veshna faith's pre-KE-0 history from the established canon's internal causality (e.g., the Veshna faith's pre-KE-0 history, the Veshna temple's pre-KE-0 history, the Veshna sacred script's pre-KE-0 history). This would permit establishing the scale of the pre-imperial history.
+Status: LEFT ALONE UNTIL READY (per the stewardship principle: "If sufficient information does not exist, leave it untouched. Record only the information necessary to preserve the reason it remains unresolved and what would eventually permit a proper resolution.").

@@ -1,7 +1,17 @@
 # Q-064 The specific artillery
 
-Status: OPEN
+Status: RESOLVED (DUPLICATE/CONSOLIDATED → Q-033 → MIL-02 §4) (2026-08-26)
 Date: 2026-08-26
-Related: NS-01 (§4), TEC-01 (§4), MIL-01 (§3); constrains the later MIL/TEC files
-Why it matters: the specific artillery (the individual guns/rockets, the KE dates, the use — the supplement, not the displacement) defines the modernizing force — the artillery supplements, not displaces, the cavalry (the negative space, NS-01 §4).
-Current best guesses: the **artillery** (the guns, the rockets, the state workshops, the military demand) — the **supplement** (the siege, the fort, the modernizing force) + the **not the displacement** (the cavalry is the mobile striking force, the Khor dependency) — the **specific artillery** (the KE dates, the use) are to be fixed (the later MIL/TEC files).
+Original question: the specific artillery (the guns, the rockets — the state workshops, the gunpowder, the military demand)?
+
+**Resolution record**
+- Why it was unresolved: a duplicate of Q-033 (the specific artillery) — both ask the artillery.
+- Evidence/reasoning: the Q-033 resolution (the MIL-02 §4).
+- Alternatives considered: (the Q-033 alternatives).
+- Selected resolution: the **state workshops** (the Kesra, the Threna, the Voren) + the **barrage gun** (the bronze/iron cannon) + the **Voren rocket** (the reed-tube + the charcoal-powder) + the **metallurgy** (the Sareth/southern iron, the bronze, the steel) + the **scale** (the few hundred guns, the few thousand rockets/year) + the **operators** (the Dhresh gunners, 2–3k) — the MIL-02 §4.
+- Why chosen: it is the Q-033 resolution (the consolidation).
+- Systems affected / new dependencies: the MIL-02 §4, the ECO-02 §8 (the workshops).
+- Canon status: CANON (MIL-02 §4).
+- Relevant research: the comparative `mysore.md` (the artillery, the rocket).
+- Recovery point: recovery/pre-question-resolutions (e48d9a3).
+- Resulting changes: the MIL-02 §4 (new), the REGISTER.md (the consolidation log).

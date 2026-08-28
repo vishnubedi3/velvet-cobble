@@ -1,7 +1,17 @@
 # Q-053 The specific artillery
 
-Status: OPEN
+Status: RESOLVED (DUPLICATE/CONSOLIDATED → Q-033 → MIL-02 §4) (2026-08-26)
 Date: 2026-08-26
-Related: TEC-01 (§4), MIL-01 (§3), ECO-01 (§6); constrains the later TEC/MIL files
-Why it matters: the specific artillery (the guns, the rockets — the state workshops, the gunpowder, the military demand) defines the modernizing force and the military demand (the guns for the frontier) — the cavalry (the Khor horses) and the garrison (the small, the heavy artillery) are the adoption resistance.
-Current best guesses: **state-workshop artillery** (the karkhanas, the Mysore logic) — the **guns** (the bronze/steel) + the **rockets** (the Mysore rocket logic) + the **gunpowder** (the sulfur, the saltpeter, the charcoal — the frontier) — the **military demand** (the guns for the frontier) + the **court demand** (the display) drive the **metallurgy** — the **specific artillery** is to be fixed (the later TEC/MIL files).
+Original question: the specific artillery (the guns, the rockets — the state workshops, the gunpowder, the military demand)?
+
+**Resolution record**
+- Why it was unresolved: a duplicate of Q-033 (the specific artillery) — both ask the artillery.
+- Evidence/reasoning: the Q-033 resolution (the MIL-02 §4).
+- Alternatives considered: (the Q-033 alternatives).
+- Selected resolution: the **state workshops** (the Kesra, the Threna, the Voren) + the **barrage gun** (the bronze/iron cannon) + the **Voren rocket** (the reed-tube + the charcoal-powder) + the **metallurgy** (the Sareth/southern iron, the bronze, the steel) + the **scale** (the few hundred guns, the few thousand rockets/year) + the **operators** (the Dhresh gunners, 2–3k) — the MIL-02 §4.
+- Why chosen: it is the Q-033 resolution (the consolidation).
+- Systems affected / new dependencies: the MIL-02 §4, the ECO-02 §8 (the workshops).
+- Canon status: CANON (MIL-02 §4).
+- Relevant research: the comparative `mysore.md` (the artillery, the rocket).
+- Recovery point: recovery/pre-question-resolutions (e48d9a3).
+- Resulting changes: the MIL-02 §4 (new), the REGISTER.md (the consolidation log).

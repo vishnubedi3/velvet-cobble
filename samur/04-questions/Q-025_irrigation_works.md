@@ -1,7 +1,17 @@
-# Q-025 Specific irrigation works
+# Q-025 The specific irrigation works
 
-Status: OPEN
+Status: RESOLVED (DUPLICATE/CONSOLIDATED → Q-051 → ECO-02 §9) (2026-08-26)
 Date: 2026-08-26
-Related: ADM-01 (§6); constrains ECO-01 (the agriculture, the surplus base), DEM-01 (the labor)
-Why it matters: the specific irrigation works (the tanks/anicut — the scale, the state direction, the labor) define the bār core's surplus (the fiscal base) and the labor demand (the corvée, the resentment) — the irrigation is the state's *physical* power in the core (the surplus that pays the army).
-Current best guesses: a **system of tanks + anicut + canals** in the bār core (the Oren basin — the Mysore/Vijayanagara tank logic), **state-directed** (the state plans/maintains the major works, the village maintains the minor) — the **labor is the corvée** (the forced labor, the agrarian surplus — a source of resentment, DEM-01 §5) — the **major works** (the great tanks, the Oren canals) are **state projects** (the great building era, TIM-01).
+Original question: the specific irrigation works (the tanks/anicut — the scale, the state direction, the labor)?
+
+**Resolution record**
+- Why it was unresolved: a duplicate of Q-051 (the specific state workshops + irrigation) — both ask the irrigation works.
+- Evidence/reasoning: the Q-051 resolution (the ECO-02 §9).
+- Alternatives considered: (the Q-051 alternatives).
+- Selected resolution: the **tank system** — the Oren Grand Canal (the Dharan I program, KE 230–250) + the 7 Grand Tanks (the KE 235–270, one per major district) + the sluices/waterwheels (the Sareth timber) + the local tanks (the village works); the corvée (the 20–40 days/household/year, the resentment → the revolt trigger); the maintenance (the Beshara's water-officers, the Orenam Beshara) — the ECO-02 §9.
+- Why chosen: it is the Q-051 resolution (the consolidation).
+- Systems affected / new dependencies: the ECO-02 §9, the TIM-03 §4 (the Dharan I program).
+- Canon status: CANON (ECO-02 §9).
+- Relevant research: the comparative `mysore.md` (the tanks/anicut).
+- Recovery point: recovery/pre-question-resolutions (e48d9a3).
+- Resulting changes: the ECO-02 §9 (new), the REGISTER.md (the consolidation log).

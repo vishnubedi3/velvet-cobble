@@ -1,7 +1,17 @@
 # Q-052 The specific metallurgy
 
-Status: OPEN
+Status: RESOLVED → MIL-02 §4 (2026-08-26)
 Date: 2026-08-26
-Related: TEC-01 (§3), ECO-01 (§6), MIL-01 (§3); constrains the later TEC files
-Why it matters: the specific metallurgy (the steel, the iron — the Sareth/southern highlands, the state workshops, the craft guilds, the smelting) defines the military demand (the steel, the guns) and the state's control of the steel — the frontier (the iron ore is beyond the Sareth) is the adoption resistance (the projection cost).
-Current best guesses: the **iron ore** (the Sareth foothills + the southern highlands, GEO-01 §5) + the **state workshops** (the karkhanas, the military demand, ECO-01 §6) + the **craft guilds** (the smiths, the guild control) + the **smelting** (the timber/charcoal, the Sareth forests) — the **specific metallurgy** is to be fixed (the later TEC files).
+Original question: the specific metallurgy (the steel, the iron — the Sareth/southern highlands, the state workshops, the craft guilds, the smelting)?
+
+**Resolution record**
+- Why it was unresolved: the MIL-01 §3 fixed the "steel" but not the metallurgy.
+- Evidence/reasoning: the Mysore steel (the high-value) + the GEO-01 §5 "the iron ore" + the MIL-02 §4 workshops.
+- Alternatives considered: a single metal (rejected — the bronze/iron/steel are the 3); no workshops (rejected — the MIL-02 §4 karkhanas).
+- Selected resolution: the **metallurgy** — the Sareth/southern iron (the GEO-01 §5); the bronze (the copper from the Sareth foothills + the tin via the Khor trade — the Khor's mineral export); the steel (the high-value — the court demand + the military, the ECO-02 §8 dual demand); the smelting (the Sareth timber, the charcoal).
+- Why chosen: it is the Mysore steel + the GEO-01 §5 scarcity made nominally/metallurgically operationally operational, with the Khor's mineral export as the FOR-01 §3.
+- Systems affected / new dependencies: the MIL-02 §4, the ECO-02 §8 (the dual demand), the GEO-01 §5 (the iron ore).
+- Canon status: CANON (MIL-02 §4).
+- Relevant research: the comparative `mysore.md` (the steel).
+- Recovery point: recovery/pre-question-resolutions (e48d9a3).
+- Resulting changes: MIL-02 §4 (new), the influence register (the MIL-02 row), the CHANGELOG.

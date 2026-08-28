@@ -25,12 +25,12 @@ The Vethra is a **court-driven, craft-guild** state (the Mysore logic, FOR-01 §
 
 **Vethan I (the Founder, KE ~150–220)**
 - **Character:** the founder — the consolidation of the Veth coast (the pepper, the irrigation, the craft-guilds).
-- **Key events:** the Vethra's founding (FOR-01 §2); the first contact with the Samur (the Veth south, TIM-02).
+- **Key events:** the Vethra's founding (FOR-01 §2); the first contact with the Samur (the Veth south, TIM-02); **the First Vethra War (KE 200–208, the Vethan I's reign — the DYN-02 §2 Kharan I's war on the Samur side; the TIM-03 §3 fixed date; the Treaty of Kesveth KE 208)**.
 - **Succession:** dies KE ~220. Succeeded by Pelan I.
 
-**Pelan I (the First War Ruler, KE ~220–300)**
-- **Character:** the first war ruler — the First Vethra War (the first containment) + the recurring Vethra wars.
-- **Key events:** the First Vethra War (KE ~200–240, TIM-02); the Vethra wars (the recurring conflict).
+**Pelan I (the War-Aftermath Ruler, KE ~220–300)**
+- **Character:** the war-aftermath ruler — the First Vethra War's aftermath (the KE 208 Treaty of Kesveth's enforcement, the recurring border friction, the Vethra's consolidation of the coast). *(Canon fix 2026-08-26: the First Vethra War (KE 200–208, TIM-03 §3) falls in the Vethan I's reign, not the Pelan I's; the epithet is corrected per the TIM-03 §8 fix, the DYN-02 §2 + TIM-03 §3 consistency.)*
+- **Key events:** the Treaty of Kesveth's enforcement (KE 208–240); the recurring border friction (the Vethra wars' pattern, the GEO-03 §6 famine truce).
 - **Succession:** dies KE ~300. Succeeded by Kesveth I.
 
 **Kesveth I (the High Ruler, KE ~300–420)**

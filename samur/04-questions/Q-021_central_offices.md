@@ -1,7 +1,17 @@
-# Q-021 Specific central offices and officials
+# Q-021 The specific central offices and officials
 
-Status: OPEN
+Status: RESOLVED → ADM-02 §1 (2026-08-26)
 Date: 2026-08-26
-Related: ADM-01 (§1); constrains the later ADM files, DYN-02 (the kings' court)
-Why it matters: the specific offices (the names, the ranks, the salaries, the number of holders) define the court's structure and the Shreshtha's reach — the dual elite is real only if the top offices are actually held by the founding elite and the revenue offices by the absorbed elite.
-Current best guesses: a **small court of ~5–7 named offices** (the Shreshtha, the Revenue Head, the Military Head, the temple head, the court steward, + 1–2 junior offices) — the **top 2–3** held by the **founding elite** (the Samur warrior band), the **revenue/clerk offices** by the **absorbed elite** (the co-opted clerks); the **salaries** are **salaried in silver + a jagir-like land assignment** (the Mughal mansab logic).
+Original question: the specific central offices (the names, the ranks, the salaries)?
+
+**Resolution record**
+- Why it was unresolved: the ADM-01 §1 fixed the court's structure but not the named offices.
+- Evidence/reasoning: the Mughal mansab mechanism (the salaried, non-hereditary, the stipend + the estate) + the DYN-01 §5 dual elite + the ADM-01 §1 "the court is the state's center."
+- Alternatives considered: a single minister (rejected — the dual structure needs the Shreshtha + the Beshara/Dhresh); a hereditary office (rejected — the DYN-01 §3 "salaried, non-hereditary").
+- Selected resolution: the **7 offices** — the Shreshtha (the prime minister/regent, the founding elite, the army + the revenue), the Beshara (the revenue head, the absorbed elite, the land tax/monetization/mint), the Dhresh (the military head, the founding elite, the army/garrisons/campaigns), the Guru (the matha head, a religious office, the consecration/temple law), the Kesrath (the court steward, the founding elite, the household/patronage/market-anchor), the Vorenesh (the port head, the absorbed elite, the port law/transit dues/fleet, est. KE 155, the dual authority from KE 500), the frontier generals (the Sareth Dhresh, the Khor Dhresh, the founding elite, the wide autonomy). The hierarchy: the Shreshtha > the Beshara ≈ the Dhresh > the Vorenesh ≈ the Kesrath > the frontier generals > the clerks. The king appoints on the Shreshtha's recommendation.
+- Why chosen: it is the ADM-01 §1 court + the DYN-01 §5 dual elite made nominally operationally operational.
+- Systems affected / new dependencies: the ADM-02 §1, the DYN-03 §1 (the houses), the TIM-03 (the office dates).
+- Canon status: CANON (ADM-02 §1).
+- Relevant research: the comparative `mughal.md` (the mansab offices).
+- Recovery point: recovery/pre-question-resolutions (e48d9a3).
+- Resulting changes: ADM-02 §1 (new), the influence register (the ADM-02 row), the CHANGELOG.

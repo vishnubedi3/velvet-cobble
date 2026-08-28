@@ -1,7 +1,17 @@
-# Q-019 The Great Succession Crisis — specific form
+# Q-019 The specific form of the Great Succession Crisis
 
-Status: OPEN
+Status: RESOLVED (BOOKKEEPING — already answered in DYN-02 §2) → TIM-03 §6 (2026-08-26)
 Date: 2026-08-26
-Related: TIM-01 (§3, §4), DYN-01 (§4); constrains DYN-02 (the kings), the Fragmentation
-Why it matters: the Great Succession Crisis (~KE 520–560) is the *trigger* that converts the built-up elite competition into a fragmentation — its specific form (the claimants, the Shreshtha's role, the temple's sanction, the outcome) determines how the empire is divided among the claimants.
-Current best guesses: a **king dies without a clear "most worthy" heir** (the "eldest" is weak, a "most worthy" younger agnate is backed by the Shreshtha, and the temple is **split or withheld** on the sanction) — so the succession is **contested among 2–3 claimants**, each backed by a different faction (the house's elders, the Shreshtha, a chief or the temple). The **outcome**: the empire is **divided** (the claimants hold different regions — the Tarn east, the Sareth west, the core) and the **composite monarchy begins to collapse** (the Mughal 1707 pattern).
+Original question: the specific form of the Great Succession Crisis (the claimants, the Shreshtha's role, the temple's sanction, the outcome)?
+
+**Resolution record**
+- Why it was unresolved: bookkeeping — the DYN-02 §2 fixed the concurrent rival kings (the Kesra III/Threna I) but this file was not marked RESOLVED.
+- Evidence/reasoning: the DYN-02 §2 + the TIM-03 §6 (the dated crisis).
+- Alternatives considered: (n/a — the answer is in the canon).
+- Selected resolution: the **Great Succession Crisis (KE 520–555)** — the contest begins KE 520 (the Maren I's death); the Besra I's Shreshtha backs the Threna I (KE 522); the Threna I's consecration (the orthodoxy wing, KE 525) + the Kesra III's claim (the Tarn wing's backing, KE 525) + the Tarnesh wing's withheld sanction (the "de-consecration in absentia," the KE 525); the de facto division KE 528 (the Threna I = the bār core + the Sareth + the Khor; the Kesra III = the Tarn east); the First Succession War KE 530–555 (the Battle of Tarenam KE 548); the Treaty of Besra KE 555 (the de facto division ratified).
+- Why chosen: it is the DYN-02 §2 + the TIM-03 §6 (the bookkeeping).
+- Systems affected / new dependencies: the TIM-03 §6, the DYN-02 §2, the REL-02 §6 (the withheld sanction).
+- Canon status: CANON (TIM-03 §6).
+- Relevant research: the comparative `mughal.md` (the 1707 pattern).
+- Recovery point: recovery/pre-question-resolutions (e48d9a3).
+- Resulting changes: the TIM-03 §6 (new), the REGISTER.md (the bookkeeping log).

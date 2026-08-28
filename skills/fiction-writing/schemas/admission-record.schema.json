@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "admission-record.schema.json",
+  "title": "AdmissionRecord",
+  "type": "object",
+  "required": ["proposal_id", "admitted", "target_branch"],
+  "additionalProperties": false,
+  "properties": {
+    "proposal_id": { "type": "string" },
+    "admitted": { "type": "boolean" },
+    "target_branch": { "type": "string" },
+    "canon_paths": { "type": "array", "items": { "type": "string" } },
+    "changelog_entry": { "type": ["string", "null"] },
+    "reason": { "type": "string" },
+    "new_source_hashes": { "type": "array", "items": { "type": "object" } }
+  }
+}

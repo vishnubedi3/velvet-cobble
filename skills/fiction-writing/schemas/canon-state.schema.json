@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "canon-state.schema.json",
+  "title": "CanonState",
+  "type": "object",
+  "required": ["canon_state_id", "branch_context", "sources", "facts"],
+  "additionalProperties": false,
+  "properties": {
+    "canon_state_id": { "type": "string" },
+    "evaluated_at": { "type": "string" },
+    "branch_context": {
+      "type": "object",
+      "required": ["applicable_branch", "commit"],
+      "additionalProperties": false,
+      "properties": {
+        "applicable_branch": { "type": "string" },
+        "commit": { "type": "string" },
+        "divergence": {
+          "type": "array",
+          "items": { "type": "object" }
+        },
+        "charter": { "type": "object" }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "hash", "status"],
+        "properties": {
+          "id": { "type": "string" },
+          "path": { "type": "string" },
+          "hash": { "type": "string" },
+          "status": { "type": "string" },
+          "high_impact": { "type": "boolean" },
+          "depends_on": { "type": "array", "items": { "type": "string" } },
+          "dependents": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "facts": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/fact" }
+    },
+    "questions": { "type": "array", "items": { "type": "object" } },
+    "contradictions": { "type": "array", "items": { "type": "object" } },
+    "unadmitted": { "type": "array", "items": { "type": "object" } }
+  },
+  "$defs": {
+    "fact": {
+      "type": "object",
+      "required": ["entity", "predicate", "value", "source"],
+      "properties": {
+        "id": { "type": "string" },
+        "entity": { "type": "string" },
+        "predicate": { "type": "string" },
+        "value": true,
+        "story_time_start": { "type": ["number", "null"] },
+        "story_time_end": { "type": ["number", "null"] },
+        "epistemology": { "type": "string" },
+        "known_by": { "type": ["array", "null"], "items": { "type": "string" } },
+        "polarity": { "type": "string", "enum": ["asserted", "denied", "forbidden"] },
+        "caused_by": { "type": "array", "items": { "type": "string" } },
+        "precludes": { "type": "array", "items": { "type": "string" } },
+        "high_impact": { "type": "boolean" },
+        "source": {
+          "type": "object",
+          "required": ["branch", "path", "hash"],
+          "properties": {
+            "branch": { "type": "string" },
+            "path": { "type": "string" },
+            "location": { "type": "string" },
+            "hash": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}

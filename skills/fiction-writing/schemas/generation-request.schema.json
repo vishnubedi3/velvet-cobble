@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "generation-request.schema.json",
+  "title": "GenerationRequest",
+  "type": "object",
+  "required": ["request_id", "generation_kind"],
+  "additionalProperties": false,
+  "properties": {
+    "request_id": { "type": "string", "minLength": 1 },
+    "requested_at": { "type": "string" },
+    "generation_kind": {
+      "type": "string",
+      "enum": [
+        "narrative",
+        "worldbuilding",
+        "canon_change",
+        "question_resolution",
+        "revision",
+        "historical_audit"
+      ]
+    },
+    "target_branch": { "type": ["string", "null"] },
+    "story_time": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "properties": {
+        "label": { "type": "string" },
+        "ordinal": { "type": ["number", "null"] },
+        "epistemology": {
+          "type": "string",
+          "enum": ["exact", "range", "order", "relative", "unknown"]
+        }
+      }
+    },
+    "viewpoint_entities": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "claims": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/claim" }
+    },
+    "text": { "type": ["string", "null"] },
+    "explicit_canon_change": { "type": "boolean", "default": false },
+    "uses_unadmitted_as_canon": { "type": "boolean", "default": false }
+  },
+  "$defs": {
+    "claim": {
+      "type": "object",
+      "required": ["entity", "predicate", "value"],
+      "additionalProperties": false,
+      "properties": {
+        "entity": { "type": "string" },
+        "predicate": { "type": "string" },
+        "value": true,
+        "story_time_ordinal": { "type": ["number", "null"] },
+        "known_by": {
+          "type": ["array", "null"],
+          "items": { "type": "string" }
+        },
+        "resolves_question": { "type": ["string", "null"] },
+        "high_impact": { "type": "boolean", "default": false }
+      }
+    }
+  }
+}

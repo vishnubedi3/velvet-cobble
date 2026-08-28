@@ -1,6 +1,10 @@
 # Anti-Pattern Rules (DRAFT)
 
-Rules for reducing AI-fiction patterns in narrative output. Created 2026-08-26 as a **draft skeleton** because no skill existed in the repository. An authoritative skill, if provided, takes precedence; this file is then merged, not replaced.
+Rules for reducing AI-fiction patterns in narrative output. Created 2026-08-26 as a **draft skeleton** because no skill existed in the repository. Preserved 2026-08-28 when the Pre-Generation Canon Guard (`SKILL.md`) was completed in this directory.
+
+**Canon compliance is not this file's job.** Before drafting, run the Canon Guard (`SKILL.md`). This file remains a **tell-agnostic prose/craft** checklist for authorized narrative generation. It does not store world facts.
+
+An additional post-generation tell pipeline lives in `ai-fictional-tells-skill/` (resolve the live path on the applicable branch).
 
 ## Prose tics
 

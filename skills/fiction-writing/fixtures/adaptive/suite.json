@@ -1,0 +1,839 @@
+[
+  {
+    "id": "A01",
+    "title": "Character alive in initial state, later established dead",
+    "must_change_decision": true,
+    "request": {
+      "request_id": "A01",
+      "generation_kind": "narrative",
+      "target_branch": "main",
+      "story_time": { "label": "YA 110", "ordinal": 110, "epistemology": "exact" },
+      "claims": [
+        { "entity": "Lia", "predicate": "vital_status", "value": "alive", "story_time_ordinal": 110 }
+      ]
+    },
+    "t0": {
+      "name": "main",
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "CHR-01",
+            "status": "CANON",
+            "high_impact": false,
+            "facts": [
+              {
+                "entity": "Lia",
+                "predicate": "vital_status",
+                "value": "alive",
+                "story_time_start": 0,
+                "story_time_end": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "t1": {
+      "name": "main",
+      "branch": {
+        "commit": "c1",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "CHR-01",
+            "status": "CANON",
+            "high_impact": false,
+            "facts": [
+              {
+                "entity": "Lia",
+                "predicate": "vital_status",
+                "value": "alive",
+                "story_time_start": 0,
+                "story_time_end": 104
+              },
+              {
+                "entity": "Lia",
+                "predicate": "vital_status",
+                "value": "dead",
+                "story_time_start": 105,
+                "story_time_end": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "expected_t0": { "decision": "PASS" },
+    "expected_t1": { "decision": "BLOCK", "classes": ["CX-DIRECT"] }
+  },
+  {
+    "id": "A02",
+    "title": "A relationship changes in a later chapter",
+    "must_change_decision": true,
+    "request": {
+      "request_id": "A02",
+      "generation_kind": "narrative",
+      "target_branch": "main",
+      "story_time": { "ordinal": 80 },
+      "claims": [
+        { "entity": "Lia", "predicate": "married_to", "value": "Bram", "story_time_ordinal": 80 }
+      ]
+    },
+    "t0": {
+      "name": "main",
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "REL-01",
+            "status": "CANON",
+            "facts": [
+              { "entity": "Lia", "predicate": "married_to", "value": "Bram", "story_time_start": 40 }
+            ]
+          }
+        ]
+      }
+    },
+    "t1": {
+      "name": "main",
+      "branch": {
+        "commit": "c1",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "REL-01",
+            "status": "CANON",
+            "facts": [
+              { "entity": "Lia", "predicate": "married_to", "value": "Bram", "story_time_start": 40, "story_time_end": 70 },
+              { "entity": "Lia", "predicate": "married_to", "value": "none", "story_time_start": 71 }
+            ]
+          }
+        ]
+      }
+    },
+    "expected_t0": { "decision": "PASS" },
+    "expected_t1": { "decision": "BLOCK", "classes": ["CX-DIRECT"] }
+  },
+  {
+    "id": "A03",
+    "title": "A character learns previously unknown information",
+    "must_change_decision": true,
+    "request": {
+      "request_id": "A03",
+      "generation_kind": "narrative",
+      "target_branch": "main",
+      "story_time": { "ordinal": 60 },
+      "viewpoint_entities": ["Bram"],
+      "claims": [
+        {
+          "entity": "Bram",
+          "predicate": "acts_on",
+          "value": "salt-pact-secret",
+          "requires_knowledge_of": "salt-pact-secret",
+          "story_time_ordinal": 60
+        }
+      ]
+    },
+    "t0": {
+      "name": "main",
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "POL-01",
+            "status": "CANON",
+            "facts": [
+              { "entity": "SaltPact", "predicate": "exists", "value": true, "known_by": ["Lia"] }
+            ]
+          }
+        ]
+      }
+    },
+    "t1": {
+      "name": "main",
+      "branch": {
+        "commit": "c1",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "POL-01",
+            "status": "CANON",
+            "facts": [
+              { "entity": "SaltPact", "predicate": "exists", "value": true, "known_by": ["Lia", "Bram"] },
+              {
+                "entity": "Bram",
+                "predicate": "knows",
+                "value": "salt-pact-secret",
+                "story_time_start": 55
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "expected_t0": { "decision": "BLOCK", "classes": ["CX-KNOWLEDGE"] },
+    "expected_t1": { "decision": "PASS" }
+  },
+  {
+    "id": "A04",
+    "title": "A political alliance changes",
+    "must_change_decision": true,
+    "request": {
+      "request_id": "A04",
+      "generation_kind": "narrative",
+      "target_branch": "main",
+      "story_time": { "ordinal": 200 },
+      "claims": [
+        { "entity": "HousePell", "predicate": "allied_with", "value": "HouseRyn", "story_time_ordinal": 200 }
+      ]
+    },
+    "t0": {
+      "name": "main",
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "POL-02",
+            "status": "CANON",
+            "facts": [
+              { "entity": "HousePell", "predicate": "allied_with", "value": "HouseRyn" }
+            ]
+          }
+        ]
+      }
+    },
+    "t1": {
+      "name": "main",
+      "branch": {
+        "commit": "c1",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "POL-02",
+            "status": "CANON",
+            "facts": [
+              { "entity": "HousePell", "predicate": "allied_with", "value": "HouseKest" }
+            ]
+          }
+        ]
+      }
+    },
+    "expected_t0": { "decision": "PASS" },
+    "expected_t1": { "decision": "BLOCK", "classes": ["CX-DIRECT"] }
+  },
+  {
+    "id": "A05",
+    "title": "A location changes",
+    "must_change_decision": true,
+    "request": {
+      "request_id": "A05",
+      "generation_kind": "narrative",
+      "target_branch": "main",
+      "story_time": { "ordinal": 12 },
+      "claims": [
+        { "entity": "Lia", "predicate": "located_in", "value": "Helwick", "story_time_ordinal": 12 }
+      ]
+    },
+    "t0": {
+      "name": "main",
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "GEO-09",
+            "status": "CANON",
+            "facts": [
+              { "entity": "Lia", "predicate": "located_in", "value": "Helwick" }
+            ]
+          }
+        ]
+      }
+    },
+    "t1": {
+      "name": "main",
+      "branch": {
+        "commit": "c1",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "GEO-09",
+            "status": "CANON",
+            "facts": [
+              { "entity": "Lia", "predicate": "located_in", "value": "Brannford" }
+            ]
+          }
+        ]
+      }
+    },
+    "expected_t0": { "decision": "PASS" },
+    "expected_t1": { "decision": "BLOCK", "classes": ["CX-DIRECT"] }
+  },
+  {
+    "id": "A06",
+    "title": "A historical event is revised",
+    "must_change_decision": true,
+    "request": {
+      "request_id": "A06",
+      "generation_kind": "worldbuilding",
+      "target_branch": "main",
+      "story_time": { "ordinal": 3 },
+      "claims": [
+        { "entity": "BattleOfFord", "predicate": "winner", "value": "HousePell", "story_time_ordinal": 3 }
+      ]
+    },
+    "t0": {
+      "name": "main",
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": false },
+        "canon": [
+          {
+            "id": "TIM-02",
+            "status": "CANON",
+            "facts": [
+              { "entity": "BattleOfFord", "predicate": "winner", "value": "HousePell", "story_time_start": 3, "story_time_end": 3 }
+            ]
+          }
+        ]
+      }
+    },
+    "t1": {
+      "name": "main",
+      "branch": {
+        "commit": "c1",
+        "charter": { "narrative_authorized": false },
+        "canon": [
+          {
+            "id": "TIM-02",
+            "status": "CANON",
+            "facts": [
+              { "entity": "BattleOfFord", "predicate": "winner", "value": "HouseRyn", "story_time_start": 3, "story_time_end": 3 }
+            ]
+          }
+        ]
+      }
+    },
+    "expected_t0": { "decision": "PASS" },
+    "expected_t1": { "decision": "BLOCK", "classes": ["CX-DIRECT"] }
+  },
+  {
+    "id": "A07",
+    "title": "A new event creates downstream consequences",
+    "must_change_decision": true,
+    "request": {
+      "request_id": "A07",
+      "generation_kind": "narrative",
+      "target_branch": "main",
+      "story_time": { "ordinal": 90 },
+      "claims": [
+        { "entity": "HousePell", "predicate": "opens_war_on", "value": "HouseRyn", "event": "war-pell-ryn", "story_time_ordinal": 90 }
+      ]
+    },
+    "t0": {
+      "name": "main",
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "POL-03",
+            "status": "CANON",
+            "facts": [
+              { "entity": "HousePell", "predicate": "allied_with", "value": "HouseRyn" }
+            ]
+          }
+        ]
+      }
+    },
+    "t1": {
+      "name": "main",
+      "branch": {
+        "commit": "c1",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "POL-03",
+            "status": "CANON",
+            "facts": [
+              {
+                "entity": "HousePell",
+                "predicate": "opens_war_on",
+                "value": "none",
+                "precludes": ["war-pell-ryn"]
+              },
+              {
+                "entity": "TreatyOfBrann",
+                "predicate": "occurs",
+                "value": true,
+                "story_time_start": 88,
+                "precludes": ["war-pell-ryn"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "expected_t0": { "decision": "PASS" },
+    "expected_t1": { "decision": "BLOCK", "classes": ["CX-CAUSAL"] }
+  },
+  {
+    "id": "A08",
+    "title": "Legitimate canon expansion then binds later requests",
+    "must_change_decision": true,
+    "request": {
+      "request_id": "A08",
+      "generation_kind": "worldbuilding",
+      "target_branch": "main",
+      "claims": [
+        { "entity": "Nila", "predicate": "role", "value": "scribe", "expansion": true }
+      ]
+    },
+    "t0": {
+      "name": "main",
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": false },
+        "canon": [
+          {
+            "id": "CUL-01",
+            "status": "CANON",
+            "facts": [
+              { "entity": "Helwick", "predicate": "has_archive", "value": true }
+            ]
+          }
+        ]
+      }
+    },
+    "t1": {
+      "name": "main",
+      "branch": {
+        "commit": "c1",
+        "charter": { "narrative_authorized": false },
+        "canon": [
+          {
+            "id": "CUL-01",
+            "status": "CANON",
+            "facts": [
+              { "entity": "Helwick", "predicate": "has_archive", "value": true },
+              { "entity": "Nila", "predicate": "role", "value": "keeper" }
+            ]
+          }
+        ]
+      }
+    },
+    "expected_t0": { "decision": "PASS" },
+    "expected_t1": { "decision": "BLOCK", "classes": ["CX-DIRECT"] }
+  },
+  {
+    "id": "A09",
+    "title": "A branch diverges from another branch",
+    "must_change_decision": true,
+    "request": {
+      "request_id": "A09",
+      "generation_kind": "narrative",
+      "claims": [
+        { "entity": "Lia", "predicate": "vital_status", "value": "alive" }
+      ]
+    },
+    "t0": {
+      "name": "main",
+      "live_heads": { "main": "c0" },
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "CHR-01",
+            "status": "CANON",
+            "facts": [{ "entity": "Lia", "predicate": "vital_status", "value": "alive" }]
+          }
+        ]
+      }
+    },
+    "t1": {
+      "name": "main",
+      "live_heads": { "main": "c0", "arena/session": "c9" },
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": true },
+        "divergence": [{ "ref": "arena/session", "nature": "narrative directory present" }],
+        "canon": [
+          {
+            "id": "CHR-01",
+            "status": "CANON",
+            "facts": [{ "entity": "Lia", "predicate": "vital_status", "value": "alive" }]
+          }
+        ]
+      }
+    },
+    "expected_t0": { "decision": "PASS" },
+    "expected_t1": { "decision": "REQUIRES_CLARIFICATION", "classes": ["CX-DIVERGENCE"] }
+  },
+  {
+    "id": "A10",
+    "title": "A previously valid generation request becomes invalid after a branch update",
+    "must_change_decision": true,
+    "request": {
+      "request_id": "A10",
+      "generation_kind": "narrative",
+      "target_branch": "main",
+      "claims": [
+        { "entity": "Helwick", "predicate": "capital_of", "value": "KestrelReach" }
+      ]
+    },
+    "t0": {
+      "name": "main",
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "GEO-01",
+            "status": "CANON",
+            "high_impact": true,
+            "facts": [
+              { "entity": "Helwick", "predicate": "capital_of", "value": "KestrelReach" }
+            ]
+          }
+        ]
+      }
+    },
+    "t1": {
+      "name": "main",
+      "branch": {
+        "commit": "c1",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "GEO-01",
+            "status": "CANON",
+            "high_impact": true,
+            "facts": [
+              { "entity": "Helwick", "predicate": "capital_of", "value": "none" },
+              { "entity": "Brannford", "predicate": "capital_of", "value": "KestrelReach" }
+            ]
+          }
+        ]
+      }
+    },
+    "expected_t0": { "decision": "PASS" },
+    "expected_t1": { "decision": "BLOCK", "classes": ["CX-DIRECT"] }
+  },
+  {
+    "id": "A11",
+    "title": "A previously blocked request becomes valid after canon changes",
+    "must_change_decision": true,
+    "request": {
+      "request_id": "A11",
+      "generation_kind": "narrative",
+      "target_branch": "main",
+      "claims": [
+        { "entity": "Lia", "predicate": "vital_status", "value": "alive" }
+      ]
+    },
+    "t0": {
+      "name": "main",
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "CHR-01",
+            "status": "CANON",
+            "facts": [{ "entity": "Lia", "predicate": "vital_status", "value": "dead" }]
+          }
+        ]
+      }
+    },
+    "t1": {
+      "name": "main",
+      "branch": {
+        "commit": "c1",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "CHR-01",
+            "status": "CANON",
+            "facts": [{ "entity": "Lia", "predicate": "vital_status", "value": "alive" }]
+          }
+        ]
+      }
+    },
+    "expected_t0": { "decision": "BLOCK", "classes": ["CX-DIRECT"] },
+    "expected_t1": { "decision": "PASS" }
+  },
+  {
+    "id": "A12",
+    "title": "A generated draft remains non-canon until admission",
+    "must_change_decision": true,
+    "request": {
+      "request_id": "A12",
+      "generation_kind": "narrative",
+      "target_branch": "main",
+      "uses_unadmitted_as_canon": true,
+      "claims": [
+        { "entity": "Nila", "predicate": "role", "value": "scribe" }
+      ]
+    },
+    "t0": {
+      "name": "main",
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "CUL-01",
+            "status": "CANON",
+            "facts": [{ "entity": "Helwick", "predicate": "has_archive", "value": true }]
+          }
+        ],
+        "unadmitted": [
+          {
+            "id": "pilot",
+            "status": "DRAFT",
+            "facts": [{ "entity": "Nila", "predicate": "role", "value": "scribe" }]
+          }
+        ]
+      }
+    },
+    "t1": {
+      "name": "main",
+      "branch": {
+        "commit": "c1",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "CUL-01",
+            "status": "CANON",
+            "facts": [{ "entity": "Helwick", "predicate": "has_archive", "value": true }]
+          },
+          {
+            "id": "CUL-09",
+            "status": "CANON",
+            "facts": [{ "entity": "Nila", "predicate": "role", "value": "scribe" }]
+          }
+        ],
+        "unadmitted": []
+      }
+    },
+    "expected_t0": { "decision": "BLOCK", "classes": ["CX-ADMISSION"] },
+    "expected_t1": { "decision": "PASS" },
+    "request_t1": {
+      "request_id": "A12b",
+      "generation_kind": "narrative",
+      "target_branch": "main",
+      "uses_unadmitted_as_canon": false,
+      "claims": [
+        { "entity": "Nila", "predicate": "role", "value": "scribe" }
+      ]
+    },
+    "extra": { "check_admission": "CUL-09" }
+  },
+  {
+    "id": "A13",
+    "title": "An old Generation Contract becomes stale after source changes",
+    "must_change_decision": false,
+    "request": {
+      "request_id": "A13",
+      "generation_kind": "narrative",
+      "target_branch": "main",
+      "claims": [
+        { "entity": "Helwick", "predicate": "exists", "value": true }
+      ]
+    },
+    "t0": {
+      "name": "main",
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "GEO-01",
+            "status": "CANON",
+            "hash": "hash-t0",
+            "facts": [{ "entity": "Helwick", "predicate": "exists", "value": true }]
+          }
+        ]
+      }
+    },
+    "t1": {
+      "name": "main",
+      "branch": {
+        "commit": "c1",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "GEO-01",
+            "status": "CANON",
+            "hash": "hash-t1",
+            "facts": [
+              { "entity": "Helwick", "predicate": "exists", "value": true },
+              { "entity": "Helwick", "predicate": "wall", "value": "timber" }
+            ]
+          }
+        ]
+      }
+    },
+    "expected_t0": { "decision": "PASS" },
+    "expected_t1": { "decision": "PASS" },
+    "extra": { "check_stale_contract": true }
+  },
+  {
+    "id": "A14",
+    "title": "A foundational change requires broader invalidation",
+    "must_change_decision": false,
+    "request": {
+      "request_id": "A14",
+      "generation_kind": "worldbuilding",
+      "target_branch": "main",
+      "claims": [
+        { "entity": "SaltLaw", "predicate": "world_rule", "value": "seasonal" }
+      ]
+    },
+    "t0": {
+      "name": "main",
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": false },
+        "canon": [
+          {
+            "id": "LAW-01",
+            "path": "canon/LAW-01.md",
+            "status": "CANON",
+            "high_impact": true,
+            "hash": "law-t0",
+            "dependents": ["ECO-01"],
+            "facts": [{ "entity": "SaltLaw", "predicate": "world_rule", "value": "seasonal" }]
+          },
+          {
+            "id": "ECO-01",
+            "path": "canon/ECO-01.md",
+            "status": "CANON",
+            "high_impact": false,
+            "depends_on": ["LAW-01"],
+            "hash": "eco-t0",
+            "facts": [{ "entity": "tithe", "predicate": "rate", "value": "1/4" }]
+          }
+        ]
+      }
+    },
+    "t1": {
+      "name": "main",
+      "branch": {
+        "commit": "c1",
+        "charter": { "narrative_authorized": false },
+        "canon": [
+          {
+            "id": "LAW-01",
+            "path": "canon/LAW-01.md",
+            "status": "CANON",
+            "high_impact": true,
+            "hash": "law-t1",
+            "dependents": ["ECO-01"],
+            "facts": [{ "entity": "SaltLaw", "predicate": "world_rule", "value": "seasonal" }]
+          },
+          {
+            "id": "ECO-01",
+            "path": "canon/ECO-01.md",
+            "status": "CANON",
+            "high_impact": false,
+            "depends_on": ["LAW-01"],
+            "hash": "eco-t0",
+            "facts": [{ "entity": "tithe", "predicate": "rate", "value": "1/4" }]
+          }
+        ]
+      }
+    },
+    "expected_t0": { "decision": "PASS" },
+    "expected_t1": { "decision": "PASS" },
+    "extra": { "check_invalidation": "systemic" }
+  },
+  {
+    "id": "A15",
+    "title": "A local change only requires targeted invalidation",
+    "must_change_decision": false,
+    "request": {
+      "request_id": "A15",
+      "generation_kind": "worldbuilding",
+      "target_branch": "main",
+      "claims": [
+        { "entity": "tithe", "predicate": "rate", "value": "1/4" }
+      ]
+    },
+    "t0": {
+      "name": "main",
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": false },
+        "canon": [
+          {
+            "id": "LAW-01",
+            "path": "canon/LAW-01.md",
+            "status": "CANON",
+            "high_impact": true,
+            "hash": "law-t0",
+            "facts": [{ "entity": "SaltLaw", "predicate": "world_rule", "value": "seasonal" }]
+          },
+          {
+            "id": "CUL-07",
+            "path": "canon/CUL-07.md",
+            "status": "CANON",
+            "high_impact": false,
+            "hash": "cul-t0",
+            "facts": [{ "entity": "festival", "predicate": "month", "value": 3 }]
+          },
+          {
+            "id": "ECO-01",
+            "path": "canon/ECO-01.md",
+            "status": "CANON",
+            "high_impact": false,
+            "hash": "eco-t0",
+            "facts": [{ "entity": "tithe", "predicate": "rate", "value": "1/4" }]
+          }
+        ]
+      }
+    },
+    "t1": {
+      "name": "main",
+      "branch": {
+        "commit": "c1",
+        "charter": { "narrative_authorized": false },
+        "canon": [
+          {
+            "id": "LAW-01",
+            "path": "canon/LAW-01.md",
+            "status": "CANON",
+            "high_impact": true,
+            "hash": "law-t0",
+            "facts": [{ "entity": "SaltLaw", "predicate": "world_rule", "value": "seasonal" }]
+          },
+          {
+            "id": "CUL-07",
+            "path": "canon/CUL-07.md",
+            "status": "CANON",
+            "high_impact": false,
+            "hash": "cul-t1",
+            "facts": [{ "entity": "festival", "predicate": "month", "value": 4 }]
+          },
+          {
+            "id": "ECO-01",
+            "path": "canon/ECO-01.md",
+            "status": "CANON",
+            "high_impact": false,
+            "hash": "eco-t0",
+            "facts": [{ "entity": "tithe", "predicate": "rate", "value": "1/4" }]
+          }
+        ]
+      }
+    },
+    "expected_t0": { "decision": "PASS" },
+    "expected_t1": { "decision": "PASS" },
+    "extra": { "check_invalidation": "local" }
+  }
+]

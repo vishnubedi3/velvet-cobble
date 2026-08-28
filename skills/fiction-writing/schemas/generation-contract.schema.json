@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "generation-contract.schema.json",
+  "title": "GenerationContract",
+  "type": "object",
+  "required": [
+    "contract_id",
+    "canon_state_id",
+    "branch_context",
+    "must_remain_unchanged",
+    "permitted_creative_space",
+    "forbidden_assumptions",
+    "source_hashes"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "contract_id": { "type": "string" },
+    "canon_state_id": { "type": "string" },
+    "branch_context": { "type": "object" },
+    "evaluated_at": { "type": "string" },
+    "must_remain_unchanged": { "type": "array", "items": { "type": "object" } },
+    "character_constraints": { "type": "array", "items": { "type": "object" } },
+    "relationship_constraints": { "type": "array", "items": { "type": "object" } },
+    "timeline_constraints": { "type": "array", "items": { "type": "object" } },
+    "knowledge_constraints": { "type": "array", "items": { "type": "object" } },
+    "location_constraints": { "type": "array", "items": { "type": "object" } },
+    "political_faction_constraints": { "type": "array", "items": { "type": "object" } },
+    "causal_constraints": { "type": "array", "items": { "type": "object" } },
+    "world_rules": { "type": "array", "items": { "type": "object" } },
+    "permitted_creative_space": { "type": "array", "items": { "type": "object" } },
+    "warnings": { "type": "array", "items": { "type": "string" } },
+    "uncertainties": { "type": "array", "items": { "type": "string" } },
+    "forbidden_assumptions": { "type": "array", "items": { "type": "string" } },
+    "authorized_changes": { "type": "array", "items": { "type": "object" } },
+    "source_hashes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "hash"],
+        "properties": {
+          "path": { "type": "string" },
+          "hash": { "type": "string" }
+        }
+      }
+    }
+  }
+}

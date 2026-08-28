@@ -2,7 +2,7 @@
 
 Status: CANON
 Date: 2026-08-26
-Last revised: 2026-08-26
+Last revised: 2026-08-28 (CC-03 fix — the Phre governors' tenures corrected to the TIM-03 §8 fixed dates (the Q-073 resolution): Phrean I 505–520; Shoran 520–600; the Phrean family's return 620–680; the same surgical-fix pattern as the Pelan I epithet fix)
 Depends on: FOR-01, TIM-01, TIM-02, DYN-02, CUL-01, REL-01
 Dependents: TIM-03+ (the specific geopolitical events), the later FOR files, the narrative phase (if authorized — the foreign rulers are the named agents)
 Sources: FOR-01, TIM-01, TIM-02, DYN-02, CUL-01, REL-01
@@ -81,20 +81,20 @@ The Khor is **multiple horse peoples with a loose seasonal assembly** (FOR-01 §
 
 The Phre is a **distant maritime power** projecting through a **chartered trading company** (the state-within-a-state, FOR-01 §4). The Phre's company leaders (the chartered company's governors/leaders) are in the Phre language. The Phre's history: the founding (the distant maritime power, the island), the chartered company (the state-within-a-state), the delta enclaves (the first enclave at Voren, KE ~500–560), the paramountcy (the indirect rule, the subsidiary alliance).
 
-**Phrean (the First Company Governor, KE ~450–520)**
-- **Character:** the first company governor — the founding of the chartered company, the first delta enclave at Voren (the economic center of gravity, the reverse-invasion axis).
-- **Key events:** the Phre's Arrival (KE ~500–560, TIM-02); the first delta enclave at Voren (FOR-01 §4).
-- **Succession:** the company is re-chartered (the chartered company, not hereditary). Succeeded by Shoran.
+**Phrean I (the First Company Governor, KE 505–520)**
+- **Character:** the first company governor — the founding of the chartered company, the first delta enclave at Voren (the economic center of gravity, the reverse-invasion axis). *(Canon fix 2026-08-28 [CC-03]: the tenure corrected to the TIM-03 §8 fixed dates (the Q-073 resolution) — the Voren governorship begins KE 505, after the KE 500 first trade contact (TIM-03 §5); the earlier "~KE 450" start predates the first contact and is inconsistent with the master chronology.)*
+- **Key events:** the Phre's first trade contact (KE 500, TIM-03 §5); the Phre's Arrival (KE ~500–560, TIM-02); the first delta enclave at Voren (KE 510, the TIM-03 §5; FOR-01 §4).
+- **Succession:** the company is re-chartered (the chartered company, not hereditary; the charter amendment KE 520 — the TIM-03 §8). Succeeded by Shoran.
 
-**Shoran (the Second Company Governor, KE ~520–620)**
-- **Character:** the second company governor — the Phre's paramountcy (the indirect rule, the subsidiary alliance); the Phre's leverage (the claimant who serves their interest).
-- **Key events:** the Phre's paramountcy (the indirect rule, TIM-02); the Great Succession Crisis (the Phre's leverage, TIM-02).
-- **Succession:** the company is re-chartered. Succeeded by Phrean II.
+**Shoran (the Second Company Governor, KE 520–600)**
+- **Character:** the second company governor — the Phre's paramountcy (the indirect rule, the subsidiary alliance); the Phre's leverage (the claimant who serves their interest). *(Canon fix 2026-08-28 [CC-03]: the tenure corrected to the TIM-03 §8 fixed dates — Shoran 520–600; the tenure ends KE 600; the KE 600–620 interval is the charter's re-grant interval (the interim tenure is not fixed in canon — the Phrean family's return at KE 620, TIM-03 §8); the earlier "~KE 520–620" end overlapped the Phrean family's fixed return.)*
+- **Key events:** the Phre's paramountcy (the indirect rule, TIM-02); the Second Enclave (KE 530, within his term, TIM-03 §6); the Great Succession Crisis (the Phre's leverage, TIM-02).
+- **Succession:** the company is re-chartered. Succeeded (after the KE 600–620 interval) by Phrean II.
 
-**Phrean II (the Third Company Governor, KE ~620–680)**
-- **Character:** the third company governor — the Phre's Fragmentation (the delta mouth, the vassals); the Phre's bounded reach (the delta, not the interior).
+**Phrean II (the Third Company Governor, KE 620–680)**
+- **Character:** the third company governor — the Phre's Fragmentation (the delta mouth, the vassals); the Phre's bounded reach (the delta, not the interior). (The **Phrean family's return** — the alternating family tenure, the TIM-03 §8/Q-073.)
 - **Key events:** the Phre's Fragmentation (the delta mouth, the vassals, TIM-02); the Vethra's Rise (the Phre and the Vethra compete for the south, TIM-02).
-- **Succession:** the Phre persists as a maritime power (the post-imperial, TIM-02).
+- **Succession:** the Phre persists as a maritime power (the post-imperial, TIM-02); the next re-grant is the **Shoran family** (post-KE 680, the TIM-03 §8, the DYN-04 §17).
 
 ## 5. The foreign institutions (resolves Q-049)
 
@@ -104,7 +104,7 @@ The Phre is a **distant maritime power** projecting through a **chartered tradin
 
 ## Consequences (immediate / unintended / long-term)
 
-- **Immediate:** the **named foreign rulers** — the Vethra's rulers (Vethan I, Pelan I, Kesveth I, Tarnesh I, Vethan II), the Khor's assembly leaders (Khesh Ur, Ghoran Ur, Zhan Ur, Maren Ur, Khesh Ur II), the Phre's company leaders (Phrean, Shoran, Phrean II); the **foreign language registers** (the Veth language, the Khor language, the Phre language); the **foreign institutions** (the Veth court, the Khor assembly, the Phre company).
+- **Immediate:** the **named foreign rulers** — the Vethra's rulers (Vethan I, Pelan I, Kesveth I, Tarnesh I, Vethan II), the Khor's assembly leaders (Khesh Ur, Ghoran Ur, Zhan Ur, Maren Ur, Khesh Ur II), the Phre's company leaders (Phrean I, Shoran, Phrean II — the tenures fixed by the TIM-03 §8/Q-073); the **foreign language registers** (the Veth language, the Khor language, the Phre language); the **foreign institutions** (the Veth court, the Khor assembly, the Phre company).
 - **Unintended:** the **named foreign agents** are now the canon — the later narrative (if authorized) must use these names; the **Khor's assembly leaders** are re-elected (the loose confederation, not hereditary) — the Khor's persistence is the seasonal assembly, not a dynasty.
 - **Long-term:** the **foreign rulers** are the named agents of the geopolitical map (the Vethra's rise, the Khor's persistence, the Phre's paramountcy); the **foreign language registers** are the canon name pools (the anti-patterns' pre-flight canon check); the **foreign institutions** are the foreign powers' independent political/economic/religious systems.
 

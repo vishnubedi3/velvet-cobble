@@ -2,7 +2,7 @@
 
 Status: CANON
 Date: 2026-08-26
-Last revised: 2026-08-26
+Last revised: 2026-08-28 (CC-04 fix — the §3 state-monopoly list corrected: the textiles are taxed, not monopolized, per the ECO-01 §4 + ECO-02 §2 [the Q-023 resolution])
 Depends on: GEO-01, GEO-02, DEM-01, DYN-01, TIM-01
 Dependents: ECO-01 (the revenue, the currency, the trade), MIL-01 (the garrisons, the frontier generals), FOR-01 (the tributary, the port), REL-01 (the temple law), CUL-01 (the legal pluralism)
 Sources: GEO-01, GEO-02, DEM-01, DYN-01, TIM-01; `transformations/ADM-01.md`; comparative: `mughal.md`, `vijayanagara.md`, `maratha.md`, `qing.md`; religious-systems: `sanatan.md`, `islam.md`
@@ -46,7 +46,7 @@ The provinces are administered in **four ways**, matched to the geography:
 
 - **The bār core:** the **zabt logic** — periodic land measurement/assessment; payment in **grain (the bār)** and, increasingly, in **silver (cash)**; the **tax target** set by the Revenue Head.
 - **The pell coast:** the paddy is taxed (the pell); the **trade goods** (the pepper) are taxed (the transit/market dues).
-- **The state monopoly** (the Mughal logic): the state monopolizes the key trades (the **salt**, the **horses**, the **textiles**, the **pepper**) + the **transit/market dues** — the state is the **largest purchaser/employer**.
+- **The state monopoly** (the Mughal logic): the state monopolizes the key trades (the **salt**, the **horses**, the **pepper**); the **textiles** are **taxed, not monopolized** (the guilds produce; the state takes the transit dues + the court purchase) — the **transit/market dues** — the state is the **largest purchaser/employer**. *(Canon fix 2026-08-28 [CC-04]: the monopoly list corrected per the ECO-01 §4 + ECO-02 §2 (the Q-023 resolution) — the textiles are taxed, not monopolized.)*
 - **The monetization chain:** the push for **cash (silver)** forces **market integration** — the peasant must sell grain/cash crops to pay the **silver tax** → the **moneylender** (the shahukar/merchant-banker) → the **peasant debt** → the **revolt when the targets inflate** (the Mughal logic). This is the **fiscal engine** and the **social fault line** (DEM-01, TIM-01).
 
 ## 4. The currency (the silver standard)
@@ -97,6 +97,6 @@ This is the **bounded legal pluralism** (the Islam madhhab logic) — a plural b
 
 - **Q-021** — The **specific offices and officials** of the central government (the names, the ranks, the salaries) — for the later ADM files.
 - **Q-022** — The **specific tax rates** (the bār grain rate, the pell rate, the transit/market dues, the tribute rate) — for ECO-01.
-- **Q-023** — The **specific form of the state monopoly** (the salt, the horses, the textiles, the pepper — which are monopolized, which are taxed) — for ECO-01.
+- **Q-023** — The **specific form of the state monopoly** (which are monopolized, which are taxed) — for ECO-01. *(Resolved by the ECO-01 §4 + ECO-02 §2: the salt/horses/pepper are monopolized; the textiles are taxed, not monopolized.)*
 - **Q-024** — The **specific legal codes** (the king's law, the jati law, the temple law, the port law — the content, the judges, the enforcement) — for REL-01 / CUL-01.
 - **Q-025** — The **specific irrigation works** (the tanks/anicut — the scale, the state direction, the labor) — for ECO-01 / the infrastructure.

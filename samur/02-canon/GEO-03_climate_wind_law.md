@@ -2,7 +2,7 @@
 
 Status: CANON
 Date: 2026-08-26
-Last revised: 2026-08-28 (the TIM-05 operation — the §2 great-failure-interval variability clarification; the table's typical cadence unchanged)
+Last revised: 2026-08-28 (the TIM-05 operation — the §2 great-failure-interval variability clarification; the table's typical cadence unchanged; the CC-05 fix — the §1 sea-wind direction corrected south/southwest → south/southeast, aligning with the GEO-01 §1/§7 + the TIM-07 [the sea lies south and east]; dependent sweep: no other canon cites a sea-wind direction)
 Depends on: GEO-01, GEO-02, TIM-01, TIM-02
 Dependents: DEM-02, ECO-02, MIL-01/02, TIM-03, REL-02 (the festival year)
 Sources: GEO-01 §7 (the seasonal wind), TIM-01 (the wind-anchored calendar), TIM-02 (the famine/epidemic events), comparative: `mughal.md` (monsoon-fiscal coupling), `mysore.md` (irrigation-buffered wet agriculture)
@@ -13,7 +13,7 @@ High-impact: yes (a **foundational world law** — the calendar, agriculture, th
 
 ## 1. The two wind systems
 
-- **The sea-wind (the wet season):** from the south/southwest, off the sea onto the land. It arrives **with the first sea-wind**, which **opens the Kesra year** (TIM-01). It lasts the **first half of the year (months 1–6)**: rain falls first on the **pell coast/delta**, then moves up the Oren; the Oren runs **high (flood stage) in months 2–6**.
+- **The sea-wind (the wet season):** from the south/southeast, off the sea onto the land. *(Canon fix 2026-08-28 [CC-05]: the direction corrected to align with the GEO-01 §1 (the sea to the south and east) + the GEO-01 §7 (the sea-wind from the south/east) + the TIM-07 (the warm sea to the south/east); the sea lies south and east, and the wind moves up the Oren (which flows south) — from the south/southeast, not the southwest.)* It arrives **with the first sea-wind**, which **opens the Kesra year** (TIM-01). It lasts the **first half of the year (months 1–6)**: rain falls first on the **pell coast/delta**, then moves up the Oren; the Oren runs **high (flood stage) in months 2–6**.
 - **The land-wind (the dry season):** from the interior (north/northeast), dry and dusty, **months 7–12**: firm ground, the Oren at **low stage (limited navigation)**, the campaign season (MIL-01 §4).
 
 ## 2. The wind regime (resolves Q-004)

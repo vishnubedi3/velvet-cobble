@@ -2,7 +2,7 @@
 
 Status: CANON
 Date: 2026-08-26
-Last revised: 2026-08-26
+Last revised: 2026-08-28 (CC-02 fix — the withheld sanction's object corrected: the Tarnesh wing refused to recognize the orthodoxy wing's consecration of Threna I [not Kesra III — the Tarn wing backed Kesra III, the TIM-03 §5/§6, the DYN-02 §2]; the §3/§5/§8 updated; the canon count unchanged [zero completed de-consecrations + one withheld sanction])
 Depends on: REL-01, DYN-01, DYN-02, CUL-01, CUL-02, GEO-03 (the wind calendar), TIM-02 (the crisis)
 Dependents: ADM-02 (the temple law), CUL-02 (the sacred script, the revival's vernaculars), TIM-03 (the revival's dates), the narrative phase (if authorized — the theology/liturgy texture)
 Sources: REL-01 (the centralized dharma, the matha as sanctioner, the orthodoxy-vs-revival), DYN-02 §4 (the consecration, the matha split), CUL-02 (the scripts, the languages), comparative: `sanatan.md` (the dharma grammar, the temple economy, the bhakti, the guru/matha), `islam.md` (the ulema parallel elite, the waqf parallel fiscal base)
@@ -33,7 +33,7 @@ The Veshna faith is a **dharma grammar** (not a creed, REL-01):
 
 - **The rite:** the **ritual investiture + the public oath before the Veshna temple**, performed by the **head of the Veshna matha (the guru)**. The king is **consecrated as the protector of dharma**. It is **public** (the court + the city witness — the legitimation is performative, DYN-01 §3).
 - **The reversibility:** **reversible in principle** (the **de-consecration** — the matha acting with the house's consent) but **rarely used** (a last resort; de-legitimating a king is itself a legitimacy crisis). §6 fixes the canon count.
-- **The Great Succession Crisis exception:** the **matha is split** (the Tarnesh wing **withholds** the sanction — the "de-consecration in absentia," KE 525, TIM-03) — the kingmaker is **divided** (the DYN-02 §4 "the matha split" is now **caused** — by the Tarnesh Dawn revival, §5).
+- **The Great Succession Crisis exception:** the **matha is split** (the orthodoxy wing consecrates the Threna I; the Tarnesh wing **withholds** its sanction — refusing to recognize that consecration, the "de-consecration in absentia," KE 525, TIM-03 §5) — the kingmaker is **divided** (the DYN-02 §4 "the matha split" is now **caused** — by the Tarnesh Dawn revival, §5).
 
 ## 4. The temple network (resolves Q-039)
 
@@ -50,7 +50,7 @@ The Veshna temple network (the tiered network, the Sanatan temple-economy logic,
 The **orthodoxy-vs-revival** standing dynamic (REL-01 §4), fixed:
 
 1. **The Khel Renewal (KE 250–320, the middle Oren):** the **vernacular devotion** (the Tarn/lowland drift, CUL-02); the **anti-varna-rigidity** stance (the "the dharma is not the jati" charge); the **leader: Khesh the Potter** (the name pool, DYN-02 §1 — a low-caste craftsman, the point). **The state:** tolerated → **patronized (KE 280)** (the court uses it to **check the matha's power** — the REL-01 §4 "a tool for the state"). **The orthodoxy:** condemned (KE 260) → partially absorbed (the Khel Renewal's vernacular is adopted into the festival rites — the syncretism).
-2. **The Tarnesh Dawn (KE 405–460, the Tarn/delta):** the **famine/debt context** (the Stress, TIM-02); the **anti-usury dharma** (the "the honest trade vs. the moneylender" — the merchant's dharma radicalized, §2); the **leader: Tarnesh the Weaver** (the name pool). **The matha SPLIT over it** (the **Tarn wing patronizes** it; the **Veshna orthodoxy wing condemns** it) — **this split carries into the Great Succession Crisis** (the DYN-02 §4 "the matha split" is now **caused** — the Tarnesh wing's **withheld sanction** of Kesra III, KE 525, TIM-03).
+2. **The Tarnesh Dawn (KE 405–460, the Tarn/delta):** the **famine/debt context** (the Stress, TIM-02); the **anti-usury dharma** (the "the honest trade vs. the moneylender" — the merchant's dharma radicalized, §2); the **leader: Tarnesh the Weaver** (the name pool). **The matha SPLIT over it** (the **Tarn wing patronizes** it; the **Veshna orthodoxy wing condemns** it) — **this split carries into the Great Succession Crisis** (the DYN-02 §4 "the matha split" is now **caused** — the Tarnesh wing's **withheld sanction**, KE 525, TIM-03 §5: the Tarn wing backs the Kesra III's claim and refuses to recognize the orthodoxy wing's consecration of the Threna I — the sanction is withheld **from the Threna I's consecration**, not from the Kesra III, the CC-02 fix).
 3. **The local folk cults** (the standing, the un-fixed): the village shrine cults (the river shrines, the ancestors) — the **Tarn faith's base** (§6). They are **not** a single movement (they are the **substrate** the revivals draw on).
 
 ## 6. The other faiths (resolves Q-038)
@@ -77,7 +77,7 @@ The **four memory layers** (the CUL-01 §5 "imperfect self-understanding," fixed
 
 The canon: **zero completed de-consecrations + one withheld sanction.**
 
-- **The withheld sanction (the "de-consecration in absentia," KE 525):** the **Tarnesh wing's refusal to consecrate Kesra III** (the Great Succession Crisis, TIM-03) — a **partial de-legitimation**, **not** a completed de-consecration. It is the **only** time the matha's sanction was **withheld** (a **deterrence**, not a **consummation**).
+- **The withheld sanction (the "de-consecration in absentia," KE 525):** the **Tarnesh wing's refusal to recognize the orthodoxy wing's consecration of Threna I** (the Great Succession Crisis, TIM-03 §5 — the Tarn wing backed the Kesra III's claim; the CC-02 fix) — a **partial de-legitimation** (the Tarn wing declares the rival consecration void), **not** a completed de-consecration. It is the **only** time the matha's sanction was **withheld** (a **deterrence**, not a **consummation**).
 - **The explanatory value (the negative space, NS-01):** the matha's power **functions as a deterrence that is never consummated** — the de-consecration is **available** (it deters) but **never executed** (executing it would be a legitimacy crisis for the matha itself). And the **final collapse (KE 675, the House of Kesra's end, TIM-03) is political/economic** (the chiefs + the Phre's non-intervention), **not religious** — the matha **survives** precisely **because it did not consummate** (it did not tie its legitimacy to a house that failed). **The religious mechanism is bypassed in the final collapse** — an insight: the empire dies of **fiscal/elite** causes, not **religious** ones (the TIM-01 root-cause/trigger logic).
 
 ## Consequences (immediate / unintended / long-term)

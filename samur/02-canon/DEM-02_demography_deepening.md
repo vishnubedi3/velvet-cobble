@@ -2,7 +2,7 @@
 
 Status: CANON
 Date: 2026-08-26
-Last revised: 2026-08-26
+Last revised: 2026-08-28 (the CC-01 fix — the §1 Fragmentation era's end KE 680 → KE 675, per the TIM-03 §6/TIM-03 §1 epoch boundary; the CC-06 fix — the §2 town tier widened [1–10k → 2–35k each] so the tiering carries the fixed ~10–12% / ~2.5–4M urban share)
 Depends on: DEM-01, GEO-01, GEO-02, GEO-03, TIM-01, TIM-02
 Dependents: MIL-02 (the recruit pool, the army scale), ECO-02 (the labor, the corvée), TIM-03 (the population anchors)
 Sources: DEM-01 (the ~25–40M, the densities, the fiscal-military geometry), GEO-02 (the cities), GEO-03 (the wind law, the causal chain), TIM-02 (the famine/epidemic), comparative: `mughal.md` (pre-industrial urban share), `qing.md` (the demographic cycle)
@@ -16,7 +16,7 @@ High-impact: yes
 - **Founding/Expansion (KE 0–220):** ~25–30M.
 - **High Empire (KE 220–380):** peak ~**35M** (the good-wind decades, the Varan I era, TIM-02).
 - **Stress (KE 380–500):** the Great Famine (KE 455–470) + the Great Epidemic (KE 460–480) → ~**28M** by KE 480 (a ~10–15% contraction, §4).
-- **Fragmentation (KE 500–680):** ~**25M** (the divided empire, the Vethra's rise, the Phre's enclave).
+- **Fragmentation (KE 500–675):** ~**25M** (the divided empire, the Vethra's rise, the Phre's enclave). (The era ends at the House of Kesra's deposition, KE 675 — the TIM-03 §6; the Dhaneshra Period, the sixth epoch, opens — the CC-01 fix, 2026-08-28.)
 
 ## 2. The city sizes and tiering (resolves Q-006)
 
@@ -33,8 +33,10 @@ The **High-Empire peak** (KE ~300) city tiering (the largest cities first):
 | Medium (5) | **Kesveth** | 20–40k | the Veth port, the pepper |
 | Medium (5) | **Tarenam** | 30–50k | the Tarn head town, the Tarn governor, the Tarn head temple |
 | Medium (5) | **Gheshar** | 10–20k | the second-pass waystation |
-| Towns (~100) | the market towns | 1–10k each | the district markets, the river ports |
+| Towns (~100) | the market towns | 2–35k each | the district markets, the river ports |
 | Villages (~30k) | the agrarian villages | 200–2,000 each | the bār/pell base |
+
+*(Canon fix 2026-08-28 [CC-06]: the town tier widened (1–10k → 2–35k each) so the tiering carries the fixed urban share. The earlier town row capped the urban total at ~2.0M (the 9 cities ~0.7–0.98M + ~100 towns ≤1M) — below the fixed ~2.5–4M urban / ~10–12% share. With the widened tier the urban total is ~0.9–4.48M, carrying the fixed share: at the peak the large market towns and river ports run ~20–35k, the tail down to a few thousand. The town sizes are cited nowhere else in the canon; the 9 cities' sizes and the share statement are unchanged (the share is cited downstream at the TIM-03 §4).)*
 
 **The urban/rural split (resolves Q-009):** ~**10–12% urban** at the High-Empire peak (~2.5–4M urban of ~35M) — a plausible pre-industrial share (slightly high because of the two mega-ports + the temple city). By era: Founding/Expansion ~8–10%; High Empire ~10–12%; **Stress ~7–9%** (the famine/epidemic, the flight to the villages); Fragmentation ~8–10% (the Voren/Vethra grow, the divided core shrinks).
 

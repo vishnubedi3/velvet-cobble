@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://velvet-cobble/schemas/skill-input.schema.json",
+  "title": "SkillInput",
+  "description": "Top-level input to the skill. Normative human-readable contract: spec/03-input-schema.md. Validated at pipeline Stage 0 (spec/05-pipeline.md).",
+  "type": "object",
+  "required": ["draft", "metadata"],
+  "properties": {
+    "draft": {
+      "type": "object",
+      "required": ["text"],
+      "properties": {
+        "text": { "type": "string", "minLength": 1, "description": "The fiction draft. Plain text or markdown with explicit paragraph/scene markers." },
+        "segmentation": {
+          "type": ["array", "null"],
+          "description": "Optional pre-segmented scenes/chapters (frameworks/04-scene-analysis.md §1).",
+          "items": {
+            "type": "object",
+            "required": ["id", "span"],
+            "properties": {
+              "id": { "type": "string" },
+              "span": { "type": "string" },
+              "type": { "enum": ["action", "dialogue", "interior", "transition", "rest", "climax", "resolution", "unknown"] }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "generator": {
+          "type": ["object", "null"],
+          "properties": {
+            "family": { "type": "string" },
+            "model": { "type": "string" },
+            "decoding": { "type": "object", "additionalProperties": true }
+          }
+        },
+        "prompt_class": { "enum": ["zero-shot", "outlined", "iterated", "human-assisted", "hybrid", "unknown"] },
+        "language": { "type": "string", "default": "en" },
+        "length_words": { "type": ["integer", "null"] }
+      }
+    },
+    "author_intent": {
+      "type": ["object", "null"],
+      "description": "Absent => intent inferred from the draft only; intent-sensitive findings reported as author-consult-required.",
+      "properties": {
+        "genre": { "type": "string" },
+        "subgenre": { "type": ["string", "null"] },
+        "perspective": { "type": "string", "description": "e.g. close-third, first-unreliable, omniscient (PV-8)" },
+        "style_anchors": { "type": "array", "items": { "type": "string" }, "description": "become PV-14 protections" },
+        "content_boundaries": { "type": "array", "items": { "type": "string" }, "description": "absolute; never violated silently" },
+        "declared_devices": { "type": "array", "items": { "type": "string" }, "description": "pre-registered intentional devices; Level 0 protected" },
+        "worldview_constraints": { "type": "array", "items": { "type": "string" }, "description": "gate N07/F03/E05-class edits" }
+      }
+    },
+    "analysis_options": {
+      "type": "object",
+      "description": "Defaults defined in CONFIG.md §Defaults; overrides here must be validated against the config schema (CONFIG.md §Validation).",
+      "properties": {
+        "max_intervention_level": { "type": "integer", "minimum": 0, "maximum": 6 },
+        "confidence_floor_for_action": { "enum": ["high", "medium", "low", "none"] },
+        "batch_gate": { "type": "boolean" },
+        "author_gate": { "type": "boolean" },
+        "long_form_threshold_words": { "type": "integer" },
+        "baseline_source": { "enum": ["auto", "internal", "corpus"] }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "disclosure_policy": { "enum": ["full", "venue-required", "author-decision"] },
+        "assistance_scope": { "type": "string", "description": "drafting / revision / ideas; recorded for the author's own records" }
+      }
+    }
+  }
+}

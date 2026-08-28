@@ -1,20 +1,22 @@
 # velvet-cobble — Project Charter
 
-**Project:** Samur Empire Historical Foundation
-**Agent role:** Samur Empire Historical Architect (autonomous worldbuilding agent)
+**Project:** Sumur (the Samur Empire world + novel)
+**Agent role:** Autonomous worldbuilding and novel-drafting agent
 **Authoritative memory:** this private GitHub repository. Chat is command intake and reporting only.
-**Session branch:** `arena/01a03d92-velvet-cobble`
+**Operational directive:** `AGENTS.md` (compulsory — governs all agent operations)
+**Session branch:** `arena/01a04822-velvet-cobble`
 **Charter date:** 2026-08-26
 
 ## 1. Mission
 
 Construct a credible, internally coherent fictional medieval empire — the **Samur Empire** — with accumulated institutions, regional differences, demographic pressures, economic constraints, and long-term historical consequences. The world must emerge from **material conditions and comparative historical reasoning**, not from aesthetics, tropes, or convenience.
 
-## 2. Absolute Boundary (non-negotiable)
+## 2. Absolute Boundary (narrative-stage governance)
 
-- **No story writing.** No chapters, scenes, dialogue, narrative prose, or publication-ready fiction — in this repository or in chat — unless explicitly authorized by a subsequent, **distinct** system command opening the narrative stage.
-- Ambiguous prompts (e.g., "show me a scene", "write a moment") are treated as requests for historical/institutional context, not fiction.
-- Narrative-stage authorization, if it arrives, is validated against this clause and gated by the narrative-stage capabilities: the **pre-generation canon guard** (`skills/fiction-writing/`) and the **post-generation artifact-reduction skill** (`ai-fictional-tells-skill`, on `main`; integrated per `skills/INTEGRATION.md`).
+- **Narrative stage is authorized** for the pilot chapter (2026-08-28, per the Sumur Master Authoring Protocol). Chapter One requires explicit user authorization (§23 of the protocol).
+- All narrative prose lives in `samur/narrative/` — **never** intermixed with `02-canon/`.
+- Quality analysis reports live in `samur/05-quality/` — **never** in `samur/narrative/`.
+- Narrative-stage work is governed by: the pre-generation canon guard (`skills/fiction-writing/`), the post-generation artifact-reduction skill (`skills/ai-fictional-tells-skill/`), and the full operational directive in `AGENTS.md`.
 
 ## 3. Canon Status Taxonomy
 
@@ -49,19 +51,29 @@ Every recorded item carries exactly one status:
 
 ## 6. Repository Map
 
-- `PROJECT.md` — this charter.
-- `samur/README.md` — material map, file naming, templates, promotion rules.
-- `samur/00-audit/` — repository and workspace audits.
-- `samur/01-research/comparative/` — historical model register + transformation method + influence register.
-- `samur/01-research/religious-systems/` — religious systems as institutions.
-- `samur/02-canon/` — active canon.
-- `samur/03-hypotheses/` — working hypotheses.
-- `samur/04-questions/` — open questions.
-- `samur/05-quality/` — narrative quality analysis (skill reports, intervention logs, pre-flight canon guard reports). **Never** intermixed with narrative prose.
-- `samur/narrative/` — the novel: clean, reader-facing prose only (pilot chapter, future chapters). **Never** intermixed with `02-canon/` or `05-quality/`.
-- `samur/CHANGELOG.md` — canon change log.
-- `skills/fiction-writing/` — narrative-phase skill (draft; pre-generation canon guard + gate for any future story work).
-- `skills/INTEGRATION.md` — integration record for the `ai-fictional-tells-skill` (post-generation artifact-reduction; the skill folder itself is on `main` at `ai-fictional-tells-skill/`).
+See `AGENTS.md` §6 for the full architectural specification. Summary:
+
+- **`AGENTS.md`** — the central operational directive (compulsory; governs all agent operations).
+- **`PROJECT.md`** — this charter (mission, phases, taxonomy).
+- **`README.md`** — top-level overview.
+- **`samur/`** — the world + the novel:
+  - `00-audit/` — repository and workspace audits.
+  - `01-research/` — real-world comparative research (active during drafting).
+  - `02-canon/` — active canon (34 files; the authoritative world state).
+  - `03-hypotheses/` — working hypotheses (active during drafting).
+  - `04-questions/` — open questions (87 total).
+  - `05-quality/` — narrative quality analysis reports.
+  - `narrative/` — the novel (clean prose only; pilot chapter + future chapters).
+  - `CHANGELOG.md` — canon change log.
+  - `CONTRADICTIONS.md` — active contradictions register.
+  - `WORLD-MODEL.md` — authoritative one-page summary.
+- **`skills/`** — all agent skills:
+  - `fiction-writing/` — pre-generation canon guard.
+  - `ai-fictional-tells-skill/` — post-generation artifact reduction (v1.0.0).
+  - `INTEGRATION.md` — skill integration record.
+- **`ops/`** — operational records:
+  - `logs/` — agent operation logs.
+  - `recovery/` — recovery point documentation.
 
 ## 7. Open Governance Assumptions
 

@@ -14,12 +14,12 @@ where it belongs, how it will be invoked, and its (non-)effect on existing canon
 
 **`ai-fictional-tells-skill`** — "Fictional-Tell Artifact Reduction for AI-Generated Fiction" (v1.0.0, stable, research-backed).
 
-## 2. Location in the main branch
+## 2. Location
 
-- **Path:** `ai-fictional-tells-skill/` at the repository root, on the **`main` branch**.
-- **Arrived via:** PR #1 (merged commit `5d3e078` on `main`), from the branch `arena/01a043d5-velvet-cobble`.
-- **Not on the session branch** (`arena/01a03d92-velvet-cobble`): the skill was read directly from `origin/main` (`git show origin/main:ai-fictional-tells-skill/...`). It is a self-contained, zero-dependency distributable folder (60 files: spec, research, taxonomy, frameworks, interventions, schemas, config, tests, examples, benchmark). It is **not vendored** onto the session branch (to keep the Samur work stream clean); it is available from `origin/main` and becomes co-located when the branches are reconciled.
-- **Entry point:** `ai-fictional-tells-skill/README.md`; **primary spec:** `ai-fictional-tells-skill/SKILL.md`.
+- **Path:** `skills/ai-fictional-tells-skill/` (consolidated inside the `skills/` directory during the 2026-08-28 full repository restructure; previously at the repository root on `main`).
+- **Arrived via:** PR #1 (merged commit `5d3e078` on `main`), from the branch `arena/01a043d5-velvet-cobble`. Moved into `skills/` on the session branch `arena/01a04822-velvet-cobble` during the full restructure.
+- **Self-contained:** a zero-dependency distributable folder (60 files: spec, research, taxonomy, frameworks, interventions, schemas, config, tests, examples, benchmark).
+- **Entry point:** `skills/ai-fictional-tells-skill/README.md`; **primary spec:** `skills/ai-fictional-tells-skill/SKILL.md`.
 
 ## 3. Purpose (what it does / what problem it solves)
 

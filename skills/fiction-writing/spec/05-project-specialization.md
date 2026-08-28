@@ -110,6 +110,8 @@ On some session refs, the same section has been rewritten to authorize a pilot a
 
 The guard reads **the applicable ref's §2**. It does not hard-code "narrative is blocked" or "narrative is authorized."
 
+When the request is against `main`, `main`'s charter governs — even if Splash authorizes a pilot. When the request **explicitly continues a Splash storyline**, Splash's charter is the authoring-context charter, and Splash facts are still labeled (not established `main` canon).
+
 H-001 (story location) may be awaiting confirmation on one ref and confirmed on another. Believe the applicable ref.
 
 ---

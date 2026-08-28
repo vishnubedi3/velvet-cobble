@@ -18,7 +18,9 @@ Findings are typed. Severity is not a vibe: it is the decision-protocol input.
 | **CX-HIGH-IMPACT-SMUGGLE** | Narrative or draft introduces a new high-impact fact (geography, law, succession, currency, core religion, calendar, world-law) | BLOCK (send to worldbuilding + change protocol) |
 | **CX-AUTHORITY** | Claim cites RESEARCH / HYPOTHESIS / DRAFT / WORLD-MODEL as if CANON | BLOCK or REQUIRES_CLARIFICATION |
 | **CX-BRANCH** | Request violates a live charter constraint on the applicable branch (e.g. narrative not authorized), or mixes diverged branches | BLOCK or REQUIRES_CLARIFICATION |
-| **CX-DIVERGENCE** | Materially different facts on live branches; applicable branch not chosen | REQUIRES_CLARIFICATION |
+| **CX-DIVERGENCE** | Non-splash unnamed live head with material difference; applicable branch not chosen | REQUIRES_CLARIFICATION (not used merely because `arena/*` exists) |
+| **CX-SPLASH-CONFLICT** | Arena Splash statement contradicts established `main` at overlapping story-time | Warn if `main` remains baseline; `REQUIRES_CLARIFICATION` if the request would *establish* Splash over `main` |
+| **CX-SPLASH-PROPOSED** | Request treats proposed / developmental / exploratory / intent Splash as established canon | REQUIRES_CLARIFICATION |
 | **CX-AMBIGUITY** | Insufficient reliable information; register vs file disagreement; missing dependency | REQUIRES_CLARIFICATION |
 | **CX-UNRESOLVED-REGISTER** | Active item in `CONTRADICTIONS.md` intersects the request | REQUIRES_CLARIFICATION (unless the request is specifically to resolve it via the change protocol) |
 | **CX-STALE** | Evaluation or contract is bound to a Canon State whose hashes no longer match | Re-verify; do not honor the old PASS |
@@ -70,4 +72,14 @@ A character can be alive at S (temporal PASS) and still not know a fact establis
 
 ## 5. Branch conflicts are not world conflicts
 
-Two session branches disagreeing is **CX-DIVERGENCE**, not automatically **CX-DIRECT**. CX-DIRECT is evaluated *inside* the applicable Canon State.
+Two session branches disagreeing is **not** automatically **CX-DIRECT**. CX-DIRECT is evaluated *inside* the `main` Canon State (the baseline).
+
+Arena Splash vs `main` is **classification**, not a merge and not a dismissal:
+
+- compatible restatement → `CONFIRMED_CANON`
+- compatible explanation → `CANON_CLARIFICATION`
+- incompatible claim → `CONTRADICTORY` / `CX-SPLASH-CONFLICT` (do not silently pick Splash because it is newer)
+- extra `arena/*` head, unclassified → `CX-AMBIGUITY` (inspect it)
+- extra `arena/*` head, classified as clarification → not a stop
+
+See [`BRANCH_RELATIONSHIP.md`](BRANCH_RELATIONSHIP.md).

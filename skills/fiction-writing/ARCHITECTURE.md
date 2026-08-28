@@ -15,9 +15,10 @@ The Canon Guard is a **living verification layer**, not a database of the world.
                            │
 ┌──────────────────────────▼──────────────────────────────────┐
 │  Resolution layer                                           │
-│  Discover refs → classify branches → inventory sources      │
+│  Discover refs → main as baseline → inspect Arena Splash    │
+│  → classify Splash content against main → inventory sources │
 │  by status/location → select relevant subset → hash         │
-│  Specified in CANON_RESOLUTION.md + spec/04-branch-awareness│
+│  Specified in BRANCH_RELATIONSHIP.md + CANON_RESOLUTION.md  │
 └──────────────────────────┬──────────────────────────────────┘
                            │
 ┌──────────────────────────▼──────────────────────────────────┐
@@ -100,7 +101,8 @@ Details: [`spec/03-invalidation.md`](spec/03-invalidation.md). High-impact class
 ## 6. Failure isolation
 
 - If branch discovery fails → do not verify; report host error.
-- If applicable branch cannot be chosen → `REQUIRES_CLARIFICATION`.
+- If live Splash exists but was not inspected → `REQUIRES_CLARIFICATION`.
+- If applicable non-splash branch cannot be chosen → `REQUIRES_CLARIFICATION`.
 - If a relevant source is unreadable → `REQUIRES_CLARIFICATION`, not a pass on remaining files.
 - If the derived index is stale → ignore it; re-resolve.
 - If an LLM extraction is malformed → discard it; do not generate from it.
@@ -109,4 +111,4 @@ Details: [`spec/03-invalidation.md`](spec/03-invalidation.md). High-impact class
 
 ## 7. What we deliberately did not build
 
-No database, no vendor SDK, no frozen "current kings" table, no duplicate canon tree, no automatic merge of session branches, no write-back into `02-canon/`. Those would either freeze the world or contaminate it.
+No database, no vendor SDK, no frozen "current kings" table, no duplicate canon tree, no automatic merge of Arena Splash into `main`, no blanket "Splash is non-canon," no write-back into `02-canon/`. Those would either freeze the world or contaminate it.

@@ -19,7 +19,8 @@
           "type": "array",
           "items": { "type": "object" }
         },
-        "charter": { "type": "object" }
+        "charter": { "type": "object" },
+        "splash": { "type": "object" }
       }
     },
     "sources": {
@@ -44,7 +45,8 @@
     },
     "questions": { "type": "array", "items": { "type": "object" } },
     "contradictions": { "type": "array", "items": { "type": "object" } },
-    "unadmitted": { "type": "array", "items": { "type": "object" } }
+    "unadmitted": { "type": "array", "items": { "type": "object" } },
+    "splash_classifications": { "type": "array", "items": { "type": "object" } }
   },
   "$defs": {
     "fact": {

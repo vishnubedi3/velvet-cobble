@@ -10,6 +10,7 @@
 | [`ARCHITECTURE.md`](ARCHITECTURE.md) | Layers, clocks, cache rules |
 | [`CANON_MODEL.md`](CANON_MODEL.md) | Canon State |
 | [`CANON_RESOLUTION.md`](CANON_RESOLUTION.md) | Live resolution procedure |
+| [`BRANCH_RELATIONSHIP.md`](BRANCH_RELATIONSHIP.md) | Main vs Arena Splash: classify, don't merge, don't ignore |
 | [`CONFLICT_TAXONOMY.md`](CONFLICT_TAXONOMY.md) | Finding classes |
 | [`DECISION_PROTOCOL.md`](DECISION_PROTOCOL.md) | Decision table |
 | [`GENERATION_CONTRACT.md`](GENERATION_CONTRACT.md) | Contract rules |

@@ -33,8 +33,11 @@ Emitted only with `PASS` or `PASS_WITH_WARNINGS`. Other decisions emit no contra
 | `uncertainties` | Known unknowns, mysteries that must stay mysterious, NOT READY items |
 | `forbidden_assumptions` | Negative space; research-as-canon; draft-as-canon; false precision; Earth-transplant if the live charter forbids it |
 | `authorized_changes` | Empty unless a completed canon-change protocol listed them |
+| `source_status` | Labeled bands: **CANONICAL**, **CANON_CLARIFICATION**, **AUTHORIAL_INTENT**, **PROPOSED**, **CONFLICT**. Splash material is never mixed unlabeled into CANONICAL. |
 
-Every constraint in the contract must be traceable to a source document on the applicable branch. If a constraint cannot be sourced, it does not belong in the contract.
+Every constraint in the contract must be traceable to a source document. Established facts are sourced to `main` (or to Splash only when classified `CONFIRMED_CANON` / `CANON_CLARIFICATION`). If a constraint cannot be sourced, it does not belong in the contract.
+
+Do not present `PROPOSED`, `AUTHORIAL_INTENT`, developmental, or exploratory Splash as established historical fact. `CONFLICT` records classified contradictions; it does not pick a winner.
 
 ---
 
@@ -69,4 +72,7 @@ The post-generation tell skill may receive `author_intent` derived from the cont
 - "These facts are now the canon."
 - "Future chapters may skip the guard."
 - "Draft D is admitted."
+- "Arena Splash is canon because it exists / is newer."
+- "Arena Splash is non-canon" (blanket).
 - Any fact whose source hash was not part of this Canon State.
+- Any Splash statement in the CANONICAL band that was not classified `CONFIRMED_CANON` or that is not already on `main`.

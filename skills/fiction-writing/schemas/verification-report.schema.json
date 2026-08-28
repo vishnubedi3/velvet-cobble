@@ -52,6 +52,7 @@
       ]
     },
     "invalidation": { "type": ["object", "null"] },
-    "contract_id": { "type": ["string", "null"] }
+    "contract_id": { "type": ["string", "null"] },
+    "splash_classifications": { "type": "array", "items": { "type": "object" } }
   }
 }

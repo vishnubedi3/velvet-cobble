@@ -49,7 +49,7 @@ Never write into `02-canon/` or into prose files.
 
 ## 5. Acceptance
 
-- Adaptive suite green: `python3 skills/fiction-writing/tests/run_adaptive_tests.py`
+- Adaptive suite green (A01–A21, including Main vs Arena Splash): `python3 skills/fiction-writing/tests/run_adaptive_tests.py`
 - Static checklist: [`../tests/02-static-consistency-checklist.md`](../tests/02-static-consistency-checklist.md)
 - No Samur lore bodies copied into this package (spot-check: no dynastic lists, no copied city tables)
 - `02-canon/` untouched by the skill's own commits except if an unrelated project operation happens

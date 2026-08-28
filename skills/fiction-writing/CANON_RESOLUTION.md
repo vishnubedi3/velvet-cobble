@@ -32,13 +32,15 @@ Use **observable signals**. Do not assign a role just because a name looks like 
 | `PROJECT.md` §2 differs across refs | **Charter divergence** | Which charter the user intends |
 | Root `AGENTS.md` present on one ref only | Operational-protocol divergence | That the other ref is invalid |
 
-If classification is insufficient to choose an applicable ref, stop with `REQUIRES_CLARIFICATION`. Do not invent a merged super-canon.
+Do not invent a merged super-canon. Do not invent an independent Splash timeline.
 
-Default when the request is silent **and** no material/charter divergence is detected: the repository's default branch.
+**Default canonical baseline** when the request is silent: the repository's default branch (`main` if that is `origin/HEAD`).
 
-Default when the request is silent **and** divergence **is** detected: `REQUIRES_CLARIFICATION`, listing the diverged refs and the nature of the divergence (charter, narrative presence, canon-file hashes).
+**Arena Splash** (`arena/*`) is not automatically that baseline. It is also not irrelevant. After inspecting `main`, inspect relevant Splash and **classify content** against `main` ([`BRANCH_RELATIONSHIP.md`](BRANCH_RELATIONSHIP.md)). A second live head is not by itself `REQUIRES_CLARIFICATION`.
 
-A request may name a branch. Then that branch is applicable, and other live branches are reported as **context divergence**, not silently mixed in.
+A request may name a branch. Then that branch is the **authoring context**. Splash continuation still labels source status and does not promote proposed/developmental material into established `main` canon.
+
+If a live Splash head exists and has not been inspected, that is insufficient information (`REQUIRES_CLARIFICATION` / `CX-AMBIGUITY`) — not a reason to ignore it, and not a reason to treat it as canon.
 
 ---
 
@@ -97,14 +99,21 @@ Bind provenance. Mark epistemology (`exact` / `range` / `order` / `relative`) fr
 
 ---
 
-## 6. Compare branches when required
+## 6. Compare Splash against main (every time Splash is live)
 
-When more than one live head contains `samur/02-canon/` (or charter) and hashes differ:
+When a live Arena Splash head exists:
 
-- List diverged paths.
-- Do not average or union conflicting facts.
-- If they represent different possible states (session vs merged), keep them as **alternate Canon States**.
-- A generation request evaluates against **one** applicable Canon State.
+1. Build the `main` Canon State (baseline).
+2. Inventory relevant Splash sources on that head. Do **not** union them into `main` facts.
+3. Classify each relevant Splash statement: `CONFIRMED_CANON`, `CANON_CLARIFICATION`, `CANON_EXTENSION`, `AUTHORIAL_INTENT`, `PROPOSED_CANON`, `DEVELOPMENTAL`, `EXPLORATORY`, `CONTRADICTORY`, `UNRESOLVED`.
+4. A newer Splash commit does not replace `main` merely by being newer.
+5. Compatible clarification may be used to understand `main` better, labeled as clarification.
+6. Proposed / developmental / exploratory material is authoring context, not established canon.
+7. Contradictions are classified and recorded. They are not silently resolved either direction.
+
+A generation request evaluates against **`main` as baseline**, plus classified Splash context. Explicit continuation of a Splash storyline uses Splash as the authoring context while still labeling status.
+
+Non-splash, unnamed divergence (a live head that is neither `main` nor `arena/*`, with no target) remains `REQUIRES_CLARIFICATION`.
 
 ---
 

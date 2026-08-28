@@ -20,6 +20,14 @@ Re-run the same request.
 
 **Decision:** BLOCK (`CX-DIRECT` on vital_status and/or allied_with). The T0 contract is stale (hash mismatch). No generation.
 
+## Splash (same request, `main` unchanged, Arena Splash live)
+
+An `arena/*` head appears. It restates Lia alive and *clarifies* the same fact.
+
+**Decision:** PASS. Extra live head is **not** `REQUIRES_CLARIFICATION`. Contract `source_status.CANON_CLARIFICATION` records the Splash note. It is not mixed unlabeled into CANONICAL.
+
+If instead Splash said Lia dead: PASS_WITH_WARNINGS, class `CONTRADICTORY`, `main` remains baseline. Newer Splash does not override.
+
 ## What this demonstrates
 
-The skill did not store "Lia is alive" as a skill rule. It derived the constraint from T0 sources and **changed its conclusion** when the sources changed.
+The skill did not store "Lia is alive" as a skill rule. It derived the constraint from T0 sources and **changed its conclusion** when the sources changed. Splash is classified against `main`; it is neither merged nor ignored.

@@ -14,3 +14,4 @@ Manual / host checks on the skill package (not on the world).
 | T-8 | Recovery tags are documented as non-live |
 | T-9 | `anti-patterns.md` still exists (preserved, not overwritten) |
 | T-10 | Fixtures live under `fixtures/` and do not import `samur/` |
+| T-11 | [`BRANCH_RELATIONSHIP.md`](../BRANCH_RELATIONSHIP.md) exists; Splash is not automatically canon and is not dismissed as non-canon |

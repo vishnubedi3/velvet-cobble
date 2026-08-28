@@ -4,8 +4,11 @@ Host-overridable parameters. None of these are world facts.
 
 | Key | Default | Meaning |
 |---|---|---|
-| `default_branch` | repository default (`main` if that is `origin/HEAD`) | Used only when the request is silent **and** no live divergence is detected |
-| `conservative_on_divergence` | `true` | Silent request + divergence → `REQUIRES_CLARIFICATION` |
+| `default_branch` | repository default (`main` if that is `origin/HEAD`) | Canonical baseline when the request is silent |
+| `main_is_canonical_baseline` | `true` | Must stay true. A host that sets this false is non-compliant |
+| `splash_is_automatically_canon` | `false` | Must stay false. Splash is classified against `main` |
+| `splash_is_irrelevant` | `false` | Must stay false. Do not implement "Arena Splash is non-canon" |
+| `conservative_on_divergence` | `true` | Uninspected Splash, or CONTRADICTORY Splash that the request would *establish* over `main`, → `REQUIRES_CLARIFICATION`. Extra `arena/*` existence alone is not this |
 | `re_resolve_every_request` | `true` | Must stay true. A host that sets this false is non-compliant |
 | `world_model_is_authority` | `false` | Must stay false for this project |
 | `research_is_canon` | `false` | Must stay false |

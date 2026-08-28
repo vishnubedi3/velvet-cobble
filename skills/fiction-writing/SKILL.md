@@ -3,7 +3,7 @@
 **Type:** standalone, model-agnostic, project-specialized, pre-generation skill.
 **Host location:** `skills/fiction-writing/` (this directory is the complete skill package).
 **Objective:** before any generation begins, resolve the *current* applicable canon from the *current* state of this project's branches, verify the request against that state, and either block generation or emit a Generation Contract bound to that state.
-**Non-objective (explicit):** storing a copy of the world's facts; freezing today's canon; merging diverged branches; promoting drafts to canon; generating prose; reducing AI fictional tells.
+**Non-objective (explicit):** storing a copy of the world's facts; freezing today's canon; auto-merging Arena Splash into `main`; dismissing Splash as non-canon; promoting drafts to canon; generating prose; reducing AI fictional tells.
 
 This file is the binding skill contract. Mechanism details live in the sibling documents listed in [`README.md`](README.md).
 
@@ -58,7 +58,7 @@ A PASS does **not** mean: *this request will always be canonically valid.*
 3. **Do not freeze canon.** This skill must not hard-code current branch facts (names, dates, reigns, alliances, locations, deaths, knowledge). It defines *how* to derive current facts from evolving sources.
 4. **Do not duplicate the world.** Provenance points at sources. The source remains the source.
 5. **Do not invent branch certainty.** Classify branches from evidence in the repository (charter, directory layout, recovery tags, merge history). If the role of a branch is ambiguous, surface the ambiguity.
-6. **Do not silently merge diverged branches.** Preserve the distinction. Evaluate the request against the appropriate branch context.
+6. **Main is the default canonical baseline. Arena Splash (`arena/*`) is not automatically canon, not an independent timeline, and not irrelevant.** Classify Splash content against current `main`. Do not auto-merge. Do not ignore. Do not treat all Splash equally. Newer Splash does not override `main`. See [`BRANCH_RELATIONSHIP.md`](BRANCH_RELATIONSHIP.md).
 7. **Separate repository time from story time.** A newly written document can describe an earlier fictional period. A later-repo fact does not automatically apply to an earlier story-time generation.
 8. **Separate establishment from in-world knowledge.** When a source later records that an entity learned something, that does not grant the entity the knowledge in earlier story periods.
 9. **Generated material is proposed until admitted.** Drafts, pilots, quality reports, and chat output are not canon.
@@ -102,8 +102,8 @@ A PASS does **not** mean: *this request will always be canonically valid.*
 
 Full pipeline: [`spec/02-pipeline.md`](spec/02-pipeline.md). Every generation request, without exception:
 
-1. **Identify the applicable current branch state.** Discover live refs. Classify without inventing certainty. Resolve which branch (or explicit branch set) the request is for. Record head commits. See [`spec/04-branch-awareness.md`](spec/04-branch-awareness.md) and [`CANON_RESOLUTION.md`](CANON_RESOLUTION.md).
-2. **Resolve relevant current canon.** From the applicable branch at those commits, inventory living sources by *status and location*, not by a frozen file list. Select the relevant subset for this request. See [`CANON_MODEL.md`](CANON_MODEL.md).
+1. **Identify the applicable current branch state.** Discover live refs. `main` is the default canonical baseline. If Arena Splash (`arena/*`) is live, inspect it — do not skip it, do not auto-merge it. Record head commits. See [`BRANCH_RELATIONSHIP.md`](BRANCH_RELATIONSHIP.md), [`spec/04-branch-awareness.md`](spec/04-branch-awareness.md), and [`CANON_RESOLUTION.md`](CANON_RESOLUTION.md).
+2. **Resolve relevant current canon.** From `main` at those commits, inventory living sources by *status and location*, not by a frozen file list. Then classify relevant Splash material against that baseline. Select the relevant subset for this request. See [`CANON_MODEL.md`](CANON_MODEL.md).
 3. **Analyze the generation request.** Kind, story-time, viewpoint, implied claims, named entities, proposed new facts, whether a canon change is explicit.
 4. **Extract implied constraints.** Bind each constraint to provenance: fact → branch → document → location → version/state.
 5. **Identify dependencies.** Use the project's own `Depends on` / `Dependents` / `High-impact` fields when present. Walk the live graph.
@@ -112,11 +112,11 @@ Full pipeline: [`spec/02-pipeline.md`](spec/02-pipeline.md). Every generation re
 8. **Check temporal consistency.** Story chronology vs. repository chronology. Era-bounded facts. Exact dates vs. ranges vs. orders (this project uses more than one dating epistemology; re-read the current chronology sources to learn which).
 9. **Check knowledge-state consistency.** In-world knowledge vs. author-level truth. Learning events do not apply retroactively.
 10. **Check causal consistency.** Causes, actors, effects, second-order consequences as currently recorded.
-11. **Check branch-specific constraints.** Charter authorization, directory separation, session-branch vs. merged-main, recovery-tag exclusion.
-12. **Detect ambiguity.** Missing facts, diverged facts across branches, register-vs-file disagreement, WORLD-MODEL-vs-canon-file disagreement (canon file wins; the disagreement is still a finding).
+11. **Check branch-specific constraints.** Charter authorization (Splash charter only when continuing a Splash storyline), directory separation, recovery-tag exclusion. Splash classifications are not a second canon.
+12. **Detect ambiguity.** Missing facts, unresolved Splash overlapping the request, register-vs-file disagreement, WORLD-MODEL-vs-canon-file disagreement (canon file wins; the disagreement is still a finding). Extra `arena/*` heads are classified, not treated as automatic `REQUIRES_CLARIFICATION`.
 13. **Detect unresolved conflicts.** Live entries in the contradictions register; unresolved high-impact disagreements.
 14. **Produce a decision** from [`DECISION_PROTOCOL.md`](DECISION_PROTOCOL.md).
-15. **Produce a Generation Contract** if generation is permitted ([`GENERATION_CONTRACT.md`](GENERATION_CONTRACT.md)). The contract is valid only for the evaluated canon state.
+15. **Produce a Generation Contract** if generation is permitted ([`GENERATION_CONTRACT.md`](GENERATION_CONTRACT.md)). The contract is valid only for the evaluated canon state. Constraints must be labeled by **source status** (CANONICAL / CANON CLARIFICATION / AUTHORIAL INTENT / PROPOSED / CONFLICT).
 
 ---
 
@@ -127,12 +127,13 @@ Minimum viable load:
 - This file (`SKILL.md`)
 - [`CANON_MODEL.md`](CANON_MODEL.md)
 - [`CANON_RESOLUTION.md`](CANON_RESOLUTION.md)
+- [`BRANCH_RELATIONSHIP.md`](BRANCH_RELATIONSHIP.md)
 - [`DECISION_PROTOCOL.md`](DECISION_PROTOCOL.md)
 - [`GENERATION_CONTRACT.md`](GENERATION_CONTRACT.md)
 - [`spec/02-pipeline.md`](spec/02-pipeline.md)
 - [`spec/05-project-specialization.md`](spec/05-project-specialization.md)
 
-Progressively load: conflict taxonomy, change protocol, admission protocol, invalidation spec, branch-awareness spec, schemas.
+Progressively load: conflict taxonomy, change protocol, admission protocol, invalidation spec, branch-awareness spec, branch-relationship spec, schemas.
 
 **Never** load the current contents of `samur/02-canon/` *into the skill package*. Load them at verification time from the applicable branch.
 

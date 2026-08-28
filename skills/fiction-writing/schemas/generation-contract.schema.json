@@ -32,6 +32,17 @@
     "uncertainties": { "type": "array", "items": { "type": "string" } },
     "forbidden_assumptions": { "type": "array", "items": { "type": "string" } },
     "authorized_changes": { "type": "array", "items": { "type": "object" } },
+    "source_status": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "CANONICAL": { "type": "array", "items": { "type": "object" } },
+        "CANON_CLARIFICATION": { "type": "array", "items": { "type": "object" } },
+        "AUTHORIAL_INTENT": { "type": "array", "items": { "type": "object" } },
+        "PROPOSED": { "type": "array", "items": { "type": "object" } },
+        "CONFLICT": { "type": "array", "items": { "type": "object" } }
+      }
+    },
     "source_hashes": {
       "type": "array",
       "items": {

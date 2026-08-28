@@ -9,6 +9,7 @@ The skill is a data-transform pipeline. No vendor APIs.
 ```
 resolve_branches(repo_view) -> BranchContext
 resolve_canon(branch_context, request) -> CanonState
+classify_splash(main_state, splash_state) -> SplashClassification[]
 verify(request, canon_state) -> VerificationReport
 decide(report) -> Decision
 contract(request, canon_state, report) -> GenerationContract | null
@@ -61,7 +62,7 @@ Optional:
 
 - In: PASS/PASS_WITH_WARNINGS report + Canon State identity.
 - Out: compact Generation Contract.
-- Quality: every `must_remain_unchanged` item has provenance; no unsourced world-law list.
+- Quality: every `must_remain_unchanged` item has provenance; no unsourced world-law list; Splash items sit in the correct `source_status` band and are not unlabeled CANONICAL.
 - Fallback: omit unsourced fields; if `must_remain_unchanged` would be empty despite findings of constraints, fail closed (no contract).
 
 Temperature: as low as the host allows. Validators are code, not a second model vote.

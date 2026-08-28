@@ -3,6 +3,7 @@
 - **2026-08-26:** directory created as a draft foundation (`anti-patterns.md` only). Narrative stage BLOCKED.
 - **2026-08-26:** relationship to `ai-fictional-tells-skill` documented (pre-generation vs post-generation).
 - **2026-08-28:** this directory is now the **complete Pre-Generation Canon Guard** skill package (`SKILL.md` and siblings). `anti-patterns.md` is preserved as the prose-generation craft layer. The guard does **not** freeze current canon and does **not** copy `samur/02-canon/`.
+- **2026-08-28:** architecture updated for **Main vs Arena Splash**. `main` is the default canonical baseline. `arena/*` is not automatically canon, not an independent timeline, and not irrelevant. Splash content is classified against `main` and labeled in the Generation Contract. See [`BRANCH_RELATIONSHIP.md`](BRANCH_RELATIONSHIP.md).
 
 ## Gate
 

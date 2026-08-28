@@ -42,7 +42,8 @@
     },
     "text": { "type": ["string", "null"] },
     "explicit_canon_change": { "type": "boolean", "default": false },
-    "uses_unadmitted_as_canon": { "type": "boolean", "default": false }
+    "uses_unadmitted_as_canon": { "type": "boolean", "default": false },
+    "continue_splash_storyline": { "type": "boolean", "default": false }
   },
   "$defs": {
     "claim": {
@@ -59,7 +60,8 @@
           "items": { "type": "string" }
         },
         "resolves_question": { "type": ["string", "null"] },
-        "high_impact": { "type": "boolean", "default": false }
+        "high_impact": { "type": "boolean", "default": false },
+        "treat_as_established": { "type": "boolean", "default": false }
       }
     }
   }

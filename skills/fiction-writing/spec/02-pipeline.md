@@ -14,9 +14,9 @@ Kinds this project actually produces: `narrative`, `worldbuilding`, `canon_chang
 
 ## Stage 1 — Branch context
 
-`resolve_branches`. Record heads, recovery tags, detected divergence. Choose applicable branch or stop.
+`resolve_branches`. Record heads, recovery tags. Treat `main` as the canonical baseline. If Arena Splash (`arena/*`) is live, inspect and classify it against `main` — do not mix facts, do not skip Splash.
 
-Invariant **I-1:** verification never runs against an unspecified mix of branches.
+Invariant **I-1:** verification never unions Splash facts into `main`. Uninspected live Splash is a stop, not a silent pass.
 
 ---
 

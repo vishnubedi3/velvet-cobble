@@ -15,7 +15,7 @@ Invoke this skill **before every generation operation**, including:
 
 Do not invoke the post-generation tell-reduction skill as a substitute. Do not skip the guard because a previous request passed.
 
-If the applicable branch's charter currently forbids the requested kind of generation, the guard's decision is **BLOCK** (or **REQUIRES_CLARIFICATION** if the charter itself is diverged and no branch was selected). That is a correct result, not a reason to bypass the skill.
+If the applicable branch's charter currently forbids the requested kind of generation, the guard's decision is **BLOCK**. Extra `arena/*` heads are **not** a reason to skip the guard or to treat Splash as established canon. Inspect Splash, classify it against `main`, and label source status. That is a correct result, not a reason to bypass the skill.
 
 ---
 

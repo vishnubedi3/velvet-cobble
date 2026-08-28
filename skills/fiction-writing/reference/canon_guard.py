@@ -38,6 +38,61 @@ CHECKS = (
     "ambiguity",
     "divergence",
     "charter",
+    "splash",
+)
+
+SPLASH_CLASSES = (
+    "CONFIRMED_CANON",
+    "CANON_CLARIFICATION",
+    "CANON_EXTENSION",
+    "AUTHORIAL_INTENT",
+    "PROPOSED_CANON",
+    "DEVELOPMENTAL",
+    "EXPLORATORY",
+    "CONTRADICTORY",
+    "UNRESOLVED",
+)
+
+ESTABLISHED_SPLASH = frozenset({"CONFIRMED_CANON", "CANON_CLARIFICATION"})
+
+NON_ESTABLISHED_SPLASH = frozenset(
+    {
+        "CANON_EXTENSION",
+        "AUTHORIAL_INTENT",
+        "PROPOSED_CANON",
+        "DEVELOPMENTAL",
+        "EXPLORATORY",
+    }
+)
+
+RELATION_TO_CLASS = {
+    "clarifies": "CANON_CLARIFICATION",
+    "clarification": "CANON_CLARIFICATION",
+    "extends": "CANON_EXTENSION",
+    "extension": "CANON_EXTENSION",
+    "intent": "AUTHORIAL_INTENT",
+    "authorial_intent": "AUTHORIAL_INTENT",
+    "proposed": "PROPOSED_CANON",
+    "proposed_canon": "PROPOSED_CANON",
+    "developmental": "DEVELOPMENTAL",
+    "draft": "DEVELOPMENTAL",
+    "development": "DEVELOPMENTAL",
+    "exploratory": "EXPLORATORY",
+    "experiment": "EXPLORATORY",
+    "alternate": "EXPLORATORY",
+    "contradicts": "CONTRADICTORY",
+    "contradiction": "CONTRADICTORY",
+    "confirmed": "CONFIRMED_CANON",
+    "restates": "CONFIRMED_CANON",
+    "unresolved": "UNRESOLVED",
+}
+
+CONTRACT_BANDS = (
+    "CANONICAL",
+    "CANON_CLARIFICATION",
+    "AUTHORIAL_INTENT",
+    "PROPOSED",
+    "CONFLICT",
 )
 
 
@@ -60,6 +115,153 @@ def _time_overlaps(fact: dict, ordinal: float | None) -> bool:
     if end is not None and ordinal > end:
         return False
     return True
+
+
+def _continues_splash(request: dict, splash_state: dict | None) -> bool:
+    if request.get("continue_splash_storyline"):
+        return True
+    target = request.get("target_branch") or ""
+    if splash_state is not None and str(target).startswith("arena/"):
+        return True
+    return False
+
+
+def _treats_as_established(request: dict, claim: dict) -> bool:
+    if request.get("uses_unadmitted_as_canon"):
+        return True
+    if claim.get("treat_as_established"):
+        return True
+    return False
+
+
+def _splash_heads(live_heads: dict | None) -> list[str]:
+    if not live_heads:
+        return []
+    return [n for n in live_heads if str(n).startswith("arena/")]
+
+
+def _hinted_class(fact: dict) -> str | None:
+    relation = (fact.get("relation") or "").strip().lower()
+    if not relation:
+        return None
+    return RELATION_TO_CLASS.get(relation)
+
+
+def _splash_fact_records(splash_state: dict) -> list[dict]:
+    records = []
+    splash_name = (splash_state.get("branch_context") or {}).get("applicable_branch") or "splash"
+    for fact in splash_state.get("facts") or []:
+        rec = dict(fact)
+        rec["_origin"] = "canon"
+        records.append(rec)
+    for u in splash_state.get("unadmitted") or []:
+        digest = _hash_obj(u)
+        for i, fact in enumerate(u.get("facts") or []):
+            rec = dict(fact)
+            rec.setdefault(
+                "source",
+                {
+                    "branch": splash_name,
+                    "path": f"unadmitted/{u.get('id')}",
+                    "location": f"fact[{i}]",
+                    "hash": digest,
+                },
+            )
+            rec["_origin"] = "unadmitted"
+            if not rec.get("relation"):
+                rec["relation"] = "developmental"
+            records.append(rec)
+    return records
+
+
+def classify_splash_material(main_state: dict, splash_state: dict) -> list[dict]:
+    """Classify each Splash statement against current main. Re-run when either side moves.
+
+    Branch membership never determines the class. Compatible restatement on main is
+    CONFIRMED_CANON; a newer Splash value does not override main.
+    """
+    out: list[dict] = []
+    for fact in _splash_fact_records(splash_state):
+        entity, predicate, value = fact.get("entity"), fact.get("predicate"), fact.get("value")
+        if entity is None or predicate is None:
+            continue
+        hinted = _hinted_class(fact)
+        ordinal = fact.get("story_time_start")
+        if ordinal is None:
+            ordinal = fact.get("story_time_ordinal")
+        matches = list(_matching_facts(main_state, entity, predicate, ordinal))
+        origin = fact.get("_origin") or "canon"
+        if matches:
+            incompatible = any(
+                (m.get("polarity") or "asserted") == "asserted"
+                and _incompatible(m.get("value"), value)
+                for m in matches
+            )
+            if incompatible:
+                cls = "EXPLORATORY" if hinted == "EXPLORATORY" else "CONTRADICTORY"
+            elif hinted == "CANON_CLARIFICATION":
+                cls = "CANON_CLARIFICATION"
+            else:
+                # Main already holds a compatible value: Splash restates established canon.
+                cls = "CONFIRMED_CANON"
+        else:
+            if hinted:
+                cls = hinted
+            elif origin == "unadmitted":
+                cls = "DEVELOPMENTAL"
+            else:
+                cls = "UNRESOLVED"
+        item = {
+            "entity": entity,
+            "predicate": predicate,
+            "value": value,
+            "class": cls,
+            "origin": origin,
+            "source": fact.get("source"),
+        }
+        if fact.get("relation"):
+            item["relation"] = fact.get("relation")
+        out.append(item)
+    return out
+
+
+def attach_splash(state: dict, splash_name: str, splash_branch: dict) -> dict:
+    """Annotate a main Canon State with classified Splash context. Does not merge facts."""
+    splash_state = build_canon_state(splash_name, splash_branch)
+    classifications = classify_splash_material(state, splash_state)
+    state["splash_classifications"] = classifications
+    state["branch_context"]["splash"] = {
+        "name": splash_name,
+        "commit": splash_state["branch_context"]["commit"],
+    }
+    for s in splash_state.get("sources") or []:
+        state["sources"].append(
+            {
+                "id": s.get("id"),
+                "path": f"splash:{s['path']}",
+                "hash": s["hash"],
+                "status": "SPLASH",
+                "high_impact": False,
+                "depends_on": [],
+                "dependents": [],
+            }
+        )
+    for u in splash_state.get("unadmitted") or []:
+        state["sources"].append(
+            {
+                "id": u.get("id"),
+                "path": f"splash:unadmitted/{u.get('id')}",
+                "hash": _hash_obj(u),
+                "status": "SPLASH",
+                "high_impact": False,
+                "depends_on": [],
+                "dependents": [],
+            }
+        )
+    state["canon_state_id"] = (
+        f"{state['canon_state_id']}+splash@{splash_state['branch_context']['commit']}"
+    )
+    return splash_state
 
 
 def build_canon_state(branch_name: str, branch: dict, *, state_id: str | None = None) -> dict:
@@ -225,7 +427,14 @@ def _matching_facts(state: dict, entity: str, predicate: str, ordinal: float | N
             yield fact
 
 
-def verify(request: dict, state: dict, *, live_heads: dict | None = None) -> dict:
+def verify(
+    request: dict,
+    state: dict,
+    *,
+    live_heads: dict | None = None,
+    splash_state: dict | None = None,
+    classifications: list[dict] | None = None,
+) -> dict:
     findings: list[dict] = []
     kind = request.get("generation_kind")
     charter = (state.get("branch_context") or {}).get("charter") or {}
@@ -233,27 +442,42 @@ def verify(request: dict, state: dict, *, live_heads: dict | None = None) -> dic
     if request.get("story_time") and request["story_time"].get("ordinal") is not None:
         ordinal = request["story_time"]["ordinal"]
 
-    # Divergence: unchosen applicable branch
-    divergence = (state.get("branch_context") or {}).get("divergence") or []
-    if live_heads and len(live_heads) > 1 and not request.get("target_branch"):
-        # material divergence if any other head present
+    continue_splash = _continues_splash(request, splash_state)
+    if continue_splash and splash_state:
+        charter = (splash_state.get("branch_context") or {}).get("charter") or charter
+
+    classifications = classifications if classifications is not None else list(
+        state.get("splash_classifications") or []
+    )
+
+    # Extra live heads are not automatic CX-DIVERGENCE. Arena Splash must be
+    # inspected and classified against main; existence alone is not a stop.
+    splash_head_names = _splash_heads(live_heads)
+    if splash_head_names and splash_state is None and not request.get("target_branch"):
         findings.append(
             {
-                "class": "CX-DIVERGENCE",
+                "class": "CX-AMBIGUITY",
                 "severity": "stop",
-                "summary": "Multiple live heads and no target_branch",
-            }
-        )
-    elif divergence and not request.get("target_branch"):
-        findings.append(
-            {
-                "class": "CX-DIVERGENCE",
-                "severity": "stop",
-                "summary": "Recorded divergence without target_branch",
+                "summary": "Live Arena Splash head present but not classified against main",
             }
         )
 
-    # Charter / branch constraints
+    divergence = (state.get("branch_context") or {}).get("divergence") or []
+    if (
+        divergence
+        and not request.get("target_branch")
+        and splash_state is None
+        and not splash_head_names
+    ):
+        findings.append(
+            {
+                "class": "CX-DIVERGENCE",
+                "severity": "stop",
+                "summary": "Recorded non-splash divergence without target_branch",
+            }
+        )
+
+    # Charter / branch constraints (Splash charter only when continuing Splash)
     if kind == "narrative" and charter.get("narrative_authorized") is False:
         findings.append(
             {
@@ -483,6 +707,92 @@ def verify(request: dict, state: dict, *, live_heads: dict | None = None) -> dic
                 }
             )
 
+    # Splash vs main: classify, do not merge, do not ignore.
+    for item in classifications:
+        if item.get("class") == "CONTRADICTORY":
+            findings.append(
+                {
+                    "class": "CX-SPLASH-CONFLICT",
+                    "severity": "warn",
+                    "summary": (
+                        f"Splash {item.get('entity')}.{item.get('predicate')}="
+                        f"{item.get('value')!r} contradicts main "
+                        f"(classified, not merged)"
+                    ),
+                    "evidence": item.get("source"),
+                }
+            )
+
+    for claim in request.get("claims") or []:
+        entity, predicate, value = claim["entity"], claim["predicate"], claim["value"]
+        related = [
+            c
+            for c in classifications
+            if c.get("entity") == entity and c.get("predicate") == predicate
+        ]
+        established_claim = _treats_as_established(request, claim)
+        for item in related:
+            cls = item.get("class")
+            if cls == "UNRESOLVED":
+                findings.append(
+                    {
+                        "class": "CX-AMBIGUITY",
+                        "severity": "stop",
+                        "summary": (
+                            f"Unresolved splash material overlaps {entity}.{predicate}"
+                        ),
+                    }
+                )
+            splash_value = item.get("value")
+            uses_splash_value = not _incompatible(splash_value, value)
+            if cls == "CONTRADICTORY" and uses_splash_value:
+                if established_claim:
+                    findings.append(
+                        {
+                            "class": "CX-SPLASH-CONFLICT",
+                            "severity": "stop",
+                            "summary": (
+                                f"Would establish splash {entity}.{predicate}="
+                                f"{value!r} over main"
+                            ),
+                        }
+                    )
+                elif continue_splash:
+                    findings.append(
+                        {
+                            "class": "CX-SPLASH-CONFLICT",
+                            "severity": "warn",
+                            "summary": (
+                                f"Splash storyline uses contradictory "
+                                f"{entity}.{predicate}; do not present as "
+                                f"established canon"
+                            ),
+                        }
+                    )
+            if cls in NON_ESTABLISHED_SPLASH:
+                if established_claim:
+                    findings.append(
+                        {
+                            "class": "CX-SPLASH-PROPOSED",
+                            "severity": "stop",
+                            "summary": (
+                                f"Request treats splash {cls} {entity}.{predicate} "
+                                f"as established canon"
+                            ),
+                        }
+                    )
+                elif continue_splash:
+                    findings.append(
+                        {
+                            "class": "CX-EXPANSION",
+                            "severity": "warn",
+                            "summary": (
+                                f"Splash {cls} {entity}.{predicate} used as "
+                                f"authoring context, not established canon"
+                            ),
+                        }
+                    )
+
     decision = decide(findings, request)
     report = {
         "request_id": request.get("request_id") or "req",
@@ -506,6 +816,7 @@ def verify(request: dict, state: dict, *, live_heads: dict | None = None) -> dic
         "decision": decision,
         "invalidation": None,
         "contract_id": None,
+        "splash_classifications": classifications,
     }
     return report
 
@@ -534,6 +845,16 @@ def decide(findings: list[dict], request: dict) -> str:
     for cls, result in order:
         if cls in classes:
             return result
+    if any(
+        f["class"] == "CX-SPLASH-CONFLICT" and f.get("severity") == "stop"
+        for f in findings
+    ):
+        return "REQUIRES_CLARIFICATION"
+    if any(
+        f["class"] == "CX-SPLASH-PROPOSED" and f.get("severity") == "stop"
+        for f in findings
+    ):
+        return "REQUIRES_CLARIFICATION"
     if any(f.get("severity") == "warn" for f in findings) or "CX-EXPANSION" in classes:
         # expansion-only with no warn can still be PASS if tagged info
         if any(f.get("severity") == "warn" for f in findings):
@@ -613,19 +934,89 @@ def make_contract(request: dict, state: dict, report: dict) -> dict | None:
             "unadmitted drafts are not canon",
             "research is not canon",
             "do not resolve intentional mysteries",
+            "Arena Splash is not automatically canon",
+            "do not present proposed or developmental splash as established canon",
+            "do not override main merely because splash is newer",
         ],
         "authorized_changes": [],
         "source_hashes": hashes,
+        "source_status": _contract_source_status(state),
     }
+    for item in (state.get("splash_classifications") or []):
+        if item.get("class") == "CONTRADICTORY":
+            contract["forbidden_assumptions"].append(
+                f"conflict: splash {item.get('entity')}.{item.get('predicate')}="
+                f"{item.get('value')!r} vs main — classified, not silently resolved"
+            )
     report["contract_id"] = contract["contract_id"]
     return contract
 
 
-def run(request: dict, branch_name: str, branch: dict, *, live_heads: dict | None = None) -> dict:
+def _contract_source_status(state: dict) -> dict:
+    bands = {k: [] for k in CONTRACT_BANDS}
+    for fact in state.get("facts") or []:
+        bands["CANONICAL"].append(
+            {
+                "entity": fact.get("entity"),
+                "predicate": fact.get("predicate"),
+                "value": fact.get("value"),
+                "class": "CONFIRMED_CANON",
+                "source": fact.get("source"),
+            }
+        )
+    for item in state.get("splash_classifications") or []:
+        cls = item.get("class")
+        payload = {
+            "entity": item.get("entity"),
+            "predicate": item.get("predicate"),
+            "value": item.get("value"),
+            "class": cls,
+            "source": item.get("source"),
+        }
+        if cls == "CONFIRMED_CANON":
+            continue
+        if cls == "CANON_CLARIFICATION":
+            bands["CANON_CLARIFICATION"].append(payload)
+        elif cls == "AUTHORIAL_INTENT":
+            bands["AUTHORIAL_INTENT"].append(payload)
+        elif cls in (
+            "PROPOSED_CANON",
+            "CANON_EXTENSION",
+            "DEVELOPMENTAL",
+            "EXPLORATORY",
+        ):
+            bands["PROPOSED"].append(payload)
+        elif cls in ("CONTRADICTORY", "UNRESOLVED"):
+            bands["CONFLICT"].append(payload)
+    return bands
+
+
+def run(
+    request: dict,
+    branch_name: str,
+    branch: dict,
+    *,
+    live_heads: dict | None = None,
+    splash: dict | None = None,
+) -> dict:
     state = build_canon_state(branch_name, branch)
-    report = verify(request, state, live_heads=live_heads)
+    splash_state = None
+    if splash:
+        splash_state = attach_splash(state, splash["name"], splash["branch"])
+    report = verify(
+        request,
+        state,
+        live_heads=live_heads,
+        splash_state=splash_state,
+        classifications=state.get("splash_classifications") or [],
+    )
     contract = make_contract(request, state, report)
-    return {"state": state, "report": report, "contract": contract}
+    return {
+        "state": state,
+        "report": report,
+        "contract": contract,
+        "splash_state": splash_state,
+    }
 
 
 def admit(unadmitted_doc: dict, branch: dict) -> dict:

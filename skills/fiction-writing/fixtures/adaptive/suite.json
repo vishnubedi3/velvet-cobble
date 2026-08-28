@@ -432,8 +432,8 @@
   },
   {
     "id": "A09",
-    "title": "A branch diverges from another branch",
-    "must_change_decision": true,
+    "title": "Arena Splash appears as a clarification; extra head does not force REQUIRES_CLARIFICATION",
+    "must_change_decision": false,
     "request": {
       "request_id": "A09",
       "generation_kind": "narrative",
@@ -459,10 +459,30 @@
     "t1": {
       "name": "main",
       "live_heads": { "main": "c0", "arena/session": "c9" },
+      "splash": {
+        "name": "arena/session",
+        "branch": {
+          "commit": "c9",
+          "charter": { "narrative_authorized": true },
+          "canon": [
+            {
+              "id": "CHR-01",
+              "status": "CANON",
+              "facts": [
+                {
+                  "entity": "Lia",
+                  "predicate": "vital_status",
+                  "value": "alive",
+                  "relation": "clarifies"
+                }
+              ]
+            }
+          ]
+        }
+      },
       "branch": {
         "commit": "c0",
         "charter": { "narrative_authorized": true },
-        "divergence": [{ "ref": "arena/session", "nature": "narrative directory present" }],
         "canon": [
           {
             "id": "CHR-01",
@@ -473,7 +493,11 @@
       }
     },
     "expected_t0": { "decision": "PASS" },
-    "expected_t1": { "decision": "REQUIRES_CLARIFICATION", "classes": ["CX-DIVERGENCE"] }
+    "expected_t1": { "decision": "PASS" },
+    "extra": {
+      "check_classifications": ["CANON_CLARIFICATION"],
+      "check_source_status_band": "CANON_CLARIFICATION"
+    }
   },
   {
     "id": "A10",
@@ -835,5 +859,509 @@
     "expected_t0": { "decision": "PASS" },
     "expected_t1": { "decision": "PASS" },
     "extra": { "check_invalidation": "local" }
+  },
+  {
+    "id": "A16",
+    "title": "Splash contradicts main; conflict is classified, main remains baseline",
+    "must_change_decision": true,
+    "request": {
+      "request_id": "A16",
+      "generation_kind": "narrative",
+      "claims": [
+        { "entity": "Lia", "predicate": "vital_status", "value": "alive" }
+      ]
+    },
+    "t0": {
+      "name": "main",
+      "live_heads": { "main": "c0" },
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "CHR-01",
+            "status": "CANON",
+            "facts": [{ "entity": "Lia", "predicate": "vital_status", "value": "alive" }]
+          }
+        ]
+      }
+    },
+    "t1": {
+      "name": "main",
+      "live_heads": { "main": "c0", "arena/session": "c9" },
+      "splash": {
+        "name": "arena/session",
+        "branch": {
+          "commit": "c9",
+          "charter": { "narrative_authorized": true },
+          "canon": [
+            {
+              "id": "CHR-01",
+              "status": "CANON",
+              "facts": [
+                { "entity": "Lia", "predicate": "vital_status", "value": "dead" }
+              ]
+            }
+          ]
+        }
+      },
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "CHR-01",
+            "status": "CANON",
+            "facts": [{ "entity": "Lia", "predicate": "vital_status", "value": "alive" }]
+          }
+        ]
+      }
+    },
+    "expected_t0": { "decision": "PASS" },
+    "expected_t1": { "decision": "PASS_WITH_WARNINGS", "classes": ["CX-SPLASH-CONFLICT"] },
+    "extra": {
+      "check_classifications": ["CONTRADICTORY"],
+      "check_source_status_band": "CONFLICT",
+      "check_not_canonical_value": {
+        "entity": "Lia",
+        "predicate": "vital_status",
+        "value": "dead"
+      }
+    }
+  },
+  {
+    "id": "A17",
+    "title": "Proposed splash must not be treated as established until main admits it",
+    "must_change_decision": true,
+    "request": {
+      "request_id": "A17",
+      "generation_kind": "worldbuilding",
+      "claims": [
+        {
+          "entity": "Nila",
+          "predicate": "role",
+          "value": "scribe",
+          "treat_as_established": true
+        }
+      ]
+    },
+    "t0": {
+      "name": "main",
+      "live_heads": { "main": "c0", "arena/session": "c9" },
+      "splash": {
+        "name": "arena/session",
+        "branch": {
+          "commit": "c9",
+          "charter": { "narrative_authorized": false },
+          "canon": [
+            {
+              "id": "CUL-09",
+              "status": "CANON",
+              "facts": [
+                {
+                  "entity": "Nila",
+                  "predicate": "role",
+                  "value": "scribe",
+                  "relation": "proposed"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": false },
+        "canon": [
+          {
+            "id": "CUL-01",
+            "status": "CANON",
+            "facts": [{ "entity": "Helwick", "predicate": "has_archive", "value": true }]
+          }
+        ]
+      }
+    },
+    "t1": {
+      "name": "main",
+      "live_heads": { "main": "c1", "arena/session": "c9" },
+      "splash": {
+        "name": "arena/session",
+        "branch": {
+          "commit": "c9",
+          "charter": { "narrative_authorized": false },
+          "canon": [
+            {
+              "id": "CUL-09",
+              "status": "CANON",
+              "facts": [
+                {
+                  "entity": "Nila",
+                  "predicate": "role",
+                  "value": "scribe",
+                  "relation": "proposed"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "branch": {
+        "commit": "c1",
+        "charter": { "narrative_authorized": false },
+        "canon": [
+          {
+            "id": "CUL-01",
+            "status": "CANON",
+            "facts": [{ "entity": "Helwick", "predicate": "has_archive", "value": true }]
+          },
+          {
+            "id": "CUL-09",
+            "status": "CANON",
+            "facts": [{ "entity": "Nila", "predicate": "role", "value": "scribe" }]
+          }
+        ]
+      }
+    },
+    "expected_t0": { "decision": "REQUIRES_CLARIFICATION", "classes": ["CX-SPLASH-PROPOSED"] },
+    "expected_t1": { "decision": "PASS" },
+    "request_t1": {
+      "request_id": "A17b",
+      "generation_kind": "worldbuilding",
+      "claims": [
+        { "entity": "Nila", "predicate": "role", "value": "scribe" }
+      ]
+    },
+    "extra": {
+      "check_classification_change": {
+        "entity": "Nila",
+        "predicate": "role",
+        "from": "PROPOSED_CANON",
+        "to": "CONFIRMED_CANON"
+      }
+    }
+  },
+  {
+    "id": "A18",
+    "title": "Continue splash storyline uses splash as authoring context with status labels",
+    "must_change_decision": true,
+    "request": {
+      "request_id": "A18",
+      "generation_kind": "narrative",
+      "claims": [
+        { "entity": "Lia", "predicate": "located_in", "value": "Brannford" }
+      ]
+    },
+    "t0": {
+      "name": "main",
+      "live_heads": { "main": "c0" },
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": false },
+        "canon": [
+          {
+            "id": "CHR-01",
+            "status": "CANON",
+            "facts": [{ "entity": "Lia", "predicate": "vital_status", "value": "alive" }]
+          }
+        ]
+      }
+    },
+    "t1": {
+      "name": "main",
+      "live_heads": { "main": "c0", "arena/session": "c9" },
+      "splash": {
+        "name": "arena/session",
+        "branch": {
+          "commit": "c9",
+          "charter": { "narrative_authorized": true },
+          "canon": [
+            {
+              "id": "CHR-01",
+              "status": "CANON",
+              "facts": [{ "entity": "Lia", "predicate": "vital_status", "value": "alive" }]
+            }
+          ],
+          "unadmitted": [
+            {
+              "id": "pilot-scene",
+              "status": "DRAFT",
+              "facts": [
+                {
+                  "entity": "Lia",
+                  "predicate": "located_in",
+                  "value": "Brannford",
+                  "relation": "developmental"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": false },
+        "canon": [
+          {
+            "id": "CHR-01",
+            "status": "CANON",
+            "facts": [{ "entity": "Lia", "predicate": "vital_status", "value": "alive" }]
+          }
+        ]
+      }
+    },
+    "expected_t0": { "decision": "BLOCK", "classes": ["CX-BRANCH"] },
+    "expected_t1": { "decision": "PASS_WITH_WARNINGS" },
+    "request_t1": {
+      "request_id": "A18b",
+      "generation_kind": "narrative",
+      "continue_splash_storyline": true,
+      "target_branch": "arena/session",
+      "claims": [
+        { "entity": "Lia", "predicate": "located_in", "value": "Brannford" }
+      ]
+    },
+    "extra": {
+      "check_classifications": ["DEVELOPMENTAL"],
+      "check_source_status_band": "PROPOSED",
+      "check_not_canonical_value": {
+        "entity": "Lia",
+        "predicate": "located_in",
+        "value": "Brannford"
+      }
+    }
+  },
+  {
+    "id": "A19",
+    "title": "Splash classification changes when main incorporates the material",
+    "must_change_decision": false,
+    "request": {
+      "request_id": "A19",
+      "generation_kind": "worldbuilding",
+      "claims": [
+        { "entity": "Nila", "predicate": "role", "value": "scribe", "expansion": true }
+      ]
+    },
+    "t0": {
+      "name": "main",
+      "live_heads": { "main": "c0", "arena/session": "c9" },
+      "splash": {
+        "name": "arena/session",
+        "branch": {
+          "commit": "c9",
+          "charter": { "narrative_authorized": false },
+          "canon": [
+            {
+              "id": "CUL-09",
+              "status": "CANON",
+              "facts": [
+                {
+                  "entity": "Nila",
+                  "predicate": "role",
+                  "value": "scribe",
+                  "relation": "proposed"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": false },
+        "canon": [
+          {
+            "id": "CUL-01",
+            "status": "CANON",
+            "facts": [{ "entity": "Helwick", "predicate": "has_archive", "value": true }]
+          }
+        ]
+      }
+    },
+    "t1": {
+      "name": "main",
+      "live_heads": { "main": "c1", "arena/session": "c9" },
+      "splash": {
+        "name": "arena/session",
+        "branch": {
+          "commit": "c9",
+          "charter": { "narrative_authorized": false },
+          "canon": [
+            {
+              "id": "CUL-09",
+              "status": "CANON",
+              "facts": [
+                {
+                  "entity": "Nila",
+                  "predicate": "role",
+                  "value": "scribe",
+                  "relation": "proposed"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "branch": {
+        "commit": "c1",
+        "charter": { "narrative_authorized": false },
+        "canon": [
+          {
+            "id": "CUL-01",
+            "status": "CANON",
+            "facts": [{ "entity": "Helwick", "predicate": "has_archive", "value": true }]
+          },
+          {
+            "id": "CUL-09",
+            "status": "CANON",
+            "facts": [{ "entity": "Nila", "predicate": "role", "value": "scribe" }]
+          }
+        ]
+      }
+    },
+    "expected_t0": { "decision": "PASS" },
+    "expected_t1": { "decision": "PASS" },
+    "extra": {
+      "check_classification_change": {
+        "entity": "Nila",
+        "predicate": "role",
+        "from": "PROPOSED_CANON",
+        "to": "CONFIRMED_CANON"
+      }
+    }
+  },
+  {
+    "id": "A20",
+    "title": "Exploratory splash alternate is not the timeline and does not override main",
+    "must_change_decision": false,
+    "request": {
+      "request_id": "A20",
+      "generation_kind": "narrative",
+      "claims": [
+        { "entity": "Lia", "predicate": "vital_status", "value": "alive" }
+      ]
+    },
+    "t0": {
+      "name": "main",
+      "live_heads": { "main": "c0" },
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "CHR-01",
+            "status": "CANON",
+            "facts": [{ "entity": "Lia", "predicate": "vital_status", "value": "alive" }]
+          }
+        ]
+      }
+    },
+    "t1": {
+      "name": "main",
+      "live_heads": { "main": "c0", "arena/session": "c9" },
+      "splash": {
+        "name": "arena/session",
+        "branch": {
+          "commit": "c9",
+          "charter": { "narrative_authorized": true },
+          "canon": [
+            {
+              "id": "CHR-ALT",
+              "status": "CANON",
+              "facts": [
+                {
+                  "entity": "Lia",
+                  "predicate": "vital_status",
+                  "value": "dead",
+                  "relation": "exploratory"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "CHR-01",
+            "status": "CANON",
+            "facts": [{ "entity": "Lia", "predicate": "vital_status", "value": "alive" }]
+          }
+        ]
+      }
+    },
+    "expected_t0": { "decision": "PASS" },
+    "expected_t1": { "decision": "PASS" },
+    "extra": {
+      "check_classifications": ["EXPLORATORY"],
+      "check_source_status_band": "PROPOSED",
+      "check_not_canonical_value": {
+        "entity": "Lia",
+        "predicate": "vital_status",
+        "value": "dead"
+      }
+    }
+  },
+  {
+    "id": "A21",
+    "title": "Unresolved splash overlapping the request is not guessed into canon",
+    "must_change_decision": true,
+    "request": {
+      "request_id": "A21",
+      "generation_kind": "worldbuilding",
+      "claims": [
+        { "entity": "Lia", "predicate": "role", "value": "captain", "expansion": true }
+      ]
+    },
+    "t0": {
+      "name": "main",
+      "live_heads": { "main": "c0" },
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": false },
+        "canon": [
+          {
+            "id": "CHR-01",
+            "status": "CANON",
+            "facts": [{ "entity": "Lia", "predicate": "vital_status", "value": "alive" }]
+          }
+        ]
+      }
+    },
+    "t1": {
+      "name": "main",
+      "live_heads": { "main": "c0", "arena/session": "c9" },
+      "splash": {
+        "name": "arena/session",
+        "branch": {
+          "commit": "c9",
+          "charter": { "narrative_authorized": false },
+          "canon": [
+            {
+              "id": "CHR-02",
+              "status": "CANON",
+              "facts": [
+                { "entity": "Lia", "predicate": "role", "value": "captain" }
+              ]
+            }
+          ]
+        }
+      },
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": false },
+        "canon": [
+          {
+            "id": "CHR-01",
+            "status": "CANON",
+            "facts": [{ "entity": "Lia", "predicate": "vital_status", "value": "alive" }]
+          }
+        ]
+      }
+    },
+    "expected_t0": { "decision": "PASS" },
+    "expected_t1": { "decision": "REQUIRES_CLARIFICATION", "classes": ["CX-AMBIGUITY"] },
+    "extra": { "check_classifications": ["UNRESOLVED"] }
   }
 ]

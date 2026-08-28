@@ -112,8 +112,15 @@ The project retires canon by status change (RETIRED), not deletion. Retired file
 
 ---
 
-## 8. What this model refuses
+## 8. Splash is context, not a second fact table
+
+Arena Splash facts are **not** appended to `facts` on the `main` Canon State. They are classified (`splash_classifications`) and hashed for freshness. Re-classification is required when either side's hashes move. See [`BRANCH_RELATIONSHIP.md`](BRANCH_RELATIONSHIP.md).
+
+---
+
+## 9. What this model refuses
 
 - A one-time extraction of "all current facts."
 - Treating today's file list as the permanent set of domains.
 - Treating a previous Canon State as the next request's input without a freshness check.
+- Unioning Splash `02-canon/` into `main` because the session labeled it CANON.

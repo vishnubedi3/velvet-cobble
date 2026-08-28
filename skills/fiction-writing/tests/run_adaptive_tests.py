@@ -16,6 +16,7 @@ sys.path.insert(0, str(ROOT / "reference"))
 from canon_guard import (  # noqa: E402
     admit,
     build_canon_state,
+    classify_splash_material,
     contract_is_stale,
     detect_changes,
     invalidate,
@@ -48,8 +49,10 @@ def run_scenario(sc: dict) -> None:
 
     live0 = t0.get("live_heads")
     live1 = t1.get("live_heads")
+    splash0 = t0.get("splash")
+    splash1 = t1.get("splash")
 
-    out0 = run(req, name0, branch0, live_heads=live0)
+    out0 = run(req, name0, branch0, live_heads=live0, splash=splash0)
     _assert(
         out0["report"]["decision"] == sc["expected_t0"]["decision"],
         f"{sid} T0: got {out0['report']['decision']} expected {sc['expected_t0']['decision']}"
@@ -65,7 +68,7 @@ def run_scenario(sc: dict) -> None:
     else:
         _assert(out0["contract"] is None, f"{sid} T0 must not emit a contract")
 
-    out1 = run(req1, name1, branch1, live_heads=live1)
+    out1 = run(req1, name1, branch1, live_heads=live1, splash=splash1)
     _assert(
         out1["report"]["decision"] == sc["expected_t1"]["decision"],
         f"{sid} T1: got {out1['report']['decision']} expected {sc['expected_t1']['decision']}"
@@ -110,6 +113,50 @@ def run_scenario(sc: dict) -> None:
         if want_scope == "systemic":
             _assert(inv["dropped"], f"{sid} systemic change should drop derived facts")
             _assert(not inv["kept"], f"{sid} systemic change should keep none")
+
+    if extra.get("check_classifications"):
+        got = {c["class"] for c in out1["state"].get("splash_classifications") or []}
+        for cls in extra["check_classifications"]:
+            _assert(cls in got, f"{sid} T1 missing splash class {cls} in {got}")
+
+    if extra.get("check_source_status_band"):
+        _assert(out1["contract"] is not None, f"{sid} T1 need contract for source_status")
+        band = extra["check_source_status_band"]
+        bands = (out1["contract"] or {}).get("source_status") or {}
+        _assert(bands.get(band), f"{sid} T1 source_status.{band} empty in {bands}")
+
+    if extra.get("check_not_canonical_value"):
+        spec = extra["check_not_canonical_value"]
+        _assert(out1["contract"] is not None, f"{sid} T1 need contract")
+        canonical = ((out1["contract"] or {}).get("source_status") or {}).get("CANONICAL") or []
+        for item in canonical:
+            if (
+                item.get("entity") == spec["entity"]
+                and item.get("predicate") == spec["predicate"]
+                and item.get("value") == spec["value"]
+            ):
+                raise AssertionError(
+                    f"{sid} splash value {spec} must not appear in CANONICAL"
+                )
+
+    if extra.get("check_classification_change"):
+        spec = extra["check_classification_change"]
+
+        def _cls(state: dict) -> str | None:
+            for c in state.get("splash_classifications") or []:
+                if c.get("entity") == spec["entity"] and c.get("predicate") == spec["predicate"]:
+                    return c.get("class")
+            return None
+
+        got0, got1 = _cls(out0["state"]), _cls(out1["state"])
+        _assert(
+            got0 == spec["from"],
+            f"{sid} T0 class {got0} != {spec['from']}",
+        )
+        _assert(
+            got1 == spec["to"],
+            f"{sid} T1 class {got1} != {spec['to']}",
+        )
 
     if extra.get("check_admission"):
         # T0 unadmitted must not be in CANON sources
@@ -331,6 +378,124 @@ def test_world_model_not_authority() -> None:
     _assert(out["report"]["decision"] == "REQUIRES_CLARIFICATION", out["report"])
 
 
+def test_newer_splash_does_not_override_main() -> None:
+    """A later Splash commit cannot silently replace established main canon."""
+    main_branch = {
+        "commit": "old",
+        "charter": {"narrative_authorized": True},
+        "canon": [
+            {
+                "id": "CHR-01",
+                "status": "CANON",
+                "facts": [{"entity": "Lia", "predicate": "vital_status", "value": "alive"}],
+            }
+        ],
+    }
+    splash = {
+        "name": "arena/session",
+        "branch": {
+            "commit": "newer",
+            "charter": {"narrative_authorized": True},
+            "canon": [
+                {
+                    "id": "CHR-01",
+                    "status": "CANON",
+                    "facts": [{"entity": "Lia", "predicate": "vital_status", "value": "dead"}],
+                }
+            ],
+        },
+    }
+    req = {
+        "request_id": "override",
+        "generation_kind": "narrative",
+        "claims": [{"entity": "Lia", "predicate": "vital_status", "value": "dead", "treat_as_established": True}],
+    }
+    out = run(req, "main", main_branch, live_heads={"main": "old", "arena/session": "newer"}, splash=splash)
+    _assert(out["report"]["decision"] == "BLOCK", out["report"])
+    _assert(any(f["class"] == "CX-DIRECT" for f in out["report"]["findings"]), out["report"])
+    classes = {c["class"] for c in out["state"]["splash_classifications"]}
+    _assert("CONTRADICTORY" in classes, classes)
+    aligned = run(
+        {
+            "request_id": "aligned",
+            "generation_kind": "narrative",
+            "claims": [{"entity": "Lia", "predicate": "vital_status", "value": "alive"}],
+        },
+        "main",
+        main_branch,
+        live_heads={"main": "old", "arena/session": "newer"},
+        splash=splash,
+    )
+    _assert(aligned["report"]["decision"] == "PASS_WITH_WARNINGS", aligned["report"])
+    dead = [
+        i
+        for i in aligned["contract"]["source_status"]["CANONICAL"]
+        if i.get("value") == "dead"
+    ]
+    _assert(not dead, "newer splash dead must not enter CANONICAL")
+
+
+def test_uninspected_splash_is_not_ignored() -> None:
+    """A live arena/* head that was not classified is insufficient information."""
+    branch = {
+        "commit": "c0",
+        "charter": {"narrative_authorized": True},
+        "canon": [
+            {
+                "id": "CHR-01",
+                "status": "CANON",
+                "facts": [{"entity": "Lia", "predicate": "vital_status", "value": "alive"}],
+            }
+        ],
+    }
+    req = {
+        "request_id": "gap",
+        "generation_kind": "narrative",
+        "claims": [{"entity": "Lia", "predicate": "vital_status", "value": "alive"}],
+    }
+    out = run(req, "main", branch, live_heads={"main": "c0", "arena/session": "c9"})
+    _assert(out["report"]["decision"] == "REQUIRES_CLARIFICATION", out["report"])
+    _assert(any(f["class"] == "CX-AMBIGUITY" for f in out["report"]["findings"]), out["report"])
+
+
+def test_classify_splash_helper() -> None:
+    main_state = build_canon_state(
+        "main",
+        {
+            "commit": "c0",
+            "canon": [
+                {
+                    "id": "CHR-01",
+                    "status": "CANON",
+                    "facts": [{"entity": "Lia", "predicate": "vital_status", "value": "alive"}],
+                }
+            ],
+        },
+    )
+    splash_state = build_canon_state(
+        "arena/session",
+        {
+            "commit": "c9",
+            "canon": [
+                {
+                    "id": "CHR-01",
+                    "status": "CANON",
+                    "facts": [
+                        {
+                            "entity": "Lia",
+                            "predicate": "vital_status",
+                            "value": "alive",
+                            "relation": "clarifies",
+                        }
+                    ],
+                }
+            ],
+        },
+    )
+    got = classify_splash_material(main_state, splash_state)
+    _assert(got and got[0]["class"] == "CANON_CLARIFICATION", got)
+
+
 def main() -> int:
     suite = _load_suite()
     failures = []
@@ -365,6 +530,18 @@ def main() -> int:
     except AssertionError as exc:
         failures.append(("mystery-charter-change", str(exc)))
         print(f"FAIL mystery-charter-change {exc}")
+    extra_tests = (
+        ("newer-splash-does-not-override", test_newer_splash_does_not_override_main),
+        ("uninspected-splash", test_uninspected_splash_is_not_ignored),
+        ("classify-splash-helper", test_classify_splash_helper),
+    )
+    for name, fn in extra_tests:
+        try:
+            fn()
+            print(f"PASS {name}")
+        except AssertionError as exc:
+            failures.append((name, str(exc)))
+            print(f"FAIL {name} {exc}")
 
     print(f"\n{len(suite) - len([f for f in failures if f[0].startswith('A')])} suite scenarios ok; {len(failures)} failures")
     if failures:

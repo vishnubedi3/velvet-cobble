@@ -43,7 +43,8 @@
     "text": { "type": ["string", "null"] },
     "explicit_canon_change": { "type": "boolean", "default": false },
     "uses_unadmitted_as_canon": { "type": "boolean", "default": false },
-    "continue_splash_storyline": { "type": "boolean", "default": false }
+    "continue_splash_storyline": { "type": "boolean", "default": false },
+    "ignore_arena_development": { "type": "boolean", "default": false }
   },
   "$defs": {
     "claim": {

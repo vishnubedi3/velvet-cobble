@@ -1,76 +1,83 @@
 # BRANCH_RELATIONSHIP.md
 
-How `main` and Arena Splash relate. Re-evaluate on every request. Do not freeze a piece of Splash content as one class forever.
+How `main` and Arena relate. Re-evaluate on every request. Do not freeze a piece of Arena content as one class forever.
 
 ---
 
-## 1. The rule (binding)
+## 1. The model (binding)
 
 ```
-MAIN            = Default canonical baseline
-ARENA SPLASH    = Not automatically canon
-                  Not an independent canonical timeline by default
-                  Not irrelevant
-                  = Canon-relevant authorial development
+MAIN                         = Canonical baseline
+                               Established canon
+
+ARENA / ARENA SPLASH         = Current working / authoring state
+                               Not automatically established canon
+                               The most important live source for
+                               current creative direction
+
+MAIN + RELEVANT ARENA
+DEVELOPMENT                  = Canon interpretation for this request
+                               = Current Working Canon Context
 ```
 
-**Wrong:** "Arena Splash is non-canon."
-**Wrong:** "Arena Splash is canon because it exists / is newer."
-**Right:** "Arena Splash is not automatically canon, but its contents are potentially canon-relevant and may establish, clarify, or expand canon when supported by authorial intent and the project's integration process."
+**Wrong:** `main` = canon, Arena = non-canon.
+**Wrong:** Arena is established canon because it is the current working branch, or because it is newer.
+**Right:** `main` is the default established canon. Arena is the author's live workspace. Arena content is **canon-relevant development** whose status is resolved at the content level.
 
-Branch membership alone never determines canon status. Content plus relationship to `main` does.
+Do not select one branch and ignore the other.
+Do not mechanically merge them.
+Do not treat branch names as sufficient evidence of canon status.
 
-Do not automatically merge Splash into `main`.
-Do not automatically ignore Splash.
-Do not treat all Splash content equally.
+Two questions, always:
+
+1. Is this request consistent with **established canon** (`main`)?
+2. Is this request consistent with the author's **current working direction** (Arena)?
+
+A PASS is not earned merely by not contradicting `main`. Ignoring strong current Arena development is a finding. Differing from Arena is not automatically a BLOCK — Arena is a working branch; creative development remains possible.
 
 ---
 
-## 2. What "Arena Splash" is in this repository
+## 2. What "Arena" is in this repository
 
-The project has no git ref literally named `Arena Splash`. Observed authoring/development heads are **`arena/*` session branches** (and any future unmerged session head the host can show is playing that role).
+The project has no git ref literally named `Arena` or `Arena Splash`. Observed current working heads are **`arena/*` session branches** (and any future unmerged session head playing that role).
 
 | Ref | Role | Default treatment |
 |---|---|---|
-| `main` (default branch / `origin/HEAD`) | Merged project state | **Canonical baseline.** Established CANON on `main` is established canon unless a more specific live project rule says otherwise. |
-| `arena/*` (Arena Splash) | Authoring and development | **Non-canonical-by-default.** Inspect for relationship to `main`. Classify content. |
-| `recovery/*` | Pre-operation snapshots | Historical / rollback only. Not Splash, not live canon. |
+| `main` (default / `origin/HEAD`) | Merged project state | **Established canonical baseline.** Historical events, character facts, relationships, world rules, timeline, consequences, terminology — unless a live project rule says otherwise. |
+| `arena/*` (Arena) | **Current working branch** | Consult **aggressively** for current direction, developing storyline, clarifications, and intended future canon. Classify every relevant statement against `main`. Not automatic canon. |
+| `recovery/*` | Pre-operation snapshots | Historical / rollback only. Not Arena, not live canon. |
 | Merged PR heads | Already on `main` | Not a separate source. |
 
-A newer Splash commit does **not** override `main` merely by being newer. Repository time ≠ canon replacement.
+A newer Arena commit does **not** override `main` merely by being newer. Repository time ≠ canon replacement.
 
-If a future branch's own documents declare a different role (e.g. an explicit alternate timeline), believe **those documents**. Do not invent that role for ordinary `arena/*` heads.
+If a future branch's own documents declare a different role (e.g. an explicit alternate timeline), believe **those documents**.
+
+Both branches evolve. When `main` changes, re-evaluate Arena against the new baseline. When Arena changes, previous direction does not automatically control.
 
 ---
 
-## 3. What Splash material *may* be
+## 3. What Arena material *may* be
 
-Splash content may:
+Arena is where the author is actively writing. It may contain new chapters, scenes, characters, events, explanations, clarifications, storyline developments, future events, revised interpretations, proposed canon, experimental material, temporary drafts, abandoned ideas, and other working material.
 
-- clarify existing canon
-- expand existing canon
-- establish intended canon direction
-- provide a stronger explanation of something already on `main`
-- contain future canon
-- contain proposed canon
-- contain exploratory or provisional material
-- contradict `main`
-- remain unresolved
+The guard's questions are:
 
-The guard's question is not only "is this canon?" It is:
+> What is established canon?
+> What is the author currently developing?
+> What does this Arena material mean relative to `main`?
 
-> What does this material establish, clarify, develop, or propose about the author's canon?
+Those are different questions. Keep them different.
 
 ---
 
 ## 4. Resolution order (every request)
 
-1. Inspect the **current** state of `main`.
-2. Identify relevant **established** canon on `main`.
-3. Inspect relevant Arena Splash material where it provides additional context, clarification, development, or intended storyline.
-4. **Classify** that Splash material ([§5](#5-content-level-classification)).
-5. Distinguish established canon from proposed / developmental material.
-6. Put **only appropriately classified** information into the Generation Contract, **labeled by source status**.
+1. Inspect the **current** state of `main` (established canon).
+2. Inspect **current** relevant Arena material (working state). Consult it; do not skip it because the request did not name `arena/*`.
+3. Classify each relevant Arena statement against `main` ([§5](#5-content-level-classification)).
+4. Build a **Current Working Canon Context** ([§7](#7-current-working-canon-context)): established canon + classified Arena + conflicts + apparent current direction.
+5. Answer **both** decision questions ([§8](#8-the-two-questions)).
+6. Put **labeled** information into the Generation Contract. Never mix unlabeled Arena drafts into established canon.
 
 Details: [`CANON_RESOLUTION.md`](CANON_RESOLUTION.md).
 
@@ -78,19 +85,21 @@ Details: [`CANON_RESOLUTION.md`](CANON_RESOLUTION.md).
 
 ## 5. Content-level classification
 
-Classify each relevant Splash statement against current `main`. Re-classify when either side changes.
+Classify each relevant Arena statement against current `main`. Re-classify when either side changes. Do not force a class when the evidence is weaker than the label.
 
-| Class | Meaning | In the contract as established fact? |
-|---|---|---|
-| **CONFIRMED_CANON** | Same claim already established on `main` (Splash restates it) | Yes — sourced to `main`; Splash is corroboration |
-| **CANON_CLARIFICATION** | Explains, disambiguates, or strengthens something on `main` without replacing it | Yes, as clarification of `main`, labeled |
-| **CANON_EXTENSION** | Compatible new development along an established line; not yet on `main` | No. Labeled extension. Do not present as already-historical on `main` |
-| **AUTHORIAL_INTENT** | Strong indication of intended direction / future storyline; not established | No. Labeled intent |
-| **PROPOSED_CANON** | Offered as a candidate fact; awaiting integration | No. Labeled proposed |
-| **DEVELOPMENTAL** | Authoring work (draft, pilot, quality notes, scaffolding) | No. Storyline context only if the request continues Splash |
-| **EXPLORATORY** | Alternative / experiment; not the intended replacement | No. Must not be treated as the timeline |
-| **CONTRADICTORY** | Incompatible with established `main` at overlapping story-time | No. **Conflict.** Do not silently pick Splash over `main` |
-| **UNRESOLVED** | Relationship to `main` cannot be determined reliably | No. Preserve uncertainty |
+| Class | Meaning | Established fact? | Working direction? |
+|---|---|---|---|
+| **CONFIRMS_CANON** | Repeats or reinforces `main` | Yes — sourced to `main` | Corroboration |
+| **CLARIFIES_CANON** | Explains or makes explicit something on `main` without replacing it | Yes, as labeled clarification | Improves understanding of `main` |
+| **EXTENDS_CANON** | Compatible new information along an established line; not yet on `main` | No | Yes — current development |
+| **DEVELOPS_INTENDED_CANON** | Appears to be the author's current intended direction; not yet established | No | **Yes — strong direction** |
+| **PROPOSED_CANON** | Offered as a candidate addition or change | No | Provisional |
+| **DEVELOPMENTAL** | Working material; status not established | No | Provisional |
+| **EXPLORATORY** | Explores possibilities rather than a definitive direction | No | Not the timeline |
+| **CONTRADICTS_CANON** | Conflicts with established `main` at overlapping story-time | No | **Conflict.** Do not silently incorporate |
+| **RETCON_PROPOSAL** | Appears to intentionally revise established canon; not yet integrated | No | **Conflict / change.** `CANON_CHANGE_REQUIRED` only if the user wants the change |
+| **ABANDONED_OR_SUPERSEDED** | Repository evidence that this is no longer current direction | No | Must not control generation |
+| **UNRESOLVED** | Relationship to `main` cannot be determined reliably | No | Open question |
 
 Signals (use when present; do not invent certainty):
 
@@ -99,64 +108,109 @@ Signals (use when present; do not invent certainty):
 - Explicit authorial notes, question status, contradiction-register entries
 - Consistency with `main` (compatible clarification vs incompatible replacement)
 - High-impact headers (an extension that would smuggle a world-law is not a quiet clarification)
+- Later Arena commits superseding earlier ones on the same working head
 
-Where intent is unclear → `UNRESOLVED`, not a guessed `CONFIRMED_CANON`.
+Where intent is unclear → `UNRESOLVED`, not a guessed `CONFIRMS_CANON`.
 
 ---
 
 ## 6. Conflict outcomes (do not silently resolve)
 
-When Splash disagrees with `main`:
-
 | Reading | Guard |
 |---|---|
-| Splash clarifies `main` (compatible) | `CANON_CLARIFICATION` — use it to improve understanding |
-| Splash proposes an extension | `CANON_EXTENSION` / `PROPOSED_CANON` |
-| Splash contains a future development | `AUTHORIAL_INTENT` |
-| Splash proposes a retcon | `CONTRADICTORY` + `CANON_CHANGE_REQUIRED` only if the user explicitly wants the change |
-| Splash contains an unresolved contradiction | `CONTRADICTORY` / `UNRESOLVED` — flag; `main` remains baseline |
-| `main` remains authoritative | Default whenever Splash would replace an established fact without integration |
+| Arena confirms `main` | `CONFIRMS_CANON` |
+| Arena clarifies `main` | `CLARIFIES_CANON` — use it to understand `main` |
+| Arena extends `main` | `EXTENDS_CANON` — working development, not yet historical on `main` |
+| Arena is current intended direction | `DEVELOPS_INTENDED_CANON` — inform generation; do not present as established |
+| Arena proposes an addition | `PROPOSED_CANON` |
+| Arena proposes a retcon | `RETCON_PROPOSAL` — flag; `main` remains baseline until integration |
+| Arena contradicts `main` | `CONTRADICTS_CANON` — classify; do not pick Arena because it is newer |
+| Arena is abandoned / superseded | `ABANDONED_OR_SUPERSEDED` — do not let it control |
+| Competing Arena directions | `UNRESOLVED` / `REQUIRES_CLARIFICATION` |
+| `main` remains authoritative for established facts | Default whenever Arena would *replace* an established fact without integration |
 
-Only an **explicit or sufficiently supported canon integration** (admission onto `main` via the project's changelog / transformation / dependency-sweep process) causes Splash development to replace established `main` canon.
-
----
-
-## 7. Generation behavior
-
-**From `main` alone** (no relevant Splash, or Splash empty for this request): use established `main` canon.
-
-**From `main` with relevant Splash context** (the default when live `arena/*` heads exist):
-
-- Baseline = established `main` canon
-- Add Splash according to class ([§5](#5-content-level-classification))
-- Do **not** present `PROPOSED_CANON`, `AUTHORIAL_INTENT`, `DEVELOPMENTAL`, or `EXPLORATORY` as established historical fact
-- `CANON_CLARIFICATION` may be used to understand `main` better
-- `CONTRADICTORY`: record the conflict; do not convert Splash into canon
-
-**Explicit continuation of a Splash storyline** (`continue_splash_storyline` or target ref is a Splash head):
-
-- Splash is the **authoring context**
-- Still label every constraint's status
-- Still do not treat proposed/developmental Splash as established `main` canon
-- If the continuation would *establish* something inconsistent with `main`, **flag it** (`REQUIRES_CLARIFICATION` or `CANON_CHANGE_REQUIRED`) — do not silently promote
+Only an **explicit or sufficiently supported canon integration** (admission onto `main` via the project's changelog / transformation / dependency-sweep process) causes Arena development to replace established `main` canon.
 
 ---
 
-## 8. Adaptation
+## 7. Current Working Canon Context
 
-As the author writes:
+This is **not** established canon. It is the interpretation object for one request:
 
-- Splash may develop new material
-- `main` may incorporate it (then reclassify toward `CONFIRMED_CANON`)
-- Splash may clarify previously ambiguous `main`
-- `main` may establish a different outcome (Splash may become `CONTRADICTORY` or abandoned intent)
-- Provisional Splash may become canonical — **only after integration onto `main`**
-- Intended material may be abandoned
+- **A.** Established canon from `main`
+- **B.** Relevant Arena developments (classified)
+- **C.** Status of each Arena development
+- **D.** Unresolved conflicts between the two
+- **E.** Apparent current authorial direction, where sufficiently supported
 
-Previous classifications are evidence, not identity. Hash change on either side → re-resolve.
+The generator must see both "what is canon?" and "what is the author currently developing?"
 
 ---
 
-## 9. Final principle
+## 8. The two questions
 
-Protect the canon. Understand the author's evolving development. Do not collapse those two jobs into a branch label.
+| | Question | Typical outcomes |
+|---|---|---|
+| Q1 | Consistent with established canon (`main`)? | Violation → `BLOCK` or `CANON_CHANGE_REQUIRED` |
+| Q2 | Consistent with current working direction (Arena)? | Strong ignore / diverge from intended or provisional → `PASS_WITH_WARNINGS`; competing directions → `REQUIRES_CLARIFICATION` |
+
+Combined:
+
+| Q1 | Q2 | Decision |
+|---|---|---|
+| Violates `main` | (any) | `BLOCK` (or `CANON_CHANGE_REQUIRED` if explicit) |
+| Safe vs `main` | Follows current direction (or none relevant) | `PASS` |
+| Safe vs `main` | Diverges from / ignores strong or provisional Arena development | `PASS_WITH_WARNINGS` |
+| Safe vs `main` | Arena direction genuinely ambiguous | `REQUIRES_CLARIFICATION` |
+| Insufficient information (uninspected Arena, unresolved overlap) | | `REQUIRES_CLARIFICATION` |
+
+Do **not** automatically BLOCK a request merely because it differs from Arena.
+Do **not** PASS a request merely because it does not contradict `main`.
+
+---
+
+## 9. Generation Contract bands
+
+| Band | Content |
+|---|---|
+| **ESTABLISHED_CANON** | From `main` |
+| **CURRENT_WORKING_DEVELOPMENT** | Arena extensions and live storyline, labeled |
+| **CANON_CLARIFICATIONS** | Arena explanations of `main` |
+| **AUTHORIAL_DIRECTION** | Strongly supported current development that should influence generation |
+| **PROVISIONAL** | Working / proposed / exploratory — not established; use only if the request permits working material |
+| **CONFLICTS** | `main` vs Arena differences requiring attention |
+| **OPEN_QUESTIONS** | Intent cannot be determined reliably |
+
+Downstream:
+
+- **ESTABLISHED CANON** — use as factual project canon.
+- **CURRENT AUTHORIAL DEVELOPMENT** — use as current story direction where appropriate.
+- **PROVISIONAL** — use only if the request explicitly permits working material.
+- **CONFLICT** — do not silently incorporate.
+
+This prevents ignoring Arena (generating from old `main` while the author has moved) and prevents canonizing unfinished Arena drafts.
+
+---
+
+## 10. Adaptation
+
+Arena is continuously written. `main` may also evolve through deliberate canon updates.
+
+- New Arena developments become available on the next resolve.
+- Superseded Arena developments must not automatically control.
+- New contradictions, character states, timeline facts, relationships, and storyline direction must be recognized.
+- When `main` changes: invalidate stale derived state; re-classify Arena against the new baseline.
+
+Previous classifications are evidence, not identity. Hash change on either side → re-resolve. Do not permanently extract Arena into a frozen representation.
+
+---
+
+## 11. Final principle
+
+`main` is the canonical foundation.
+Arena is the living workspace where the author currently develops the project.
+Arena content is evidence of current authorial development, not automatic canon.
+Canon resolution determines which Arena developments are authoritative, clarifying, intended, provisional, exploratory, contradictory, retcon, abandoned, or unresolved.
+Generation uses established canon from `main` while incorporating relevant, **appropriately classified** current Arena development.
+
+Protect established canon. Stay synchronized with the author's current working storyline. Do not freeze the project.

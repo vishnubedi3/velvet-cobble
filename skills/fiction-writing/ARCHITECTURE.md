@@ -15,9 +15,9 @@ The Canon Guard is a **living verification layer**, not a database of the world.
                            │
 ┌──────────────────────────▼──────────────────────────────────┐
 │  Resolution layer                                           │
-│  Discover refs → main as baseline → inspect Arena Splash    │
-│  → classify Splash content against main → inventory sources │
-│  by status/location → select relevant subset → hash         │
+│  Discover refs → main = established canon                   │
+│  → Arena = current working state (consult aggressively)     │
+│  → classify Arena vs main → Current Working Canon Context   │
 │  Specified in BRANCH_RELATIONSHIP.md + CANON_RESOLUTION.md  │
 └──────────────────────────┬──────────────────────────────────┘
                            │

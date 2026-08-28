@@ -49,8 +49,9 @@ python3 skills/fiction-writing/tests/run_adaptive_tests.py
 
 - Copy `samur/02-canon/` (or any branch's fictional contents) into this package.
 - Snapshot today's facts as permanently correct.
-- Auto-merge Arena Splash into `main`, or dismiss Splash as non-canon.
-- Treat Splash as established canon merely because it exists or is newer.
+- Auto-merge Arena into `main`, or dismiss Arena as non-canon.
+- Treat Arena as established canon merely because it is the current working branch or is newer.
+- PASS a request merely because it does not contradict `main` while ignoring strong current Arena development.
 - Treat `recovery/*` tags as live sources.
 - Treat `WORLD-MODEL.md` as winning a disagreement with a canon file.
 - Treat research, hypotheses, open questions, pilots, or quality reports as CANON.

@@ -128,7 +128,8 @@ def run_scenario(sc: dict) -> None:
     if extra.get("check_not_canonical_value"):
         spec = extra["check_not_canonical_value"]
         _assert(out1["contract"] is not None, f"{sid} T1 need contract")
-        canonical = ((out1["contract"] or {}).get("source_status") or {}).get("CANONICAL") or []
+        bands = (out1["contract"] or {}).get("source_status") or {}
+        canonical = bands.get("ESTABLISHED_CANON") or bands.get("CANONICAL") or []
         for item in canonical:
             if (
                 item.get("entity") == spec["entity"]
@@ -414,7 +415,7 @@ def test_newer_splash_does_not_override_main() -> None:
     _assert(out["report"]["decision"] == "BLOCK", out["report"])
     _assert(any(f["class"] == "CX-DIRECT" for f in out["report"]["findings"]), out["report"])
     classes = {c["class"] for c in out["state"]["splash_classifications"]}
-    _assert("CONTRADICTORY" in classes, classes)
+    _assert("CONTRADICTS_CANON" in classes, classes)
     aligned = run(
         {
             "request_id": "aligned",
@@ -429,10 +430,10 @@ def test_newer_splash_does_not_override_main() -> None:
     _assert(aligned["report"]["decision"] == "PASS_WITH_WARNINGS", aligned["report"])
     dead = [
         i
-        for i in aligned["contract"]["source_status"]["CANONICAL"]
+        for i in aligned["contract"]["source_status"]["ESTABLISHED_CANON"]
         if i.get("value") == "dead"
     ]
-    _assert(not dead, "newer splash dead must not enter CANONICAL")
+    _assert(not dead, "newer splash dead must not enter ESTABLISHED_CANON")
 
 
 def test_uninspected_splash_is_not_ignored() -> None:
@@ -493,7 +494,7 @@ def test_classify_splash_helper() -> None:
         },
     )
     got = classify_splash_material(main_state, splash_state)
-    _assert(got and got[0]["class"] == "CANON_CLARIFICATION", got)
+    _assert(got and got[0]["class"] == "CLARIFIES_CANON", got)
 
 
 def main() -> int:

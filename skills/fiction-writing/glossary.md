@@ -5,8 +5,9 @@ Terms that must not drift between files.
 | Term | Meaning |
 |---|---|
 | **Applicable branch** | The ref a request is evaluated against. `main` is the default canonical baseline. |
-| **Arena Splash** | Live `arena/*` session heads. Not automatically canon, not an independent timeline, not irrelevant. Classified against `main`. |
-| **Splash classification** | Content-level class of a Splash statement: `CONFIRMED_CANON`, `CANON_CLARIFICATION`, `CANON_EXTENSION`, `AUTHORIAL_INTENT`, `PROPOSED_CANON`, `DEVELOPMENTAL`, `EXPLORATORY`, `CONTRADICTORY`, `UNRESOLVED`. |
+| **Arena** | Live `arena/*` session heads. The **current working / authoring state**. Not automatically established canon. Consulted aggressively and classified against `main`. |
+| **Current Working Canon Context** | Established `main` canon plus classified Arena developments for one request. Not a merge. |
+| **Splash classification** | Content-level class: `CONFIRMS_CANON`, `CLARIFIES_CANON`, `EXTENDS_CANON`, `DEVELOPS_INTENDED_CANON`, `PROPOSED_CANON`, `DEVELOPMENTAL`, `EXPLORATORY`, `CONTRADICTS_CANON`, `RETCON_PROPOSAL`, `ABANDONED_OR_SUPERSEDED`, `UNRESOLVED`. |
 | **Admission** | Explicit promotion of proposed material into `samur/02-canon/` via project workflow. |
 | **Canon State** | Relevant source state at specific commits/hashes. Derived, not authority. |
 | **Canon file** | A document under `samur/02-canon/` with `Status: CANON`. |

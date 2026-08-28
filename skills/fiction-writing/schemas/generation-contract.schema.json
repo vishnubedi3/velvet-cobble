@@ -32,15 +32,18 @@
     "uncertainties": { "type": "array", "items": { "type": "string" } },
     "forbidden_assumptions": { "type": "array", "items": { "type": "string" } },
     "authorized_changes": { "type": "array", "items": { "type": "object" } },
+    "working_canon_context": { "type": "object" },
     "source_status": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "CANONICAL": { "type": "array", "items": { "type": "object" } },
-        "CANON_CLARIFICATION": { "type": "array", "items": { "type": "object" } },
-        "AUTHORIAL_INTENT": { "type": "array", "items": { "type": "object" } },
-        "PROPOSED": { "type": "array", "items": { "type": "object" } },
-        "CONFLICT": { "type": "array", "items": { "type": "object" } }
+        "ESTABLISHED_CANON": { "type": "array", "items": { "type": "object" } },
+        "CURRENT_WORKING_DEVELOPMENT": { "type": "array", "items": { "type": "object" } },
+        "CANON_CLARIFICATIONS": { "type": "array", "items": { "type": "object" } },
+        "AUTHORIAL_DIRECTION": { "type": "array", "items": { "type": "object" } },
+        "PROVISIONAL": { "type": "array", "items": { "type": "object" } },
+        "CONFLICTS": { "type": "array", "items": { "type": "object" } },
+        "OPEN_QUESTIONS": { "type": "array", "items": { "type": "object" } }
       }
     },
     "source_hashes": {

@@ -27,8 +27,9 @@ If the Canon State is stale relative to the repo at evaluation time, do not deci
 9. **CX-DIRECT** / **CX-INDIRECT** / **CX-TEMPORAL** / **CX-KNOWLEDGE** / **CX-CAUSAL** → `BLOCK`.
 10. **CX-UNRESOLVED-REGISTER** intersecting the request → `REQUIRES_CLARIFICATION`.
 11. **CX-AUTHORITY** (unclear citation) → `REQUIRES_CLARIFICATION`.
-12. Warnings only (OPEN narrative-detail fill, classified Splash conflict that does not replace `main`, Splash authoring context, WORLD-MODEL lagging its files, permitted expansion) → `PASS_WITH_WARNINGS`.
-13. No findings → `PASS`.
+12. **CX-WORKING-DIRECTION** (ignore or diverge from current Arena development) → `PASS_WITH_WARNINGS`. Not a BLOCK.
+13. Warnings only (OPEN narrative-detail fill, classified Arena conflict that does not replace `main`, provisional working material, WORLD-MODEL lagging its files, permitted expansion) → `PASS_WITH_WARNINGS`.
+14. No findings → `PASS`.
 
 `CX-STALE` is handled before this table by re-verification. A stale contract is never itself a PASS.
 

@@ -45,9 +45,9 @@ CANON ADMISSION / BRANCH UPDATE
 NEXT CANON RESOLUTION
 ```
 
-A PASS means: *this request is compatible with the applicable canon state evaluated at this point.*
+A PASS means: *this request is consistent with established canon on `main` and with the author's current working direction where that direction is sufficiently supported.*
 
-A PASS does **not** mean: *this request will always be canonically valid.*
+A PASS does **not** mean: *this request will always be canonically valid.* It also does not mean Arena drafts are now canon.
 
 ---
 
@@ -58,7 +58,7 @@ A PASS does **not** mean: *this request will always be canonically valid.*
 3. **Do not freeze canon.** This skill must not hard-code current branch facts (names, dates, reigns, alliances, locations, deaths, knowledge). It defines *how* to derive current facts from evolving sources.
 4. **Do not duplicate the world.** Provenance points at sources. The source remains the source.
 5. **Do not invent branch certainty.** Classify branches from evidence in the repository (charter, directory layout, recovery tags, merge history). If the role of a branch is ambiguous, surface the ambiguity.
-6. **Main is the default canonical baseline. Arena Splash (`arena/*`) is not automatically canon, not an independent timeline, and not irrelevant.** Classify Splash content against current `main`. Do not auto-merge. Do not ignore. Do not treat all Splash equally. Newer Splash does not override `main`. See [`BRANCH_RELATIONSHIP.md`](BRANCH_RELATIONSHIP.md).
+6. **`main` is the established canonical baseline. Arena (`arena/*`) is the current working / authoring state.** Consult Arena aggressively for current direction. Do not treat working-branch membership as established canon. Do not ignore Arena. Do not auto-merge. Classify content against `main`. A request does not PASS merely by not contradicting `main`. Differing from Arena is not automatically a BLOCK. See [`BRANCH_RELATIONSHIP.md`](BRANCH_RELATIONSHIP.md).
 7. **Separate repository time from story time.** A newly written document can describe an earlier fictional period. A later-repo fact does not automatically apply to an earlier story-time generation.
 8. **Separate establishment from in-world knowledge.** When a source later records that an entity learned something, that does not grant the entity the knowledge in earlier story periods.
 9. **Generated material is proposed until admitted.** Drafts, pilots, quality reports, and chat output are not canon.
@@ -90,11 +90,11 @@ A PASS does **not** mean: *this request will always be canonically valid.*
 
 | Decision | Meaning |
 |---|---|
-| **PASS** | Compatible with the applicable canon state evaluated now. Generation may proceed under the emitted contract. |
-| **PASS_WITH_WARNINGS** | Compatible, but the contract records uncertainties, permitted-but-unadmitted fill, or non-blocking issues. |
-| **REQUIRES_CLARIFICATION** | The current branch state (or branch selection) is insufficient or ambiguous; guessing would be unsafe. |
-| **BLOCK** | The request conflicts with currently applicable canon, violates a live branch constraint, or would contaminate canon. |
-| **CANON_CHANGE_REQUIRED** | The user explicitly wants an outcome that requires changing established canon. Do not silently overwrite. Follow [`CANON_CHANGE_PROTOCOL.md`](CANON_CHANGE_PROTOCOL.md). |
+| **PASS** | Consistent with established `main` canon **and** current Arena working direction (or none relevant). |
+| **PASS_WITH_WARNINGS** | Safe vs `main`, but diverges from / ignores strong or provisional Arena development, or uses working material that is not established. |
+| **REQUIRES_CLARIFICATION** | Uninspected Arena, unresolved overlap, or competing Arena directions. Guessing would be unsafe. |
+| **BLOCK** | Materially violates established `main` canon, a live charter constraint, or would contaminate canon. Differing from Arena is not by itself a BLOCK. |
+| **CANON_CHANGE_REQUIRED** | The user explicitly wants an outcome that requires changing established canon (including an Arena retcon proposal they want to establish). Follow [`CANON_CHANGE_PROTOCOL.md`](CANON_CHANGE_PROTOCOL.md). |
 
 ---
 
@@ -116,7 +116,7 @@ Full pipeline: [`spec/02-pipeline.md`](spec/02-pipeline.md). Every generation re
 12. **Detect ambiguity.** Missing facts, unresolved Splash overlapping the request, register-vs-file disagreement, WORLD-MODEL-vs-canon-file disagreement (canon file wins; the disagreement is still a finding). Extra `arena/*` heads are classified, not treated as automatic `REQUIRES_CLARIFICATION`.
 13. **Detect unresolved conflicts.** Live entries in the contradictions register; unresolved high-impact disagreements.
 14. **Produce a decision** from [`DECISION_PROTOCOL.md`](DECISION_PROTOCOL.md).
-15. **Produce a Generation Contract** if generation is permitted ([`GENERATION_CONTRACT.md`](GENERATION_CONTRACT.md)). The contract is valid only for the evaluated canon state. Constraints must be labeled by **source status** (CANONICAL / CANON CLARIFICATION / AUTHORIAL INTENT / PROPOSED / CONFLICT).
+15. **Produce a Generation Contract** if generation is permitted ([`GENERATION_CONTRACT.md`](GENERATION_CONTRACT.md)). The contract is valid only for the evaluated canon state. It must separate **ESTABLISHED_CANON** (`main`) from **CURRENT_WORKING_DEVELOPMENT**, **CANON_CLARIFICATIONS**, **AUTHORIAL_DIRECTION**, **PROVISIONAL**, **CONFLICTS**, and **OPEN_QUESTIONS**.
 
 ---
 
@@ -148,6 +148,7 @@ Portable functions (any language, any model):
 ```
 resolve_branches(repo)              -> BranchContext
 resolve_canon(branch_context, req)  -> CanonState
+classify_splash(main_state, splash) -> SplashClassification[]
 verify(request, canon_state)        -> VerificationReport
 decide(report)                      -> Decision
 contract(request, state, report)    -> GenerationContract | null

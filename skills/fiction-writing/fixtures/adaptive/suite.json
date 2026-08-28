@@ -495,8 +495,8 @@
     "expected_t0": { "decision": "PASS" },
     "expected_t1": { "decision": "PASS" },
     "extra": {
-      "check_classifications": ["CANON_CLARIFICATION"],
-      "check_source_status_band": "CANON_CLARIFICATION"
+      "check_classifications": ["CLARIFIES_CANON"],
+      "check_source_status_band": "CANON_CLARIFICATIONS"
     }
   },
   {
@@ -920,8 +920,8 @@
     "expected_t0": { "decision": "PASS" },
     "expected_t1": { "decision": "PASS_WITH_WARNINGS", "classes": ["CX-SPLASH-CONFLICT"] },
     "extra": {
-      "check_classifications": ["CONTRADICTORY"],
-      "check_source_status_band": "CONFLICT",
+      "check_classifications": ["CONTRADICTS_CANON"],
+      "check_source_status_band": "CONFLICTS",
       "check_not_canonical_value": {
         "entity": "Lia",
         "predicate": "vital_status",
@@ -1036,7 +1036,7 @@
         "entity": "Nila",
         "predicate": "role",
         "from": "PROPOSED_CANON",
-        "to": "CONFIRMED_CANON"
+        "to": "CONFIRMS_CANON"
       }
     }
   },
@@ -1122,7 +1122,7 @@
     },
     "extra": {
       "check_classifications": ["DEVELOPMENTAL"],
-      "check_source_status_band": "PROPOSED",
+      "check_source_status_band": "PROVISIONAL",
       "check_not_canonical_value": {
         "entity": "Lia",
         "predicate": "located_in",
@@ -1133,7 +1133,7 @@
   {
     "id": "A19",
     "title": "Splash classification changes when main incorporates the material",
-    "must_change_decision": false,
+    "must_change_decision": true,
     "request": {
       "request_id": "A19",
       "generation_kind": "worldbuilding",
@@ -1218,14 +1218,14 @@
         ]
       }
     },
-    "expected_t0": { "decision": "PASS" },
+    "expected_t0": { "decision": "PASS_WITH_WARNINGS" },
     "expected_t1": { "decision": "PASS" },
     "extra": {
       "check_classification_change": {
         "entity": "Nila",
         "predicate": "role",
         "from": "PROPOSED_CANON",
-        "to": "CONFIRMED_CANON"
+        "to": "CONFIRMS_CANON"
       }
     }
   },
@@ -1295,7 +1295,7 @@
     "expected_t1": { "decision": "PASS" },
     "extra": {
       "check_classifications": ["EXPLORATORY"],
-      "check_source_status_band": "PROPOSED",
+      "check_source_status_band": "PROVISIONAL",
       "check_not_canonical_value": {
         "entity": "Lia",
         "predicate": "vital_status",
@@ -1363,5 +1363,539 @@
     "expected_t0": { "decision": "PASS" },
     "expected_t1": { "decision": "REQUIRES_CLARIFICATION", "classes": ["CX-AMBIGUITY"] },
     "extra": { "check_classifications": ["UNRESOLVED"] }
+  },
+  {
+    "id": "A22",
+    "title": "Follow Arena intended storyline without violating main",
+    "must_change_decision": false,
+    "request": {
+      "request_id": "A22",
+      "generation_kind": "narrative",
+      "claims": [
+        { "entity": "Lia", "predicate": "located_in", "value": "Brannford" }
+      ]
+    },
+    "t0": {
+      "name": "main",
+      "live_heads": { "main": "c0", "arena/session": "c9" },
+      "splash": {
+        "name": "arena/session",
+        "branch": {
+          "commit": "c9",
+          "charter": { "narrative_authorized": true },
+          "canon": [
+            {
+              "id": "CHR-01",
+              "status": "CANON",
+              "facts": [{ "entity": "Lia", "predicate": "vital_status", "value": "alive" }]
+            },
+            {
+              "id": "GEO-N",
+              "status": "CANON",
+              "facts": [
+                {
+                  "entity": "Lia",
+                  "predicate": "located_in",
+                  "value": "Brannford",
+                  "relation": "intended"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "CHR-01",
+            "status": "CANON",
+            "facts": [{ "entity": "Lia", "predicate": "vital_status", "value": "alive" }]
+          }
+        ]
+      }
+    },
+    "t1": {
+      "name": "main",
+      "live_heads": { "main": "c0", "arena/session": "c9" },
+      "splash": {
+        "name": "arena/session",
+        "branch": {
+          "commit": "c9",
+          "charter": { "narrative_authorized": true },
+          "canon": [
+            {
+              "id": "CHR-01",
+              "status": "CANON",
+              "facts": [{ "entity": "Lia", "predicate": "vital_status", "value": "alive" }]
+            },
+            {
+              "id": "GEO-N",
+              "status": "CANON",
+              "facts": [
+                {
+                  "entity": "Lia",
+                  "predicate": "located_in",
+                  "value": "Brannford",
+                  "relation": "intended"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "CHR-01",
+            "status": "CANON",
+            "facts": [{ "entity": "Lia", "predicate": "vital_status", "value": "alive" }]
+          }
+        ]
+      }
+    },
+    "expected_t0": { "decision": "PASS" },
+    "expected_t1": { "decision": "PASS" },
+    "extra": {
+      "check_classifications": ["DEVELOPS_INTENDED_CANON"],
+      "check_source_status_band": "AUTHORIAL_DIRECTION",
+      "check_not_canonical_value": {
+        "entity": "Lia",
+        "predicate": "located_in",
+        "value": "Brannford"
+      }
+    }
+  },
+  {
+    "id": "A23",
+    "title": "Compatible with main but ignores strong current Arena development",
+    "must_change_decision": true,
+    "request": {
+      "request_id": "A23",
+      "generation_kind": "narrative",
+      "claims": [
+        { "entity": "Lia", "predicate": "vital_status", "value": "alive" }
+      ]
+    },
+    "t0": {
+      "name": "main",
+      "live_heads": { "main": "c0" },
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "CHR-01",
+            "status": "CANON",
+            "facts": [{ "entity": "Lia", "predicate": "vital_status", "value": "alive" }]
+          }
+        ]
+      }
+    },
+    "t1": {
+      "name": "main",
+      "live_heads": { "main": "c0", "arena/session": "c9" },
+      "splash": {
+        "name": "arena/session",
+        "branch": {
+          "commit": "c9",
+          "charter": { "narrative_authorized": true },
+          "canon": [
+            {
+              "id": "GEO-N",
+              "status": "CANON",
+              "facts": [
+                {
+                  "entity": "Lia",
+                  "predicate": "located_in",
+                  "value": "Brannford",
+                  "relation": "intended"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "CHR-01",
+            "status": "CANON",
+            "facts": [{ "entity": "Lia", "predicate": "vital_status", "value": "alive" }]
+          }
+        ]
+      }
+    },
+    "expected_t0": { "decision": "PASS" },
+    "expected_t1": { "decision": "PASS_WITH_WARNINGS", "classes": ["CX-WORKING-DIRECTION"] },
+    "request_t1": {
+      "request_id": "A23b",
+      "generation_kind": "narrative",
+      "ignore_arena_development": true,
+      "claims": [
+        { "entity": "Lia", "predicate": "vital_status", "value": "alive" }
+      ]
+    }
+  },
+  {
+    "id": "A24",
+    "title": "Arena retcon proposal is classified, not silently integrated",
+    "must_change_decision": true,
+    "request": {
+      "request_id": "A24",
+      "generation_kind": "narrative",
+      "claims": [
+        { "entity": "Lia", "predicate": "vital_status", "value": "alive" }
+      ]
+    },
+    "t0": {
+      "name": "main",
+      "live_heads": { "main": "c0" },
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "CHR-01",
+            "status": "CANON",
+            "facts": [{ "entity": "Lia", "predicate": "vital_status", "value": "alive" }]
+          }
+        ]
+      }
+    },
+    "t1": {
+      "name": "main",
+      "live_heads": { "main": "c0", "arena/session": "c9" },
+      "splash": {
+        "name": "arena/session",
+        "branch": {
+          "commit": "c9",
+          "charter": { "narrative_authorized": true },
+          "canon": [
+            {
+              "id": "CHR-01",
+              "status": "CANON",
+              "facts": [
+                {
+                  "entity": "Lia",
+                  "predicate": "vital_status",
+                  "value": "dead",
+                  "relation": "retcon"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "CHR-01",
+            "status": "CANON",
+            "facts": [{ "entity": "Lia", "predicate": "vital_status", "value": "alive" }]
+          }
+        ]
+      }
+    },
+    "expected_t0": { "decision": "PASS" },
+    "expected_t1": { "decision": "PASS_WITH_WARNINGS", "classes": ["CX-SPLASH-CONFLICT"] },
+    "extra": {
+      "check_classifications": ["RETCON_PROPOSAL"],
+      "check_source_status_band": "CONFLICTS",
+      "check_not_canonical_value": {
+        "entity": "Lia",
+        "predicate": "vital_status",
+        "value": "dead"
+      }
+    }
+  },
+  {
+    "id": "A25",
+    "title": "Abandoned Arena development no longer controls generation",
+    "must_change_decision": true,
+    "request": {
+      "request_id": "A25",
+      "generation_kind": "narrative",
+      "ignore_arena_development": true,
+      "claims": [
+        { "entity": "Lia", "predicate": "vital_status", "value": "alive" }
+      ]
+    },
+    "t0": {
+      "name": "main",
+      "live_heads": { "main": "c0", "arena/session": "c8" },
+      "splash": {
+        "name": "arena/session",
+        "branch": {
+          "commit": "c8",
+          "charter": { "narrative_authorized": true },
+          "canon": [
+            {
+              "id": "GEO-N",
+              "status": "CANON",
+              "facts": [
+                {
+                  "entity": "Lia",
+                  "predicate": "located_in",
+                  "value": "Brannford",
+                  "relation": "intended"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "CHR-01",
+            "status": "CANON",
+            "facts": [{ "entity": "Lia", "predicate": "vital_status", "value": "alive" }]
+          }
+        ]
+      }
+    },
+    "t1": {
+      "name": "main",
+      "live_heads": { "main": "c0", "arena/session": "c9" },
+      "splash": {
+        "name": "arena/session",
+        "branch": {
+          "commit": "c9",
+          "charter": { "narrative_authorized": true },
+          "canon": [
+            {
+              "id": "GEO-N",
+              "status": "CANON",
+              "facts": [
+                {
+                  "entity": "Lia",
+                  "predicate": "located_in",
+                  "value": "Brannford",
+                  "relation": "abandoned"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "CHR-01",
+            "status": "CANON",
+            "facts": [{ "entity": "Lia", "predicate": "vital_status", "value": "alive" }]
+          }
+        ]
+      }
+    },
+    "expected_t0": { "decision": "PASS_WITH_WARNINGS", "classes": ["CX-WORKING-DIRECTION"] },
+    "expected_t1": { "decision": "PASS" },
+    "extra": {
+      "check_classifications": ["ABANDONED_OR_SUPERSEDED"],
+      "check_classification_change": {
+        "entity": "Lia",
+        "predicate": "located_in",
+        "from": "DEVELOPS_INTENDED_CANON",
+        "to": "ABANDONED_OR_SUPERSEDED"
+      }
+    }
+  },
+  {
+    "id": "A26",
+    "title": "Competing Arena directions require clarification",
+    "must_change_decision": true,
+    "request": {
+      "request_id": "A26",
+      "generation_kind": "worldbuilding",
+      "claims": [
+        { "entity": "Lia", "predicate": "role", "value": "captain" }
+      ]
+    },
+    "t0": {
+      "name": "main",
+      "live_heads": { "main": "c0", "arena/session": "c8" },
+      "splash": {
+        "name": "arena/session",
+        "branch": {
+          "commit": "c8",
+          "charter": { "narrative_authorized": false },
+          "canon": [
+            {
+              "id": "CHR-02",
+              "status": "CANON",
+              "facts": [
+                {
+                  "entity": "Lia",
+                  "predicate": "role",
+                  "value": "captain",
+                  "relation": "intended"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": false },
+        "canon": [
+          {
+            "id": "CHR-01",
+            "status": "CANON",
+            "facts": [{ "entity": "Lia", "predicate": "vital_status", "value": "alive" }]
+          }
+        ]
+      }
+    },
+    "t1": {
+      "name": "main",
+      "live_heads": { "main": "c0", "arena/session": "c9" },
+      "splash": {
+        "name": "arena/session",
+        "branch": {
+          "commit": "c9",
+          "charter": { "narrative_authorized": false },
+          "canon": [
+            {
+              "id": "CHR-02",
+              "status": "CANON",
+              "facts": [
+                {
+                  "entity": "Lia",
+                  "predicate": "role",
+                  "value": "captain",
+                  "relation": "intended"
+                },
+                {
+                  "entity": "Lia",
+                  "predicate": "role",
+                  "value": "scribe",
+                  "relation": "intended"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": false },
+        "canon": [
+          {
+            "id": "CHR-01",
+            "status": "CANON",
+            "facts": [{ "entity": "Lia", "predicate": "vital_status", "value": "alive" }]
+          }
+        ]
+      }
+    },
+    "expected_t0": { "decision": "PASS" },
+    "expected_t1": { "decision": "REQUIRES_CLARIFICATION", "classes": ["CX-AMBIGUITY"] }
+  },
+  {
+    "id": "A27",
+    "title": "Arena direction change after a previous generation check",
+    "must_change_decision": true,
+    "request": {
+      "request_id": "A27",
+      "generation_kind": "narrative",
+      "claims": [
+        { "entity": "Lia", "predicate": "located_in", "value": "Helwick" }
+      ]
+    },
+    "t0": {
+      "name": "main",
+      "live_heads": { "main": "c0", "arena/session": "c8" },
+      "splash": {
+        "name": "arena/session",
+        "branch": {
+          "commit": "c8",
+          "charter": { "narrative_authorized": true },
+          "canon": [
+            {
+              "id": "GEO-N",
+              "status": "CANON",
+              "facts": [
+                {
+                  "entity": "Lia",
+                  "predicate": "located_in",
+                  "value": "Helwick",
+                  "relation": "intended"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "CHR-01",
+            "status": "CANON",
+            "facts": [{ "entity": "Lia", "predicate": "vital_status", "value": "alive" }]
+          }
+        ]
+      }
+    },
+    "t1": {
+      "name": "main",
+      "live_heads": { "main": "c0", "arena/session": "c9" },
+      "splash": {
+        "name": "arena/session",
+        "branch": {
+          "commit": "c9",
+          "charter": { "narrative_authorized": true },
+          "canon": [
+            {
+              "id": "GEO-N",
+              "status": "CANON",
+              "facts": [
+                {
+                  "entity": "Lia",
+                  "predicate": "located_in",
+                  "value": "Brannford",
+                  "relation": "intended"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "branch": {
+        "commit": "c0",
+        "charter": { "narrative_authorized": true },
+        "canon": [
+          {
+            "id": "CHR-01",
+            "status": "CANON",
+            "facts": [{ "entity": "Lia", "predicate": "vital_status", "value": "alive" }]
+          }
+        ]
+      }
+    },
+    "expected_t0": { "decision": "PASS" },
+    "expected_t1": { "decision": "PASS_WITH_WARNINGS", "classes": ["CX-WORKING-DIRECTION"] },
+    "extra": {
+      "check_classification_change": {
+        "entity": "Lia",
+        "predicate": "located_in",
+        "from": "DEVELOPS_INTENDED_CANON",
+        "to": "DEVELOPS_INTENDED_CANON"
+      }
+    }
   }
 ]

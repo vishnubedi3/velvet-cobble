@@ -36,7 +36,7 @@ Do not invent a merged super-canon. Do not invent an independent Splash timeline
 
 **Default canonical baseline** when the request is silent: the repository's default branch (`main` if that is `origin/HEAD`).
 
-**Arena Splash** (`arena/*`) is not automatically that baseline. It is also not irrelevant. After inspecting `main`, inspect relevant Splash and **classify content** against `main` ([`BRANCH_RELATIONSHIP.md`](BRANCH_RELATIONSHIP.md)). A second live head is not by itself `REQUIRES_CLARIFICATION`.
+**Arena** (`arena/*`) is the **current working / authoring state**, not automatically that baseline. After inspecting `main`, inspect relevant Arena **aggressively** and **classify content** against `main` ([`BRANCH_RELATIONSHIP.md`](BRANCH_RELATIONSHIP.md)). A second live head is not by itself `REQUIRES_CLARIFICATION`. Ignoring strong current Arena development is a warning, not a silent PASS.
 
 A request may name a branch. Then that branch is the **authoring context**. Splash continuation still labels source status and does not promote proposed/developmental material into established `main` canon.
 

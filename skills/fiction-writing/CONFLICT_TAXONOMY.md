@@ -20,7 +20,8 @@ Findings are typed. Severity is not a vibe: it is the decision-protocol input.
 | **CX-BRANCH** | Request violates a live charter constraint on the applicable branch (e.g. narrative not authorized), or mixes diverged branches | BLOCK or REQUIRES_CLARIFICATION |
 | **CX-DIVERGENCE** | Non-splash unnamed live head with material difference; applicable branch not chosen | REQUIRES_CLARIFICATION (not used merely because `arena/*` exists) |
 | **CX-SPLASH-CONFLICT** | Arena Splash statement contradicts established `main` at overlapping story-time | Warn if `main` remains baseline; `REQUIRES_CLARIFICATION` if the request would *establish* Splash over `main` |
-| **CX-SPLASH-PROPOSED** | Request treats proposed / developmental / exploratory / intent Splash as established canon | REQUIRES_CLARIFICATION |
+| **CX-SPLASH-PROPOSED** | Request treats proposed / developmental / exploratory / intended Arena material as established canon | REQUIRES_CLARIFICATION |
+| **CX-WORKING-DIRECTION** | Request ignores or diverges from strong or provisional current Arena development | PASS_WITH_WARNINGS (not a BLOCK; Arena is a working branch) |
 | **CX-AMBIGUITY** | Insufficient reliable information; register vs file disagreement; missing dependency | REQUIRES_CLARIFICATION |
 | **CX-UNRESOLVED-REGISTER** | Active item in `CONTRADICTIONS.md` intersects the request | REQUIRES_CLARIFICATION (unless the request is specifically to resolve it via the change protocol) |
 | **CX-STALE** | Evaluation or contract is bound to a Canon State whose hashes no longer match | Re-verify; do not honor the old PASS |

@@ -39,39 +39,56 @@ CHECKS = (
     "divergence",
     "charter",
     "splash",
+    "working_direction",
 )
 
 SPLASH_CLASSES = (
-    "CONFIRMED_CANON",
-    "CANON_CLARIFICATION",
-    "CANON_EXTENSION",
-    "AUTHORIAL_INTENT",
+    "CONFIRMS_CANON",
+    "CLARIFIES_CANON",
+    "EXTENDS_CANON",
+    "DEVELOPS_INTENDED_CANON",
     "PROPOSED_CANON",
     "DEVELOPMENTAL",
     "EXPLORATORY",
-    "CONTRADICTORY",
+    "CONTRADICTS_CANON",
+    "RETCON_PROPOSAL",
+    "ABANDONED_OR_SUPERSEDED",
     "UNRESOLVED",
 )
 
-ESTABLISHED_SPLASH = frozenset({"CONFIRMED_CANON", "CANON_CLARIFICATION"})
+CLASS_ALIASES = {
+    "CONFIRMED_CANON": "CONFIRMS_CANON",
+    "CANON_CLARIFICATION": "CLARIFIES_CANON",
+    "CANON_EXTENSION": "EXTENDS_CANON",
+    "AUTHORIAL_INTENT": "DEVELOPS_INTENDED_CANON",
+    "CONTRADICTORY": "CONTRADICTS_CANON",
+}
+
+ESTABLISHED_SPLASH = frozenset({"CONFIRMS_CANON", "CLARIFIES_CANON"})
 
 NON_ESTABLISHED_SPLASH = frozenset(
     {
-        "CANON_EXTENSION",
-        "AUTHORIAL_INTENT",
+        "EXTENDS_CANON",
+        "DEVELOPS_INTENDED_CANON",
         "PROPOSED_CANON",
         "DEVELOPMENTAL",
         "EXPLORATORY",
     }
 )
 
+PROVISIONAL_SPLASH = frozenset({"PROPOSED_CANON", "DEVELOPMENTAL", "EXPLORATORY"})
+
+STRONG_DIRECTION = frozenset({"DEVELOPS_INTENDED_CANON", "EXTENDS_CANON"})
+
 RELATION_TO_CLASS = {
-    "clarifies": "CANON_CLARIFICATION",
-    "clarification": "CANON_CLARIFICATION",
-    "extends": "CANON_EXTENSION",
-    "extension": "CANON_EXTENSION",
-    "intent": "AUTHORIAL_INTENT",
-    "authorial_intent": "AUTHORIAL_INTENT",
+    "clarifies": "CLARIFIES_CANON",
+    "clarification": "CLARIFIES_CANON",
+    "extends": "EXTENDS_CANON",
+    "extension": "EXTENDS_CANON",
+    "intent": "DEVELOPS_INTENDED_CANON",
+    "authorial_intent": "DEVELOPS_INTENDED_CANON",
+    "intended": "DEVELOPS_INTENDED_CANON",
+    "develops_intended": "DEVELOPS_INTENDED_CANON",
     "proposed": "PROPOSED_CANON",
     "proposed_canon": "PROPOSED_CANON",
     "developmental": "DEVELOPMENTAL",
@@ -80,20 +97,33 @@ RELATION_TO_CLASS = {
     "exploratory": "EXPLORATORY",
     "experiment": "EXPLORATORY",
     "alternate": "EXPLORATORY",
-    "contradicts": "CONTRADICTORY",
-    "contradiction": "CONTRADICTORY",
-    "confirmed": "CONFIRMED_CANON",
-    "restates": "CONFIRMED_CANON",
+    "contradicts": "CONTRADICTS_CANON",
+    "contradiction": "CONTRADICTS_CANON",
+    "confirmed": "CONFIRMS_CANON",
+    "confirms": "CONFIRMS_CANON",
+    "restates": "CONFIRMS_CANON",
+    "retcon": "RETCON_PROPOSAL",
+    "retcon_proposal": "RETCON_PROPOSAL",
+    "abandoned": "ABANDONED_OR_SUPERSEDED",
+    "superseded": "ABANDONED_OR_SUPERSEDED",
     "unresolved": "UNRESOLVED",
 }
 
 CONTRACT_BANDS = (
-    "CANONICAL",
-    "CANON_CLARIFICATION",
-    "AUTHORIAL_INTENT",
-    "PROPOSED",
-    "CONFLICT",
+    "ESTABLISHED_CANON",
+    "CURRENT_WORKING_DEVELOPMENT",
+    "CANON_CLARIFICATIONS",
+    "AUTHORIAL_DIRECTION",
+    "PROVISIONAL",
+    "CONFLICTS",
+    "OPEN_QUESTIONS",
 )
+
+
+def _norm_class(cls: str | None) -> str | None:
+    if not cls:
+        return cls
+    return CLASS_ALIASES.get(cls, cls)
 
 
 def _hash_obj(obj: Any) -> str:
@@ -175,35 +205,41 @@ def _splash_fact_records(splash_state: dict) -> list[dict]:
 
 
 def classify_splash_material(main_state: dict, splash_state: dict) -> list[dict]:
-    """Classify each Splash statement against current main. Re-run when either side moves.
+    """Classify each Arena statement against current main. Re-run when either side moves.
 
     Branch membership never determines the class. Compatible restatement on main is
-    CONFIRMED_CANON; a newer Splash value does not override main.
+    CONFIRMS_CANON; a newer Arena value does not override main.
     """
     out: list[dict] = []
     for fact in _splash_fact_records(splash_state):
         entity, predicate, value = fact.get("entity"), fact.get("predicate"), fact.get("value")
         if entity is None or predicate is None:
             continue
-        hinted = _hinted_class(fact)
+        hinted = _norm_class(_hinted_class(fact))
         ordinal = fact.get("story_time_start")
         if ordinal is None:
             ordinal = fact.get("story_time_ordinal")
         matches = list(_matching_facts(main_state, entity, predicate, ordinal))
         origin = fact.get("_origin") or "canon"
-        if matches:
+        if hinted == "ABANDONED_OR_SUPERSEDED":
+            cls = "ABANDONED_OR_SUPERSEDED"
+        elif matches:
             incompatible = any(
                 (m.get("polarity") or "asserted") == "asserted"
                 and _incompatible(m.get("value"), value)
                 for m in matches
             )
             if incompatible:
-                cls = "EXPLORATORY" if hinted == "EXPLORATORY" else "CONTRADICTORY"
-            elif hinted == "CANON_CLARIFICATION":
-                cls = "CANON_CLARIFICATION"
+                if hinted == "EXPLORATORY":
+                    cls = "EXPLORATORY"
+                elif hinted == "RETCON_PROPOSAL":
+                    cls = "RETCON_PROPOSAL"
+                else:
+                    cls = "CONTRADICTS_CANON"
+            elif hinted == "CLARIFIES_CANON":
+                cls = "CLARIFIES_CANON"
             else:
-                # Main already holds a compatible value: Splash restates established canon.
-                cls = "CONFIRMED_CANON"
+                cls = "CONFIRMS_CANON"
         else:
             if hinted:
                 cls = hinted
@@ -223,6 +259,40 @@ def classify_splash_material(main_state: dict, splash_state: dict) -> list[dict]
             item["relation"] = fact.get("relation")
         out.append(item)
     return out
+
+
+def build_working_canon_context(state: dict) -> dict:
+    """Established canon + classified Arena. Not a merge. Not a second canon."""
+    classifications = list(state.get("splash_classifications") or [])
+    return {
+        "established_canon": [
+            {
+                "entity": f.get("entity"),
+                "predicate": f.get("predicate"),
+                "value": f.get("value"),
+                "source": f.get("source"),
+            }
+            for f in state.get("facts") or []
+        ],
+        "arena_developments": classifications,
+        "authorial_direction": [
+            c for c in classifications if c.get("class") in STRONG_DIRECTION
+        ],
+        "provisional": [
+            c for c in classifications if c.get("class") in PROVISIONAL_SPLASH
+        ],
+        "conflicts": [
+            c
+            for c in classifications
+            if c.get("class") in ("CONTRADICTS_CANON", "RETCON_PROPOSAL")
+        ],
+        "open_questions": [
+            c for c in classifications if c.get("class") == "UNRESOLVED"
+        ],
+        "abandoned": [
+            c for c in classifications if c.get("class") == "ABANDONED_OR_SUPERSEDED"
+        ],
+    }
 
 
 def attach_splash(state: dict, splash_name: str, splash_branch: dict) -> dict:
@@ -261,6 +331,7 @@ def attach_splash(state: dict, splash_name: str, splash_branch: dict) -> dict:
     state["canon_state_id"] = (
         f"{state['canon_state_id']}+splash@{splash_state['branch_context']['commit']}"
     )
+    state["working_canon_context"] = build_working_canon_context(state)
     return splash_state
 
 
@@ -707,27 +778,79 @@ def verify(
                 }
             )
 
-    # Splash vs main: classify, do not merge, do not ignore.
-    for item in classifications:
-        if item.get("class") == "CONTRADICTORY":
+    # Arena vs main: classify, do not merge, do not ignore.
+    live_classifications = [
+        c for c in classifications if c.get("class") != "ABANDONED_OR_SUPERSEDED"
+    ]
+    for item in live_classifications:
+        if item.get("class") in ("CONTRADICTS_CANON", "RETCON_PROPOSAL"):
             findings.append(
                 {
                     "class": "CX-SPLASH-CONFLICT",
                     "severity": "warn",
                     "summary": (
-                        f"Splash {item.get('entity')}.{item.get('predicate')}="
-                        f"{item.get('value')!r} contradicts main "
+                        f"Arena {item.get('entity')}.{item.get('predicate')}="
+                        f"{item.get('value')!r} {item.get('class')} vs main "
                         f"(classified, not merged)"
                     ),
                     "evidence": item.get("source"),
                 }
             )
 
-    for claim in request.get("claims") or []:
+    # Competing current Arena directions on the same predicate.
+    by_key: dict[tuple, list[dict]] = {}
+    for item in live_classifications:
+        if item.get("class") not in STRONG_DIRECTION | PROVISIONAL_SPLASH | ESTABLISHED_SPLASH:
+            continue
+        if item.get("class") == "EXPLORATORY":
+            continue
+        key = (item.get("entity"), item.get("predicate"))
+        by_key.setdefault(key, []).append(item)
+    for key, items in by_key.items():
+        values = {i.get("value") for i in items}
+        strong = [i for i in items if i.get("class") in STRONG_DIRECTION]
+        strong_values = {i.get("value") for i in strong}
+        if len(strong_values) > 1:
+            findings.append(
+                {
+                    "class": "CX-AMBIGUITY",
+                    "severity": "stop",
+                    "summary": (
+                        f"Competing Arena directions for {key[0]}.{key[1]}: "
+                        f"{sorted(strong_values, key=str)}"
+                    ),
+                }
+            )
+        elif len(values) > 1 and len(strong_values) <= 1:
+            # Provisional disagreement is a warning, not a freeze.
+            findings.append(
+                {
+                    "class": "CX-WORKING-DIRECTION",
+                    "severity": "warn",
+                    "summary": (
+                        f"Arena has competing provisional values for {key[0]}.{key[1]}"
+                    ),
+                }
+            )
+
+    claims = list(request.get("claims") or [])
+    req_entities = {c["entity"] for c in claims}
+    if request.get("ignore_arena_development") and any(
+        c.get("class") in STRONG_DIRECTION for c in live_classifications
+    ):
+        findings.append(
+            {
+                "class": "CX-WORKING-DIRECTION",
+                "severity": "warn",
+                "summary": "Request ignores strong current Arena development",
+            }
+        )
+
+    for claim in claims:
         entity, predicate, value = claim["entity"], claim["predicate"], claim["value"]
         related = [
             c
-            for c in classifications
+            for c in live_classifications
             if c.get("entity") == entity and c.get("predicate") == predicate
         ]
         established_claim = _treats_as_established(request, claim)
@@ -739,20 +862,21 @@ def verify(
                         "class": "CX-AMBIGUITY",
                         "severity": "stop",
                         "summary": (
-                            f"Unresolved splash material overlaps {entity}.{predicate}"
+                            f"Unresolved Arena material overlaps {entity}.{predicate}"
                         ),
                     }
                 )
             splash_value = item.get("value")
             uses_splash_value = not _incompatible(splash_value, value)
-            if cls == "CONTRADICTORY" and uses_splash_value:
-                if established_claim:
+            diverges = _incompatible(splash_value, value)
+            if cls in ("CONTRADICTS_CANON", "RETCON_PROPOSAL") and uses_splash_value:
+                if established_claim or cls == "RETCON_PROPOSAL" and established_claim:
                     findings.append(
                         {
                             "class": "CX-SPLASH-CONFLICT",
                             "severity": "stop",
                             "summary": (
-                                f"Would establish splash {entity}.{predicate}="
+                                f"Would establish Arena {cls} {entity}.{predicate}="
                                 f"{value!r} over main"
                             ),
                         }
@@ -763,12 +887,15 @@ def verify(
                             "class": "CX-SPLASH-CONFLICT",
                             "severity": "warn",
                             "summary": (
-                                f"Splash storyline uses contradictory "
+                                f"Arena storyline uses {cls} "
                                 f"{entity}.{predicate}; do not present as "
                                 f"established canon"
                             ),
                         }
                     )
+            if cls == "RETCON_PROPOSAL" and uses_splash_value and established_claim:
+                # already handled; keep explicit
+                pass
             if cls in NON_ESTABLISHED_SPLASH:
                 if established_claim:
                     findings.append(
@@ -776,22 +903,44 @@ def verify(
                             "class": "CX-SPLASH-PROPOSED",
                             "severity": "stop",
                             "summary": (
-                                f"Request treats splash {cls} {entity}.{predicate} "
+                                f"Request treats Arena {cls} {entity}.{predicate} "
                                 f"as established canon"
                             ),
                         }
                     )
-                elif continue_splash:
+                elif cls in PROVISIONAL_SPLASH and uses_splash_value:
                     findings.append(
                         {
                             "class": "CX-EXPANSION",
                             "severity": "warn",
                             "summary": (
-                                f"Splash {cls} {entity}.{predicate} used as "
-                                f"authoring context, not established canon"
+                                f"Arena {cls} {entity}.{predicate} used as "
+                                f"working material, not established canon"
                             ),
                         }
                     )
+            if diverges and cls in STRONG_DIRECTION:
+                findings.append(
+                    {
+                        "class": "CX-WORKING-DIRECTION",
+                        "severity": "warn",
+                        "summary": (
+                            f"Request diverges from current Arena direction "
+                            f"{entity}.{predicate}={splash_value!r}"
+                        ),
+                    }
+                )
+            if diverges and cls in PROVISIONAL_SPLASH and cls != "EXPLORATORY":
+                findings.append(
+                    {
+                        "class": "CX-WORKING-DIRECTION",
+                        "severity": "warn",
+                        "summary": (
+                            f"Request diverges from provisional Arena "
+                            f"{entity}.{predicate}={splash_value!r}"
+                        ),
+                    }
+                )
 
     decision = decide(findings, request)
     report = {
@@ -817,6 +966,8 @@ def verify(
         "invalidation": None,
         "contract_id": None,
         "splash_classifications": classifications,
+        "working_canon_context": state.get("working_canon_context")
+        or build_working_canon_context(state),
     }
     return report
 
@@ -955,17 +1106,17 @@ def make_contract(request: dict, state: dict, report: dict) -> dict | None:
 def _contract_source_status(state: dict) -> dict:
     bands = {k: [] for k in CONTRACT_BANDS}
     for fact in state.get("facts") or []:
-        bands["CANONICAL"].append(
+        bands["ESTABLISHED_CANON"].append(
             {
                 "entity": fact.get("entity"),
                 "predicate": fact.get("predicate"),
                 "value": fact.get("value"),
-                "class": "CONFIRMED_CANON",
+                "class": "CONFIRMS_CANON",
                 "source": fact.get("source"),
             }
         )
     for item in state.get("splash_classifications") or []:
-        cls = item.get("class")
+        cls = _norm_class(item.get("class"))
         payload = {
             "entity": item.get("entity"),
             "predicate": item.get("predicate"),
@@ -973,21 +1124,21 @@ def _contract_source_status(state: dict) -> dict:
             "class": cls,
             "source": item.get("source"),
         }
-        if cls == "CONFIRMED_CANON":
+        if cls in ("CONFIRMS_CANON", "ABANDONED_OR_SUPERSEDED"):
             continue
-        if cls == "CANON_CLARIFICATION":
-            bands["CANON_CLARIFICATION"].append(payload)
-        elif cls == "AUTHORIAL_INTENT":
-            bands["AUTHORIAL_INTENT"].append(payload)
-        elif cls in (
-            "PROPOSED_CANON",
-            "CANON_EXTENSION",
-            "DEVELOPMENTAL",
-            "EXPLORATORY",
-        ):
-            bands["PROPOSED"].append(payload)
-        elif cls in ("CONTRADICTORY", "UNRESOLVED"):
-            bands["CONFLICT"].append(payload)
+        if cls == "CLARIFIES_CANON":
+            bands["CANON_CLARIFICATIONS"].append(payload)
+        elif cls == "DEVELOPS_INTENDED_CANON":
+            bands["AUTHORIAL_DIRECTION"].append(payload)
+            bands["CURRENT_WORKING_DEVELOPMENT"].append(payload)
+        elif cls == "EXTENDS_CANON":
+            bands["CURRENT_WORKING_DEVELOPMENT"].append(payload)
+        elif cls in PROVISIONAL_SPLASH:
+            bands["PROVISIONAL"].append(payload)
+        elif cls in ("CONTRADICTS_CANON", "RETCON_PROPOSAL"):
+            bands["CONFLICTS"].append(payload)
+        elif cls == "UNRESOLVED":
+            bands["OPEN_QUESTIONS"].append(payload)
     return bands
 
 

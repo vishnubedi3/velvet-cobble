@@ -33,11 +33,12 @@ Emitted only with `PASS` or `PASS_WITH_WARNINGS`. Other decisions emit no contra
 | `uncertainties` | Known unknowns, mysteries that must stay mysterious, NOT READY items |
 | `forbidden_assumptions` | Negative space; research-as-canon; draft-as-canon; false precision; Earth-transplant if the live charter forbids it |
 | `authorized_changes` | Empty unless a completed canon-change protocol listed them |
-| `source_status` | Labeled bands: **CANONICAL**, **CANON_CLARIFICATION**, **AUTHORIAL_INTENT**, **PROPOSED**, **CONFLICT**. Splash material is never mixed unlabeled into CANONICAL. |
+| `working_canon_context` | Established canon + classified Arena developments + direction + conflicts. Not a merge. |
+| `source_status` | **ESTABLISHED_CANON** (`main`); **CURRENT_WORKING_DEVELOPMENT** (Arena); **CANON_CLARIFICATIONS**; **AUTHORIAL_DIRECTION**; **PROVISIONAL**; **CONFLICTS**; **OPEN_QUESTIONS**. |
 
-Every constraint in the contract must be traceable to a source document. Established facts are sourced to `main` (or to Splash only when classified `CONFIRMED_CANON` / `CANON_CLARIFICATION`). If a constraint cannot be sourced, it does not belong in the contract.
+Every constraint in the contract must be traceable to a source document. Established facts are sourced to `main`. Arena items are labeled. If a constraint cannot be sourced, it does not belong in the contract.
 
-Do not present `PROPOSED`, `AUTHORIAL_INTENT`, developmental, or exploratory Splash as established historical fact. `CONFLICT` records classified contradictions; it does not pick a winner.
+Downstream: ESTABLISHED CANON = factual project canon. CURRENT AUTHORIAL DEVELOPMENT = current story direction where appropriate. PROVISIONAL = only if the request permits working material. CONFLICT = do not silently incorporate.
 
 ---
 
@@ -72,7 +73,7 @@ The post-generation tell skill may receive `author_intent` derived from the cont
 - "These facts are now the canon."
 - "Future chapters may skip the guard."
 - "Draft D is admitted."
-- "Arena Splash is canon because it exists / is newer."
-- "Arena Splash is non-canon" (blanket).
+- "Arena is canon because it is the current working branch / is newer."
+- "Arena is non-canon" (blanket).
 - Any fact whose source hash was not part of this Canon State.
-- Any Splash statement in the CANONICAL band that was not classified `CONFIRMED_CANON` or that is not already on `main`.
+- Any Arena statement in ESTABLISHED_CANON that is not already on `main`.

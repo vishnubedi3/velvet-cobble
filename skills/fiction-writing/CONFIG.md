@@ -6,8 +6,8 @@ Host-overridable parameters. None of these are world facts.
 |---|---|---|
 | `default_branch` | repository default (`main` if that is `origin/HEAD`) | Canonical baseline when the request is silent |
 | `main_is_canonical_baseline` | `true` | Must stay true. A host that sets this false is non-compliant |
-| `splash_is_automatically_canon` | `false` | Must stay false. Splash is classified against `main` |
-| `splash_is_irrelevant` | `false` | Must stay false. Do not implement "Arena Splash is non-canon" |
+| `splash_is_automatically_canon` | `false` | Must stay false. Arena is the working branch, not automatic canon |
+| `splash_is_irrelevant` | `false` | Must stay false. Consult Arena aggressively; do not implement "Arena is non-canon" |
 | `conservative_on_divergence` | `true` | Uninspected Splash, or CONTRADICTORY Splash that the request would *establish* over `main`, → `REQUIRES_CLARIFICATION`. Extra `arena/*` existence alone is not this |
 | `re_resolve_every_request` | `true` | Must stay true. A host that sets this false is non-compliant |
 | `world_model_is_authority` | `false` | Must stay false for this project |

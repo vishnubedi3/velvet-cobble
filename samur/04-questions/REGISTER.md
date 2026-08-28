@@ -1,6 +1,6 @@
 # The Open-Question Register (updated)
 
-Date: 2026-08-28 (the TIM-08 operation — the Quiet Long, the tens of thousands of years)
+Date: 2026-08-28 (the TIM-09 operation — the Billions of Years, the deepening of the world's own deep physical history)
 Status: the authoritative register of the `04-questions/` state.
 
 ## The status taxonomy
@@ -112,6 +112,14 @@ Status: the authoritative register of the `04-questions/` state.
 - **The deliberate mysteries (Q-076/Q-077/Q-078)** — **NOT resolved by TIM-08** (the Quiet Long does not reach the Q-076 western partner; the Q-077 structure is extended further — the standing state [the current ecosystem stood for the tens of thousands of years without the Orenic kind in the basin] as a further hidden layer — the content untouched; the Q-078 text untouched).
 - **The NOT READYs preserved** — the Orenic kind's pre-basin history; the precise timing of the Orenic kind's residence in the basin; the Orenic's ultimate origin; the Orenic kind's precise emergence; the Khoric/Phre origins (the TIM-06/07 NOT READYs preserved — the Quiet Long does not resolve the peoples' origins).
 - **No new question raised** — the Quiet Long's specifics (the precise span, the precise timing of the Orenic kind's residence in the basin) are a **deep unknown** (the no-false-precision rule) — covered by the existing **Q-087** (the deep's named forms and the deep record layer's details).
+- **Bookkeeping:** the total question count is 87 (Q-001 → Q-087 — unchanged).
+
+## The TIM-09 operation (the Billions of Years — the deepening of the world's own deep physical history)
+
+- **Q-084 (the wider world's timescale)** — **unchanged** (the billions of years deepening is a sub-layer of the established orders [the planet billions; the ocean billions; the landmass billions → the current arrangement millions; the landlife millions] — no new order — the Q-084 orders are unchanged; the precise ages remain NOT READY).
+- **The deliberate mysteries (Q-076/Q-077/Q-078)** — **NOT resolved by TIM-09** (the billions of years does not reach the Q-076 western partner; the Q-077 structure is extended further — the world's own deep physical history [the planet's formation, the ocean's establishment, the landmass's drift, the biosphere's origin] as a further hidden layer — the content untouched; the Q-078 text untouched).
+- **The NOT READYs preserved** — the precise deep dates; the specific mechanism of the landmass's drift (the world's own "plate tectonics" equivalent — a deep unknown); the deep sea's life (the specifics of the deep ocean's fauna); the Orenic kind's pre-basin history; the Orenic's/Khoric's/Phre's origins (the TIM-06/07/08 NOT READYs preserved).
+- **No new question raised** — the billions of years' specifics (the precise deep dates, the specific mechanism of the landmass's drift, the precise span of the planet's formation / the ocean's establishment / the landmass's drift / the biosphere's origin) are a **deep unknown** (the no-false-precision rule + the no-Earth rule) — covered by the existing **Q-087** (the deep's named forms and the deep record layer's details).
 - **Bookkeeping:** the total question count is 87 (Q-001 → Q-087 — unchanged).
 
 ## The objective (the "majority of the genuinely actionable open questions")

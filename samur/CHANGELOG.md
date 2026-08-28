@@ -4,6 +4,15 @@ One entry per canon change (add / revise / retire), newest first. Each entry rec
 
 ## 2026-08-28
 
+- **Narrative/quality directory restructure — established the canonical separation.**
+  - **Recovery point:** `recovery/pre-narrative-restructure` (created at HEAD before this operation).
+  - **New directory:** `samur/05-quality/` — dedicated folder for all narrative quality analysis reports (`ai-fictional-tells-skill` reports, pre-flight canon guard reports, intervention logs, preservation checks). **Never** intermixed with narrative prose.
+  - **Moved:** `samur/narrative/skill-report-pilot.md` → `samur/05-quality/skill-report-pilot.md` (the skill report no longer lives alongside the pilot chapter).
+  - **New files:** `samur/05-quality/README.md` (documents the quality folder's purpose, naming convention, governance); `samur/narrative/README.md` (documents the narrative folder as the canonical location for the pilot and all future chapters, naming convention `ch<NN>-<slug>.md`, governance, relationship to canon).
+  - **Updated:** `samur/README.md` (the `05-quality/` and `narrative/` rows added to the directory table; the status rules extended with narrative/quality statuses; new "Narrative and Quality Separation" section); `PROJECT.md` §6 (Repository Map — `05-quality/` and `narrative/` added); `PROJECT.md` §7 (H-001 confirmed — `samur/narrative/` is the canonical story-text location; `samur/05-quality/` is the canonical analysis-output location).
+  - **No canon revised or retired.** This is a structural/repository change only. The 34 canon files are unchanged.
+  - **Convention followed:** the new directory uses the existing numbered-prefix convention (`05-quality/`, next after `04-questions/`). The `narrative/` directory retains its existing name (established when the pilot was created).
+
 - **`ai-fictional-tells-skill` post-generation pass — applied to pilot chapter.**
   - **Recovery point:** `recovery/pre-pilot-chapter` (preserves the original pilot; the revised pilot is a new commit on top).
   - **Skill invoked:** `ai-fictional-tells-skill` v1.0.0 (from `main`), the full post-generation artifact-reduction pipeline (analyze → prioritize → intervene → re-evaluate → report). The original pilot's CHANGELOG entry acknowledged the skill was NOT invoked at generation time; this operation corrects that omission.

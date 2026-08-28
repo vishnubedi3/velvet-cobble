@@ -12,6 +12,8 @@ All world material lives here. **Strict separation of research (real) and canon 
 | `02-canon/` | CANON | Active canon. Only internally verified material. |
 | `03-hypotheses/` | HYPOTHESIS | Working hypotheses with confirm/falsify conditions. |
 | `04-questions/` | QUESTION | Open questions with stakes (including negative-space closures). |
+| `05-quality/` | ANALYSIS | Narrative quality analysis: `ai-fictional-tells-skill` reports, pre-flight canon guard reports, intervention logs. **Never** intermixed with narrative prose. |
+| `narrative/` | PILOT / DRAFT | The novel — clean, reader-facing prose only. Pilot chapter and future chapters. **Never** intermixed with `02-canon/` or `05-quality/`. |
 | `CHANGELOG.md` | — | Canon change log; dependency tracking. |
 
 ## Canon File Naming
@@ -77,3 +79,16 @@ High-impact: yes/no
 - A confirmed HYPOTHESIS is promoted (changelog entry); a falsified one is marked RETIRED (changelog entry; file retained, not deleted).
 - Invalidated canon is RETIRED, never deleted, and dependents are reworked in the same commit (dependency sweep).
 - Every canon change ships with a `CHANGELOG.md` entry.
+- `narrative/` is PILOT or DRAFT — never canon. New lore discovered during drafting enters `02-canon/` through the standard process.
+- `05-quality/` is ANALYSIS — quality reports, intervention logs, preservation checks. Never canon, never narrative prose.
+
+## Narrative and Quality Separation
+
+The novel's prose and its analytical substrate live in separate directories:
+
+| Directory | Contains | Does NOT contain |
+|---|---|---|
+| `narrative/` | Clean, reader-facing prose (pilot, chapters) | Reports, analysis outputs, lore documents, canon files |
+| `05-quality/` | Skill reports, intervention logs, canon-guard reports, preservation checks | Narrative prose, canon files, research |
+
+The pre-flight canon guard (`skills/fiction-writing/`) runs before every chapter. The post-generation artifact-reduction skill (`ai-fictional-tells-skill`) runs after every chapter. Reports are persisted in `05-quality/`, versioned with the draft they revised, and recorded in `CHANGELOG.md`.

@@ -57,10 +57,12 @@ Every recorded item carries exactly one status:
 - `samur/02-canon/` — active canon.
 - `samur/03-hypotheses/` — working hypotheses.
 - `samur/04-questions/` — open questions.
+- `samur/05-quality/` — narrative quality analysis (skill reports, intervention logs, pre-flight canon guard reports). **Never** intermixed with narrative prose.
+- `samur/narrative/` — the novel: clean, reader-facing prose only (pilot chapter, future chapters). **Never** intermixed with `02-canon/` or `05-quality/`.
 - `samur/CHANGELOG.md` — canon change log.
 - `skills/fiction-writing/` — narrative-phase skill (draft; pre-generation canon guard + gate for any future story work).
 - `skills/INTEGRATION.md` — integration record for the `ai-fictional-tells-skill` (post-generation artifact-reduction; the skill folder itself is on `main` at `ai-fictional-tells-skill/`).
 
 ## 7. Open Governance Assumptions
 
-- **H-001** — If the narrative stage is later authorized, story text will live in a dedicated location (working default: a separate repository or `samur/narrative/`), governed by `skills/fiction-writing/`, and **never** intermixed with `02-canon/`. Awaiting user confirmation; does not block Phases 1–5.
+- **H-001** — Story text lives in `samur/narrative/`, governed by `skills/fiction-writing/` (pre-generation canon guard) and `ai-fictional-tells-skill` (post-generation artifact reduction), and **never** intermixed with `02-canon/`. Quality analysis reports live in `samur/05-quality/`, **never** in `samur/narrative/`. **Confirmed** (2026-08-28: the narrative stage is authorized for the pilot; the directory structure is established).

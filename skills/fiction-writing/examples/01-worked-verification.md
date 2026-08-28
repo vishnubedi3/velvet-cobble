@@ -24,10 +24,12 @@ Re-run the same request.
 
 An `arena/*` head appears. It restates Lia alive and *clarifies* the same fact.
 
-**Decision:** PASS. Extra live head is **not** `REQUIRES_CLARIFICATION`. Contract `source_status.CANON_CLARIFICATION` records the Splash note. It is not mixed unlabeled into CANONICAL.
+**Decision:** PASS. Extra live head is **not** `REQUIRES_CLARIFICATION`. Contract `source_status.CANON_CLARIFICATIONS` records the Arena note. It is not mixed unlabeled into ESTABLISHED_CANON.
 
-If instead Splash said Lia dead: PASS_WITH_WARNINGS, class `CONTRADICTORY`, `main` remains baseline. Newer Splash does not override.
+If instead Arena said Lia dead: PASS_WITH_WARNINGS, class `CONTRADICTS_CANON`, `main` remains baseline. Newer Arena does not override.
+
+If Arena has a strong intended storyline the request ignores: PASS_WITH_WARNINGS (`CX-WORKING-DIRECTION`), not a silent PASS and not a BLOCK.
 
 ## What this demonstrates
 
-The skill did not store "Lia is alive" as a skill rule. It derived the constraint from T0 sources and **changed its conclusion** when the sources changed. Splash is classified against `main`; it is neither merged nor ignored.
+The skill did not store "Lia is alive" as a skill rule. It derived the constraint from T0 sources and **changed its conclusion** when the sources changed. Arena is the current working state, classified against `main`; it is neither merged nor ignored, and it is not automatic canon.

@@ -1,6 +1,6 @@
 # The Open-Question Register (updated)
 
-Date: 2026-08-28 (the TIM-05 operation — the Pre-Kesra Age)
+Date: 2026-08-28 (the TIM-06 operation — the Deep Time)
 Status: the authoritative register of the `04-questions/` state.
 
 ## The status taxonomy
@@ -12,18 +12,18 @@ Status: the authoritative register of the `04-questions/` state.
 - **Blocked by missing information** — a question that cannot be resolved yet (a dependency on an unresolved foundational question or an external input).
 - **Rejected premise** — the question's premise is wrong (a bookkeeping closure).
 
-## The final state (2026-08-28, the TIM-05 operation)
+## The final state (2026-08-28, the TIM-06 operation)
 
 | Status | Count | Questions |
 |---|---|---|
-| **Resolved** | **76** | the original 16 + the 58 resolved in the question-resolution operation + **Q-079** (the post-fragmentation matha politics — the Dhaneshra Period, the DYN-04) + **Q-083** (the Veshna faith's pre-KE-0 antiquity — the scale of the pre-imperial history — resolved in the TIM-05 operation, the Pre-Kesra Age, the TIM-05 §1) |
+| **Resolved** | **76** | the original 16 + the 58 resolved in the question-resolution operation + **Q-079** (the post-fragmentation matha politics — the Dhaneshra Period, the DYN-04) + **Q-083** (the Veshna faith's pre-KE-0 antiquity — the scale of the pre-imperial history — resolved in the TIM-05 operation, the Pre-Kesra Age, the TIM-05 §1; extended in TIM-06 — the civilizational depth from at least ~KE −5000) |
 | **Partially resolved** | **1** | Q-027 (the trade volumes — the directions + the relative scale are fixed; the absolute volumes are a deliberate range) |
-| **Intentionally unresolved** | **3** | Q-076 (the distant western partner), Q-077 (the hidden history), Q-078 (the Kesra Charter's full text) — **NOT resolved by Q-079 or by TIM-05** (the TIM-05 adds the Q-076 rumor ancestor + the Q-077 third source tradition, without resolution) |
-| **Open (the next development unit + narrative details)** | **4** | Q-080 (the Empty Throne's filling — the next development unit), Q-081 (the Dhaneshra Period's named rulers — a narrative detail), Q-082 (the Dhaneshra Period's polities' internal politics — a narrative detail), **Q-085** (the pre-imperial named agents and polity internals — a narrative detail; the individuals are deliberately forgotten in the world's record) |
-| **Left alone until ready** | **1** | **Q-084** (the wider world's timescale — the planet's/cosmos's age — out of scope for the Pre-Kesra Age; left alone until ready, per the stewardship principle) |
+| **Intentionally unresolved** | **3** | Q-076 (the distant western partner), Q-077 (the hidden history), Q-078 (the Kesra Charter's full text) — **NOT resolved by Q-079, TIM-05, or TIM-06** (the TIM-05/TIM-06 add the Q-076 rumor ancestor [unchanged] + the Q-077 source-tradition layers [the third — the rite-records — + the fourth — the old stone], without resolution) |
+| **Open (the next development unit + narrative details)** | **5** | Q-080 (the Empty Throne's filling — the next development unit), Q-081 (the Dhaneshra Period's named rulers — a narrative detail), Q-082 (the Dhaneshra Period's polities' internal politics — a narrative detail), Q-085 (the pre-imperial named agents and polity internals — a narrative detail; the individuals are deliberately forgotten in the world's record), **Q-086** (the deep's named agents and ruins' details — a narrative detail; the strata's individuals/details are the layer of what was forgotten; the old stone's readable fragments' content is the Q-077 deep layer) |
+| **NOT READY (left alone)** | **1** | **Q-084** (the wider world's timescale — the **relative strata** [the world's chronology deeper than its civilizations] are now ESTABLISHED (TIM-06 §2 — the ready part resolved completely); the **absolute ages** (the planet's/cosmos's/biosphere's/wind regime's ages) remain NOT READY — the world has no means of measuring them; no cosmogony invented — per the stewardship principle) |
 | **Blocked by missing information** | **0** | (documented: none — every actionable question is resolved or intentionally unresolved; no question is blocked by a missing dependency or an external input) |
 | **Rejected premise** | **0** | (none — the 10 consolidations are duplicates, not rejected premises) |
-| **Total** | **85** | Q-001 → Q-085 (the 76 resolved + 1 partially resolved + 3 intentionally unresolved + 4 open + 1 left alone until ready) |
+| **Total** | **86** | Q-001 → Q-086 (the 76 resolved + 1 partially resolved + 3 intentionally unresolved + 5 open + 1 NOT READY) |
 
 ## The Q-079 operation (the Dhaneshra Period)
 
@@ -90,6 +90,14 @@ Status: the authoritative register of the `04-questions/` state.
 - **Q-084 (the wider world's timescale)** — **left alone until ready** (out of scope for the Pre-Kesra Age — the Oren basin's history, not the world's cosmogony; the stewardship principle applies).
 - **The new question created by TIM-05** — **Q-085** (the pre-imperial named agents and polity internals — a narrative detail; the individuals are deliberately forgotten in the world's record, the TIM-05 §10 "what was forgotten" layer).
 - **Bookkeeping correction:** the TIM-04 operation (2026-08-26) created Q-083/Q-084; they were not counted in this register's final-state table until this update (the table's total was 82 = Q-001 → Q-082; it is now 85 = Q-001 → Q-085).
+
+## The TIM-06 operation (the Deep Time)
+
+- **Q-083 (the Veshna faith's pre-KE-0 antiquity)** — RESOLVED (TIM-05) and **extended** (TIM-06): the actual civilizational depth is established from the deep record layer — from **at least ~KE −5000** (the strata — the pre-named deep, the Veshna/Khel/Orenam strata, the Quiet Gap — TIM-06 §5); the ~KE −1200 boundary preserved as the **record's horizon** (a survival horizon — the refugia's re-gathering).
+- **Q-084 (the wider world's timescale)** — **REFINED** (no partial resolution — the matter decomposes): the **relative strata** (the world's chronology deeper than its civilizations) are **ESTABLISHED** (TIM-06 §2 — the ready part resolved completely); the **absolute ages** remain **NOT READY** (the world has no means of measuring them; no cosmogony invented — left alone, untouched).
+- **The deliberate mysteries (Q-076/Q-077/Q-078)** — **NOT resolved by TIM-06** (the deep does not reach the Q-076 western partner — the rumor's ancestor stands; the Q-077 structure is extended further — the old stone as the fourth source-tradition layer + the direction [the Charter's "purest form" is the re-fixing] — the content untouched; the Q-078 text untouched).
+- **The new question created by TIM-06** — **Q-086** (the deep's named agents and ruins' details — a narrative detail; the individuals/details are the layer of what was forgotten).
+- **Bookkeeping:** the total question count is 86 (Q-001 → Q-086); the "left alone until ready" category (the TIM-05 operation's name for Q-084) is renamed **NOT READY** (the protocol's terminology — the two legitimate states: RESOLVED or NOT READY — no partial resolution).
 
 ## The objective (the "majority of the genuinely actionable open questions")
 

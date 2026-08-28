@@ -2,7 +2,7 @@
 
 Status: CANON
 Date: 2026-08-26
-Last revised: 2026-08-26
+Last revised: 2026-08-28 (extended by DYN-05 — the succession resolution; the Dhaneshra Period's resolution mechanisms added; Q-080 resolved)
 Depends on: TIM-01, TIM-03, REL-02, DYN-01, DYN-02, DYN-03, ADM-02, ECO-02, MIL-02, GEO-01, GEO-03, FOR-01, FOR-02, NS-01, CUL-02
 Dependents: Q-080 (the Empty Throne), the later post-fragmentation work, the narrative phase (if authorized — the Dhaneshra Period's texture)
 Sources: the established canon (the five eras, the five polities, the houses, the temple network, the resources); `transformations/DYN-04.md`

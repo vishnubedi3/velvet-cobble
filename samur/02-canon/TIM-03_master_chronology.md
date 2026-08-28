@@ -2,7 +2,7 @@
 
 Status: CANON
 Date: 2026-08-26
-Last revised: 2026-08-28 (the Q-080 operation — the succession resolution [DYN-05] extends the Dhaneshra Period's chronology; the open-questions section updated with the Q-080 resolution; no prior KE-era fact revised)
+Last revised: 2026-08-28 (the Q-080 operation — the succession resolution [DYN-05] extends the Dhaneshra Period's chronology; the open-questions section updated with the Q-080 resolution; no prior KE-era fact revised; the CC fixes — §6 heading KE 500–675 [CC-01]; the §5 withheld-sanction pointer corrected to the REL-02 §8 + the object named [CC-02])
 Depends on: TIM-01, TIM-02, TIM-04, TIM-05, TIM-06, TIM-07, TIM-08, TIM-09, TIM-10, DYN-01, DYN-02, DYN-03, DYN-04, FOR-01, FOR-02, ADM-02, ECO-02, MIL-02, GEO-03, REL-02
 Dependents: the narrative phase (if authorized — the dated events' texture), the later FOR/TIM refinements, the WORLD-MODEL's chronology anchors (updated in the same operation)
 Sources: TIM-01 (the eras, the anchor events), TIM-02 (the dated events, the causality), TIM-04 → TIM-10 (the deep chronology — the world's chronology beneath the KE era), DYN-02 (the 14 kings, the Shreshthas, the consecration), DYN-04 (the Dhaneshra Period), FOR-02 (the foreign rulers' ranges), ADM-02 (the Tarn tribute, the offices), ECO-02 (the rates, the mint, the reforms' fiscal arm), MIL-02 (the army, the battles' scale), GEO-03 (the wind law, the famine truce), REL-02 (the revivals, the myth)
@@ -72,12 +72,12 @@ The **official periodization remains the TIM-01 ranges** (the **structural divis
 - **KE 430:** the **Zharan I's consecration**; **KE 435:** the **debasement begins (85%)** (the **Zharan I's reform**, the ECO-02 §3); **the catastrophic failed wind KE 455–460** (the GEO-03 §2 "the great failure"; the **Great Famine KE 455–470**); **the debasement 75% KE 460** (the ECO-02 §3); **the Great Epidemic KE 460–480** (the DEM-02 §4 compound; the ~10–15% contraction, the ~28M by KE 480, the DEM-02 §1).
 - **KE 480:** the **Maren I's consecration** (the **"eldest"** — the **system fails to choose the "most worthy"**, the DYN-02 §2); **KE 482:** the **Voren I's Shreshtha** (the **Court Centralization** — the **Voren I's reform**, the MIL-02 §1, the ADM-02 §1; the **Maratha Peshwa logic**, the DYN-01 §3); **KE 490:** the **Tarn tribute crisis** (the **houses' under-reporting** — the ADM-02 §3 evasion; the TIM-02); **KE 500:** the **Phre's first trade contact** (the FOR-02 §4); **KE 505:** the **Phrean I's Voren governorship begins** (the FOR-02 §4, the Q-073); **KE 510:** the **Voren First Enclave** (the **Phrean I's charter** — the TIM-02 "the Phre's arrival," the NS-01 §5); **KE 520:** the **Maren I's death**.
 
-## 6. The Fragmentation (KE 500–680)
+## 6. The Fragmentation (KE 500–675)
 
 - **KE 520–555:** the **Great Succession Crisis** (the TIM-02; the DYN-02 §2 concurrent kings):
   - **KE 520:** the **contest begins** (the Maren I's death).
   - **KE 522:** the **Besra I's Shreshtha backs the Threna I** (the DYN-02 §3; the ADM-02 §1).
-  - **KE 525:** the **Threna I's consecration** (the **orthodoxy wing**, the REL-02 §3) + the **Kesra III's claim + the Tarn wing's backing** (the DYN-02 §2) + the **Tarnesh wing's withheld sanction** (the **"de-consecration in absentia"**, the REL-02 §6, the DYN-02 §4).
+  - **KE 525:** the **Threna I's consecration** (the **orthodoxy wing**, the REL-02 §3) + the **Kesra III's claim + the Tarn wing's backing** (the DYN-02 §2) + the **Tarnesh wing's withheld sanction** (the **"de-consecration in absentia"** — the refusal to recognize the Threna I's consecration, the REL-02 §8, the DYN-02 §4).
   - **KE 528:** the **de facto division** (the **Threna I = the bār core + the Sareth + the Khor**; the **Kesra III = the Tarn east** — the DYN-02 §2).
   - **KE 530:** the **First Succession War begins** (the **Tarn civil war**) + the **Phre's Second Enclave** (the **Shoran's term**, the FOR-02 §4, the Q-073 — the **divided Samur cannot resist**, the NS-01 §5).
   - **KE 543:** the **Battle of the Voren Mouth** (the **Samur's failed attempt to expel the Phre's First Enclave** — the **naval inferiority + the divided state**, the MIL-02 §3 no-blue-water negative space; the NS-01 §5).

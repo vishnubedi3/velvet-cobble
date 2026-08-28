@@ -2,7 +2,7 @@
 
 Status: CANON
 Date: 2026-08-26
-Last revised: 2026-08-26
+Last revised: 2026-08-28 (the CC-01 fix — the §1 Fragmentation era's end KE 680 → KE 675, per the TIM-03 §6/TIM-03 §1 epoch boundary)
 Depends on: MIL-01, DEM-02 (the recruit pool, the army ceiling), ECO-02 (the war finance, the workshops), ADM-02 (the garrisons, the frontier generals), TIM-02 (the Stress)
 Dependents: TIM-03 (the battles' dates), FOR-01/02 (the Khor trade, the Phre navy), the narrative phase (if authorized — the battles' texture)
 Sources: MIL-01 (the arms, the Khor dependency, the navy's limit, the overstretch), DEM-02 (the recruit pool 3–4M, the army ceiling), ECO-02 (the workshops, the war finance), comparative: `mughal.md` (the gunpowder army, the siege), `maratha.md` (the light cavalry, the gupta), `mysore.md` (the artillery, the rocket), `vijayanagara.md` (the war elephant)
@@ -25,7 +25,7 @@ The **High-Empire peak** (KE ~300, the ~35M population, the DEM-02 §1):
 
 - **The standing total:** ~**35–45k**; the **full mobilization:** **80–110k** (a **~0.3% standing rate** of the ~35M — the **recruit pool ceiling**, the DEM-02 §3 "the army can never exceed a ~0.3% standing rate without breaking the labor supply").
 - **The Stress (KE 380–500):** ~**50–70k** mobilization (the **fiscal strain**, the TIM-02 — the army contracts as the revenue fails).
-- **The Fragmentation (KE 500–680):** the **dispersal** (the successor states field their own — the TIM-03).
+- **The Fragmentation (KE 500–675):** the **dispersal** (the successor states field their own — the TIM-03). (The era ends at the deposition, KE 675 — the TIM-03 §6 — the CC-01 fix, 2026-08-28.)
 
 ## 2. The cavalry (resolves Q-034)
 

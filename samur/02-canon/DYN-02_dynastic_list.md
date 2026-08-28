@@ -2,7 +2,7 @@
 
 Status: CANON
 Date: 2026-08-26
-Last revised: 2026-08-26
+Last revised: 2026-08-28 (CC-01 fix — the House of Kesra's end date corrected to KE 675 per the established canon: the TIM-03 §6 deposition (KE 675), the DYN-04 §2, the REL-02 §8, the DYN-05 §3.1; the dynasty's span is KE 0–675)
 Depends on: DYN-01, TIM-01, TIM-02, ADM-01, MIL-01, REL-01, CUL-01
 Dependents: TIM-03+ (the specific reforms/wars), the later DYN/FOR/MIL files, the narrative phase (if authorized — the kings are the named agents)
 Sources: DYN-01, TIM-01, TIM-02, ADM-01, MIL-01, REL-01, CUL-01
@@ -23,7 +23,7 @@ The Samur-language personal names are **consonant-rich** (the CUL-01 register). 
 
 ## 2. The House of Kesra — the kings (resolves Q-017, Q-056)
 
-**The dynasty runs KE 0 to ~KE 680 (~680 years), 14 named kings (with two concurrent rival kings in the Fragmentation). Average reign ~48 years.** The kings' reigns are consistent with TIM-02's dated events.
+**The dynasty runs KE 0 to KE 675 (~675 years), 14 named kings (with two concurrent rival kings in the Fragmentation). Average reign ~48 years.** The kings' reigns are consistent with TIM-02's dated events. The end date is the deposition fixed by TIM-03 §6 / DYN-04 §2 (KE 675 — the political/economic collapse, NOT the de-consecration, REL-02 §8).
 
 ### Era 1 — The Founding (0–60)
 
@@ -98,12 +98,12 @@ The Samur-language personal names are **consonant-rich** (the CUL-01 register). 
 **Threna I (the Divided King — the "most worthy," the bār core, KE 525–650)** [concurrent]
 - **Character:** the divided king — the "most worthy" younger agnate, backed by the Shreshtha + the Phre + the core chiefs; holds the bār core + the Sareth west + the Khor north (the fragmentation).
 - **Key events:** the Great Succession Crisis (KE ~520–560, TIM-02) — the division of the empire; the Phre's Arrival (KE ~500–560, TIM-02) — the Phre's leverage.
-- **Succession:** deposed/fragmented ~KE 650–680. Succeeded (in the bār core) by Neshan I.
+- **Succession:** deposed/fragmented KE 650 (the TIM-03 §6). Succeeded (in the bār core) by Neshan I.
 
-**Neshan I (the Last King — the bār core, KE 650–680)**
+**Neshan I (the Last King — the bār core, KE 650–675)**
 - **Character:** the last king — Threna I's successor; the House of Kesra ends ~KE 650–700 (the dynasty is deposed/fragmented).
 - **Key events:** the Successor States (KE ~600–700, TIM-02) — the House of Kesra ends.
-- **Succession:** the House of Kesra ends ~KE 680. The Veshna matha survives (the religious institution, the mobile node).
+- **Succession:** the House of Kesra ends KE 675 (the deposition by the chiefs + the Phre's non-intervention — the TIM-03 §6, the DYN-04 §2). The Veshna matha survives (the religious institution, the mobile node).
 
 ## 3. The Shreshthas (the specific commanders — resolves Q-012, Q-057)
 
@@ -126,7 +126,7 @@ The Shreshtha is a **salaried, non-hereditary** office (DYN-01 §3) — the Shre
 
 ## Consequences (immediate / unintended / long-term)
 
-- **Immediate:** the **14 named kings** (the House of Kesra, KE 0–680), the **key Shreshthas** (Gheshar I, Voren I, Besra I), the **consecration ritual** (the investiture + the oath, the reversibility), the **personal-name pool** (the place-name doubling, the -an/-ar royal names, the -esh/-ath names), the **royal house size** (~10–30 agnates).
+- **Immediate:** the **14 named kings** (the House of Kesra, KE 0–675), the **key Shreshthas** (Gheshar I, Voren I, Besra I), the **consecration ritual** (the investiture + the oath, the reversibility), the **personal-name pool** (the place-name doubling, the -an/-ar royal names, the -esh/-ath names), the **royal house size** (~10–30 agnates).
 - **Unintended:** the **named agents** (the kings, the Shreshthas) are now the canon — the later narrative (if authorized) must use these names (the name-pool rule); the **concurrent rival kings** (Kesra III + Threna I) are the Mughal 1707 pattern (the fragmentation means concurrent claimants).
 - **Long-term:** the **dynastic list** is the spine of the TIM-03+ (the specific reforms/wars) and the later narrative; the **name pool** is the canon name pool (the anti-patterns' pre-flight canon check); the **consecration** is the kingmaker's real power (the sanction, the de-legitimation).
 

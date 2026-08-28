@@ -1,9 +1,12 @@
 # AGENTS.md — Central Operational Directive
 
-**Project:** Sumur (the Samur Empire world + novel)
+**Project:** The Wind's Record
+**Codename:** WINDLAW
 **Status:** ACTIVE — governs all agent operations in this repository
 **Last revised:** 2026-08-28
 **Supersedes:** ambiguity in prior instructions; does not supersede `PROJECT.md` (the charter) or the canon files (the source of truth for world facts)
+
+> **Project identity.** "The Wind's Record" is the name of the complete project — the world, its deep history, its lore, its research, its narrative, its characters, its civilizations, and their interconnected development. "WINDLAW" is the project's codename — a functional identifier for operational use. The **Samur Empire** is a fictional empire within the project's world; it is not the name of the project itself. The project encompasses far more than any single empire: the planet's billions of years, the sea's antiquity, the wind's foundational law, the deep civilizations, the pre-imperial history, and the novel that emerges from all of this.
 
 > This file is the compulsory operational directive for any agent operating in this repository. It consolidates the user's established directives and adds the additional directives required by the project's current state, research methodology, worldbuilding process, narrative structure, continuity requirements, and autonomous authoring system. Every agent action must comply with this file.
 

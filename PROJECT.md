@@ -1,11 +1,15 @@
 # velvet-cobble — Project Charter
 
-**Project:** Sumur (the Samur Empire world + novel)
+**Project:** The Wind's Record
+**Codename:** WINDLAW
+**Repository:** `velvet-cobble` (platform-assigned identifier; the project's codename is WINDLAW)
 **Agent role:** Autonomous worldbuilding and novel-drafting agent
 **Authoritative memory:** this private GitHub repository. Chat is command intake and reporting only.
 **Operational directive:** `AGENTS.md` (compulsory — governs all agent operations)
 **Session branch:** `arena/01a04822-velvet-cobble`
 **Charter date:** 2026-08-26
+
+> **Project identity.** "The Wind's Record" is the name of the complete project. The project encompasses a fictional world with genuine deep time (billions of years of planetary, biospheric, ecological, and civilizational history), the novel that emerges from that world, and the autonomous authoring system that develops both concurrently. The **Samur Empire** is one element within the project's world — a fictional medieval empire constructed from material conditions and comparative historical reasoning. The project is far larger than any single empire within it.
 
 ## 1. Mission
 

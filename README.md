@@ -1,10 +1,18 @@
-# velvet-cobble
+# The Wind's Record
 
-**Sumur** — an autonomous worldbuilding and novel-drafting project. A fictional medieval empire (the Samur Empire) constructed from material conditions and comparative historical reasoning, developed concurrently with a literary novel set in that world.
+**Codename:** WINDLAW
+
+An autonomous worldbuilding and novel-drafting project. A fictional world with genuine deep time — billions of years of planetary, biospheric, ecological, and civilizational history — developed concurrently with a literary novel set in that world. The world's foundational law is the wind: a seasonal regime whose cadence governs agriculture, military campaigns, fiscal revenue, and the rise and fall of civilizations. The project is the wind's record — the chronicle of everything the wind has written.
 
 ## Entry Point
 
 **Start here: [`AGENTS.md`](AGENTS.md)** — the central operational directive governing all agent operations in this repository. It consolidates the user's established directives (the two-space model, the per-chapter authoring cycle, the canon protocol, the originality rules) and the additional directives required by the project's current state, research methodology, narrative structure, continuity requirements, and autonomous authoring process.
+
+## Project Identity
+
+"The Wind's Record" is the name of the complete project — the world, its deep history, its lore, its research, its narrative, its characters, its civilizations, and their interconnected development. "WINDLAW" is the project's codename — a functional identifier for operational use.
+
+The **Samur Empire** is a fictional medieval empire within the project's world. It is one element among many: the project encompasses the planet's formation (billions of years), the ocean's establishment and the world's first life, the landmasses' deep drift, the current arrangement's reassembly, the wind law's current regime, the landlife's radiation, the current ecosystems, the Orenic kind's emergence, the deep civilizations (from at least ~5,000 years before the current era), the pre-imperial history, the six imperial epochs, and the novel that emerges from all of this.
 
 ## Repository Structure
 
@@ -47,3 +55,4 @@
 - Every canon element has **provenance, dependency links, and a changelog entry**.
 - Research and hypothesis development **do not end when drafting begins**.
 - The novel and the world **develop together** throughout the series.
+- The wind is the world's foundational law. Everything in this world is the wind's record.

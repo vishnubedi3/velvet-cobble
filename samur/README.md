@@ -1,6 +1,8 @@
-# Samur Empire — Material Map
+# The Wind's Record — Material Map (WINDLAW / `samur/`)
 
 All world material lives here. **Strict separation of research (real) and canon (fiction).**
+
+> This directory holds the world and the novel for **The Wind's Record** (codename: WINDLAW). The Samur Empire is one element within the project's world; the project encompasses far more — the planet's deep time, the sea's antiquity, the wind's foundational law, the deep civilizations, and the novel that emerges from all of this.
 
 ## Directories
 

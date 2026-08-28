@@ -2,7 +2,7 @@
 
 Status: CANON-INDEX (a summary of the canon; the canon files are the source of truth)
 Date: 2026-08-26
-Last revised: 2026-08-26 (the question-resolution operation)
+Last revised: 2026-08-26 (the Q-079 operation — the Dhaneshra Period)
 
 > The Master World Model is the single authoritative summary of the Samur world. When it disagrees with a canon file, the canon file wins (and this file is updated). It is updated on every canon change (the "update the master world model" step).
 
@@ -22,6 +22,7 @@ Last revised: 2026-08-26 (the question-resolution operation)
 - **The Khor → the cavalry → the strategy:** the horse-poor core (the GEO-01 §5) → the Khor horse trade (the 2–4k/year, the Keshkhor) → the cavalry (the 8–12k, the shiledar) → the strategic vulnerability (a Khor bad-grass year / the crisis → the cavalry shortfall).
 - **The Phre → the delta → the sea-lanes:** the Phre's arrival (the KE 500 contact, the KE 510 First Enclave — during the Stress) → the consolidation (the KE 530 Second Enclave, the KE 543 Voren Mouth — during the Fragmentation) → the sea-lane control → the Phre silver (a lifeline + a leash) → the "completing trigger" (not the causal root).
 - **The Tarnesh Dawn → the matha split → the crisis:** the revival (the KE 405–460) → the matha split (the Tarn wing vs. the Veshna orthodoxy wing) → the withheld sanction (the KE 525, the "de-consecration in absentia") → the Great Succession Crisis (the KE 520–555) → the division (the KE 528) → the successor states.
+- **The deposition → the Dhaneshra Period:** the House of Kesra's deposition (KE 675) → the Temple Line's refuge (the matha's sacred obligation + deterrence) + the Chiefs' Council (the rump's post-dynastic government) → the Tarn Claim (the Keshath founding-marriage claim) → the first Veshna Sabha (the conciliar response) + the Consecration Moratorium + the Defenders' Blessing (the Empty Throne) → the five Concordats (the temple lands' autonomy in 5 polities) → the Sareth Demand (the iron/timber leverage) + the Defenders' Council (the Oren diplomacy) → the Phre Silver crisis (the Phre's leash) + the rump-Khor silver axis + the Sareth's dual silver (the counter-leverage) → the Second Consecration Question (the Claim Moratorium) → the Dhaneshra Period's equilibrium (the DYN-04 §14/§15).
 
 ## The structures (the world's load-bearing institutions)
 
@@ -34,6 +35,7 @@ Last revised: 2026-08-26 (the question-resolution operation)
 - **The 5 military houses** (DYN-03 §1): the Gheshar (the Shreshtha's dominance), the Threnath (the Sareth Dhresh), the Keshan (the cavalry), the Dharan (the water-officers), the Zharan (the gunners).
 - **The 4 Khor clans** (DYN-03 §6): the Kheshur (the assembly seat), the Ghoranur (the horse breeders), the Zhanur (the raiders), the Marenur (the traders).
 - **The army** (MIL-02 §1): the standing ~35–45k, the full mobilization 80–110k, the ~0.3% standing-rate ceiling (the structural limit).
+- **The Dhaneshra Period's institutions** (DYN-04, post-KE 675): the **Veshna Sabha** (the 8 seats: the apex + the 7 Head Temple heads; the conciliar response to the geographic fragmentation; the Veshna apex's hosting privilege + the Tarn wing's rotation challenge); the **five Concordats** (the Veshna/Kesra/Besra/Keshkhor [the rump], the Threna [the Sareth], the Tarenam [the Tarn], the Kesveth [the Vethra], the Voren [the Phre zone] — the temple lands' tax-exemption + autonomy); the **Defenders' Council** (the polities' diplomatic mechanism for the Oren/iron-timber trade); the **Defenders' Blessing** (the new lesser rite for non-consecrated rulers — the historically justified institutional evolution of the consecration rite); the **Chiefs' Council** (the rump's post-dynastic government); the **Consecration Moratorium** + the **Claim Moratorium** (the Empty Throne); the **four claims** (the Temple Line; the Keshath; the Gheshar; the Threnath); the **Temple Line** (the deposed House of Kesra at the Great Temple); the **matha's two wings** (the Veshna apex wing at the Great Temple + the Tarn renewal wing at Tarenam).
 
 ## The chronology anchors (the TIM-03 master chronology)
 
@@ -53,16 +55,22 @@ Last revised: 2026-08-26 (the question-resolution operation)
 - **KE 550–620:** the Vethra's Rise (the Vethan II; the Third Vethra War KE 555–560).
 - **KE 595/610/650:** the successor states formalized (the Tarn Confederation KE 595; the Sareth Dhaneshra KE 610; the Kesra Dhaneshra KE 650).
 - **KE 675:** the House of Kesra's end (the deposition by the chiefs + the Phre's non-intervention — the political/economic collapse, NOT the de-consecration).
+- **The Dhaneshra Period (KE 675+, the sixth epoch, the DYN-04 §14/§15):** the Temple Line's refuge (KE 675–690); the Tarn Claim (KE ~690–700); the first Veshna Sabha + the Consecration Moratorium + the Defenders' Blessing (the Empty Throne) (KE ~700); the five Concordats (KE ~700–750); the Sareth Demand + the Defenders' Council (KE ~750–800); the Phre Silver crisis + the rump-Khor silver axis + the Sareth's dual silver (KE ~800–850); the Second Consecration Question + the Claim Moratorium (KE ~850–900); the Dhaneshra Period's equilibrium (post-KE ~900).
 
-## The current state (post-fragmentation, KE 680)
+## The current state (the Dhaneshra Period's equilibrium, post-KE ~900)
 
-- **The 5 polities:** the Tarn Confederation (the Tarn east, the Tarenam), the Sareth Dhaneshra (the Sareth west, the Threna), the Kesra Dhaneshra (the bār core + the Khor frontier, the Kesra — the rump that claims the Kesra legitimacy), the Vethra (the Veth south — the dominant southern power), the Phre enclaves (the delta, the Voren).
-- **The Veshna matha:** survives across all (the seat at Veshna; the recognition contested — the Q-079).
+- **The 5 polities:** the Tarn Confederation (the Tarn east, the Tarenam — the Keshath house's leading-house status), the Sareth Dhaneshra (the Sareth west, the Threna — the key balancing power, the iron/timber + the dual silver), the Kesra Dhaneshra (the bār core + the Khor frontier, the Kesra — the rump that claims the Kesra legitimacy, the Great Temple + the Temple Line), the Vethra (the Veth south — the dominant southern power, the pepper monopoly, the Vethna-variant Veth faith), the Phre enclaves (the delta, the Voren — the delta mouth + the sea-lanes + the Phre silver).
+- **The Veshna matha (the Dhaneshra Period's political system, the DYN-04):** the **two wings** (the Veshna apex wing at the Great Temple + the Tarn renewal wing at Tarenam) + the **Veshna Sabha** (the 8 seats) + the **five Concordats** (the temple lands' autonomy in 5 polities) + the **Consecration Moratorium** (the Empty Throne) + the **Defenders' Blessing** (the new lesser rite). The matha's unity is now a **political achievement** (the Concordats + the Sabha keep it coherent).
+- **The Empty Throne:** the protector-of-dharma title is empty (the Consecration Moratorium); the **four claims** (the Temple Line; the Keshath; the Gheshar; the Threnath) are the standing tension (the succession question is the Dhaneshra Period's open political question — the Q-080).
+- **The polities' diplomacy:** the **Defenders' Council** (the Oren is the common resource; the navigation rights + the tolls + the delta exit + the iron/timber trade).
+- **The resource politics:** the Sareth's iron/timber + dual silver (the key balancing power); the rump-Khor silver axis (the rump's counter-leverage against the Phre); the Phre silver (a lifeline + a leash); the pepper (the Vethra monopoly).
 - **The population:** ~25M (the ~28M by KE 480, the contraction).
+- **The chronology:** now runs to **post-KE ~900** (the Dhaneshra Period's equilibrium — the Fragmentation era's "600+" tail now named and dated, the DYN-04).
 
 ## The open mysteries (the intentional negative space)
 
 - **Q-076:** the distant western maritime partner (the "wider world" beyond the known sea, known only through Phre reports).
 - **Q-077:** the hidden history (the gap between the Veshna hagiography and the Beshara records).
 - **Q-078:** the Kesra Charter's full text (a narrative-stage artifact).
-- **Q-079:** the post-fragmentation matha politics (the 4 polities recognize the matha differently).
+- **(Q-079 — the post-fragmentation matha politics — is RESOLVED → DYN-04; it establishes the Dhaneshra Period. The deliberate mysteries Q-076/Q-077/Q-078 are NOT resolved by Q-079.)**
+- **The next open question (the next development unit):** **Q-080** — the Empty Throne's filling (which of the four claims will eventually be consecrated).

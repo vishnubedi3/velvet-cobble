@@ -1,6 +1,6 @@
 # The Open-Question Register (updated)
 
-Date: 2026-08-26 (the question-resolution operation)
+Date: 2026-08-26 (the Q-079 operation — the Dhaneshra Period)
 Status: the authoritative register of the `04-questions/` state.
 
 ## The status taxonomy
@@ -12,17 +12,23 @@ Status: the authoritative register of the `04-questions/` state.
 - **Blocked by missing information** — a question that cannot be resolved yet (a dependency on an unresolved foundational question or an external input).
 - **Rejected premise** — the question's premise is wrong (a bookkeeping closure).
 
-## The final state (2026-08-26)
+## The final state (2026-08-26, the Q-079 operation)
 
 | Status | Count | Questions |
 |---|---|---|
-| **Resolved** | **74** | the original 16 (Q-001, Q-002, Q-007, Q-012, Q-014, Q-017, Q-018, Q-037, Q-041, Q-046, Q-047, Q-048, Q-049, Q-050, Q-056, Q-057) + the 58 resolved in this operation (see below) |
+| **Resolved** | **75** | the original 16 + the 58 resolved in the question-resolution operation + **Q-079** (the post-fragmentation matha politics — resolved in the Q-079 operation, the Dhaneshra Period, the DYN-04) |
 | **Partially resolved** | **1** | Q-027 (the trade volumes — the directions + the relative scale are fixed; the absolute volumes are a deliberate range) |
-| **Intentionally unresolved** | **3** | Q-076 (the distant western partner), Q-077 (the hidden history), Q-078 (the Kesra Charter's full text) |
-| **Open (a seed)** | **1** | Q-079 (the post-fragmentation matha politics — the post-fragmentation work) |
+| **Intentionally unresolved** | **3** | Q-076 (the distant western partner), Q-077 (the hidden history), Q-078 (the Kesra Charter's full text) — **NOT resolved by Q-079** |
+| **Open (the next development unit + narrative details)** | **3** | Q-080 (the Empty Throne's filling — the next development unit), Q-081 (the Dhaneshra Period's named rulers — a narrative detail), Q-082 (the Dhaneshra Period's polities' internal politics — a narrative detail) |
 | **Blocked by missing information** | **0** | (documented: none — every actionable question is resolved or intentionally unresolved; no question is blocked by a missing dependency or an external input) |
 | **Rejected premise** | **0** | (none — the 10 consolidations are duplicates, not rejected premises) |
-| **Total** | **79** | the original 75 + the 4 new (Q-076–Q-079) |
+| **Total** | **82** | the original 75 + the 4 new (Q-076–Q-079) + the 3 new (Q-080–Q-082) |
+
+## The Q-079 operation (the Dhaneshra Period)
+
+- **Q-079 (the post-fragmentation matha politics)** — **RESOLVED → DYN-04** (the Dhaneshra Period — the sixth epoch, post-KE 675; the post-fragmentation matha politics; the four claims; the Empty Throne; the Veshna Sabha; the five Concordats; the Defenders' Council; the Defenders' Blessing; the Chiefs' Council; the Temple Line; the seven dated turning points; the equilibrium).
+- **The deliberate mysteries (Q-076/Q-077/Q-078)** — **NOT resolved by Q-079** (they are not needed for the Dhaneshra Period politics; the uncertainty is an intentional part of the world).
+- **The new questions created by Q-079** — **Q-080** (the Empty Throne's filling — the next development unit), **Q-081** (the Dhaneshra Period's named rulers — a narrative detail), **Q-082** (the Dhaneshra Period's polities' internal politics — a narrative detail).
 
 ## The 58 resolved in this operation (by cluster)
 
@@ -59,15 +65,23 @@ Status: the authoritative register of the `04-questions/` state.
 | Q-019 (the Great Succession Crisis) | DYN-02 §2 | TIM-03 §6 |
 | Q-020 (the successor states) | TIM-02 | TIM-03 §7 |
 
-## The 4 new questions created by the resolutions
+## The 4 new questions created by the question-resolution operation
 
 | New | Status | Created by |
 |---|---|---|
 | Q-076 (the distant western partner) | intentionally unresolved | the Q-030 resolution (the trade partners) |
 | Q-077 (the hidden history) | intentionally unresolved | the Q-045 resolution (the historical memory) |
 | Q-078 (the Kesra Charter's full text) | intentionally unresolved | the Q-036 resolution (the Veshna theology) |
-| Q-079 (the post-fragmentation matha politics) | open (a seed) | the Q-020/Q-038/Q-068 resolutions (the post-fragmentation work) |
+| Q-079 (the post-fragmentation matha politics) | **RESOLVED → DYN-04** (the Dhaneshra Period) | created by the Q-020/Q-038/Q-068 resolutions; resolved in the Q-079 operation |
+
+## The 3 new questions created by the Q-079 operation
+
+| New | Status | Created by |
+|---|---|---|
+| Q-080 (the Empty Throne's filling) | open (the next development unit) | the Q-079 resolution (the Dhaneshra Period's central open question) |
+| Q-081 (the Dhaneshra Period's named rulers) | open (a narrative detail) | the Q-079 resolution (the Dhaneshra Period's named rulers) |
+| Q-082 (the Dhaneshra Period's polities' internal politics) | open (a narrative detail) | the Q-079 resolution (the polities' internal politics) |
 
 ## The objective (the "majority of the genuinely actionable open questions")
 
-The 59 open questions at the start of the operation → **58 resolved (98%) + 1 partially resolved** (Q-027, a deliberate range). The 3 intentionally unresolved + 1 open seed are **deliberate** (the mysteries, the hidden-history layer, the post-fragmentation seed) — they are the negative space the world needs, not the unresolved backlog. **No question is blocked by missing information** (documented). The objective is met: the majority of the genuinely actionable open questions are resolved, and the remaining open questions are the intentional mysteries.
+The 59 open questions at the start of the question-resolution operation → **58 resolved (98%) + 1 partially resolved** (Q-027, a deliberate range). Then the **Q-079 operation** resolved **Q-079** (the post-fragmentation matha politics) → **DYN-04** (the Dhaneshra Period), and created **Q-080/081/082** (the next development unit + the narrative details). The 3 intentionally unresolved (Q-076/Q-077/Q-078) + the 3 open (Q-080/081/082) are **deliberate** (the mysteries, the hidden-history layer, the Kesra Charter's text, the next development unit, the narrative details) — they are the negative space and the next development units the world needs, not the unresolved backlog. **No question is blocked by missing information** (documented). The objective is met: the majority of the genuinely actionable open questions are resolved, and the remaining open questions are the intentional mysteries + the next development units.

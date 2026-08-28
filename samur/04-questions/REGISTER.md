@@ -1,6 +1,6 @@
 # The Open-Question Register (updated)
 
-Date: 2026-08-28 (the TIM-07 operation — the World's Deep Chronology)
+Date: 2026-08-28 (the TIM-08 operation — the Quiet Long, the tens of thousands of years)
 Status: the authoritative register of the `04-questions/` state.
 
 ## The status taxonomy
@@ -105,6 +105,14 @@ Status: the authoritative register of the `04-questions/` state.
 - **The deliberate mysteries (Q-076/Q-077/Q-078)** — **NOT resolved by TIM-07** (the deep does not reach the Q-076 western partner — the rumor's ancestor stands; the Q-077 structure is extended further — the **physical deep** [the world's own truth hidden beneath the world's moral knowledge — the in-world misunderstanding] as a further hidden layer — the content untouched; the Q-078 text untouched).
 - **The new question created by TIM-07** — **Q-087** (the deep's named forms and the deep record layer's details — a deep unknown / narrative detail; the great-bone's specific forms, the other deep lineages' specifics, the deep sea's life, the deep wind regimes' details, the precise deep geology — constrained by the no-Earth rule + the no-false-precision rule + the in-world epistemology).
 - **Bookkeeping:** the total question count is 87 (Q-001 → Q-087).
+
+## The TIM-08 operation (the Quiet Long — the tens of thousands of years)
+
+- **Q-084 (the wider world's timescale)** — **unchanged** (the Quiet Long is a sub-layer of the Quiet Land [the hundreds of thousands of years → the present] — the tens of thousands of years is a sub-order within the Quiet Land's established order, not a new order — the Q-084 orders [the planet billions; the landmass billions → the current arrangement millions; the landlife millions; the current ecosystems hundreds of thousands] are unchanged).
+- **The deliberate mysteries (Q-076/Q-077/Q-078)** — **NOT resolved by TIM-08** (the Quiet Long does not reach the Q-076 western partner; the Q-077 structure is extended further — the standing state [the current ecosystem stood for the tens of thousands of years without the Orenic kind in the basin] as a further hidden layer — the content untouched; the Q-078 text untouched).
+- **The NOT READYs preserved** — the Orenic kind's pre-basin history; the precise timing of the Orenic kind's residence in the basin; the Orenic's ultimate origin; the Orenic kind's precise emergence; the Khoric/Phre origins (the TIM-06/07 NOT READYs preserved — the Quiet Long does not resolve the peoples' origins).
+- **No new question raised** — the Quiet Long's specifics (the precise span, the precise timing of the Orenic kind's residence in the basin) are a **deep unknown** (the no-false-precision rule) — covered by the existing **Q-087** (the deep's named forms and the deep record layer's details).
+- **Bookkeeping:** the total question count is 87 (Q-001 → Q-087 — unchanged).
 
 ## The objective (the "majority of the genuinely actionable open questions")
 

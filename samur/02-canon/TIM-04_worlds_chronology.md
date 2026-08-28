@@ -2,9 +2,9 @@
 
 Status: CANON
 Date: 2026-08-26
-Last revised: 2026-08-26
+Last revised: 2026-08-28 (the TIM-05 operation — Q-083 resolved: the pre-imperial scale is determined in TIM-05; Q-084 remains left alone until ready)
 Depends on: TIM-01 (the Kesra Era, the six epochs), REL-02 §1 (the Kesra Charter, the Veshna faith's antiquity), CUL-02 §2 (the Veshna sacred script, "older" and "frozen"), DYN-01 §2 #3 (the founding co-opted the Veshna temple)
-Dependents: all future deep-time canon (the pre-imperial history, the wider world, the cosmology)
+Dependents: all future deep-time canon (the pre-imperial history — **now established: TIM-05, the Pre-Kesra Age** —, the wider world, the cosmology)
 Sources: TIM-01, REL-02 §1, CUL-02 §2, DYN-01 §2 #3; `transformations/TIM-04.md`
 Influence: TIM-04 (see the register)
 High-impact: yes
@@ -22,7 +22,7 @@ The established canon demonstrates that there is **pre-imperial history** (histo
 - **REL-02 §1:** "The Kesra Charter... attributed to the founding era (KE 0–35)... is the **oldest text** (its orthography is frozen)." — the Kesra Charter (the oldest text) is from the founding era (KE 0–35), but the Veshna faith/temple pre-dated the founding (the founding "co-opted" it).
 - **CUL-02 §2:** "The Veshna sacred script — an **older** abugida... It is **conservative** (it changes slower than the Orenic script — the sacred text's orthography is frozen)." — the Veshna sacred script is "older" (older than the Orenic script) and "frozen" (conservative orthography), implying a long, conservative sacred tradition.
 
-So the established canon demonstrates that the **Veshna faith/temple pre-dated the founding (KE 0)**. The **scale of that pre-imperial antiquity is not specified** in the established canon. The **Kesra Charter** (the oldest text) is from the founding era (KE 0–35), but the **Veshna faith/temple pre-dated the founding** (the founding "co-opted" it).
+So the established canon demonstrates that the **Veshna faith/temple pre-dated the founding (KE 0)**. The **scale of that pre-imperial antiquity is not specified** in the established canon. **→ RESOLVED in TIM-05 (the Pre-Kesra Age, 2026-08-28):** the pre-imperial history is a genuine, deep history — an **attested span of ~1,200 years (~KE −1200 → KE 0)**, **derived** (not assigned) from the established canon's internal causality (the frozen sacred script's conservatism; the Orenic dialectal drift + the Tarn substrate; the temple's multi-night survival claim; the polities' depth); the **full depth beyond the Deep-Age boundary (~KE −1200) is unattested** (the world's own record's horizon — no number assigned). See **TIM-05 §1**. The **Kesra Charter** (the oldest text) is from the founding era (KE 0–35), but the **Veshna faith/temple pre-dated the founding** (the founding "co-opted" it).
 
 ## 3. The deep timescale (the world's own chronology)
 
@@ -37,11 +37,11 @@ The **Kesra Era (KE 0–680+)** is the **most recent slice** of the world's hist
 ## 4. What is established vs. undetermined
 
 - **Established:** the Kesra Era (KE 0–680+) is the most recent slice of the world's history; the Veshna faith/temple pre-dated the founding (KE 0); the Kesra Charter (the oldest text) is from the founding era (KE 0–35); the Veshna sacred script is "older" and "frozen" (conservative).
-- **Undetermined (left alone until ready):** the **scale of the pre-imperial history** (how much older than KE 0 the Veshna faith/temple is); the **wider world's timescale** (the planet's age, the cosmos's age); the **pre-imperial history** (the history of the Veshna faith/temple before KE 0, the wider civilizations, the cosmology). These are **left alone until they are ready to be resolved** (per the stewardship principle: "If sufficient information does not exist, leave it untouched. Record only the information necessary to preserve the reason it remains unresolved and what would eventually permit a proper resolution.").
+- **Undetermined (left alone until ready):** the **wider world's timescale** (the planet's age, the cosmos's age); the wider civilizations, the cosmology. These are **left alone until they are ready to be resolved** (per the stewardship principle: "If sufficient information does not exist, leave it untouched. Record only the information necessary to preserve the reason it remains unresolved and what would eventually permit a proper resolution."). *(The **scale of the pre-imperial history** and the **pre-imperial history itself** are **no longer undetermined** — **RESOLVED in TIM-05 (the Pre-Kesra Age), 2026-08-28**: the attested ~1,200-year span, the 5 periods, the attested nights, the temple polity, the Long Night, the Recovery — see TIM-05 §1/§12. Q-083 is RESOLVED; Q-084 remains left alone until ready.)*
 
 ## 5. The Kesra Era's position (the correct position from the existing project)
 
-The **Kesra Era (KE 0 to the present, the six epochs, running from KE 0 (the founding) to the Dhaneshra Period's equilibrium (post-KE ~900))** is the **most recent slice** of the world's history. The **existing Kesra Era history (KE 0 to the present, the six epochs)** is **not artificially stretched apart** — it remains KE 0 to the present (the six epochs), unchanged. The **pre-imperial history** (before KE 0) is **vastly older** than the Kesra Era, but its **scale is not specified** in the established canon. The **deep timescale** (the pre-imperial history, the wider world, the cosmology) is **established as existing** (the Veshna faith/temple pre-dating KE 0, the wider world's vastly older timescale), but its **specific scale is left undetermined** (the established canon does not specify it; Q-083/Q-084 are left alone until ready).
+The **Kesra Era (KE 0 to the present, the six epochs, running from KE 0 (the founding) to the Dhaneshra Period's equilibrium (post-KE ~900))** is the **most recent slice** of the world's history. The **existing Kesra Era history (KE 0 to the present, the six epochs)** is **not artificially stretched apart** — it remains KE 0 to the present (the six epochs), unchanged. The **pre-imperial history** (before KE 0) is **vastly older** than the Kesra Era, but its **scale is not specified** in the established canon. The **deep timescale** (the pre-imperial history, the wider world, the cosmology) is **established as existing** (the Veshna faith/temple pre-dating KE 0, the wider world's vastly older timescale); its **specific scale** is now **determined for the pre-imperial history** — **RESOLVED in TIM-05 (the Pre-Kesra Age), 2026-08-28** (the attested ~1,200-year span, derived; the unattested deep beyond ~KE −1200) — while the **wider world's timescale** (the planet's/cosmos's age) **remains undetermined** (Q-084 left alone until ready; Q-083 RESOLVED → TIM-05).
 
 ## Consequences (immediate / unintended / long-term)
 
@@ -51,5 +51,5 @@ The **Kesra Era (KE 0 to the present, the six epochs, running from KE 0 (the fou
 
 ## Open questions raised
 
-- **Q-083** — The **Veshna faith's pre-KE-0 antiquity** (the scale of the pre-imperial history: how much older than KE 0 the Veshna faith/temple is). **Left alone until ready** (the established canon does not specify the scale; it would be permitted by establishing the Veshna faith's pre-KE-0 history from the established canon's internal causality).
+- **Q-083** — The **Veshna faith's pre-KE-0 antiquity** (the scale of the pre-imperial history: how much older than KE 0 the Veshna faith/temple is). **RESOLVED → TIM-05 (2026-08-28)** (the Pre-Kesra Age — the attested ~1,200-year span, derived from the established canon's internal causality; the full depth beyond the Deep-Age boundary (~KE −1200) unattested, no number).
 - **Q-084** — The **wider world's timescale** (the planet's age, the cosmos's age, the wider civilizations' timescale). **Left alone until ready** (the established canon does not specify the wider world's timescale; it would be permitted by establishing the wider world's timescale from the established canon's internal causality).

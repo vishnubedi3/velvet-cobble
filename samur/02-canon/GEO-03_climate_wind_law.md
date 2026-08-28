@@ -2,7 +2,7 @@
 
 Status: CANON
 Date: 2026-08-26
-Last revised: 2026-08-26
+Last revised: 2026-08-28 (the TIM-05 operation — the §2 great-failure-interval variability clarification; the table's typical cadence unchanged)
 Depends on: GEO-01, GEO-02, TIM-01, TIM-02
 Dependents: DEM-02, ECO-02, MIL-01/02, TIM-03, REL-02 (the festival year)
 Sources: GEO-01 §7 (the seasonal wind), TIM-01 (the wind-anchored calendar), TIM-02 (the famine/epidemic events), comparative: `mughal.md` (monsoon-fiscal coupling), `mysore.md` (irrigation-buffered wet agriculture)
@@ -27,6 +27,8 @@ The sea-wind's strength varies year to year. The canonical regime:
 | **Weak wind** | every ~3–5 years | pell stress, low Oren, strain |
 | **Failed wind** | every ~7–12 years | the pell fails, Oren low, famine risk in the delta/Tarn/Veth |
 | **Great failure** | every ~80–120 years | catastrophic — the Great Famine (KE 455–460, TIM-02) |
+
+**The great-failure interval is variable (the TIM-05 clarification, 2026-08-28):** the ~80–120-year value above is the **typical cadence of the Deep Age's cluster phase** (before ~KE −1200 — the world's deeper, more volatile wind regime). In the **settled phase** (from ~KE −1200 on), the great failures are **rarer, multi-year, and separated by long quiet stretches** — the attested instances: **~KE −945–−935** (the Night of the Mountain), **~KE −560–−545** (the Night of the Quiet Plain), **KE −265–−250** (the Long Night), and **KE 455–460** (the Great Famine) — with the **~700-year quiet stretch (~KE −250 → KE 455)** as the world's documented anomaly ("in the Kesra time there was but one night of the wind"). See **TIM-05 §2**. The failed-wind (~7–12 years), weak-wind, and strong-wind cadences, and the Khor bad-grass year (§3), operate unchanged in both phases.
 
 **Anchored instances (consistent with TIM-02):** the weak wind KE 398; the first significant failed wind of the overstretch KE 355; the **great failure KE 455–460** (the Great Famine KE 455–470); the failed wind of the Second Vethra War KE 362 (the famine truce, TIM-03).
 

@@ -1,6 +1,6 @@
 # The Open-Question Register (updated)
 
-Date: 2026-08-26 (the Q-079 operation — the Dhaneshra Period)
+Date: 2026-08-28 (the TIM-05 operation — the Pre-Kesra Age)
 Status: the authoritative register of the `04-questions/` state.
 
 ## The status taxonomy
@@ -12,17 +12,18 @@ Status: the authoritative register of the `04-questions/` state.
 - **Blocked by missing information** — a question that cannot be resolved yet (a dependency on an unresolved foundational question or an external input).
 - **Rejected premise** — the question's premise is wrong (a bookkeeping closure).
 
-## The final state (2026-08-26, the Q-079 operation)
+## The final state (2026-08-28, the TIM-05 operation)
 
 | Status | Count | Questions |
 |---|---|---|
-| **Resolved** | **75** | the original 16 + the 58 resolved in the question-resolution operation + **Q-079** (the post-fragmentation matha politics — resolved in the Q-079 operation, the Dhaneshra Period, the DYN-04) |
+| **Resolved** | **76** | the original 16 + the 58 resolved in the question-resolution operation + **Q-079** (the post-fragmentation matha politics — the Dhaneshra Period, the DYN-04) + **Q-083** (the Veshna faith's pre-KE-0 antiquity — the scale of the pre-imperial history — resolved in the TIM-05 operation, the Pre-Kesra Age, the TIM-05 §1) |
 | **Partially resolved** | **1** | Q-027 (the trade volumes — the directions + the relative scale are fixed; the absolute volumes are a deliberate range) |
-| **Intentionally unresolved** | **3** | Q-076 (the distant western partner), Q-077 (the hidden history), Q-078 (the Kesra Charter's full text) — **NOT resolved by Q-079** |
-| **Open (the next development unit + narrative details)** | **3** | Q-080 (the Empty Throne's filling — the next development unit), Q-081 (the Dhaneshra Period's named rulers — a narrative detail), Q-082 (the Dhaneshra Period's polities' internal politics — a narrative detail) |
+| **Intentionally unresolved** | **3** | Q-076 (the distant western partner), Q-077 (the hidden history), Q-078 (the Kesra Charter's full text) — **NOT resolved by Q-079 or by TIM-05** (the TIM-05 adds the Q-076 rumor ancestor + the Q-077 third source tradition, without resolution) |
+| **Open (the next development unit + narrative details)** | **4** | Q-080 (the Empty Throne's filling — the next development unit), Q-081 (the Dhaneshra Period's named rulers — a narrative detail), Q-082 (the Dhaneshra Period's polities' internal politics — a narrative detail), **Q-085** (the pre-imperial named agents and polity internals — a narrative detail; the individuals are deliberately forgotten in the world's record) |
+| **Left alone until ready** | **1** | **Q-084** (the wider world's timescale — the planet's/cosmos's age — out of scope for the Pre-Kesra Age; left alone until ready, per the stewardship principle) |
 | **Blocked by missing information** | **0** | (documented: none — every actionable question is resolved or intentionally unresolved; no question is blocked by a missing dependency or an external input) |
 | **Rejected premise** | **0** | (none — the 10 consolidations are duplicates, not rejected premises) |
-| **Total** | **82** | the original 75 + the 4 new (Q-076–Q-079) + the 3 new (Q-080–Q-082) |
+| **Total** | **85** | Q-001 → Q-085 (the 76 resolved + 1 partially resolved + 3 intentionally unresolved + 4 open + 1 left alone until ready) |
 
 ## The Q-079 operation (the Dhaneshra Period)
 
@@ -81,6 +82,14 @@ Status: the authoritative register of the `04-questions/` state.
 | Q-080 (the Empty Throne's filling) | open (the next development unit) | the Q-079 resolution (the Dhaneshra Period's central open question) |
 | Q-081 (the Dhaneshra Period's named rulers) | open (a narrative detail) | the Q-079 resolution (the Dhaneshra Period's named rulers) |
 | Q-082 (the Dhaneshra Period's polities' internal politics) | open (a narrative detail) | the Q-079 resolution (the polities' internal politics) |
+
+## The TIM-05 operation (the Pre-Kesra Age)
+
+- **Q-083 (the Veshna faith's pre-KE-0 antiquity — the scale of the pre-imperial history)** — **RESOLVED → TIM-05** (the Pre-Kesra Age — the attested ~1,200-year span (~KE −1200 → KE 0), derived from the established canon's internal causality (the frozen sacred script's conservatism; the Orenic drift + the Tarn substrate; the temple's multi-night survival claim; the polities' depth); the full depth beyond the Deep-Age boundary (~KE −1200) unattested, no number; the Kesra Era unchanged).
+- **The deliberate mysteries (Q-076/Q-077/Q-078)** — **NOT resolved by TIM-05** (the TIM-05 adds the Q-076 rumor ancestor [the Veth sailors' unverified "ships from the far west" — the later Phre reports' ancestor] and the Q-077 third source tradition [the temple rite-records — the stone inscriptions + the oral chronicle] + the direction of the disagreement [the rite-records preserve what the hagiography erases] — the specific content remains intentionally unresolved).
+- **Q-084 (the wider world's timescale)** — **left alone until ready** (out of scope for the Pre-Kesra Age — the Oren basin's history, not the world's cosmogony; the stewardship principle applies).
+- **The new question created by TIM-05** — **Q-085** (the pre-imperial named agents and polity internals — a narrative detail; the individuals are deliberately forgotten in the world's record, the TIM-05 §10 "what was forgotten" layer).
+- **Bookkeeping correction:** the TIM-04 operation (2026-08-26) created Q-083/Q-084; they were not counted in this register's final-state table until this update (the table's total was 82 = Q-001 → Q-082; it is now 85 = Q-001 → Q-085).
 
 ## The objective (the "majority of the genuinely actionable open questions")
 

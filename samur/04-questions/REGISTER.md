@@ -132,6 +132,17 @@ Status: the authoritative register of the `04-questions/` state.
 - **No new question raised** — the Long Shifting's specifics are a **deep unknown** (the no-false-precision rule — the stages are established, the details are NOT READY) — covered by the extended **Q-087**.
 - **Bookkeeping:** the total question count is 87 (Q-001 → Q-087 — unchanged).
 
+## The TIM-03 integration operation (the deep chronology anchors — the master chronology's deep section)
+
+- **No question affected** — the TIM-03 §0 anchors list the **established** deep layers/orders (the TIM-04 → TIM-10 layers, from the planet's formation to the record's horizon — as orders + relative order + established transitions) — no new layer, no new unknown:
+  - **Q-084 (the wider world's timescale)** — **unchanged** (the §0 anchors repeat the established orders — the planet billions; the ocean billions; the landmass billions → the current arrangement millions; the wind regime millions; the landlife millions; the current ecosystems hundreds of thousands; the tens of thousands [the Quiet Long] as a sub-order — the precise ages remain NOT READY).
+  - **Q-087 (the deep's named forms and the deep record layer's details)** — **unchanged** (the anchors add no new scope — the deep unknown remains the deep unknown; the no-false-precision rule + the no-Earth rule + the in-world epistemology constrain any later development).
+  - **Q-083 / Q-085 / Q-086** — referenced only as **informational states** in the TIM-03 open-questions section (Q-083 RESOLVED → TIM-05/TIM-06; Q-085/Q-086 open narrative details).
+- **The deliberate mysteries (Q-076/Q-077/Q-078)** — **NOT resolved by the TIM-03 integration** (the anchors repeat the established deep — the mysteries' content untouched).
+- **The NOT READYs preserved** — the precise deep dates; the planet's precise age; the Orenic kind's precise emergence; the Orenic's ultimate origin; the Khoric's origin; the Phre's origin (unchanged).
+- **No new question raised.**
+- **Bookkeeping:** the total question count is 87 (Q-001 → Q-087 — unchanged).
+
 ## The objective (the "majority of the genuinely actionable open questions")
 
 The 59 open questions at the start of the question-resolution operation → **58 resolved (98%) + 1 partially resolved** (Q-027, a deliberate range). Then the **Q-079 operation** resolved **Q-079** (the post-fragmentation matha politics) → **DYN-04** (the Dhaneshra Period), and created **Q-080/081/082** (the next development unit + the narrative details). The 3 intentionally unresolved (Q-076/Q-077/Q-078) + the 3 open (Q-080/081/082) are **deliberate** (the mysteries, the hidden-history layer, the Kesra Charter's text, the next development unit, the narrative details) — they are the negative space and the next development units the world needs, not the unresolved backlog. **No question is blocked by missing information** (documented). The objective is met: the majority of the genuinely actionable open questions are resolved, and the remaining open questions are the intentional mysteries + the next development units.

@@ -35,8 +35,9 @@
 - **Example pattern.** "It was, she would later understand, the moment everything
   changed" / "The silence said more than words ever could."
 - **Observable characteristics.** Interpretation sentences adjacent to events
-  (U02/U04's voice-side twin); S28's themes-stated-outright; TTCW rhetorical
-  complexity 11.1 vs 88.9 (S04).
+  (U02/U04's voice-side twin); weight annotations that grade the beat inline ("It
+  was nothing, and yet it was everything"; practitioner-cataloged for AI nonfiction,
+  S54); S28's themes-stated-outright; TTCW rhetorical complexity 11.1 vs 88.9 (S04).
 - **Evidence.** S28 (Tier 0), S04 (Tier 0). Confidence: **High**.
 - **Likely cause.** K3 + K4: the model's default register is explanation (it was
   trained on interpreted text and rewarded for clarity).

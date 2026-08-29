@@ -80,8 +80,19 @@ After every applied edit (or batch), re-run:
 1. the preservation checks on the changed span;
 2. the tell detector on the changed span (did the cause disappear? did a
    new tell appear?);
-3. the consistency ledgers for the changed span (frameworks/06).
+3. the consistency ledgers for the changed span (frameworks/06);
+4. the **voice-baseline check**: the edited span must sit inside the draft's
+   narrative voice baseline (`03-story-model.md` §Narrative voice baseline).
+   A span that now reads "editor" rather than "this draft" fails PV-4/PV-14
+   even when no fact, beat, or tone-quarter moved.
 Any failure → automatic revert of that edit, logged.
+
+After the last intervention level, the **final read**
+(`../spec/05-pipeline.md` Stage 4b, FR-1…FR-7) runs once over the whole
+revised draft — including the *cumulative* check that the set of edits has
+not converged the draft toward one register or rhythm. Per-edit preservation
+does not imply batch preservation; that is what the final read exists to
+catch.
 
 ## 7. Hard exclusions (never permissible, regardless of score)
 

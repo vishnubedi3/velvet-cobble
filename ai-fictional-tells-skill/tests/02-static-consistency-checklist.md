@@ -84,8 +84,9 @@ from the spot-grep for the example terms quoted in this paragraph.
 - Tests: `tests/01-adversarial-suite.md` (A-T1…A-T23, 23 tests, none missing,
   none duplicated) and `tests/02-static-consistency-checklist.md` (T-1…T-10).
 - Failure modes F-1…F-10, preservation dimensions PV-1…PV-14, pipeline
-  invariants I-1…I-6, benchmark metrics A1–A7 / P1–P5 / M1–M4 — each set
-  complete and referenced only by its canonical name.
+  invariants I-1…I-6, final-read checks FR-1…FR-7, benchmark metrics
+  A1–A7 / P1–P5 / M1–M4 — each set complete and referenced only by its
+  canonical name.
 
 ## T-8 — No out-of-folder dependencies
 

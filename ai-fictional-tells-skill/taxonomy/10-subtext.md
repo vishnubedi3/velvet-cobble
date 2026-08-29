@@ -91,7 +91,10 @@
 - **Example pattern.** He left without looking back. It wasn't anger, she realized —
   it was fear. The telling glance explained immediately.
 - **Observable characteristics.** Interpretation directly following enacted beats;
-  E02's narrative face; TTCW subtext dimension (S04: forced subtext).
+  E02's narrative face; TTCW subtext dimension (S04: forced subtext); and the
+  **trailing participial gloss** — an enacted beat plus an `…ing` clause that
+  interprets it ("He left without looking back, leaving everything unsaid"), the
+  fiction face of the "highlighting/underscoring" tail clause (S54).
 - **Evidence.** S04 (Tier 0: subtext measure — "does subtext enrich or feel
   forced?"), S28 (Tier 0). Confidence: **Medium**.
 - **Likely cause.** K3: completeness; each beat must be "understood" before the text
@@ -114,7 +117,9 @@
 - **Example pattern.** Final paragraphs that summarize what it all meant, who
   learned what, and how everything is now understood.
 - **Observable characteristics.** CAspER: closure is among the least variable
-  dimensions (S29); S04 endings; S28 explicitness.
+  dimensions (S29); S04 endings; S28 explicitness; meaning-recap epilogues that
+  restate what each character learned (the fiction face of the summary-recap
+  ending, S54).
 - **Evidence.** S29 (Tier 0), S04 (Tier 0). Confidence: **Medium-High**.
 - **Likely cause.** K3: complete answers are preferred; ambiguity is risky.
 - **Variation.** Genre: strongest in romance/drama (where some closure is
@@ -125,7 +130,9 @@
   outlive its last page.
 - **Recommended mitigation.** Level 2–4: end on an image or event that *implies*
   the meaning; leave the interpretation to the reader. Author-gated; respect genre
-  contracts.
+  contracts. A flagged closing line follows the **kicker rule**
+  (`../frameworks/05-narrative-analysis.md` §3): delete, don't rephrase — the
+  replacement close is concrete material already in the draft.
 - **Side effects.** Confusing endings where closure was the contract.
 - **Validation.** Post-read recall test: what does the reader take away vs. what
   the text asserted?

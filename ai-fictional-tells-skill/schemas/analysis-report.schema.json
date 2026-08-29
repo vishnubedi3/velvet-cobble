@@ -32,7 +32,7 @@
           "id": { "type": "string" },
           "tell_ids": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
           "spans": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
-          "pattern_evidence": { "type": "string", "description": "objective: counts, distributions, ledger diffs, cluster ids. Adjectives alone are invalid." },
+          "pattern_evidence": { "type": "string", "description": "objective: counts, distributions, ledger diffs, cluster ids, or (genericity findings) the transplant demonstration + ignored story-model fact (frameworks/01 §2 Pass C). Adjectives alone are invalid." },
           "evidence_refs": { "type": "array", "items": { "type": "string" }, "description": "source IDs from research/03" },
           "confidence": { "enum": ["high", "medium", "low"] },
           "cause": { "type": "string", "description": "K1..K9 + mechanism" },

@@ -15,7 +15,9 @@ Preserve or reject`, with the escalation discipline of
 ## Stage 1 — Analyze (Pass A + B + C)
 
 1. **Pass A — contract.** Genre/subgenre gate (frameworks/07), narration
-   contract, intent fields, declared devices, content boundaries.
+   contract, intent fields, declared devices, content boundaries, and the
+   **narrative voice baseline** capture (frameworks/01 §2 Pass A; stored in
+   the StoryModel as `narrative_voice_baseline`).
 2. **Pass B — surface scan.** Framework detectors in the cheap-first order
    (frameworks/01 §2: repetition → explicitness → continuity → uniformity →
    template).
@@ -47,12 +49,48 @@ into Observations; emit the intervention queue.
 2. Tell re-check: did the targeted cause disappear? Did a new tell appear
    (new-artifact rule)?
 3. Ledger diffs (frameworks/06): continuity, timeline, information state.
-4. Any failure → automatic revert, logged.
+4. The voice-baseline check on the changed span (interventions/02 §6).
+5. Any failure → automatic revert, logged.
+
+## Stage 4b — Final read (after the last level; mandatory, not configurable)
+
+The post-edit self-check over the whole revised draft, once all levels and
+reverts are complete. Each check is pass/fail; any failure routes the
+offending edits back through revert (logged and counted like reversion
+outcomes in the benchmark, `06-scoring.md` §5):
+
+- **FR-1 Voice recognition.** Edited spans sit inside the narrative voice
+  baseline (Pass A); the author would recognize the revised draft as their
+  own voice (PV-4/PV-14).
+- **FR-2 No cumulative convergence.** The *set* of edits did not flatten
+  register/rhythm variance toward one distribution — compare edited vs.
+  unedited spans against the baseline. Per-edit preservation does not imply
+  batch preservation.
+- **FR-3 Proportionality.** Total edit volume is proportional to the finding
+  evidence (edit-budget review, metric M3); no compression that strips voice
+  along with artifacts.
+- **FR-4 Strong-sentence audit.** Spans the analysis marked as doing
+  deliberate work (function-test passes recorded in Pass C) were not edited
+  by later levels.
+- **FR-5 No new tells.** Re-analysis of the revised draft produces no new
+  High-confidence findings in edited spans (invariant I-4) — including no
+  **cosmetic-variation residue**: the same construction surviving under
+  different words (frameworks/01 §2 Pass B).
+- **FR-6 Right word repeated.** No edit introduced referent cycling or
+  synonym rotation (F-2); repeating an established term is correct, not a
+  defect to vary.
+- **FR-7 Report completeness.** The SkillReport includes the author-readable
+  **what changed** list (`04-output-schema.md` §1): one plain-language line
+  per applied edit (level, tell IDs, quoted span, craft reason).
+
+In analysis-only runs (max level 0) the final read is vacuous — there are no
+edited spans — and is reported as such (invariant I-5 is unaffected).
 
 ## Stage 5 — Report
 
 Emit `SkillReport` (`../spec/04-output-schema.md`): analysis, intervention log
-with rejections, revised draft, updated StoryModel, summary.
+with rejections, revised draft, updated StoryModel, summary — including the
+author-facing **what changed** list (Stage 4b, FR-7).
 
 ## Ordering invariants (testable properties)
 

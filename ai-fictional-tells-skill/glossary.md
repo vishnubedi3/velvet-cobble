@@ -29,7 +29,13 @@ files disagree, this file wins; flag the disagreement via
 | **Intentionality check** | The three-step test (author intent → story-model consistency → function test) that separates deliberate choice from accidental artifact; undetermined → preserve. |
 | **Genre gate** | The contract check every flag must pass before any intervention ([`frameworks/07-genre-awareness.md`](frameworks/07-genre-awareness.md) §2). |
 | **Causality audit** | Event-graph before/after comparison required for all Level ≥4 edits ([`frameworks/05-narrative-analysis.md`](frameworks/05-narrative-analysis.md) §4). |
-| **Re-evaluation** | Post-edit re-check: preservation dimensions, tell detectors on the changed span, ledger diffs. Failures auto-revert. |
+| **Re-evaluation** | Post-edit re-check: preservation dimensions, tell detectors on the changed span, ledger diffs, voice-baseline check. Failures auto-revert. |
+| **Final read** | The mandatory post-level self-check (FR-1…FR-7) over the whole revised draft ([`spec/05-pipeline.md`](spec/05-pipeline.md) Stage 4b). FR failures revert like post-check failures; not configurable. |
+| **Voice baseline (narrative)** | The 5–8 draft-observed narrator-voice signals captured in Pass A *before* any tell is flagged ([`frameworks/01-detection.md`](frameworks/01-detection.md) §2; StoryModel field `narrative_voice_baseline`). The positive inventory interventions must preserve (PV-4/PV-14); distinct from per-character voice profiles. `unknown` for drafts too short to show one; never invented. |
+| **Transplant test** | The genericity evidence procedure (Pass C): a span is evidence only if it (a) transplants unchanged to another story/speaker/scene *and* (b) ignores story-model specificity that was available. Plain-but-story-bound spans pass ([`frameworks/01-detection.md`](frameworks/01-detection.md) §2 Pass C, §3.6). |
+| **Variation audit** | Pass B's three-way classification of repetition: **verbatim** (L02-family), **cosmetic** (same construction, different words — P02/P04/SC05-family), **referent** (cycled synonyms for one entity — P01-family) ([`frameworks/01-detection.md`](frameworks/01-detection.md) §2). |
+| **Kicker rule** | For a flagged closing line of manufactured significance: delete, don't rephrase; never an upgraded or replacement aphorism; the close falls back to concrete material already in the draft ([`frameworks/05-narrative-analysis.md`](frameworks/05-narrative-analysis.md) §3). Genre-gated and intentionality-gated. |
+| **What changed** | The author-facing plain-language change list in `SkillReport` (top-level field `what_changed`): one line per applied edit (FR-7; [`spec/04-output-schema.md`](spec/04-output-schema.md) §1). |
 
 ## 3. Preservation
 
@@ -57,7 +63,7 @@ files disagree, this file wins; flag the disagreement via
 |---|---|
 | **Tier 0–4** | Evidence tiers: fiction-specific empirical / adjacent empirical / mechanisms & benchmarks / practitioner / folklore ([`research/02-evidence-hierarchy.md`](research/02-evidence-hierarchy.md) §2.1). |
 | **Confidence** | `High` / `Medium` / `Low` / `Folklore` — per-tell evidentiary status ([`research/02-evidence-hierarchy.md`](research/02-evidence-hierarchy.md) §2.2). Folklore is permanently non-actionable. |
-| **S01–S53** | Source IDs; defined only in [`research/03-source-index.md`](research/03-source-index.md). Never redefined locally; never invented. |
+| **S01–S54** | Source IDs; defined only in [`research/03-source-index.md`](research/03-source-index.md). Never redefined locally; never invented. |
 | **K1–K9** | Causal mechanism codes (maximum-likelihood training … prompt/template behavior) defined in [`research/01-research-synthesis.md`](research/01-research-synthesis.md) §1.3. |
 | **Baseline** | What uniformity/explicitness are compared against: `internal` (the work's own distribution), `corpus` (a genre reference), or `uncalibrated` (none — conservative defaults, Level ≤3 cap). |
 
@@ -79,6 +85,7 @@ files disagree, this file wins; flag the disagreement via
 | **F-1…F-10** | Failure-mode codes ([`spec/07-failure-modes.md`](spec/07-failure-modes.md)). F-1 deliberate imperfection; F-2 synonym substitution; F-3 shuffling; F-4 detector optimization; F-5 anti-tell tell; F-6 over-editing; F-7 preservation failure; F-8 calibration drift; F-9 provenance misuse; F-10 humanness theater. |
 | **A-T1…A-T23** | Adversarial test IDs ([`tests/01-adversarial-suite.md`](tests/01-adversarial-suite.md)). |
 | **T-1…T-10** | Static consistency check IDs ([`tests/02-static-consistency-checklist.md`](tests/02-static-consistency-checklist.md)). |
+| **FR-1…FR-7** | Final-read check IDs ([`spec/05-pipeline.md`](spec/05-pipeline.md) Stage 4b): voice recognition, no cumulative convergence, proportionality, strong-sentence audit, no new tells, right word repeated, report completeness. |
 | **I-1…I-6** | Pipeline ordering invariants ([`spec/05-pipeline.md`](spec/05-pipeline.md) §"Ordering invariants"). |
 | **A1–A7 / P1–P5 / M1–M4** | Benchmark metric IDs ([`spec/09-evaluation-benchmark.md`](spec/09-evaluation-benchmark.md) §1). |
 
@@ -98,5 +105,5 @@ files disagree, this file wins; flag the disagreement via
   because the adversarial suite and examples moved to `tests/` and `examples/`
   (see [`CONSOLIDATION-REPORT.md`](CONSOLIDATION-REPORT.md)). The numbers are identifiers, not sequence.
 - Taxonomy files number 01–18 and 20; there is no 19 (see [`CONSOLIDATION-REPORT.md`](CONSOLIDATION-REPORT.md)).
-- Source IDs S49–S53 exist even though not all cluster files cite them; all IDs
+- Source IDs S49–S54 exist even though not all cluster files cite them; all IDs
   are defined in [`research/03-source-index.md`](research/03-source-index.md).

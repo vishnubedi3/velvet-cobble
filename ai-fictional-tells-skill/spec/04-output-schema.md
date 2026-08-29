@@ -11,11 +11,20 @@ SkillReport {
   analysis:        AnalysisReport
   intervention:    InterventionLog
   revised_draft:   Draft'
-  story_model:     StoryModel (post-edit)
+  story_model:     StoryModel (post-edit, incl. narrative_voice_baseline)
   rejected:        RejectedEdit[]
   summary:         { applied: n, reverted: m, preserved: k, flagged_intentional: j }
+  what_changed:    string[]   // one plain-language line per applied edit:
+                             // level, tell IDs, quoted span, craft reason
+                             // (FR-7; the report's human surface)
 }
 ```
+
+`what_changed` is the author-facing change list: short, plain craft language
+("deleted the closing aphorism; the scene now ends on the folded letter —
+kicker rule"), one line per applied edit, in draft order. The InterventionLog
+remains the machine-traceable record; `what_changed` is written to be *read*
+(the same edit's two faces).
 
 ## 2. `AnalysisReport`
 
@@ -36,7 +45,7 @@ AnalysisReport {
 |---|---|
 | `id`, `tell_ids[]` | one finding may cite several taxonomy IDs sharing a cause |
 | `spans[]` | quoted draft spans (start/end offsets) |
-| `pattern_evidence` | **objective**: counts, distributions, ledger diffs, cluster IDs — never adjectives ("feels flat" is not evidence) |
+| `pattern_evidence` | **objective**: counts, distributions, ledger diffs, cluster IDs — or, for genericity findings, the transplant demonstration plus the ignored story-model fact (frameworks/01 §2 Pass C) — never adjectives ("feels flat" is not evidence) |
 | `confidence` | `high / medium / low` (evidence hierarchy §2.2) |
 | `evidence_refs[]` | source IDs (research/03) |
 | `cause` | K1–K9 code + one-line mechanism |
@@ -90,8 +99,9 @@ logged in `RejectedEdit` with the specific violated constraint.
 
 ## 5. Downstream consumption
 
-- Human author: the summary + observations + rejected list (the report is
-  written to be *read*, not just parsed).
+- Human author: the **what changed** list first, then the summary +
+  observations + rejected list (the report is written to be *read*, not just
+  parsed).
 - Automation: `revised_draft` + `InterventionLog` + updated `StoryModel`
   feed the next pipeline stage (continuation, long-form state,
   `../frameworks/06-long-form-consistency.md`).

@@ -29,7 +29,11 @@ below names the evidence and the skill's countermeasure.
   relocate the pattern.
 - **Countermeasure.** There is no synonym-replacement intervention level.
   Lexical changes must be specificity repairs sourced from story-model facts
-  (P01/S03), with the function test passed.
+  (P01/S03), with the function test passed. The variation audit
+  (frameworks/01 §2 Pass B) additionally detects the *generator-side* form —
+  referent cycling — whose only correct fix is restoring the repeated
+  referent (FR-6: the right word repeated is correct), never adding
+  variation.
 
 ## F-3 — Sentence shuffling / randomization
 
@@ -56,7 +60,8 @@ below names the evidence and the skill's countermeasure.
 
 - **What.** P04 fixed by chopping rhythm into fragments; E01 fixed by
   behaviorist opacity; V03 fixed by manufactured quirk; D04 fixed by tic-spam
-  dialects.
+  dialects; N02/U05 fixed by upgrading the closing aphorism into a subtler
+  one (kicker rule, frameworks/05 §3).
 - **Evidence.** Each is a *new* template pattern — the same K1/K4 mechanism
   producing a mirrored artifact (no direct measurement; mechanism-level +
   practitioner observation, S44).

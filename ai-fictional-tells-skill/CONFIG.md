@@ -96,3 +96,10 @@ vocabulary, signpost phrases) are parameterized per language:
   ([`interventions/01-intervention-hierarchy.md`](interventions/01-intervention-hierarchy.md)).
 - Detector scores as an input — excluded by design ([`spec/07-failure-modes.md`](spec/07-failure-modes.md) F-4).
 - Error insertion / randomization — hard-excluded ([`interventions/02-preservation-constraints.md`](interventions/02-preservation-constraints.md) §7).
+- The Pass A narrative-voice-baseline capture and the final read FR-1…FR-7
+  ([`spec/05-pipeline.md`](spec/05-pipeline.md) Stage 4b) — they are the skill's
+  preservation substrate and self-check, not tuning surfaces; a run cannot
+  disable them.
+- The correction laws "the right word repeated is correct" (no cosmetic-variation
+  fixes) and the kicker rule (no upgraded closing aphorisms)
+  ([`frameworks/01-detection.md`](frameworks/01-detection.md) §2, [`frameworks/05-narrative-analysis.md`](frameworks/05-narrative-analysis.md) §3).

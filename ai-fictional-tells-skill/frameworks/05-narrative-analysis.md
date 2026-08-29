@@ -46,6 +46,22 @@ For each candidate theme:
   above the work's own baseline → prune the weakest echo (Level 4).
 - **Vacancy check.** If statements are cut and *no* scene carries the theme,
   the fix is scene-level (Level 5–6), not re-adding the statement.
+- **Kicker audit (story close).** Examine the final scene for: closing
+  aphorisms (N02/U03); meaning-recap paragraphs that restate what each
+  character learned (U05/N06 — the fiction face of the summary-recap ending,
+  S54); and weight-annotation closers ("And she understood, then, that home
+  had never been a place"). Practitioner-cataloged (S54), fiction-corroborated
+  (S28). Findings here follow the **kicker rule**:
+
+> **Kicker rule.** For a flagged closing line of manufactured significance,
+> the default fix is **deletion, not rephrasing**. Do not upgrade the
+> metaphor, do not preserve the cadence, do not write a replacement aphorism.
+> The close falls back to the strongest concrete material **already in the
+> draft** — an existing image, action, or line of dialogue, verified against
+> the story model; nothing new is invented, and nothing is moved (PV-1,
+> PV-10). The rule fires only after the genre gate (romance HEA closes and
+> mystery denouements are contractual) and the intentionality check (PV-13:
+> an author-declared closing line is preserved).
 
 ## 4. Causality audit (for F01/F02/F04 and any structural edit)
 
@@ -68,7 +84,7 @@ The skill offers *authored* structural options, never randomization:
 | N01/N04 default skeleton | non-thematic subplot; in-medias-res opening; delayed inciting event; asymmetric act weights |
 | N03/FS02 rigid ledger | one surplus plant; one payoff through an unplanted route (exempt: mystery) |
 | N05/F01 ladder | change conflict *kind* at one rung (physical→social→internal→informational) |
-| N06 closure | one implied (not stated) resolution; one open thread (genre-gated) |
+| N06 closure | one implied (not stated) resolution; one open thread (genre-gated); a flagged closing *aphorism* is deleted under the kicker rule (§3), never rewritten |
 | N08 valence smoothing | one sustained negative beat; incomplete recovery (author-gated) |
 | R02 milestone ladder | one off-ladder beat (plateau / backward step / parallel thread) |
 

@@ -65,10 +65,19 @@ the letter is Elena's discovery beat.
 
 ```
 summary: { applied: 2, reverted: 0, preserved: 3, flagged_intentional: 1 }
+what_changed: [
+  "L2 · U02/E02 · 'It was, she would later understand…' — deleted the significance-statement; the following paragraph carries the transition",
+  "L2 · E01 · 'She realized she was grieving…' — kept the enacted layer; cut the interpretation"
+]
 observations: [F3 (below threshold), F4 (below threshold), F5 (intentional motif)]
 rejected: [PV-10 proposal]
 revised_draft: <draft with 2 spans changed>
 ```
+
+Final read (Stage 4b): FR-1 pass (both edited spans sit inside the draft's
+voice baseline — sparse, declarative, low-adjective); FR-2 pass (two deletions
+do not converge register); FR-3 pass (2 spans / 900 words); FR-4 pass; FR-5
+pass (no new findings on re-analysis); FR-6 pass; FR-7 pass.
 
 **What this demo shows:** the skill edited 2 sentences out of 900 words,
 fixed two K3-cause artifacts, protected a declared motif, left marginal

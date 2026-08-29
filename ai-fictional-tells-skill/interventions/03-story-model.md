@@ -34,6 +34,18 @@ POV mode per scene; narration contract (omniscient / close / unreliable);
 distance policy (where the zoom changes, if anywhere); narrator quirks that
 are *voice*, not artifacts (PV-4).
 
+### Narrative voice baseline (→ frameworks/01 §2 Pass A)
+5–8 voice signals observed in the draft — diction range, cadence, syntax
+habits, tonal temperature, imagery domain, register shifts between modes —
+each with an evidence span. This is the **positive inventory**: what every
+intervention must leave intact (PV-4/PV-14) and what the final read checks
+edited spans against (`../spec/05-pipeline.md` Stage 4b). Distinct from
+per-character `voice_profile`s (frameworks/02 §3): the baseline describes the
+narrator/author voice; the profiles describe speakers. Marked `unknown` for
+drafts too short to show a baseline; never invented, never imported from a
+style guide. Conflicts with a declared style anchor are reported to the
+author, never adjudicated by the skill.
+
 ### Scene boundaries (→ frameworks/04)
 Scene list with type, purpose, POV, state record (positions, objects,
 injuries, mood), beat sequence, position in act.

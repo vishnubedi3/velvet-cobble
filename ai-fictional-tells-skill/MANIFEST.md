@@ -104,7 +104,7 @@ anything referenced by the skill must appear here (verified by
 
 | File | Contents |
 |---|---|
-| [`examples/01-before-after-examples.md`](examples/01-before-after-examples.md) | 11 before/after intervention examples (with tell IDs, cause, level, preservation rationale) + rejection examples. |
+| [`examples/01-before-after-examples.md`](examples/01-before-after-examples.md) | 12 before/after intervention examples (with tell IDs, cause, level, preservation rationale — incl. the kicker rule and referent-cycling restoration) + rejection examples. |
 | [`examples/02-worked-example-short-story.md`](examples/02-worked-example-short-story.md) | A compressed end-to-end pipeline run on a 900-word story excerpt: input, findings, priority, edits, one rejected proposal, report. |
 
 ## Evaluation material

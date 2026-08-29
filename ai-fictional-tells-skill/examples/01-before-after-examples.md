@@ -183,7 +183,47 @@ error (author-gated). Mystery genre would reject this edit (contract).
 
 ---
 
-## Ex-11 — what the skill *refuses* to do (rejection examples)
+## Ex-11 (N02/U05 → Level 2, kicker rule) — false-profundity close
+
+**Tell:** N02 explicit thematic statement; U05 full closure. **Cause:** K3/K4.
+
+> **Before.** …She folded the letter and set it under the stone. Home, she
+> understood at last, was not a place you left or kept — it was the people
+> who carried you, and the carrying never ended.
+
+> **After.** …She folded the letter and set it under the stone.
+
+**Why.** Kicker rule (frameworks/05 §3): the closing aphorism is *deleted,
+not improved* — no subtler metaphor, no preserved cadence, no replacement
+line. The close falls back to the concrete action already in the draft,
+which carries the beat. Genre gate first (a romance HEA close or a mystery
+denouement would be contractual); intentionality check second (an
+author-declared closing line is preserved, PV-13). The deletion is logged in
+`what_changed` in plain language: "deleted the closing aphorism; the scene
+now ends on the folded letter."
+
+---
+
+## Ex-12 (P01 → Level 1) — referent cycling restored
+
+**Tell:** P01 (referent cycling face). **Cause:** K1/K9.
+
+> **Before.** Mara showed the seal to the gatekeeper. The old woman
+> squinted at it. The silver-haired matron waved her through, unsmiling.
+
+> **After.** Mara showed the seal to the gatekeeper. The gatekeeper
+> squinted at it and waved her through, unsmiling.
+
+**Why.** Three names, one person — the rotation fragments reference and is
+the artifact; repeating the established referent is correct craft, not
+repetition to vary (frameworks/01 §2 Pass B, variation audit; FR-6). Level 1
+restoration only: no substitution, no new epithets. The reverse edit —
+introducing variation to "avoid repeating" a correct word — is
+hard-excluded (F-2).
+
+---
+
+## Ex-13 — what the skill *refuses* to do (rejection examples)
 
 | Proposed edit | Rejection reason |
 |---|---|
@@ -194,6 +234,9 @@ error (author-gated). Mystery genre would reject this edit (contract).
 | Remove a thriller's scene buttons because T03 flagged them | Genre gate (frameworks/07) — contract preserved |
 | Rewrite a whole scene because one sentence was redundant | Escalation discipline: Level 2 fixes the sentence (interventions/01 §2) |
 | "Fix" a mystery's perfectly planted ledger | N03 contract exemption (frameworks/07) |
+| Rephrase the closing aphorism into a subtler, better metaphor | Kicker rule (frameworks/05 §3): deletion is the fix; an upgraded aphorism is the same tell with better words |
+| Break a repeated construction by swapping in synonyms / rotating epithets | F-2 + cosmetic-variation rule (interventions/01 §3): the construction is the finding, not the tokens |
+| Replace a repeated, correct name with elegant variations ("the detective … the sleuth") | FR-6 / variation audit (frameworks/01 §2 Pass B): the right word repeated is correct; cycling is the artifact |
 
 ---
 

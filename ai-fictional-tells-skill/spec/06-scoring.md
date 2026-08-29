@@ -72,6 +72,11 @@ only "works" if the measurable pattern (repetition count, redundancy, ledger
 diff) changed and nothing broke. Scoring cannot declare victory by itself
 (see `../spec/09-evaluation-benchmark.md` for the human-side verification).
 
+When all levels are complete, the **final read** (`../spec/05-pipeline.md`
+Stage 4b, FR-1…FR-7) runs once over the whole revised draft. FR outcomes are
+reported with the run; an FR failure is logged and counted like a reversion
+outcome (an M2-class failure in the benchmark), not like a neutral finding.
+
 ## 6. Anti-gaming properties
 
 - No global "tell score" exists, so there is nothing to minimize by mass

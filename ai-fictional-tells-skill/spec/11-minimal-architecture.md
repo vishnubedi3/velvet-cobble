@@ -26,9 +26,12 @@ store, no custom models.
 3. **The story model** (`../interventions/03-story-model.md`) — extracted by a
    simplified `C-01` prompt in the minimal build (characters, facts,
    timeline, information-state; voice profiles optional at this tier and
-   marked `unknown` when absent).
+   marked `unknown` when absent; the **narrator voice baseline is required
+   even here** — it is cheap (5–8 quoted signals) and the final read depends
+   on it).
 4. **Orchestrator** (script): stage order, level ordering, batch gate,
-   revert logic — the pipeline invariants I-1…I-6 from `../spec/05-pipeline.md`.
+   revert logic, final read (Stage 4b) — the pipeline invariants I-1…I-6
+   from `../spec/05-pipeline.md`.
 
 ## What the minimal build does
 

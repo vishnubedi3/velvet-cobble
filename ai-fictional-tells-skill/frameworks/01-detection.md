@@ -18,10 +18,16 @@ biased); no single-sentence classifier (S02: the signal is distributional); no
 3. **Detect against baselines.** Uniformity/explicitness are defined relative
    to (a) the work's own internal baseline and (b) the genre contract — not
    against an external "human norm."
-4. **Evidence before severity.** Every finding carries source IDs and a
+4. **Capture the voice before judging it.** Pass A records the draft's own
+   **narrative voice baseline** (§2 Pass A) — the positive inventory of what
+   this draft *is* — before any tell is scanned for. Every uniformity finding
+   is a deviation from that baseline, and every intervention must leave that
+   baseline intact (PV-4/PV-14). The skill knows what to preserve before it
+   decides what to reduce.
+5. **Evidence before severity.** Every finding carries source IDs and a
    confidence level (see `../research/02-evidence-hierarchy.md`). Low-confidence
    tells are reported but cannot drive edits above Level 2.
-5. **Explicitness about limits.** Where evidence is practitioner-only or
+6. **Explicitness about limits.** Where evidence is practitioner-only or
    adjacent-domain, the finding says so.
 
 ## 2. The detection pass structure
@@ -33,6 +39,24 @@ Before scanning for tells, extract:
 - Authorial intent statements (style anchors, content boundaries, deliberate
   devices).
 - Length/segment plan.
+- **The narrative voice baseline.** 5–8 concrete voice signals observed *in
+  the draft* — diction range, cadence (sentence-length behavior and where it
+  breaks), syntax habits (fragments? left-branching? "and"-chaining?),
+  tonal temperature, imagery domain, register shifts between narration /
+  dialogue / interiority — each with a quoted evidence span. Examples of a
+  usable signal: "narration never contracts, dialogue always does";
+  "metaphors stay inside the fishing domain"; "scenes open mid-action, never
+  with place". This baseline:
+  - is the reference all uniformity findings are measured against (and the
+    reference the final read checks edited spans against — `../spec/05-pipeline.md`
+    Stage 4b);
+  - is **distinct from per-character voice profiles** (frameworks/02 §3):
+    it describes the narrator/author voice, not the speakers;
+  - conflicts with a declared style anchor → the affected findings are
+    reported `author-consult-required`, never resolved by the skill;
+  - is marked `unknown` for drafts too short to show one (~< 500 words);
+    uniformity findings in that draft are flagged `uncalibrated`. Never
+    invented, never imported from a style guide.
 
 Without Pass A, every subsequent flag risks false positives (a romance HEA is
 not N06; a Sorkin-esque banter rhythm is not D01).
@@ -41,17 +65,46 @@ not N06; a Sorkin-esque banter rhythm is not D01).
 Run the tell-detection heuristics from the taxonomy, in this order (cheapest
 first):
 
-1. **Repetition** (most objective): near-duplicate passages, repeated scene
-   skeletons, repeated emotional beats, unintended motif recurrence → L02, L03,
-   L10, N05, SC05.
-2. **Explicitness**: interpretation-statements, theme-statements, emotion
-   labels + causes, significance-statements, symbol glosses → U01–U04, N02,
-   C01, E01–E02, FS03, V02.
+1. **Repetition & variation audit** (most objective): near-duplicate passages,
+   repeated scene skeletons, repeated emotional beats, unintended motif
+   recurrence → L02, L03, L10, N05, SC05 — plus the two *disguised* repetition
+   forms that plain duplicate-detection misses:
+   - **Cosmetic variation** — different words, identical construction: three
+     scene-endings built on the same "not X, but Y" frame with different
+     nouns; three entrances announced with different emotion labels; three
+     aphorisms with the same antithesis skeleton. Cluster on *construction*,
+     not tokens → evidence for P02, P04, SC02, SC05. Varying the words did
+     not vary the pattern.
+   - **Referent cycling** — the same entity renamed per mention ("the
+     detective … the investigator … the older man") instead of repeating the
+     established name or pronoun; a face of P01 (practitioner-cataloged,
+     S54; fiction-specific frequency unmeasured — detect via this audit,
+     never as a word list). Correction law: **the right word repeated is
+     correct**; the cycling is the artifact, not the repetition.
+   Every repetition-family candidate is classified **verbatim** (L02-family),
+   **cosmetic** (P02/P04/SC05-family), or **referent** (P01-family). The
+   class selects the intervention family and blocks synonym-swapping "fixes"
+   (F-2): a cosmetic finding fixed by re-wording is unresolved by definition.
+2. **Explicitness & metadiscourse**: interpretation-statements,
+   theme-statements, emotion labels + causes, significance-statements, symbol
+   glosses → U01–U04, N02, C01, E01–E02, FS03, V02. Scan for the named
+   metadiscourse faces (each is a construction, never a word list):
+   - **Weight annotations** — narration grading its own beat ("It was
+     nothing, and yet it was everything") → U02, V02;
+   - **Trailing participial glosses** — enacted beat + `…ing` clause that
+     interprets it ("He left without looking back, leaving everything
+     unsaid") → U04, D07;
+   - **Preview signposts** ("Little did she know…") → P06; **retrospective
+     decodes** ("It wasn't anger, she realized — it was fear") → U04, E02;
+   - **Symbol footnotes** ("the broken clock had always been a symbol of…")
+     → FS03;
+   - **Scene-purpose declarations** ("We need to talk about…") → SC03.
 3. **Continuity**: fact/timeline/rule/world-state violations → L04, L05, L09,
    A02 (via the story model, interventions/03).
 4. **Uniformity**: sentence-length variance, register monotony, scene-opening
    type distribution, scene-end button density, metaphor density, valence arc
-   shape → P01–P07, S01–S06, SC01–SC04, T01–T04, E05, V01–V06.
+   shape → P01–P07, S01–S06, SC01–SC04, T01–T04, E05, V01–V06 — all measured
+   against the Pass A voice baseline, not an external norm.
 5. **Template**: stage-ladder structures, milestone checklists, setup/payoff
    ledgers, stock humor → N01–N08, R02, FS02, H01, F01.
 
@@ -64,7 +117,16 @@ Each candidate finding is documented with:
 - the causal hypothesis (K-code);
 - a **function test**: what does the passage do for the story (see
   taxonomy/20 §20.2)? Passages that do deliberate work are marked *intentional*
-  and dropped from the intervention queue (not from the report).
+  and dropped from the intervention queue (not from the report);
+- for **genericity findings** (P01, S03, W05, D04, C03, H01, U01), a
+  **transplant test** — the fiction form of the portability test (S54):
+  demonstrate (a) the span transplants unchanged (the line of dialogue would
+  serve any speaker in any story; the description could open any scene
+  anywhere; the beat could belong to any character), and (b) the story-model
+  fact that was *available and unused* (the established object, the
+  character's documented concern, the named place). The transplant
+  demonstration plus the ignored story-model fact are the objective evidence;
+  "it feels generic" is an adjective and is invalid.
 
 ### Pass D — Prioritization
 Score findings (see `../spec/06-scoring.md`) and emit the intervention queue.
@@ -88,6 +150,17 @@ intent). Only findings above threshold enter the queue.
 5. **Reader-judgment data cuts both ways.** Readers rate AI stories highly and
    can't identify them (S28) — "would a reader notice?" is not a detection
    criterion; "does this cost the story something?" is.
+6. **The transplant test has two pass conditions.** A span is genericity
+   evidence only if it survives transplantation unchanged *and* ignores
+   available story-specific material. A plain but story-bound span ("She
+   locked the smithy and walked down to the mill" — plain, untransplantable
+   once the smithy and mill are established) passes: plainness is not
+   genericity, and plain styles are protected (PV-14, P01's FPR note).
+7. **Repetition is not the enemy; unintended repetition is.** Established
+   names, correct repeated words, and intended refrains (motif register) are
+   craft. The artifacts are verbatim re-derivation (L02), the unchanged
+   *construction* under changed words (cosmetic variation), and referent
+   cycling. Never "fix" a finding by adding variation.
 
 ## 4. Output contract
 
@@ -107,3 +180,9 @@ report mutates text; mutation happens only through the intervention pipeline
 - Never treats Low/Folklore patterns as actionable.
 - Never emits "make it more human" as an instruction (vague, detector-flavored,
   quality-neutral).
+- Never treats word-level repetition as automatically bad: repeating the
+  established term is correct craft; cycling referents or rotating synonyms
+  is the artifact (§2 Pass B, variation audit).
+- Never imports a word list from any source (S54's catalog is adapted as
+  *constructions and tests*, not as banned vocabulary; fiction word lists
+  are Tier 4).

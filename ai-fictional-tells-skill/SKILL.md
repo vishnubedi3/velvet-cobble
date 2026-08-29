@@ -86,18 +86,26 @@ loadable.
 Full pipeline: `spec/05-pipeline.md`. Summary:
 
 1. **Contract extraction (Pass A).** Genre/subgenre, perspective contract,
-   author intent, content boundaries, length plan.
+   author intent, content boundaries, length plan — and the draft's own
+   **narrative voice baseline** (the positive inventory of voice signals the
+   skill must preserve; `frameworks/01-detection.md` §2 Pass A).
 2. **Analysis (Pass B/C).** Build the story model from the draft; run
-   framework detectors; attach evidence and confidence; run the function
-   test and intentionality check on every finding.
+   framework detectors (repetition & variation audit, metadiscourse scan,
+   transplant test for genericity); attach evidence and confidence; run the
+   function test and intentionality check on every finding.
 3. **Prioritization (Pass D).** Score findings
    (`spec/06-scoring.md`); emit the intervention queue.
 4. **Intervention, level-by-level.** Apply Level 1 draft-wide, re-analyze;
    then Level 2; then Level 3; Levels ≥4 are batch-gated with causality
    audits and (for worldview-touching changes) author consent.
 5. **Re-evaluation.** After each batch: preservation checks, tell re-check
-   on changed spans, ledger diffs; revert failures automatically.
-6. **Report.** Emit the AnalysisReport + InterventionLog + revised draft
+   on changed spans, ledger diffs, voice-baseline check; revert failures
+   automatically. After the last level: the mandatory **final read**
+   (FR-1…FR-7, `spec/05-pipeline.md` Stage 4b) — including the cumulative
+   check that the edits, as a set, have not converged the draft toward one
+   register or rhythm.
+6. **Report.** Emit the AnalysisReport + InterventionLog + revised draft,
+   with the author-facing **what changed** list
    (`spec/04-output-schema.md`).
 
 ## 5. Interfaces
@@ -113,6 +121,11 @@ Full pipeline: `spec/05-pipeline.md`. Summary:
 
 - **Scoring:** `spec/06-scoring.md` (tell score, function-loss score,
   priority).
+- **Final read:** `spec/05-pipeline.md` Stage 4b (FR-1…FR-7) — the self-check
+  every run performs on its own revised draft (voice recognition, no
+  cumulative convergence, proportionality, strong-sentence audit, no new
+  tells incl. cosmetic variation, right-word-repeated, report completeness).
+  FR failures are release-blocking in the benchmark.
 - **Benchmark:** `spec/09-evaluation-benchmark.md` + `benchmark` (metrics
   A1–A7, P1–P5, M1–M4, case suite, before/after rubrics).
 - **Adversarial tests:** `tests/01-adversarial-suite.md` (incl. the

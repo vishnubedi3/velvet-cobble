@@ -46,6 +46,13 @@ release decisions.
 | M3 | **Edit budget** | median chars changed per 1k words, per level (sanity: Level 1–2 dominant; total < ~8% typical; no quota, but outliers reviewed) |
 | M4 | **No-new-tell rate** | edited spans with new high-confidence findings (target: 0) |
 
+Every benchmark run also records the **final-read** outcomes (FR-1…FR-7,
+`../spec/05-pipeline.md` Stage 4b — voice recognition, cumulative
+convergence, proportionality, strong-sentence audit, no new tells, right
+word repeated, report completeness). Any FR failure is release-blocking,
+exactly like an M1 failure: the skill is judged on what its edits did *in
+aggregate* to the draft, not only per-edit.
+
 ## 2. Expert rubric (P5)
 
 Blind before/after pairs rated −2…+2 per dimension by writers/editors:

@@ -59,7 +59,10 @@
   but it is exactly what makes the text *feel* generated).
 - **Recommended mitigation.** Level 2–3: delete the statement; verify the scenes
   already carry the theme (they do — the statement is usually redundant). Keep it
-  only when the author intends an essayistic narrator.
+  only when the author intends an essayistic narrator. At story close, the **kicker
+  rule** applies (`../frameworks/05-narrative-analysis.md` §3): delete rather than
+  rephrase, and close on concrete material already in the draft — never an upgraded
+  or replacement aphorism.
 - **Side effects.** If the scenes are weak, deleting the statement leaves the theme
   uncarried — then the fix is scene work (Level 5–6), not re-adding the statement.
 - **Validation.** Reader paraphrase test: can an independent reader state the theme
@@ -153,7 +156,9 @@
 - **Effect on quality.** The ending feels administered rather than arrived at.
 - **Recommended mitigation.** Level 4: convert one resolution from *stated* to
   *implied* (or leave one genuinely open) where genre permits. Do not touch mystery
-  payoffs or romance HEA contracts.
+  payoffs or romance HEA contracts. A closing *aphorism* or meaning-recap paragraph
+  is handled by the kicker rule first (delete, don't rephrase — frameworks/05 §3);
+  structural loosening follows only if the closure problem survives the deletion.
 - **Side effects.** Breaking genre contracts costs readers, not gains them.
 - **Validation.** Genre-contract check first (frameworks/07), then reader reaction.
 

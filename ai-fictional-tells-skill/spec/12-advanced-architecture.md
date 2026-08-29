@@ -14,8 +14,9 @@ evaluation.
 [Score]   priority model (06-scoring.md) → queue
 [Fix]     C-03 per-level contracts L1..L6 → causality audit engine →
           batch gate → author gate
-[Verify]  C-04 reevaluate → ledger diff engine → revert engine
-[Report]  SkillReport + benchmark metrics
+[Verify]  C-04 reevaluate → ledger diff engine → revert engine →
+          final read (FR-1..FR-7) over the whole revised draft
+[Report]  SkillReport + what-changed list + benchmark metrics
 ```
 
 ## 1. Knowledge layer (RAG over this repository)
@@ -32,7 +33,7 @@ evaluation.
 
 | Engine | Implements |
 |---|---|
-| Near-duplicate finder | L02/L08/L10 (n-gram + embedding clusters) |
+| Near-duplicate finder | L02/L08/L10 (n-gram + embedding clusters); construction-level clustering for the variation audit's cosmetic-variation class (P02/P04/SC05) and referent-coreference detection for its referent class (P01) (frameworks/01 §2 Pass B) |
 | Sentence/register statistics | P01/P03/P04/P07, V06 (length variance, nominalization density, register contrast vs. internal baseline) |
 | Ledger engines (facts, timeline, world rules, reader-information) | L04/L05/L09, A02/A03, PV-7/PV-10 checks |
 | Scene segmentation + skeleton clustering | SC01–SC05, T01, L03, N05 |

@@ -4,6 +4,27 @@ One entry per canon change (add / revise / retire), newest first. Each entry rec
 
 ## 2026-08-28
 
+- **Canon Guard + `ai-fictional-tells-skill` fresh re-run against pilot chapter (supersedes previous skill report).**
+  - **Recovery point:** `recovery/pre-skill-rerun` (created at HEAD before this operation).
+  - **Previous report:** preserved at `samur/00-audit/2026-08-28-skill-report-pilot-superseded.md` (the audit directory retains the superseded version for historical record).
+  - **Canon Guard (pre-flight check) — PASS with 2 corrections:**
+    - **CG-1:** Dharan builders' blocks dated at "eight hundred years" — corrected to "more than six hundred years" (the Great Temple was built KE 240–265; at ~KE 912 that is ~650 years; "eight hundred" was ~150 years too many). Verified against REL-02 §4 and GEO-02 §2.
+    - **CG-2:** Guru described as presiding over events 172+ years before his tenure (first Sabha ~700, Consecration Moratorium ~700, five Concordats ~700–750, Sareth Demand ~750–800, Phre Silver crisis ~800–850; guru's tenure ~872–912) — corrected to events within his tenure (Claim Moratorium's aftermath ~850–900, equilibrium post-900). Verified against DYN-04 §14.
+  - **AI Fictional Tells fresh analysis — 6 findings (2 applied, 4 preserved):**
+    - **F1 (V02):** Guru's résumé paragraph — narrator exposition listing events outside guru's tenure. Applied L2 edit (trimmed to tenure-appropriate events; overlaps with CG-2).
+    - **F2 (V02/U02):** Temple Line explanation paragraph — narrator exposition duplicating what the subsequent dialogue carries. Applied L2 edit (trimmed to two sentences; the guru's dialogue carries the political context).
+    - **F3 (P02):** Balanced constructions — PRESERVED (within genre baseline, ~4 across 5,200 words).
+    - **F4 (P07/V03):** Over-polish — PRESERVED (declared style anchor; FPR 3).
+    - **F5 (V04):** Thematic coherence — PRESERVED (declared devices: spring/stone/Throne motifs).
+    - **F6 (D02):** Guru's briefing — PRESERVED (functionally necessary; broken up by Thesra's responses).
+  - **Notable passes (no finding):** P01, P04, P05, N02, N06, N08, C03, D04, SC06, E05, S01, U01 — 12 tells that the previous report flagged or improved now pass cleanly.
+  - **Preservation check:** all 14 dimensions (PV-1…PV-14) verified on changed spans. All PASS.
+  - **Re-evaluation on changed spans:** no new tells introduced; causes removed. PASS.
+  - **Revised pilot:** `samur/narrative/pilot-chapter.md` (3 passages corrected; header updated).
+  - **Replacement report:** `samur/05-quality/skill-report-pilot.md` (overwritten with fresh analysis; the previous report is in `samur/00-audit/`).
+  - **No canon revised or retired.** The skill operates on narrative drafts only. The 34 canon files are unchanged.
+  - **Pilot Review Gate (§22) re-verified:** the corrected pilot is checked against relevant canon (PASS); checked for contradictions (none); persisted; the recovery state is preserved. **STOP.** Chapter One is NOT authorized.
+
 - **Narrative/quality directory restructure — established the canonical separation.**
   - **Recovery point:** `recovery/pre-narrative-restructure` (created at HEAD before this operation).
   - **New directory:** `samur/05-quality/` — dedicated folder for all narrative quality analysis reports (`ai-fictional-tells-skill` reports, pre-flight canon guard reports, intervention logs, preservation checks). **Never** intermixed with narrative prose.

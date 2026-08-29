@@ -1,11 +1,11 @@
 # Pilot Chapter (Revised)
 
-Status: PILOT (not canon; not Chapter One) — revised after `ai-fictional-tells-skill` post-generation pass
-Date: 2026-08-28
+Status: PILOT (not canon; not Chapter One) — verified after fresh Canon Guard + `ai-fictional-tells-skill` re-run (supersedes previous skill report)
+Date: 2026-08-28 (last verified: 2026-08-28)
 Setting: the Veshna Great Temple, month 3 of the sea-wind season, a strong-wind year, approximately KE ~912
 Canonical basis: the Dhaneshra Period's equilibrium (DYN-04 §15), the Great Temple at Veshna (REL-02 §4, GEO-02 §2), the Temple Line (DYN-04 §5), the Empty Throne (DYN-04 §8), the Veshna Sabha (DYN-04 §13), the wind law (GEO-03), the deep-time mountain shrine (TIM-05, TIM-06)
-Pre-flight canon check: PASS
-Post-generation skill pass: APPLIED (see `samur/narrative/skill-report-pilot.md`)
+Pre-flight canon check: PASS (fresh run — two issues found and corrected: Dharan-era date, guru's résumé)
+Post-generation skill pass: APPLIED (fresh run — see `samur/05-quality/skill-report-pilot.md`)
 
 ---
 
@@ -15,7 +15,7 @@ Thesra heard it first — the sound the spring made in the hour before the sun c
 
 She had been born in the rooms above the eastern cloister, in the year the Besra Head Temple's third conciliar appointee died of a fever no one could name. She knew this because the temple kept records of everything, including the births of people whose existence was itself a kind of record. She was the House of Kesra. The temple was her house.
 
-The channel filled. The water ran clear over the cut stone and darkened where it touched the older masonry — the rough blocks the Dharan builders had set around the spring's original mouth, eight hundred years of mineral staining marking the line where the new work met the old. Thesra crouched and put her hand in the flow. Cold. The same cold. Every morning of her life.
+The channel filled. The water ran clear over the cut stone and darkened where it touched the older masonry — the rough blocks the Dharan builders had set around the spring's original mouth, more than six hundred years of mineral staining marking the line where the new work met the old. Thesra crouched and put her hand in the flow. Cold. The same cold. Every morning of her life.
 
 Beyond the garden, the temple was waking. She could hear the junior priests moving through the lower halls, the soft percussion of bare feet on stone, the murmur of the morning recitations beginning in the small practice rooms where the Shastras students learned their first commentaries. The sound carried differently in the wet season. The air was heavier now, month three of the sea-wind, and the temple's stone held the night's rain the way a bowl holds water — everything damp, everything conducting sound along the walls and through the courtyards. In the dry months the temple was quieter, drier, more contained. Now it breathed.
 
@@ -77,7 +77,7 @@ Thesra said nothing.
 
 "The Tarn wing," Thesra said, "has been losing arguments for thirty years and has decided to start winning them on procedure."
 
-The guru looked at her then. His eyes were clear. He had been the Veshna apex for forty years; he had presided over the first Sabha, the Consecration Moratorium, the five Concordats, the Sareth Demand, the Phre Silver crisis. He had held the matha together through the conciliar system and the pragmatist faction's compromises, and he had done it by being, above all things, patient.
+The guru looked at her then. His eyes were clear. He had been the Veshna apex for forty years; he had held the matha together through the Claim Moratorium's aftermath and the long quiet the elders called the equilibrium, and he had done it by being, above all things, patient.
 
 "The Tarn wing has a point," he said.
 
@@ -85,7 +85,7 @@ The guru looked at her then. His eyes were clear. He had been the Veshna apex fo
 
 He closed the manuscript. Set it aside. Folded his hands on the table. "I need you to be present at the Sabha meeting."
 
-The request was unusual. The Temple Line did not attend Sabha sessions. The Line's existence was a political fact — the deposed House of Kesra, sheltered at the Great Temple, the living proof of the consecrated line's survival. It was not a political actor. The Line did not vote, did not speak, did not participate in the matha's governance.
+The request was unusual. The Temple Line did not attend Sabha sessions.
 
 "Why?" she asked.
 

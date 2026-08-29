@@ -78,7 +78,6 @@ See `AGENTS.md` §6 for the full architectural specification. Summary:
 - **`ops/`** — operational records:
   - `logs/` — agent operation logs.
   - `recovery/` — recovery point documentation.
-- **`site/`** — reader-facing website (separate environment; owned by the website agent, not the authoring agent; may consume approved narrative material for publication; not part of the authoring system).
 
 ## 7. Open Governance Assumptions
 

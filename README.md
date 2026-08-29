@@ -23,7 +23,6 @@ The **Samur Empire** is a fictional medieval empire within the project's world. 
 | [`samur/`](samur/) | The world + the novel |
 | [`skills/`](skills/) | Agent skills (pre-flight canon guard + post-generation artifact reduction) |
 | [`ops/`](ops/) | Operational records (agent logs, recovery point documentation) |
-| [`site/`](site/) | Reader-facing website (separate environment; owned by website agent) |
 
 ### Inside `samur/`
 

@@ -130,9 +130,29 @@ is mistaken for the tell): **3** high · **2** moderate · **1** low.
 | L08 | Re-recapping established information | M | 1 | 1 |
 | L09 | Timeline drift | M | 2 | 1 |
 | L10 | Unintended motif repetition | M | 1 | 1 |
+| **Project tells (Samur-specific)** (taxonomy/19) | | | | |
+| PST-01 | Renamed-history transplant (influence-control violation in prose) | PC | 3 | 2 |
+| PST-02 | Exotica / Orientalist surface | PC | 3 | 2 |
+| PST-03 | Wind-law blindness (weather/season/logics against GEO-03) | PC | 3 | 1 |
+| PST-04 | In-world epistemology violation (false precision / forbidden knowledge) | PC | 3 | 2 |
+| PST-05 | Faction monolith (a documented-fault-line faction as a bloc) | PC | 3 | 1 |
+| PST-06 | Template-empire framing (single-cause decline, stage-set empire) | PC | 2 | 3 |
+| PST-07 | Modern-sensibility transposition | PC | 3 | 2 |
+| PST-08 | Language-map flattening (who speaks what ignored) | PC | 2 | 2 |
+| PST-09 | Name-register violation (names outside the canon pools) | PC | 2 | 1 |
+| PST-10 | Mystery consumption (resolving Q-076/077/078 or a NOT READY matter) | PC | 3 | 2 |
 
 Genre and model variation are handled as matrices in `../taxonomy/17-genre-and-model-variation.md`;
 the human-comparison framework is `../taxonomy/20-human-comparison.md`.
+
+**Confidence column, three authority classes.** `H/M/L` marks *empirical*
+confidence (generic clusters, `../research/02-evidence-hierarchy.md`). **PC**
+marks **project-canonical** tells (`../spec/01-project-binding.md` §2):
+normative rules of this repository, actionable on identification of an
+instance — the empirical scale does not apply to them and never downgrades
+them. A third class, **project style rules** (the author's declared craft
+tics, `../spec/01-project-binding.md` §2.3), operates at Level ≤2 and is not
+a taxonomy cluster.
 
 ## Reading a taxonomy entry
 
@@ -154,5 +174,7 @@ Each entry's fields:
 **Rules.** (1) A tell may be flagged only when the *pattern* is present, never from a
 word list. (2) Tells share causes; multiple flags with one cause are one intervention
 problem, not many. (3) Low-confidence tells are detection-only; they cannot justify an
-edit above Level 2. (4) A flagged pattern that passes the intentional-choice test (see
+edit above Level 2. (3a) Project-canonical tells (PST) are not confidence-gated; they
+are authority-gated (`../spec/01-project-binding.md` §2–§3) and outrank empirical
+findings in the queue. (4) A flagged pattern that passes the intentional-choice test (see
 `../interventions/02-preservation-constraints.md` §Intentionality) is preserved, not fixed.

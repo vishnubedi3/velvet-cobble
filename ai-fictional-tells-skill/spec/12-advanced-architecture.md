@@ -21,26 +21,35 @@ evaluation.
 
 ## 1. Knowledge layer (RAG over this repository)
 
-- Index: taxonomy cluster files, frameworks, interventions, research
+- Index: taxonomy cluster files (incl. `19-project-tells` with its canon
+  citations), frameworks, interventions, research
   synthesis, source index — chunked with per-chunk metadata (tell IDs,
-  confidence, K-codes).
-- Retrieval per finding: tell ID + cluster + genre → the exact
-  documentation the LLM needs (no need to hold everything in context).
+  confidence, K-codes, authority class, canon IDs for PST entries).
+- **The canon layer**: the resolved `samur/02-canon/` state (via the
+  project context's canon resolution) is indexed alongside the taxonomy so
+  Pass B0 checks retrieve the *live* rule text, not a summary; canon
+  re-resolution invalidates stale chunks (T-11 discipline).
+- Retrieval per finding: tell ID + cluster + genre (+ canon ID for PST) →
+  the exact documentation the LLM needs (no need to hold everything in
+  context).
 - Version pinning: taxonomy/schemas versioned; findings record the version
-  they were computed against.
+  they were computed against — **including the canon resolution ID**.
 
 ## 2. Deterministic analysis engines (code, not LLM)
 
 | Engine | Implements |
 |---|---|
+| **Name-register resolver** | PST-09: every personal name/place name resolved against the pools and toponym register (DYN-02 §1, CUL-01 §6, CUL-02 §3); morphology-class mismatches flagged mechanically |
+| **Wind-position checker** | PST-03: per-scene month/wind-season/river-stage consistency against the wind law (GEO-03) — the two cheapest, highest-value PST engines |
+| **Binding validator** | Stage 0: `project_context` validation, canon-resolution freshness, ref resolution (spec/03 §1.1) |
 | Near-duplicate finder | L02/L08/L10 (n-gram + embedding clusters); construction-level clustering for the variation audit's cosmetic-variation class (P02/P04/SC05) and referent-coreference detection for its referent class (P01) (frameworks/01 §2 Pass B) |
 | Sentence/register statistics | P01/P03/P04/P07, V06 (length variance, nominalization density, register contrast vs. internal baseline) |
 | Ledger engines (facts, timeline, world rules, reader-information) | L04/L05/L09, A02/A03, PV-7/PV-10 checks |
 | Scene segmentation + skeleton clustering | SC01–SC05, T01, L03, N05 |
 | Valence arc plotter | N08, E05 (hedonometer-style, S08 method) |
-| Voice profiler | D04/C03/H03, L01 (feature extraction per speaker/chapter) |
+| Voice profiler | D04/C03/H03, L01 (feature extraction per speaker/chapter) — with the language map's legitimate register differences (CUL-02) as protected variation, not D04 findings |
 | Emotion/explicitness tagger | C01/E01–E02/U01–U04 (lexicon + pattern rules, parameterized per language) |
-| Stereotype auditor | C07 (S07-style markedness comparison on the draft's own characters) |
+| Stereotype auditor | C07 (S07-style markedness comparison on the draft's own characters) + PST-02's exotic-register screen |
 
 The LLM contracts then consume engine outputs as structured evidence
 (faster, cheaper, and — critically — objective, satisfying the

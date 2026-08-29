@@ -4,12 +4,23 @@ A compressed end-to-end run on a 900-word generated opening, showing the
 pipeline's stages, evidence, decisions, and one rejection. Verbatim excerpts
 are invented for the demo (not from any published work).
 
+**Scope note (read first).** This demo isolates the **generic craft layer**
+on deliberately non-project prose (no Samur names, places, or institutions)
+so the mechanism is visible without a canon surface to lean on. A real run
+is impossible in this form: Stage 0 would reject this input — it carries no
+`project_context` (no Samur binding, no canon resolution, no Generation
+Contract; `../spec/03-input-schema.md` §1.1) — and a bound run would execute
+**Pass B0 (the project-tell scan)** before any finding below, with the scene
+canon surface as the specificity anchor. Treat this as the walkthrough of
+Stages 1–5 only.
+
 ## Input
 
 ```json
 {
   "draft": { "text": "<900-word generated story opening: a woman returns to her
-    hometown after her mother's death; scenes: train, station, house>" },
+    hometown after her mother's death; scenes: train, station, house> <demo:
+    project_context omitted — a real input requires it, see scope note>" },
   "metadata": { "generator": { "family": "generic", "decoding": { "temperature": 0.7 } },
                 "prompt_class": "zero-shot", "language": "en", "length_words": 900 },
   "author_intent": { "genre": "literary", "subgenre": null,

@@ -12,7 +12,7 @@ where it belongs, how it will be invoked, and its (non-)effect on existing canon
 
 ## 1. Skill name
 
-**`ai-fictional-tells-skill`** — "Fictional-Tell Artifact Reduction for AI-Generated Fiction" (v1.0.0, stable, research-backed).
+**`ai-fictional-tells-skill`** — "Fictional-Tell Artifact Reduction for AI-Generated Fiction" (v1.0.0, stable, research-backed; **now v2.0.0 and Samur-bound — see §15**).
 
 ## 2. Location in the main branch
 
@@ -63,9 +63,12 @@ bypassed, not reproduced manually).
 The two are **complementary, not redundant**. The Canon Guard
 (`skills/canon-guard/SKILL.md`) ensures a request is compatible with the
 **current applicable branch state** of `samur/02-canon/` *before* generation.
-The tell skill ensures a draft is *free of AI tells* *after* generation. The
-tell skill is **canon-agnostic**; the Canon Guard is **tell-agnostic**. The
-tell skill's `author_intent` may be fed from the Generation Contract emitted
+The tell skill ensures a draft is *free of AI tells* *after* generation. Since
+v2.0 the tell skill is no longer fully canon-agnostic: it **detects** canon
+violations as project tells (PST, e.g. name registers, wind law) and **reports
+them to the Canon Guard / author workflow** — it still never repairs or
+modifies canon (division of labor: `ai-fictional-tells-skill/spec/01-project-binding.md` §1).
+The tell skill's `author_intent` may be fed from the Generation Contract emitted
 by the guard (bounds for PV-5/PV-6/PV-13/PV-14) — always from a **re-resolved
 Canon State**, never from a frozen cheat sheet. The guard must be re-run for
 every request; a prior PASS is not reusable.
@@ -128,7 +131,7 @@ revised; the InterventionLog (byte-level revertible) is retained for audit.
 
 - **English-first.** Non-English runs need retuned lexicons; until then findings are marked `uncalibrated` and edits are capped at Level 3. (The Samur narrative will be in English, so this is not currently a constraint.)
 - **Level 0 is the default** — the skill's bias is toward *not* editing; a clean draft yields zero edits. It is a *reduction* layer, not a rewrite engine.
-- **Canonicity is out of scope for the tell skill.** It does not check that names/institutions/places come from current canon — that is the Canon Guard (`skills/canon-guard/SKILL.md`).
+- **Canonicity enforcement is out of scope for the tell skill.** It does check drafts against canon-derived project tells (name registers, wind law, faction structure, epistemic limits — `taxonomy/19`) and checks names/institutions/places against the canon surface, but violations are **report-only** (routed to the Canon Guard / author workflow); canon repair remains the Canon Guard's (`skills/canon-guard/SKILL.md`).
 - **It does not generate story.** It is post-generation only; it cannot open the narrative stage or write the draft.
 - **Intent-sensitive findings** (worldview-touching, style-anchored) are author-gated or reported `author-consult-required` when `author_intent` is absent — so the canon-derived `author_intent` must be supplied for a full run.
 - **No detector scores** are an objective, threshold, or escalation criterion anywhere in the pipeline.
@@ -167,3 +170,41 @@ Canon Guard ecosystem (pre-generation gate, locked contract, post-generation
 canon verification). It reads living branches; it does not duplicate or freeze
 canon; it does not modify `samur/02-canon/`. Adaptive tests:
 `python3 skills/canon-guard/tests/run_adaptive_tests.py`.
+
+## 15. Amendment (2026-08-29) — the tell skill is now project-bound (v2.0.0)
+
+The tell skill was specialized to this repository's fictional project. Changes
+that supersede statements above:
+
+- **Not standalone anymore.** A valid Samur `project_context` (live canon
+  resolution, Generation Contract, drafting constraints, KE position) is a
+  required input; without it the skill rejects the draft instead of running
+  generically (`spec/01-project-binding.md`, `spec/03-input-schema.md` §1.1).
+  §6's input list therefore gains `project_context` as the first, required
+  field.
+- **Project tells exist and run first.** PST-01…PST-10
+  (`taxonomy/19-project-tells.md`) encode this project's narrative rules
+  (influence control, wind law, in-world epistemology, faction fault lines,
+  language map, name registers, protected mysteries); they outrank generic
+  tells in the same span, and project rules beat generic craft on conflict
+  (supremacy laws).
+- **Canon-agnostic → canon-detecting, never canon-editing.** See the amended
+  §4/§11 text above: canon contradictions are detected and reported
+  (report-only routing), never fixed by prose edits; the skill never edits
+  `samur/`, never files QUESTIONs on canon content.
+- **Evaluation is project-anchored.** The expert rubric now judges canon
+  fidelity, project registers, in-world epistemology, mystery preservation,
+  and faction-portrayal integrity before generic craft dimensions
+  (`spec/09-evaluation-benchmark.md` §2).
+- **Adapted, not copied.** External anti-slop methodology was studied and
+  selectively adapted (single citation in its `research/03`, source S54);
+  no runtime or structural dependency on that repository.
+- **Maintenance coupling.** Changes to the project's narrative standards
+  (canon, charter, drafting constraints, anti-patterns) may now require
+  skill changes — same-commit re-verification (`tests/02` T-11,
+  `spec/01-project-binding.md` §5).
+
+The Canon Guard remains unchanged and authoritative for canon compliance;
+the tell skill remains the post-generation prose-quality layer, now with
+project tells as its first pass and canon-break detection as report-only
+input to the Guard's workflow.

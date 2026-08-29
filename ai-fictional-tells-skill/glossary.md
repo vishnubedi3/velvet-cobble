@@ -30,7 +30,7 @@ files disagree, this file wins; flag the disagreement via
 | **Genre gate** | The contract check every flag must pass before any intervention ([`frameworks/07-genre-awareness.md`](frameworks/07-genre-awareness.md) §2). |
 | **Causality audit** | Event-graph before/after comparison required for all Level ≥4 edits ([`frameworks/05-narrative-analysis.md`](frameworks/05-narrative-analysis.md) §4). |
 | **Re-evaluation** | Post-edit re-check: preservation dimensions, tell detectors on the changed span, ledger diffs, voice-baseline check. Failures auto-revert. |
-| **Final read** | The mandatory post-level self-check (FR-1…FR-7) over the whole revised draft ([`spec/05-pipeline.md`](spec/05-pipeline.md) Stage 4b). FR failures revert like post-check failures; not configurable. |
+| **Final read** | The mandatory post-level self-check (FR-1…FR-8) over the whole revised draft ([`spec/05-pipeline.md`](spec/05-pipeline.md) Stage 4b). FR failures revert like post-check failures; not configurable. |
 | **Voice baseline (narrative)** | The 5–8 draft-observed narrator-voice signals captured in Pass A *before* any tell is flagged ([`frameworks/01-detection.md`](frameworks/01-detection.md) §2; StoryModel field `narrative_voice_baseline`). The positive inventory interventions must preserve (PV-4/PV-14); distinct from per-character voice profiles. `unknown` for drafts too short to show one; never invented. |
 | **Transplant test** | The genericity evidence procedure (Pass C): a span is evidence only if it (a) transplants unchanged to another story/speaker/scene *and* (b) ignores story-model specificity that was available. Plain-but-story-bound spans pass ([`frameworks/01-detection.md`](frameworks/01-detection.md) §2 Pass C, §3.6). |
 | **Variation audit** | Pass B's three-way classification of repetition: **verbatim** (L02-family), **cosmetic** (same construction, different words — P02/P04/SC05-family), **referent** (cycled synonyms for one entity — P01-family) ([`frameworks/01-detection.md`](frameworks/01-detection.md) §2). |
@@ -78,15 +78,28 @@ files disagree, this file wins; flag the disagreement via
 | **Genre contract** | Genre conventions that are features, never tells ([`frameworks/07-genre-awareness.md`](frameworks/07-genre-awareness.md) §1). |
 | **Over-execution** | A contractual pattern executed past the point where it serves the genre — the only part of a contract that may be intervened on. |
 
+## 6a. Project binding (the Samur terms)
+
+| Term | Definition |
+|---|---|
+| **Project binding** | The contract that ties this skill to the Velvet Cobble repository and its fictional project: Stage 0 validates it, and without it the skill rejects the input rather than running generically ([`spec/01-project-binding.md`](spec/01-project-binding.md)). |
+| **PST-01…PST-10** | Project tell IDs ([`taxonomy/19-project-tells.md`](taxonomy/19-project-tells.md)): renamed-history transplant; exotica; wind-law blindness; epistemology violation; faction monolith; template-empire framing; modern-sensibility transposition; language-map flattening; name-register violation; mystery consumption. Authority class `project_canonical`. |
+| **Authority class** | Which kind of rule a finding enforces: `project_canonical` (PST — actionable on identification, canon-cited), `empirical` (generic tells — evidence-hierarchy-governed), `project_style_rule` (the author's declared craft tics — actionable at Level ≤2) ([`spec/01-project-binding.md`](spec/01-project-binding.md) §2). |
+| **Supremacy laws** | The five conflict rules: canon supremacy; project-tell priority; project-constraint-over-generic; the in-world voice exception ("whose knowledge is this?"); mystery preservation ([`spec/01-project-binding.md`](spec/01-project-binding.md) §3). |
+| **Canon surface** | The Pass A extract of the resolved canon relevant to the touched spans — institutions, places, factions, languages, name registers, each with its canon ID. What PST detectors check against and generic detectors use as their specificity anchor. |
+| **Canon resolution** | The live branch state of `samur/02-canon/` a run resolved (never a frozen snapshot); recorded in `project_context.canon_resolution`. |
+| **Report-only (canon workflow)** | Routing for findings that allege canon contradiction or require author-gated resolution: reported to the Canon Guard / author workflow, never fixed by a prose edit. |
+| **S04 override** | Generic mood-weather (S04, FPR-3, severity-1) is *banned outright* in this project (→ PST-03): the wind law makes weather structural, so weather-as-mood is a canon defect, not a soft tell.
+
 ## 7. Failure modes & tests
 
 | Term | Definition |
 |---|---|
-| **F-1…F-10** | Failure-mode codes ([`spec/07-failure-modes.md`](spec/07-failure-modes.md)). F-1 deliberate imperfection; F-2 synonym substitution; F-3 shuffling; F-4 detector optimization; F-5 anti-tell tell; F-6 over-editing; F-7 preservation failure; F-8 calibration drift; F-9 provenance misuse; F-10 humanness theater. |
-| **A-T1…A-T23** | Adversarial test IDs ([`tests/01-adversarial-suite.md`](tests/01-adversarial-suite.md)). |
-| **T-1…T-10** | Static consistency check IDs ([`tests/02-static-consistency-checklist.md`](tests/02-static-consistency-checklist.md)). |
-| **FR-1…FR-7** | Final-read check IDs ([`spec/05-pipeline.md`](spec/05-pipeline.md) Stage 4b): voice recognition, no cumulative convergence, proportionality, strong-sentence audit, no new tells, right word repeated, report completeness. |
-| **I-1…I-6** | Pipeline ordering invariants ([`spec/05-pipeline.md`](spec/05-pipeline.md) §"Ordering invariants"). |
+| **F-1…F-11** | Failure-mode codes ([`spec/07-failure-modes.md`](spec/07-failure-modes.md)). F-1 deliberate imperfection; F-2 synonym substitution; F-3 shuffling; F-4 detector optimization; F-5 anti-tell tell; F-6 over-editing; F-7 preservation failure; F-8 calibration drift; F-9 provenance misuse; F-10 humanness theater; F-11 generic-craft override (fixing the prose by breaking the project). |
+| **A-T1…A-T31** | Adversarial test IDs ([`tests/01-adversarial-suite.md`](tests/01-adversarial-suite.md)); A-T24…A-T31 are the project-binding traps. |
+| **T-1…T-11** | Static consistency check IDs ([`tests/02-static-consistency-checklist.md`](tests/02-static-consistency-checklist.md)); T-11 is the same-commit PST re-verification on canon change. |
+| **FR-1…FR-8** | Final-read check IDs ([`spec/05-pipeline.md`](spec/05-pipeline.md) Stage 4b): voice recognition, no cumulative convergence, proportionality, strong-sentence audit, no new tells, right word repeated, report completeness, project re-verification. |
+| **I-1…I-7** | Pipeline ordering invariants ([`spec/05-pipeline.md`](spec/05-pipeline.md) §"Ordering invariants"); I-7 = the binding is never bypassed. |
 | **A1–A7 / P1–P5 / M1–M4** | Benchmark metric IDs ([`spec/09-evaluation-benchmark.md`](spec/09-evaluation-benchmark.md) §1). |
 
 ## 8. Architecture
@@ -101,9 +114,12 @@ files disagree, this file wins; flag the disagreement via
 
 ## 9. Cross-file numbering
 
-- Spec files keep their original deliverable numbers (02–13); gaps exist
-  because the adversarial suite and examples moved to `tests/` and `examples/`
-  (see [`CONSOLIDATION-REPORT.md`](CONSOLIDATION-REPORT.md)). The numbers are identifiers, not sequence.
-- Taxonomy files number 01–18 and 20; there is no 19 (see [`CONSOLIDATION-REPORT.md`](CONSOLIDATION-REPORT.md)).
+- Spec files keep their original deliverable numbers (02–13), plus
+  `spec/01-project-binding.md` (the Samur binding, added with taxonomy 19);
+  gaps remain at 08 and 10 because the adversarial suite and examples moved
+  to `tests/` and `examples/` (see [`CONSOLIDATION-REPORT.md`](CONSOLIDATION-REPORT.md)).
+  The numbers are identifiers, not sequence.
+- Taxonomy files number 01–20; `19` is the project-tell catalog
+  (PST-01…PST-10).
 - Source IDs S49–S54 exist even though not all cluster files cite them; all IDs
   are defined in [`research/03-source-index.md`](research/03-source-index.md).

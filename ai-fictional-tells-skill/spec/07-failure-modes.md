@@ -123,3 +123,25 @@ below names the evidence and the skill's countermeasure.
   is optimizing for noise.
 - **Countermeasure.** The objective is literary quality (SKILL.md §1); the
   benchmark's metrics (../spec/09-evaluation-benchmark.md) measure function, not indistinguishability.
+
+## F-11 — Generic-craft override (fixing the prose by breaking the world)
+
+- **What.** Applying a legitimate generic correction that is wrong *for this
+  project*: "fixing" a repeated office name into referent cycling (the
+  Shreshtha/Dhresh/Beshara terms are the correct repeated words); varying a
+  canon-frozen register (the Veshna sacred register; Khor oral oath) for
+  D-cluster variety; replacing a "plain" span with richer imagery where the
+  plainness is the author's declared style; converting an in-world
+  chronicle's distorted memory into accurate history (spending CUL-01 §5's
+  memory system for a U02 fix); adding sensory specificity by inventing
+  canon (a named pass, a coined festival).
+- **Why it fails.** The correction optimizes a generic metric while
+  violating the binding (`../spec/01-project-binding.md` §3): project rules
+  outrank generic craft on conflict. The edit is a defect even when its
+  tell score improved.
+- **Countermeasures.** Pass B0 before Pass B (frameworks/01 §2); PST score
+  floor and queue priority (spec/06 §2, §7); project supremacy law 5 with
+  the conflict-resolution order (interventions/02 §8); FR-8 project
+  re-verification in the final read (spec/05 Stage 4b) — a failed FR-8
+  reverts the edit. Authors can also *declare* the project rules they care
+  about via style anchors (PV-14), which outrank generic findings too.

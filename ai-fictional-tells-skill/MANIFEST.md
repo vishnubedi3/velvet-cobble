@@ -1,18 +1,22 @@
 # MANIFEST — Complete Folder Inventory
 
 Every file in this skill, what it contains, and what it depends on.
-This is the authoritative inventory; it doubles as the portability contract:
+This is the authoritative inventory; it doubles as the binding inventory:
 anything referenced by the skill must appear here (verified by
-[`tests/02-static-consistency-checklist.md`](tests/02-static-consistency-checklist.md) T-4/T-5).
+[`tests/02-static-consistency-checklist.md`](tests/02-static-consistency-checklist.md) T-4/T-5), and the skill's
+external dependencies on the repository's living documents (canon, charter,
+anti-patterns, drafting constraints) are recorded in
+[`spec/01-project-binding.md`](spec/01-project-binding.md) — the skill is
+project-bound and not portable (see the README's portability statement).
 
 ## Root
 
 | File | Contents |
 |---|---|
-| [`README.md`](README.md) | **Entry point.** What the skill is, quick start, structure map, binding rules, compatibility/versioning, portability guarantees. |
-| [`SKILL.md`](SKILL.md) | **Primary specification.** The complete skill contract: objective, binding rules, scope, knowledge base, operating procedure, interfaces, evaluation, safety/ethics position. |
-| [`CONFIG.md`](CONFIG.md) | Configuration definitions: every parameter, default, calibration key, precedence, and validation rule. |
-| [`glossary.md`](glossary.md) | Canonical terminology: pipeline stages, levels, dimensions, tell-ID and source-ID schemes, K-codes, terms that must not drift between files. |
+| [`README.md`](README.md) | **Entry point.** What the skill is (and that it is Samur-bound), quick start, structure map, binding rules, compatibility/versioning, non-portability statement. |
+| [`SKILL.md`](SKILL.md) | **Primary specification.** The complete skill contract: project binding, objective, the eleven binding rules, scope, knowledge base, operating procedure, interfaces, evaluation, safety/ethics position, maintenance. |
+| [`CONFIG.md`](CONFIG.md) | Configuration definitions: every parameter, default, calibration key, precedence, and validation rule — and §8, what is deliberately not configurable (incl. the project binding). |
+| [`glossary.md`](glossary.md) | Canonical terminology: pipeline stages, levels, dimensions, tell-ID and source-ID schemes, K-codes, project-binding terms (§6a), terms that must not drift between files. |
 | [`MANIFEST.md`](MANIFEST.md) | This file. |
 | [`CONSOLIDATION-REPORT.md`](CONSOLIDATION-REPORT.md) | Record of the consolidation: what was merged/moved/removed, audit results, portability verdict. |
 
@@ -20,16 +24,17 @@ anything referenced by the skill must appear here (verified by
 
 | File | Contents |
 |---|---|
+| [`spec/01-project-binding.md`](spec/01-project-binding.md) | **The Samur binding** (required before any run): intake requirements, division of labor with the Canon Guard, the three authority classes (`project_canonical` / `empirical` / `project_style_rule`), the five supremacy laws, what "generic" still means here, maintenance triggers. |
 | [`spec/02-api-interface.md`](spec/02-api-interface.md) | API-agnostic interface: the five pure functions, prompt contracts (C-01…C-04), generator/analyzer independence, hosting contract. |
-| [`spec/03-input-schema.md`](spec/03-input-schema.md) | Normative input contract (`SkillInput`: draft, metadata, author_intent, analysis_options, provenance). Machine-readable: [`schemas/skill-input.schema.json`](schemas/skill-input.schema.json). |
-| [`spec/04-output-schema.md`](spec/04-output-schema.md) | Normative output contract (`SkillReport`, `AnalysisReport`, `Finding`, `InterventionLog`). Machine-readable: [`schemas/analysis-report.schema.json`](schemas/analysis-report.schema.json), [`schemas/intervention-request.schema.json`](schemas/intervention-request.schema.json). |
-| [`spec/05-pipeline.md`](spec/05-pipeline.md) | The processing pipeline (Stages 0–5) and the ordering invariants I-1…I-6. |
-| [`spec/06-scoring.md`](spec/06-scoring.md) | Scoring methodology: finding priority formula, cause clustering, level assignment, re-evaluation outcomes, anti-gaming properties. |
-| [`spec/07-failure-modes.md`](spec/07-failure-modes.md) | The ten failure modes F-1…F-10, including the researched anti-AI-rewriting failure mode, with evidence and countermeasures. |
-| [`spec/09-evaluation-benchmark.md`](spec/09-evaluation-benchmark.md) | Evaluation & validation methodology: metrics A1–A7 (artifact reduction), P1–P5 (preservation), M1–M4 (process), expert rubric, taxonomy re-validation path. |
+| [`spec/03-input-schema.md`](spec/03-input-schema.md) | Normative input contract (`SkillInput`: project_context (required binding, §1.1), draft, metadata, author_intent, analysis_options, provenance). Machine-readable: [`schemas/skill-input.schema.json`](schemas/skill-input.schema.json). |
+| [`spec/04-output-schema.md`](spec/04-output-schema.md) | Normative output contract (`SkillReport`, `AnalysisReport`, `Finding` incl. `authority` and `routing`, `InterventionLog`). Machine-readable: [`schemas/analysis-report.schema.json`](schemas/analysis-report.schema.json), [`schemas/intervention-request.schema.json`](schemas/intervention-request.schema.json). |
+| [`spec/05-pipeline.md`](spec/05-pipeline.md) | The processing pipeline (Stages 0–5, binding validation at Stage 0, Pass B0 project scan, final read FR-1…FR-8) and the ordering invariants I-1…I-7. |
+| [`spec/06-scoring.md`](spec/06-scoring.md) | Scoring methodology: finding priority formula (empirical + the PST authority qualifier), cause clustering, level assignment, re-evaluation outcomes, anti-gaming properties, project queue priority (§7). |
+| [`spec/07-failure-modes.md`](spec/07-failure-modes.md) | The eleven failure modes F-1…F-11 (incl. the anti-AI-rewriting failure modes and F-11 generic-craft override), with evidence and countermeasures. |
+| [`spec/09-evaluation-benchmark.md`](spec/09-evaluation-benchmark.md) | Evaluation & validation methodology: metrics A1–A7 (artifact reduction), P1–P5 (preservation), M1–M4 (process), the project-anchored expert rubric, PST + project-trap case suites, taxonomy re-validation path. |
 | [`spec/11-minimal-architecture.md`](spec/11-minimal-architecture.md) | Minimal implementation architecture: two prompt contracts + deterministic validators; cost model; minimum viable knowledge load. |
 | [`spec/12-advanced-architecture.md`](spec/12-advanced-architecture.md) | Advanced implementation architecture: RAG knowledge layer, deterministic analysis engines, intervention engine, calibration subsystem, long-form subsystem, evaluation harness, hardening. |
-| [`spec/13-integration.md`](spec/13-integration.md) | Integration documentation for arbitrary repositories and model APIs: vendoring, wiring, hook points, provider notes, compliance/provenance, upgrade path, acceptance checklist. |
+| [`spec/13-integration.md`](spec/13-integration.md) | Integration documentation for this repository and any model API: in-repo wiring, pipeline placement (Canon Guard cooperation), project-side loading, canon freshness, non-portability clause, upgrade path, acceptance checklist. |
 
 ## Research & evidence
 
@@ -43,7 +48,7 @@ anything referenced by the skill must appear here (verified by
 
 | File | Contents |
 |---|---|
-| [`frameworks/01-detection.md`](frameworks/01-detection.md) | Fiction-specific detection framework: principles, the four passes, false-positive guardrails, output contract. |
+| [`frameworks/01-detection.md`](frameworks/01-detection.md) | Fiction-specific detection framework: principles, the passes (A contract/canon surface, B0 project scan, B generic scan, C evidence, D prioritization), false-positive guardrails, output contract. |
 | [`frameworks/02-character-analysis.md`](frameworks/02-character-analysis.md) | Character model extraction, character tell detectors, voice profiles, stereotype audit, integrity checks. |
 | [`frameworks/03-dialogue-analysis.md`](frameworks/03-dialogue-analysis.md) | Dialogue tell detectors, the implicature model, rhythm-variation rules, humor beats, preservation checks. |
 | [`frameworks/04-scene-analysis.md`](frameworks/04-scene-analysis.md) | Scene segmentation/typing, scene tell detectors, perceiver audit, scene-state register, beat-structure analysis, intensity/distance curves. |
@@ -55,7 +60,7 @@ anything referenced by the skill must appear here (verified by
 
 | File | Contents |
 |---|---|
-| [`taxonomy/README.md`](taxonomy/README.md) | Master index: every tell with confidence/severity/false-positive risk; reading guide for entries. |
+| [`taxonomy/README.md`](taxonomy/README.md) | Master index: every tell (generic + PST) with confidence/authority, severity, false-positive risk; reading guide for entries. |
 | [`taxonomy/01-prose.md`](taxonomy/01-prose.md) | Prose-level tells P01–P07 (modal-average phrasing, balanced syntax, register inflation, uniform rhythm, decorative figurative density, signposting, over-polish). |
 | [`taxonomy/02-narrative-structure.md`](taxonomy/02-narrative-structure.md) | Narrative-level tells N01–N08 (story-as-argument, explicit theme, setup/payoff symmetry, default template, repeating conflict cycles, neat closure, moral clarity, valence smoothing). |
 | [`taxonomy/03-character.md`](taxonomy/03-character.md) | Character-level tells C01–C08 (emotion labeling, instant backstory, uniform interiority, measured reactions, polite conflict, hyper-consistency, stereotypes, theme vehicles). |
@@ -74,6 +79,7 @@ anything referenced by the skill must appear here (verified by
 | [`taxonomy/16-romance-relationships.md`](taxonomy/16-romance-relationships.md) | Romance/relationship tells R01–R04 (instant transparency, milestone checklist, residue-free reconciliation, over-explained feelings). |
 | [`taxonomy/17-genre-and-model-variation.md`](taxonomy/17-genre-and-model-variation.md) | Genre × tell-cluster matrix with evidence markers; model-family variation; calibration consequences. |
 | [`taxonomy/18-long-form.md`](taxonomy/18-long-form.md) | Long-form tells L01–L10 with ledger-based detectors and mitigations. |
+| [`taxonomy/19-project-tells.md`](taxonomy/19-project-tells.md) | **Project tells PST-01…PST-10** (Samur-specific, authority `project_canonical`): renamed-history transplant, exotica, wind-law blindness, epistemology violation, faction monolith, template-empire framing, modern-sensibility transposition, language-map flattening, name-register violation, mystery consumption — each with canon citations, project examples, and canon-sourced fixes; plus the project monitored table. |
 | [`taxonomy/20-human-comparison.md`](taxonomy/20-human-comparison.md) | Human literary writing comparison: what human fiction actually is, the eight good-vs-AI-like contrasts, rejected definitions. |
 
 ## Intervention framework
@@ -97,14 +103,14 @@ anything referenced by the skill must appear here (verified by
 
 | File | Contents |
 |---|---|
-| [`tests/01-adversarial-suite.md`](tests/01-adversarial-suite.md) | 23 adversarial tests (A-T1…A-T23): intentional-choice traps, continuity traps, new-artifact traps, detector-independence traps, escalation-discipline traps; pass criteria. |
-| [`tests/02-static-consistency-checklist.md`](tests/02-static-consistency-checklist.md) | 10 static self-checks (T-1…T-10): links, schema validity, tell-ID/source-ID consistency, terminology, numbering, manifest coverage, entry points. |
+| [`tests/01-adversarial-suite.md`](tests/01-adversarial-suite.md) | 31 adversarial tests (A-T1…A-T31): intentional-choice traps, continuity traps, new-artifact traps, detector-independence traps, escalation-discipline traps, project-binding traps; pass criteria. |
+| [`tests/02-static-consistency-checklist.md`](tests/02-static-consistency-checklist.md) | 11 static self-checks (T-1…T-11): links, schema validity, tell-ID/source-ID consistency, terminology, numbering, manifest coverage, entry points, and T-11 same-commit PST re-verification on canon change. |
 
 ## Examples
 
 | File | Contents |
 |---|---|
-| [`examples/01-before-after-examples.md`](examples/01-before-after-examples.md) | 12 before/after intervention examples (with tell IDs, cause, level, preservation rationale — incl. the kicker rule and referent-cycling restoration) + rejection examples. |
+| [`examples/01-before-after-examples.md`](examples/01-before-after-examples.md) | 12 generic before/after intervention examples (tell IDs, cause, level, preservation rationale — incl. the kicker rule and referent-cycling restoration) + 3 project examples (PST-09/03/05) + rejection examples (incl. project rejections). |
 | [`examples/02-worked-example-short-story.md`](examples/02-worked-example-short-story.md) | A compressed end-to-end pipeline run on a 900-word story excerpt: input, findings, priority, edits, one rejected proposal, report. |
 
 ## Evaluation material

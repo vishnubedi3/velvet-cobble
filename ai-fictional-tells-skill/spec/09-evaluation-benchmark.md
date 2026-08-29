@@ -46,7 +46,7 @@ release decisions.
 | M3 | **Edit budget** | median chars changed per 1k words, per level (sanity: Level 1–2 dominant; total < ~8% typical; no quota, but outliers reviewed) |
 | M4 | **No-new-tell rate** | edited spans with new high-confidence findings (target: 0) |
 
-Every benchmark run also records the **final-read** outcomes (FR-1…FR-7,
+Every benchmark run also records the **final-read** outcomes (FR-1…FR-8,
 `../spec/05-pipeline.md` Stage 4b — voice recognition, cumulative
 convergence, proportionality, strong-sentence audit, no new tells, right
 word repeated, report completeness). Any FR failure is release-blocking,
@@ -55,23 +55,63 @@ aggregate* to the draft, not only per-edit.
 
 ## 2. Expert rubric (P5)
 
-Blind before/after pairs rated −2…+2 per dimension by writers/editors:
+Blind before/after pairs rated −2…+2 per dimension by writers/editors. In
+this skill the rubric is **project-anchored**: every dimension is judged
+against *this project's* standards (the charter's writing philosophy, the
+canon, the Generation Contract), never against a generic "good fiction"
+ideal.
 
-1. **Plot & causality** — did the story stay the same story?
-2. **Character integrity** — do characters still act/sound like themselves?
-3. **Voice** — is the narrative voice intact?
-4. **Texture & specificity** — did the prose gain or lose life?
-5. **Subtext & implication** — did the reader's work change (for the better)?
-6. **Genre fit** — does it still honor its contract?
-7. **Overall** — is the after better fiction?
+**Project dimensions (weighted first):**
 
-Pass: median ≥ 0 on every dimension and no dimension with a negative
-expert majority. (This is the decisive gate; automated metrics are
-necessary but never sufficient.)
+1. **Canon fidelity** — does the revised draft still agree with the resolved
+   canon surface (institutions, wind law, epistemic limits, name registers,
+   faction structure)? Did any edit change the world?
+2. **Project voice & register** — does the prose keep the project registers
+   (the language map's differences, the Veshna sacred register vs. court
+   speech vs. delta pidgin) and the draft's narrative voice baseline?
+3. **In-world epistemology** — does the narration still respect who can know
+   what, at this KE position (PST-04's standard)?
+4. **Mystery & negative-space preservation** — are the deliberate mysteries
+   and the NS-01 six exactly as intact after the edits as before?
+5. **Faction portrayal integrity** — do factions keep their documented
+   internal structure (unacceptable portrayal in this project = the faction
+   monolith, PST-05)?
+
+**Craft dimensions (judged within the project frame):**
+
+6. **Plot & causality** — did the story stay the same story?
+7. **Character integrity** — do characters still act/sound like themselves
+   (their profiles, their registers)?
+8. **Voice** — is the narrative voice intact?
+9. **Texture & specificity** — did the prose gain or lose life *as this
+   world* (canon-sourced specificity, not generic richness)?
+10. **Subtext & implication** — did the reader's work change (for the
+    better)?
+11. **Genre fit** — does it still honor its contract?
+12. **Overall** — is the after better fiction *by this project's standards*?
+
+Pass: median ≥ 0 on every dimension, no dimension with a negative expert
+majority, and **no negative median on any project dimension** (a canon- or
+register-regressing edit fails the gate outright even if craft dimensions
+improved). (This is the decisive gate; automated metrics are necessary but
+never sufficient.)
 
 ## 3. Case suite
 
 `../benchmark/cases` — constructed pairs spanning:
+- **Project cases (PST):** drafts seeded with each PST-01…PST-10 violation
+  (a renamed-durbar court scene; mood-weather in the land-wind; a false
+  deep-time date; a monolith matha decree; the Charter quoted; a modern
+  autonomy speech; a fluent-Khor assembly debate; a coined name; an
+  exoticizing opening) → the skill must find the project tell, cite the
+  canon IDs, and fix it *from canon* without introducing new canon. Ground
+  truth: the violated rule's canon citation.
+- **Project trap cases:** canon-compliant spans that look like generic
+  tells but are the world working as designed — a chronicle's distorted
+  founding myth (not V02); a repeated office name (not referent cycling);
+  register difference across the language map (not D04); the deliberate
+  mystery *approached* (not resolved); plain author-declared prose (not
+  genericity). These must be preserved.
 - **Tell-seeded cases:** drafts injected with known tells (redundant
   interpretation, uniform dialogue, template structure, repeated skeletons,
   ledger contradictions) → the skill must find and fix the *injected*

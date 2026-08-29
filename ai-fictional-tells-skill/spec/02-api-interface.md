@@ -29,7 +29,9 @@ skill =
 
 All five functions are **pure** (same inputs → same outputs). State is passed
 explicitly: the StoryModel and Draft travel with every call. This makes the
-skill testable, cacheable, and hostable anywhere.
+skill testable, cacheable, and hostable anywhere — **within this project's
+pipeline**: `AnalyzeInput` includes the validated `project_context`
+(`../spec/03-input-schema.md` §1.1); the functions are pure, not unbound.
 
 ## 3. Prompt contracts (where an LLM is needed)
 
@@ -39,8 +41,9 @@ output), `temperature_guidance`, and `fallback` (what to do on schema
 failure).
 
 ### C-01 `story-model-extract`
-- In: draft + contract metadata. Out: StoryModel (fields from
-  `../interventions/03-story-model.md`). Knowledge: frameworks 02/04/05/06.
+- In: draft + contract metadata + the scene canon surface (Pass A). Out:
+  StoryModel (fields from `../interventions/03-story-model.md`). Knowledge:
+  frameworks 02/04/05/06.
 - Quality checks: every field cites a draft span; unknown fields marked
   `unknown`; no invented facts (checker: each fact must appear in the draft);
   `narrative_voice_baseline.signals` cites draft spans and observes — never
@@ -48,13 +51,16 @@ failure).
 - Fallback: field-level retry; unresolved fields stay `unknown`.
 
 ### C-02 `tell-detect`
-- In: draft + StoryModel + genre contract. Out: findings (schema:
-  AnalysisReport.findings). Knowledge: taxonomy + evidence hierarchy.
+- In: draft + StoryModel + genre contract + **project_context (the canon
+  surface + KE position)**. Out: findings (schema: AnalysisReport.findings).
+  Knowledge: taxonomy (incl. `19-project-tells`) + evidence hierarchy + the
+  binding (`../spec/01-project-binding.md`).
 - Quality checks: every finding has tell ID, quoted span, pattern evidence
   (a count/distribution/ledger-violation — not an adjective; for genericity
-  findings, the transplant demonstration + the ignored story-model fact,
-  frameworks/01 §2 Pass C), confidence, K-code, function-test result,
-  intentionality verdict.
+  findings, the transplant demonstration + the ignored canon-surface fact,
+  frameworks/01 §2 Pass C), **authority class** (and canon citations for
+  PST findings), confidence, K-code, function-test result, intentionality
+  verdict.
 - Fallback: findings failing the evidence check are demoted to
   `observations` (non-actionable).
 
@@ -70,7 +76,7 @@ failure).
 ### C-04 `reevaluate`
 - In: applied edits + StoryModel. Out: per-edit verdicts
   (`kept`/`reverted`) with reasons, updated StoryModel, updated findings —
-  and, once all levels are done, the final-read outcomes FR-1…FR-7 over the
+  and, once all levels are done, the final-read outcomes FR-1…FR-8 over the
   whole revised draft (`../spec/05-pipeline.md` Stage 4b; deterministic
   checks FR-3/FR-6/FR-7, contract-judged FR-1/FR-2/FR-4/FR-5 validated by
   objective evidence, never model opinion).

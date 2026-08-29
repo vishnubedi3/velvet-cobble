@@ -43,16 +43,18 @@ AnalysisReport {
 
 | Field | Notes |
 |---|---|
-| `id`, `tell_ids[]` | one finding may cite several taxonomy IDs sharing a cause |
+| `id`, `tell_ids[]` | one finding may cite several taxonomy IDs sharing a cause (generic S/E-IDs or PST-IDs) |
 | `spans[]` | quoted draft spans (start/end offsets) |
-| `pattern_evidence` | **objective**: counts, distributions, ledger diffs, cluster IDs — or, for genericity findings, the transplant demonstration plus the ignored story-model fact (frameworks/01 §2 Pass C) — never adjectives ("feels flat" is not evidence) |
-| `confidence` | `high / medium / low` (evidence hierarchy §2.2) |
-| `evidence_refs[]` | source IDs (research/03) |
+| `pattern_evidence` | **objective**: counts, distributions, ledger diffs, cluster IDs — or, for genericity findings, the transplant demonstration plus the ignored story-model fact (frameworks/01 §2 Pass C) — or, for PST findings, the canon-vs-span mismatch — never adjectives ("feels flat" is not evidence) |
+| `authority` | `project_canonical / empirical / project_style_rule` (spec/01 §2). Required: it selects the scoring rules (spec/06 §2) |
+| `confidence` | `high / medium / low` (evidence hierarchy §2.2) — for `project_canonical` findings this records detection certainty only; it never downgrades authority |
+| `evidence_refs[]` | source IDs (research/03) for empirical findings; **canon IDs + project documents for project findings** |
 | `cause` | K1–K9 code + one-line mechanism |
 | `function_test` | taxonomy/20 §20.2 result: what the passage does, if anything |
 | `intentionality` | `deliberate / accidental / undetermined` + reasoning |
 | `proposed_level` | 0–6 (ceiling per tell→level map) |
 | `preservation_risks[]` | which PV dimensions the fix would touch |
+| `routing` | optional: `report_only: canon workflow` — canon-contradiction and author-gated-mystery findings never enter the intervention queue |
 
 ### `Observation`
 

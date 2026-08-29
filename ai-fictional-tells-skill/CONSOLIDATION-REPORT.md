@@ -158,3 +158,60 @@ Run the checks in [`tests/02-static-consistency-checklist.md`](tests/02-static-c
 implementation. Add new files to [`MANIFEST.md`](MANIFEST.md) in the same
 commit (T-5), and update [`glossary.md`](glossary.md) before introducing
 new terminology (T-6).
+
+---
+
+# Addendum (2026-08-29) — Project Binding (v2.0.0)
+
+**The §7 portability verdict is superseded.** The skill is no longer a
+portable standalone skill; it is **bound to this repository's fictional
+project (Samur)** and intentionally non-portable. Sections 1–8 above remain
+the accurate record of the *consolidation*; this addendum records the
+binding pass.
+
+## What changed
+
+| Change | Files |
+|---|---|
+| **New: the binding contract** — intake requirements (live canon resolution, Generation Contract, drafting constraints, KE position), division of labor with the Canon Guard, three authority classes (`project_canonical` / `empirical` / `project_style_rule`), five supremacy laws, maintenance triggers | `spec/01-project-binding.md` (new; fills the previously empty spec/01 slot) |
+| **New: project-tell catalog** — PST-01…PST-10, each with canon citations, project examples, canon-sourced fixes, and a monitored table; S04 mood-weather overridden to PST-03 | `taxonomy/19-project-tells.md` (new; fills the previously empty 19 slot), `taxonomy/05-description.md` (S04 cross-note) |
+| **Input requires the binding** — `project_context` required + Stage 0 validation; no generic fallback | `spec/03-input-schema.md` §1/§1.1/§6, `schemas/skill-input.schema.json` |
+| **Detection re-ordered** — Pass A builds the scene canon surface + KE position; new Pass B0 (project scan, cheapest-first); transplant test anchored to the canon surface; in-world voice exception | `frameworks/01-detection.md` (rewritten), `spec/05-pipeline.md` Stage 1 |
+| **Pipeline hardening** — Stage 0 binding validation; invariant I-7 (binding not bypassable); final-read FR-8 (project re-verification) | `spec/05-pipeline.md` |
+| **Scoring** — authority qualifier (PST not confidence-weighted; score floor 1.3; intent protection only for canon-compliant devices); §7 project queue priority + downstream re-detection | `spec/06-scoring.md` |
+| **Preservation** — §8 project supremacy laws + conflict-resolution order (content boundaries → project laws → PV → generic craft); F-11 generic-craft override | `interventions/02-preservation-constraints.md`, `spec/07-failure-modes.md` |
+| **Output** — `Finding.authority`, canon citations as evidence, `routing: report_only: canon workflow` | `spec/04-output-schema.md`, `schemas/analysis-report.schema.json` |
+| **Evaluation** — project-anchored rubric (5 project dimensions gate the pass); PST + project-trap case classes | `spec/09-evaluation-benchmark.md`, `benchmark/README.md` |
+| **Tests** — A-T24…A-T31 project-binding traps; T-11 same-commit PST re-verification on canon change | `tests/01-adversarial-suite.md`, `tests/02-static-consistency-checklist.md` |
+| **Integration rewritten** — from a vendoring guide ("drop into any codebase") to this-repository wiring + Canon Guard cooperation + non-portability clause | `spec/13-integration.md` |
+| **Entry points & docs** — eleven binding rules (was eight); §4 project coupling; §5 portability statement; SKILL §8 maintenance; glossary §6a + numbering updates; MANIFEST; CONFIG §8 non-configurable binding; examples Ex-P1…P3 + project rejections; worked-example scope note | `SKILL.md`, `README.md`, `glossary.md`, `MANIFEST.md`, `CONFIG.md`, `examples/01–02` |
+| **Repository docs** — root README deliverable paragraph (portability claim corrected); `skills/README.md` (binding paragraph); `skills/INTEGRATION.md` §15 amendment + inline corrections of now-false claims | outside this folder, minimal |
+
+## New numbering (T-7 update)
+
+- `spec/01` now exists (the binding); gaps remain at 08, 10.
+- `taxonomy/19` now exists (project tells); taxonomy is complete 01–20.
+- F-1…F-11, A-T1…A-T31, T-1…T-11, I-1…I-7, FR-1…FR-8.
+
+## Superseded portability verdict (replacement for §7)
+
+**The folder is deliberately non-portable.** Evidence: (1) intake requires a
+Samur `project_context` and rejects everything else (`input_rejection`;
+A-T24; schema `required`) — there is no generic mode; (2) the PST catalog,
+examples, and rubric are derived from `samur/02-canon/`, `PROJECT.md`, the
+drafting constraints, and the anti-patterns, and cite them; (3) the
+supremacy laws make project rules override generic craft, so behavior
+differs from any generic implementation by design; (4) external anti-slop
+methodology was adapted, not copied (record: `research/03` S54), with no
+runtime or structural dependency; (5) the skill must change when the
+project's narrative standards change (T-11 same-commit re-verification).
+Mechanical facts that still hold: internal references are file-relative and
+resolve (T-1); no runtime dependencies; model- and API-agnostic hosting.
+
+## Re-verification
+
+Static suite re-run after the binding pass: T-1 links NONE broken; schemas
+valid; ID sets complete (FR 1–8, F 1–11, A-T 1–31, T 1–11, PST 1–10 in the
+canonical index); no `velvet-cobble`/absolute paths introduced; `../` chains
+inside the folder. Behavioral suites (A-T, benchmark) remain acceptance
+gates for any implementation.

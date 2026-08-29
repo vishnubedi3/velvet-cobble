@@ -28,10 +28,22 @@ priority = severity_weight
 | `false_positive_penalty` | 0 / 0.3 / 0.6 for FPR 1/2/3 | taxonomy |
 | `intent_protection` | 0 (no intent match) / 0.5 (possible device) / ∞ (declared device → Observation) | interventions/02 §3 |
 
-Score range: −0.6 … 3.0. Queue threshold default: **1.2** (filters most
-Low-confidence and high-FPR items into Observations). The threshold is a
-parameter, not a quality knob: raising it reduces edits; lowering it below
-0.8 is discouraged (that region is FPR-dominated).
+**Authority qualifier (`../spec/01-project-binding.md` §2).** The formula
+above applies to *empirical* findings. `project_canonical` (PST) findings
+are not confidence-weighted: `confidence_weight` is fixed at 1.0 (the
+authority is canon, not evidence), the score floor is 1.3 (above the default
+queue threshold — a PST finding can never be thresholded into a mere
+Observation), and `intent_protection` ∞ applies only where the author's
+*declared device* is itself canon-compliant (a declared device that violates
+canon is a `report_only: canon workflow` item for the author, not an
+editable or ignorable finding). `project_style_rule` findings score as
+empirical, capped at Level 2.
+
+Score range: −0.6 … 3.0 (empirical); ≥ 1.3 floor (project_canonical). Queue
+threshold default: **1.2** (filters most Low-confidence and high-FPR items
+into Observations). The threshold is a parameter, not a quality knob: raising
+it reduces edits; lowering it below 0.8 is discouraged (that region is
+FPR-dominated). Raising it above 1.3 cannot hide a PST finding.
 
 ## 3. Cause clustering (one cause, one problem)
 
@@ -73,7 +85,7 @@ diff) changed and nothing broke. Scoring cannot declare victory by itself
 (see `../spec/09-evaluation-benchmark.md` for the human-side verification).
 
 When all levels are complete, the **final read** (`../spec/05-pipeline.md`
-Stage 4b, FR-1…FR-7) runs once over the whole revised draft. FR outcomes are
+Stage 4b, FR-1…FR-8) runs once over the whole revised draft. FR outcomes are
 reported with the run; an FR failure is logged and counted like a reversion
 outcome (an M2-class failure in the benchmark), not like a neutral finding.
 
@@ -86,3 +98,22 @@ outcome (an M2-class failure in the benchmark), not like a neutral finding.
 - Detector scores never enter any term (S12–S14, S35).
 - `unchanged` and `reverted` outcomes are logged and counted in the
   benchmark as failures — the skill is judged on them.
+
+## 7. Project priority in the queue (Samur binding; `../spec/01-project-binding.md` §3.2)
+
+1. **No empirical fix outranks an unresolved project_canonical finding in
+   the same span.** Queue order within a span: PST findings first (by their
+   own scores), then empirical findings. Rationale: a draft must be right
+   about the world before it can be improved as prose — an S-cluster rhythm
+   edit to a passage whose wind position is wrong (PST-03) is polishing a
+   scene that may have to move or be re-derived.
+2. **Downstream re-scoring after a PST fix.** A Level ≥3 PST fix (re-derived
+   scene, re-voiced dialogue) can invalidate empirical findings in the same
+   span — repetition counts, rhythm measurements, continuity ledgers taken
+   against the *old* text. Empirical findings in a PST-fixed span are
+   re-detected (not merely re-scored) after the fix; stale findings are
+   dropped, new ones enter the queue normally.
+3. **Report-only routing is not scoring.** Canon-contradiction findings and
+   author-gated PST resolutions never enter the queue regardless of score;
+   they are reported (`analysis_report` routing) for the Canon Guard /
+   author workflow.

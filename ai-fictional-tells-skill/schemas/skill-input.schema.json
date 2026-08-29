@@ -2,10 +2,35 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://velvet-cobble/schemas/skill-input.schema.json",
   "title": "SkillInput",
-  "description": "Top-level input to the skill. Normative human-readable contract: spec/03-input-schema.md. Validated at pipeline Stage 0 (spec/05-pipeline.md).",
+  "description": "Top-level input to the skill. Normative human-readable contract: spec/03-input-schema.md. Validated at pipeline Stage 0 (spec/05-pipeline.md). project_context is REQUIRED: the skill is bound to the Samur project (spec/01-project-binding.md) and has no generic mode.",
   "type": "object",
-  "required": ["draft", "metadata"],
+  "required": ["project_context", "draft", "metadata"],
   "properties": {
+    "project_context": {
+      "type": "object",
+      "description": "The Samur binding (spec/03-input-schema.md §1.1; spec/01-project-binding.md §1). Absent/invalid => input_rejection; no generic fallback.",
+      "required": ["binding", "narrative_period_ke", "canon_resolution", "generation_contract_ref", "drafting_constraints_ref"],
+      "properties": {
+        "binding": { "type": "string", "enum": ["samur"] },
+        "narrative_period_ke": { "type": "string", "description": "Default: 'post-KE ~900, the Dhaneshra Period equilibrium' (samur/02-canon/DYN-04 §15). PST-04 is period-sensitive." },
+        "canon_resolution": {
+          "type": "object",
+          "required": ["method", "resolved_at", "scope"],
+          "properties": {
+            "method": { "type": "string", "description": "e.g. 'canon-guard re-resolution' — never a frozen snapshot" },
+            "resolved_at": { "type": "string", "description": "timestamp/commit of the resolution; must postdate the draft's generation run" },
+            "scope": { "type": "string", "description": "the applicable branch state / file scope resolved" }
+          }
+        },
+        "generation_contract_ref": { "type": "string", "description": "the Canon Guard Generation Contract under which the segment was produced" },
+        "drafting_constraints_ref": { "type": "string", "description": "the drafting constraints in force (samur/00-audit/2026-08-28-initial-cross-check.md §4 or successor)" },
+        "scene_canon_surface": {
+          "type": "array",
+          "description": "optional pre-computed Pass A surface: institutions/places/factions/languages with canon IDs",
+          "items": { "type": "object", "required": ["kind", "name", "canon_id"], "properties": { "kind": { "type": "string" }, "name": { "type": "string" }, "canon_id": { "type": "string" } } }
+        }
+      }
+    },
     "draft": {
       "type": "object",
       "required": ["text"],

@@ -7,23 +7,36 @@ Preserve or reject`, with the escalation discipline of
 
 ## Stage 0 — Intake
 
-1. Validate `SkillInput` (`../spec/03-input-schema.md`).
-2. Record generator metadata; select baselines (internal / corpus /
+1. **Validate the Samur binding** (`../spec/01-project-binding.md` §1;
+   `../spec/03-input-schema.md` §1.1): `project_context` present, `binding
+   === "samur"`, live canon resolution (postdating the draft's generation
+   run), resolvable refs. **Any failure → `input_rejection`** — the skill
+   has no generic mode and never proceeds on an unbound draft.
+2. Validate `SkillInput` (`../spec/03-input-schema.md`).
+3. Record generator metadata; select baselines (internal / corpus /
    uncalibrated).
-3. If `length_words ≥ long_form_threshold`: enable frameworks/06.
+4. If `length_words ≥ long_form_threshold`: enable frameworks/06.
 
-## Stage 1 — Analyze (Pass A + B + C)
+## Stage 1 — Analyze (Pass A + B0 + B + C)
 
 1. **Pass A — contract.** Genre/subgenre gate (frameworks/07), narration
-   contract, intent fields, declared devices, content boundaries, and the
+   contract, intent fields, declared devices, content boundaries, the
    **narrative voice baseline** capture (frameworks/01 §2 Pass A; stored in
-   the StoryModel as `narrative_voice_baseline`).
-2. **Pass B — surface scan.** Framework detectors in the cheap-first order
-   (frameworks/01 §2: repetition → explicitness → continuity → uniformity →
-   template).
-3. **Pass C — evidence + intent.** Attach evidence/confidence/cause to each
-   candidate; run the function test; run the intentionality check
-   (`../interventions/02-preservation-constraints.md` §3). Unsupported candidates → Observations.
+   the StoryModel as `narrative_voice_baseline`), and the **scene canon
+   surface** built from the resolved canon state (KE position from
+   `project_context`).
+2. **Pass B0 — project-contract scan.** The ten PST checks
+   (`../frameworks/01-detection.md` §2 Pass B0;
+   `../taxonomy/19-project-tells.md`), cheapest first; findings carry
+   `authority: project_canonical` and canon citations.
+3. **Pass B — surface scan.** Generic framework detectors in the
+   cheap-first order (frameworks/01 §2: repetition → explicitness →
+   continuity → uniformity → template), after and informed by B0.
+4. **Pass C — evidence + intent.** Attach evidence/confidence-or-authority/
+   cause to each candidate; run the function test; run the intentionality
+   check (`../interventions/02-preservation-constraints.md` §3). Unsupported
+   candidates → Observations. Canon-contradiction findings route
+   `report_only: canon workflow` (they never enter the intervention queue).
 
 ## Stage 2 — Prioritize
 
@@ -82,6 +95,14 @@ outcomes in the benchmark, `06-scoring.md` §5):
 - **FR-7 Report completeness.** The SkillReport includes the author-readable
   **what changed** list (`04-output-schema.md` §1): one plain-language line
   per applied edit (level, tell IDs, quoted span, craft reason).
+- **FR-8 Project re-verification.** Every PST finding is re-checked in the
+  revised draft: the name register resolves (PST-09), the wind position
+  traces (PST-03), the epistemic register holds (PST-04), the mysteries
+  remain exactly as open as canon leaves them (PST-10), and no edit
+  introduced a canon change, a new high-impact fact, or a coined name
+  (`../spec/01-project-binding.md` §3; `../interventions/02-preservation-constraints.md`
+  §8). A failed re-verification reverts the edit even when its generic
+  craft metrics improved.
 
 In analysis-only runs (max level 0) the final read is vacuous — there are no
 edited spans — and is reported as such (invariant I-5 is unaffected).
@@ -106,6 +127,10 @@ author-facing **what changed** list (Stage 4b, FR-7).
   applies no Level ≥3 edits unless the author changed intent fields (Level
   1–2 findings may re-trigger if thresholds changed; they must re-pass
   evidence).
+- **I-7.** The binding is never bypassed: no stage runs on a draft whose
+  `project_context` failed validation, and no configuration value (CONFIG
+  §2) can disable Stage 0, Pass B0, or the project supremacy laws
+  (`../interventions/02-preservation-constraints.md` §8).
 
 ## Concurrency & state
 

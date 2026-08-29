@@ -89,3 +89,9 @@ confidence levels, and the taxonomy says so explicitly.
 5. **Update discipline.** Tells marked Low/Folklore are excluded from automated action
    and can only be promoted after measurement on a fiction corpus (see
    `../spec/09-evaluation-benchmark.md` §Benchmark extension).
+6. **The evidence hierarchy governs empirical findings only.** Project
+   findings — the Samur-specific tells (PST, `../taxonomy/19-project-tells.md`)
+   and the author's declared style rules — take their authority from canon
+   citations and author declaration respectively, not from this hierarchy
+   (`../spec/01-project-binding.md` §2). Their confidence field records
+   detection certainty and never gates their actionability.

@@ -27,21 +27,23 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["id", "tell_ids", "spans", "pattern_evidence", "confidence", "cause", "function_test", "intentionality", "proposed_level"],
+        "required": ["id", "tell_ids", "spans", "pattern_evidence", "authority", "confidence", "cause", "function_test", "intentionality", "proposed_level"],
         "properties": {
           "id": { "type": "string" },
           "tell_ids": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
           "spans": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
-          "pattern_evidence": { "type": "string", "description": "objective: counts, distributions, ledger diffs, cluster ids. Adjectives alone are invalid." },
-          "evidence_refs": { "type": "array", "items": { "type": "string" }, "description": "source IDs from research/03" },
-          "confidence": { "enum": ["high", "medium", "low"] },
+          "pattern_evidence": { "type": "string", "description": "objective: counts, distributions, ledger diffs, cluster ids, (genericity findings) the transplant demonstration + ignored story-model fact (frameworks/01 §2 Pass C), or (PST findings) the canon-vs-span mismatch. Adjectives alone are invalid." },
+          "authority": { "enum": ["project_canonical", "empirical", "project_style_rule"], "description": "spec/01-project-binding.md §2 — selects scoring rules (spec/06 §2)" },
+          "evidence_refs": { "type": "array", "items": { "type": "string" }, "description": "source IDs from research/03 (empirical) or canon IDs + project documents (project)" },
+          "confidence": { "enum": ["high", "medium", "low"], "description": "detection certainty; never downgrades project_canonical authority" },
           "cause": { "type": "string", "description": "K1..K9 + mechanism" },
           "function_test": { "type": "string", "description": "taxonomy/20 §20.2 result" },
           "intentionality": { "enum": ["deliberate", "accidental", "undetermined"] },
           "intentionality_reasoning": { "type": "string" },
           "proposed_level": { "type": "integer", "minimum": 0, "maximum": 6 },
           "preservation_risks": { "type": "array", "items": { "type": "string" }, "description": "PV dimensions the fix would touch" },
-          "calibration_status": { "enum": ["calibrated", "uncalibrated"] }
+          "calibration_status": { "enum": ["calibrated", "uncalibrated"] },
+          "routing": { "type": "string", "description": "optional; 'report_only: canon workflow' — canon-contradiction / author-gated-mystery findings never enter the intervention queue" }
         }
       }
     },

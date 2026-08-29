@@ -45,8 +45,10 @@ quantified; can over-index on low-effort spam rather than high-effort assisted w
 Always labeled "practitioner."
 
 Examples: S44 (Clarkesworld data and process), S45 (Chiang), S53 (Counter Craft /
-Lincoln Michel), craft literature (Saunders, Wood, Le Guin, Burroway, Gardner — used
-only to define the *literary* side of the comparison).
+Lincoln Michel), S54 (No AI Slop practitioner pattern catalog — nonfiction patterns
+adapted as detection procedures, never as word lists), craft literature (Saunders,
+Wood, Le Guin, Burroway, Gardner — used only to define the *literary* side of the
+comparison).
 
 ### Tier 4 — Internet folklore / unverified claims
 Claims circulating without measurement (fiction "AI word lists," "AI never uses
@@ -87,3 +89,9 @@ confidence levels, and the taxonomy says so explicitly.
 5. **Update discipline.** Tells marked Low/Folklore are excluded from automated action
    and can only be promoted after measurement on a fiction corpus (see
    `../spec/09-evaluation-benchmark.md` §Benchmark extension).
+6. **The evidence hierarchy governs empirical findings only.** Project
+   findings — the Samur-specific tells (PST, `../taxonomy/19-project-tells.md`)
+   and the author's declared style rules — take their authority from canon
+   citations and author declaration respectively, not from this hierarchy
+   (`../spec/01-project-binding.md` §2). Their confidence field records
+   detection certainty and never gates their actionability.

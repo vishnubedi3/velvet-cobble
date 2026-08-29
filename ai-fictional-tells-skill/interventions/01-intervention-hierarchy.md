@@ -19,7 +19,10 @@ Delete or simplify redundant words, phrases, and repetitions within a
 sentence or short span. No information, structure, or voice change.
 **Applies to:** P06 signposts, D07 redundant tags, E02 duplicate layers,
 FS03 glosses, U02/U04 duplicate interpretations, L02/L08 repeats, P04 rhythm
-via punctuation only (splitting/joining without rephrasing).
+via punctuation only (splitting/joining without rephrasing), and
+**referent-cycling restoration** (P01): where the same entity was renamed
+across mentions, restore the established name or pronoun — the right word
+repeated is correct; never substitute, never add a new epithet.
 **Constraint.** The edit must not change any fact, beat, or tone. If
 deletion would leave a beat unreadable, Level 1 is insufficient by
 definition.
@@ -29,7 +32,11 @@ Remove or condense redundant *explanatory* passages — narration that
 duplicates what scenes, behavior, or dialogue already carry.
 **Applies to:** N02/U03 theme statements whose carriers exist; W01
 exposition blocks whose information is unused; S06 functionless description;
-C01/E01 redundant emotion layers; recaps (L08).
+C01/E01 redundant emotion layers; recaps (L08); and closing lines of
+manufactured significance at story close, which follow the **kicker rule**
+(`../frameworks/05-narrative-analysis.md` §3): delete rather than rephrase,
+and let the close fall back to concrete material already in the draft — never
+an upgraded or replacement aphorism.
 **Constraint.** Exposition is "unnecessary" only if the function test
 confirms the carriers do the work (frameworks/05 §3 vacancy check). If the
 carriers are weak, Level 2 is not permitted — the correct level is 5/6
@@ -105,6 +112,15 @@ re-served by the reconstruction. Author consent required.
   criterion (S12–S14, S35).
 - **No word-list substitutions.** Synonym replacement is not an intervention
   level; specificity edits cite story-model facts as their source.
+- **No cosmetic variation.** An edit that changes the words while leaving the
+  flagged *construction* intact (synonym swaps, epithet rotation, re-worded
+  instances of the same frame) is churn (the rejection rule): it relocates
+  the pattern instead of removing its cause (F-2). Conversely, an edit may
+  *reduce* apparent variation by repeating the established term — repetition
+  of the right word is correct (frameworks/01 §2 Pass B, variation audit).
+- **No upgraded kickers.** A deleted closing aphorism is never replaced with
+  a subtler one (kicker rule, frameworks/05 §3); the replacement close is
+  existing draft material only.
 
 ## 4. Logging
 

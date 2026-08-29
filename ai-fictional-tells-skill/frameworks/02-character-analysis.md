@@ -84,6 +84,22 @@ Every proposed edit touching a character is checked against:
 See `../interventions/02-preservation-constraints.md` (PV-2, PV-3) for the
 binding version of these checks.
 
+## 5a. Faction-portrayal integrity (project check — feeds PST-05)
+
+In this project, characters are embedded in **canon-documented factions**
+(houses, clans, the matha's wings and factions, the social factions), and
+an unacceptable faction portrayal is defined *by canon*, not by taste: a
+faction rendered as a single-minded bloc ("the temple decreed", "the clans
+agreed") erases the documented fault lines that are the story's engine.
+The character layer therefore audits collective-attribution verbs and
+intra-faction disagreement against the faction's canon entry
+(`../taxonomy/19-project-tells.md` PST-05; authority
+`project_canonical`). Fixes re-attribute actions to the documented
+sub-faction, house, office, or faction interest — never to a generic
+dissenter. The flip side is protected by the intentionality check: a
+faction *character* voicing its bloc's official line is characterization,
+not a monolith tell; the tell is the *narration* collapsing the faction.
+
 ## 6. False-positive notes
 
 - Articulate characters exist (a professor should be articulate); C03 flags

@@ -1,4 +1,4 @@
-# 02 — Static Consistency Checklist (T-1 … T-10)
+# 02 — Static Consistency Checklist (T-1 … T-11)
 
 Checks that keep the distributed folder internally coherent. Run them on
 every release of this skill and after any edit that touches cross-file
@@ -76,16 +76,18 @@ from the spot-grep for the example terms quoted in this paragraph.
 
 ## T-7 — Numbering invariants
 
-- Spec files: `spec/02`…`spec/13` with exactly the documented gaps
-  (no `01`, `08`, `10` — see [`../glossary.md`](../glossary.md) §9). Files must not be
-  renumbered without updating every reference (T-1 catches broken links, but
-  numbering is also referenced in prose).
-- Taxonomy: `01`–`18` and `20`; no `19`.
-- Tests: `tests/01-adversarial-suite.md` (A-T1…A-T23, 23 tests, none missing,
-  none duplicated) and `tests/02-static-consistency-checklist.md` (T-1…T-10).
-- Failure modes F-1…F-10, preservation dimensions PV-1…PV-14, pipeline
-  invariants I-1…I-6, benchmark metrics A1–A7 / P1–P5 / M1–M4 — each set
-  complete and referenced only by its canonical name.
+- Spec files: `spec/01`–`spec/07`, `spec/09`, `spec/11`–`spec/13` (no `08`,
+  `10` — see [`../glossary.md`](../glossary.md) §9). `spec/01` is the
+  project binding. Files must not be renumbered without updating every
+  reference (T-1 catches broken links, but numbering is also referenced in
+  prose).
+- Taxonomy: `01`–`20` complete (`19` = project tells, PST-01…PST-10).
+- Tests: `tests/01-adversarial-suite.md` (A-T1…A-T31, 31 tests, none missing,
+  none duplicated) and `tests/02-static-consistency-checklist.md` (T-1…T-11).
+- Failure modes F-1…F-11, preservation dimensions PV-1…PV-14, pipeline
+  invariants I-1…I-7, final-read checks FR-1…FR-8, benchmark metrics
+  A1–A7 / P1–P5 / M1–M4 — each set complete and referenced only by its
+  canonical name.
 
 ## T-8 — No out-of-folder dependencies
 
@@ -115,9 +117,45 @@ a hard failure.
 
 ---
 
+## T-11 — Project-binding consistency (same-commit PST re-verification)
+
+The skill's project tells are derived from the repository's living
+documents; they must never lag them.
+
+1. **Reference validity.** Every canon/project citation in
+   `taxonomy/19-project-tells.md` and `spec/01-project-binding.md` resolves
+   to a real file (and section, where cited) under `samur/`, `PROJECT.md`,
+   or `skills/canon-guard/`:
+
+   ```bash
+   grep -oE '(samur/[0-9a-z-]+/[A-Z]{3}-[0-9]+[a-z-]*\.md|PROJECT\.md|samur/00-audit/[0-9-]+[a-z-]*\.md)' \
+     taxonomy/19-project-tells.md spec/01-project-binding.md | sort -u
+   ```
+
+   Each listed path must exist (word-boundary matching for IDs inside
+   files).
+2. **Same-commit re-verification.** A commit that changes any cited source —
+   canon files, the charter, the anti-patterns, the audit/drafting
+   constraints — must, in the same commit, re-verify the PST catalog
+   against it: re-check each PST entry's Authority row and examples,
+   re-check the taxonomy/README PST table (severity/FPR), and record the
+   re-verification in `CONSOLIDATION-REPORT.md` (`spec/01` §5). A run that
+   detects a canon resolution newer than the skill's last re-verification
+   refuses the draft (A-T31) rather than analyzing against stale project
+   rules.
+3. **Binding integrity.** No file may introduce a generic fallback path:
+   `grep -rn "generic mode\|fallback" spec/ frameworks/` must show only
+   rejections of the concept; `schemas/skill-input.schema.json` keeps
+   `project_context` in `required`.
+4. **No cross-skill scope creep.** The skill references `skills/canon-guard/`
+   documents read-only; no file under `ai-fictional-tells-skill/` may
+   instruct edits to files outside this folder.
+
+---
+
 ## Running all checks
 
-A release passes when T-1…T-10 all pass. This checklist itself is part of the
+A release passes when T-1…T-11 all pass. This checklist itself is part of the
 release: if the folder gains a new document class (e.g., a new schema pair),
 extend the checklist in the same commit and note it in
 [`../CONSOLIDATION-REPORT.md`](../CONSOLIDATION-REPORT.md).

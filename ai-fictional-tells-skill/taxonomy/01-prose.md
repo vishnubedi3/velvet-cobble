@@ -18,7 +18,12 @@
   pairing wins over the specific one.
 - **Observable characteristics.** Low per-word surprisal (GLTR signature, S10); text
   hugs the center of the generator's distribution; MAUVE gap between passage and human
-  reference distributions (S11); rare words avoided even when apt.
+  reference distributions (S11); rare words avoided even when apt; and **referent
+  cycling** — the same entity renamed per mention ("the detective … the investigator …
+  the older man") instead of repeating the established name or pronoun
+  (practitioner-cataloged for AI nonfiction, S54; fiction-specific frequency unmeasured
+  — detected via the variation audit as a P01 face, `../frameworks/01-detection.md`
+  §2 Pass B, never from an epithet word list).
 - **Evidence.** S10 (high), S11 (high), S09. Tier 2 mechanism + Tier 0 stylometric
   clustering (S02). Confidence: **High** (mechanism; surface manifestation varies by model).
 - **Likely cause.** K1 + K5. MLE training maximizes average probability; sampling
@@ -32,7 +37,10 @@
 - **Recommended mitigation.** Level 1–2: replace generic noun/verb pairings with the
   *story-specific* one (the exact object, verb, register the scene demands). Do not
   thesaurus-swap; the replacement must come from scene knowledge (S06 framework:
-  world facts), not from a synonym engine.
+  world facts), not from a synonym engine. For referent cycling: Level 1 restoration
+  of the established name or pronoun — **the right word repeated is correct**; the fix
+  never adds variation. Evidence for genericity findings should include the transplant
+  test (`../frameworks/01-detection.md` §2 Pass C).
 - **Side effects.** Synonym injection = new artificiality; over-specifying destroys
   deliberate plainness (Hemingway-effect). Only repair where specificity adds
   information the scene needs.
@@ -47,10 +55,16 @@
   "The room was silent, the city was not, and between them lay everything she'd lost."
 - **Observable characteristics.** Cadence repetition across paragraphs; the
   "not X, but Y" frame (readers in S28 spontaneously cite it as an AI marker);
-  rule-of-three abuse; rhetorical balance where prose needs asymmetry.
+  rule-of-three abuse; rhetorical balance where prose needs asymmetry; and the
+  fragmented faces of the same reflex — negative-listing anaphora ("Not a soldier.
+  Not a merchant. A thief.") and dramatic-fragment triads ("X. And Y. And Z.")
+  (practitioner-cataloged for AI nonfiction, S54). Cluster on the *construction*,
+  not the tokens: three differently-worded instances of one frame are one finding
+  (cosmetic variation, `../frameworks/01-detection.md` §2 Pass B).
 - **Evidence.** S28 (reader-cited marker), S41 (content-word/structural uniformity),
-  S10 (template probability mass). Tier 1+0; the pattern itself is distributionally
-  plausible but not yet fiction-measured. Confidence: **Medium**.
+  S10 (template probability mass), S54 (practitioner catalog: binary contrasts,
+  negative listing, dramatic fragmentation). Tier 1+0 (+3); the pattern itself is
+  distributionally plausible but not yet fiction-measured. Confidence: **Medium**.
 - **Likely cause.** K1 (balanced constructions are high-probability rhetorical frames)
   + K4 (training on polished, persuasive prose and essays).
 - **Variation.** Genre: stronger in fantasy/romance ("epic" register). Perspective:
@@ -193,5 +207,5 @@
 | Em-dash density as an AI tell | **Monitored** (partial support: S28 readers cite em-dashes; unmeasured) | Dash use varies by model/finetune and by human cohort; measure per corpus before use |
 | "AI never uses contractions" | Folklore | Contradicted by direct generation tests; unsupported |
 | Fiction "AI word lists" (tapestry, testament, etc.) | Folklore for fiction | S17–S19 measured academic text only; no fiction corpus measurement exists |
-| Rhetorical-question narration | Folklore-adjacent | Plausible (K4) but unmeasured |
+| Rhetorical-question narration | Folklore-adjacent | Plausible (K4) but unmeasured; the pattern ("What if I told you…"-class setups, self-answered question pairs) is practitioner-cataloged for AI *nonfiction* (S54), which raises plausibility but still does not measure it in fiction |
 | Adjective stacking per se | Monitored (partial: S41 content-word density) | Many human styles stack adjectives deliberately |

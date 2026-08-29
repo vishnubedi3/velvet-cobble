@@ -80,8 +80,19 @@ After every applied edit (or batch), re-run:
 1. the preservation checks on the changed span;
 2. the tell detector on the changed span (did the cause disappear? did a
    new tell appear?);
-3. the consistency ledgers for the changed span (frameworks/06).
+3. the consistency ledgers for the changed span (frameworks/06);
+4. the **voice-baseline check**: the edited span must sit inside the draft's
+   narrative voice baseline (`03-story-model.md` §Narrative voice baseline).
+   A span that now reads "editor" rather than "this draft" fails PV-4/PV-14
+   even when no fact, beat, or tone-quarter moved.
 Any failure → automatic revert of that edit, logged.
+
+After the last intervention level, the **final read**
+(`../spec/05-pipeline.md` Stage 4b, FR-1…FR-8) runs once over the whole
+revised draft — including the *cumulative* check that the set of edits has
+not converged the draft toward one register or rhythm. Per-edit preservation
+does not imply batch preservation; that is what the final read exists to
+catch.
 
 ## 7. Hard exclusions (never permissible, regardless of score)
 
@@ -93,3 +104,39 @@ Any failure → automatic revert of that edit, logged.
 - Removal of provenance/disclosure where the author's process requires it.
 - Any edit to content boundaries the author has set (PV-14 covers style;
   content boundaries are absolute).
+
+## 8. Project supremacy (the Samur binding; `../spec/01-project-binding.md` §3)
+
+On top of the fourteen dimensions, every edit is governed by the project
+laws. An edit that improves a tell score while violating any of these is
+rejected — always — and the *finding*, not the law, is re-routed:
+
+1. **No canon alteration.** No edit may change an established Samur fact,
+   institution, name, toponym, date, law, or negative space (the NS-01 six
+   included) to make a fix convenient. Specificity repairs source
+   replacements *from* the resolved canon surface; they never invent canon,
+   and where canon offers no anchor the edit is rejected (the gap goes to
+   the author/QUESTION workflow, not the prose).
+2. **No new high-impact facts.** Geography, succession law, currency, core
+   religion, calendar — and anything the charter marks high-impact — are
+   canon-level; an edit may never introduce one (a nameless pass cannot
+   become a named pass).
+3. **No name coining.** PST-09 fixes restore pool names or established
+   toponyms; the skill never coins names (the author/canon workflow does).
+4. **No mystery resolution.** Q-076/077/078 and the NOT READY matters stay
+   exactly as open as canon leaves them (PST-10).
+5. **Generic fixes lose to project constraints.** Kicker deletion,
+   implication conversion, rhythm variation, register modulation, and
+   specificity repairs are all reformulated or dropped when they would
+   violate a drafting constraint, a canon-fixed register (the Veshna sacred
+   register; the Khor oral register), or the in-world memory system
+   (`spec/01` §3.3–§3.5).
+6. **Canon contradiction findings are report-only.** Where the draft
+   contradicts canon, this skill reports (PST/monitored routing) — the
+   repair belongs to the Canon Guard / author workflow, never to a prose
+   edit that quietly rewrites the world to match the draft.
+
+**Conflict resolution order (binding):** content boundaries → project
+supremacy laws (§8) → PV-1…PV-14 → generic tell reduction. A lower layer
+never overrides a higher one; where a generic improvement and the project
+disagree, the project wins (`../spec/01-project-binding.md` §3).

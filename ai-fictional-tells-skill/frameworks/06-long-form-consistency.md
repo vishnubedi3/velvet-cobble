@@ -22,7 +22,7 @@ analysis runs second.
 | Timeline ledger | event timestamps, durations, day-of-week | drift/contradiction (L09) |
 | World-rule ledger | magic/tech/social rules + costs | consistency (L05); note deliberate soft-magic ambiguity (W02 exempt) |
 | Character-state ledger | injuries, debts, objects held, promises | consequence persistence (A03), contradiction (L04) |
-| Voice ledger | per-character voice profiles by chapter | drift detection (L01): per-chapter voice distance from the character's baseline |
+| Voice ledger | per-character voice profiles by chapter **+ the narrator voice baseline** (frameworks/01 §2 Pass A) | drift detection (L01): per-chapter voice distance from the character's baseline; unexplained narrator-baseline drift flags the same L01 family |
 | Scene-type ledger | scene skeletons by chapter | adjacency/over-representation (L03), skeleton recycling |
 | Motif register | intended recurring images (with variation pattern) | distinguishes intended motif from accidental repetition (L10 vs. V04) |
 | Reader-information register | what the reader has been told, when | re-recap detection (L08); information-leak checks |
@@ -49,8 +49,8 @@ Most L-tells are cheaper to *prevent* than to *fix*:
 1. **State-carrying context.** Each generation segment (chapter/scene) is
    conditioned on a compact, current story-state summary (the S32 coordinator
    pattern) — facts, voice anchors, unresolved threads, upcoming payoffs.
-2. **Voice anchors.** Per-character voice profiles ride in the context for
-   every segment (L01 prevention).
+2. **Voice anchors.** Per-character voice profiles *and the narrator voice
+   baseline* ride in the context for every segment (L01 prevention).
 3. **No-recursion discipline.** The segment's output is never used as its own
    primary context without the state summary (diversity decay, S20).
 4. **Mid-context care.** Critical continuity facts are placed at segment

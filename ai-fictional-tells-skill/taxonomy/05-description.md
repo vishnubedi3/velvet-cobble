@@ -101,6 +101,15 @@
 - **Side effects.** Over-inversion becomes its own tic.
 - **Validation.** Frequency count vs. genre baseline.
 
+> **Project override (this repository).** S04's normal treatment (soft,
+> frequency-gated, FPR-3) is **superseded here**: mood-weather is banned
+> outright as **PST-03** (`../19-project-tells.md`), because in this
+> project's world the weather is structural — the wind law is calendar,
+> agriculture, military season, and famine engine (`samur/02-canon/GEO-03`).
+> Findings route as PST-03 with `authority: project_canonical`, and the
+> fix loads the weather with its canonical function rather than merely
+> deleting the mirror.
+
 ## S05 — Camera-movement visual framing
 
 - **Definition.** Narration moves like a camera — panning across the room, tracking

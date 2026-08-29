@@ -4,6 +4,13 @@ Each example shows: tell IDs, cause, level, the before, the after, and the
 preservation rationale. These are illustrative patterns (the skill generates
 equivalent edits from the same contracts), not templates to copy.
 
+Examples Ex-1…Ex-12 illustrate the **generic craft layer** on deliberately
+non-project prose (no Samur names, places, or institutions — they exercise
+the mechanism, not the binding). Project-bound behavior is shown in
+**Ex-P1…Ex-P3** (and the rejections in Ex-13): in real runs every example
+here would be checked against the scene canon surface first, and the
+project examples show what that changes.
+
 ---
 
 ## Ex-1 (E02/U04/C01 → Level 2) — redundant emotional layers
@@ -183,7 +190,112 @@ error (author-gated). Mystery genre would reject this edit (contract).
 
 ---
 
-## Ex-11 — what the skill *refuses* to do (rejection examples)
+## Ex-11 (N02/U05 → Level 2, kicker rule) — false-profundity close
+
+**Tell:** N02 explicit thematic statement; U05 full closure. **Cause:** K3/K4.
+
+> **Before.** …She folded the letter and set it under the stone. Home, she
+> understood at last, was not a place you left or kept — it was the people
+> who carried you, and the carrying never ended.
+
+> **After.** …She folded the letter and set it under the stone.
+
+**Why.** Kicker rule (frameworks/05 §3): the closing aphorism is *deleted,
+not improved* — no subtler metaphor, no preserved cadence, no replacement
+line. The close falls back to the concrete action already in the draft,
+which carries the beat. Genre gate first (a romance HEA close or a mystery
+denouement would be contractual); intentionality check second (an
+author-declared closing line is preserved, PV-13). The deletion is logged in
+`what_changed` in plain language: "deleted the closing aphorism; the scene
+now ends on the folded letter."
+
+---
+
+## Ex-12 (P01 → Level 1) — referent cycling restored
+
+**Tell:** P01 (referent cycling face). **Cause:** K1/K9.
+
+> **Before.** Mara showed the seal to the gatekeeper. The old woman
+> squinted at it. The silver-haired matron waved her through, unsmiling.
+
+> **After.** Mara showed the seal to the gatekeeper. The gatekeeper
+> squinted at it and waved her through, unsmiling.
+
+**Why.** Three names, one person — the rotation fragments reference and is
+the artifact; repeating the established referent is correct craft, not
+repetition to vary (frameworks/01 §2 Pass B, variation audit; FR-6). Level 1
+restoration only: no substitution, no new epithets. The reverse edit —
+introducing variation to "avoid repeating" a correct word — is
+hard-excluded (F-2).
+
+---
+
+## Ex-P1 (PST-09 → Level 1) — toponym restored from the fixed register
+
+**Tell:** PST-09 name-register violation. **Cause:** K1 (name generation
+from generic distributions). **Authority:** `project_canonical`
+(`CUL-01` §6 fixed toponymy; `GEO-01` the Oren).
+
+> **Before.** They followed the Veshran river down toward the delta tolls,
+> the water high and brown with the season's rain.
+
+> **After.** They followed the Oren down toward the delta tolls, the water
+> high and brown with the season's rain.
+
+**Why.** The toponymic register is fixed; "Veshran" is a coined variant of
+an established name (and a morphology collision with the Veshna faith's
+stem). Level 1 restoration, no other token touched. A *personal* name
+outside the pools takes the same path but the replacement is selected from
+the DYN-02 §1 pool with a bearer-collision check against DYN-02/DYN-03 —
+never coined by the skill (law 3). FR-8: the revised span's names resolve
+to the register.
+
+## Ex-P2 (PST-03 → Level 2) — mood-weather becomes wind-law logistics
+
+**Tell:** PST-03 wind-law blindness (mood-weather variant). **Cause:** K4
+(temperate default + template weather). **Authority:** `GEO-03` wind
+regime; the anti-patterns' weather ban.
+
+Scene position (Pass A): month 9, land-wind — the dry, low-water, campaign
+season.
+
+> **Before.** Storm clouds gathered overhead as the column marched, dark
+> and restless, mirroring his unease about the crossing.
+
+> **After.** The land-wind had held all month. The fords would be low by
+> the time the column reached them — that was the whole argument for
+> marching now, and against it.
+
+**Why.** Rain in the land-wind months contradicts the wind law, and the
+weather was doing mirror-work the project bans outright (S04's override:
+PST-03). The fix re-anchors the season and loads the weather with its
+canonical function (campaign logistics, the river stage as a military
+fact) — the unease survives as dramatized argument, not mirror imagery.
+PV-9 intact; FR-8: wind position traces.
+
+## Ex-P3 (PST-05 → Level 3) — the monolith decree split by fault lines
+
+**Tell:** PST-05 faction monolith. **Cause:** K2 (factions as summary-level
+collectives). **Authority:** `DYN-04` §10 (the matha's wings and factions);
+`REL-01` §4 (the matha sanctions, never rules).
+
+> **Before.** The Veshna matha had decreed that the tolls were an offense,
+> and the delta temples closed their gates to the company's men.
+
+> **After.** The Great Temple's hardliners pressed for sanction — the
+> tolls, they said, skinned the pilgrim roads — and gate by gate, the delta
+> temples began to close. At Tarenam they were still arguing.
+
+**Why.** The matha does not "decree" (it sanctions, never rules); it is not
+one voice (orthodoxy vs. Tarn renewal wings, documented factions). The fix
+re-derives the action from the documented structure: a wing presses,
+temples respond unevenly, one center still argues — which is plot material,
+not texture. The sanction pressure survives (PV-1); the world's decision
+procedure is restored. FR-8: faction structure matches canon.
+
+---
+
+## Ex-13 — what the skill *refuses* to do (rejection examples)
 
 | Proposed edit | Rejection reason |
 |---|---|
@@ -194,6 +306,13 @@ error (author-gated). Mystery genre would reject this edit (contract).
 | Remove a thriller's scene buttons because T03 flagged them | Genre gate (frameworks/07) — contract preserved |
 | Rewrite a whole scene because one sentence was redundant | Escalation discipline: Level 2 fixes the sentence (interventions/01 §2) |
 | "Fix" a mystery's perfectly planted ledger | N03 contract exemption (frameworks/07) |
+| Rephrase the closing aphorism into a subtler, better metaphor | Kicker rule (frameworks/05 §3): deletion is the fix; an upgraded aphorism is the same tell with better words |
+| Break a repeated construction by swapping in synonyms / rotating epithets | F-2 + cosmetic-variation rule (interventions/01 §3): the construction is the finding, not the tokens |
+| Replace a repeated, correct name with elegant variations ("the detective … the sleuth") | FR-6 / variation audit (frameworks/01 §2 Pass B): the right word repeated is correct; cycling is the artifact |
+| Rename or "simplify" a canon institution to make a scene fix convenient (the dual structure flattened to "the throne") | Project supremacy law 1 (`../interventions/02-preservation-constraints.md` §8): no canon alteration; finding re-routed |
+| Quote the hidden charter / name the unnamed partner to pay off an arc | PST-10 / law 4 (`../taxonomy/19-project-tells.md`): mystery preserved; approach-only fixes or author gate |
+| Coin a fresh name for a new minor character as a PST-09 "fix" | Law 3: the skill never coins names; pool selection or author-gated |
+| Fix a draft's contradiction with canon by adjusting the *canon* in a report | Report-only routing (spec/13 §3; A-T27): canon repair belongs to the Canon Guard / author workflow |
 
 ---
 

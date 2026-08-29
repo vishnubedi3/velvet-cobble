@@ -25,7 +25,7 @@ For each dialogue passage, extract:
 | D01 symmetric turn-taking | turn-length variance ≈ 0; interruption count = 0; unanswered-question count = 0 across unlike scenes |
 | D02 as-you-know exposition | utterance-information redundant to *both* speakers' knowledge ledgers ("as you know", "remember when", recaps of shared history) |
 | D03 over-explicit emotional speech | "I feel X because Y" density; emotion-word + cause in single turns; zero implicature in emotionally loaded exchanges |
-| D04 uniform idiolect | inter-speaker voice-profile distance below threshold (frameworks/02 §3 features) |
+| D04 uniform idiolect | inter-speaker voice-profile distance below threshold (frameworks/02 §3 features). **Project check first (PST-08):** in this project the language map (`samur/02-canon/CUL-02`) defines *legitimate* register differences across speakers — core / Sareth frontier / delta pidgin / Tarn varieties / Veth coastal / Khoric-marked Samur / Voren-interpreted scenes. A D04 finding must be measured within a language, never across the map: cross-language difference is canon texture, not uniformity; *missing* difference where the map requires one is PST-08. |
 | D05 over-complete grammar | fragment/ellipsis rate ≈ 0 across all speakers |
 | D06 hedged politeness | hedge density in contested turns; acknowledgment-first rate; de-escalation rate |
 | D07 explanatory tags | tag-with-interpretation density ("said, voice laced with…"); tag-restates-line redundancy |

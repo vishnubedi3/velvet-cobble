@@ -65,6 +65,28 @@
       "distance_policy": { "type": "string", "description": "where zoom changes, if anywhere" },
       "narrator_quirks": { "type": "array", "items": { "type": "string" }, "description": "PV-4 protected voice features" }
     } },
+    "narrative_voice_baseline": {
+      "type": ["object", "null"],
+      "description": "frameworks/01 §2 Pass A: the positive inventory of the draft's own narrator-voice signals (PV-4/PV-14 substrate; checked by the final read, spec/05 Stage 4b). null or absent = unknown (draft too short to show a baseline); never invented.",
+      "properties": {
+        "signals": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["signal", "evidence_span"],
+            "properties": {
+              "signal": { "type": "string", "description": "e.g. 'narration never contracts; dialogue always does'" },
+              "evidence_span": { "type": "string" }
+            }
+          }
+        },
+        "conflicts_with_declared_anchors": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "baseline observations contradicting author_intent.style_anchors; affected findings become author-consult-required"
+        }
+      }
+    },
     "emotional_state": { "type": "object", "properties": {
       "per_character": { "type": "object", "additionalProperties": { "type": "object", "additionalProperties": { "type": "string" } } },
       "valence_arc_notes": { "type": "string" },

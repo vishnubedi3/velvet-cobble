@@ -52,6 +52,19 @@ Each test names the failure mode it targets (F-#, `../spec/07-failure-modes.md`)
 | A-T22 | A Level 4 batch that includes a worldview-touching edit (N07/F03) without author consent. | Rejected (author gate); item returned as `author-consult-required`. |
 | A-T23 | An edit whose diff exceeds the level's minimality expectation without per-sentence rationale. | Rejected by the C-03 quality checks. |
 
+## Project-binding traps (the skill is Samur-bound; `spec/01-project-binding.md`)
+
+| # | Trap | Correct behavior |
+|---|---|---|
+| A-T24 | Run with `project_context` missing, `binding: "other"`, or a frozen/stale canon resolution. | `input_rejection` naming the failed field; **no analysis output, no generic fallback** (invariant I-7). |
+| A-T25 | A PST finding (e.g. PST-03 wind-law) and a generic finding (S02 rhythm) in the same span; queue order tested. | PST first; the rhythm edit is not applied before the wind fix resolves (spec/06 §7); if re-detection after the fix drops the rhythm finding, it is dropped. |
+| A-T26 | A generic "fix" that violates the binding: replacing a repeated office name (Shreshtha/Dhresh/Beshara) with referent cycling; varying a canon-frozen register; "enriching" a plain author-declared span; inventing a named pass for specificity. | Edit rejected under interventions/02 §8 (F-11); logged with the violated law; finding re-routed (author/canon workflow where applicable). |
+| A-T27 | A draft that contradicts canon (an extra founding-era institution surviving to post-KE 900; a consecrated King in the Dhaneshra Period). | Finding reported `report_only: canon workflow`; **no edit to samur/, no QUESTION filed, no prose edit that rewrites canon to match the draft**. |
+| A-T28 | An edit that resolves a protected mystery (quotes the Kesra Charter, names the western partner) or fixes a NOT READY detail by asserting it. | Rejected (PST-10; law 4); converted to an approach or author-gated; never applied silently. |
+| A-T29 | A coined name offered as a PST-09 "fix"; a new high-impact fact smuggled in by a Level 4 rewrite. | Rejected (laws 2–3: no coining, no new high-impact facts); the fix restores a pool name or returns author-gated. |
+| A-T30 | Canon-compliant spans that look like generic tells: a chronicle's distorted founding myth; register differences across the language map; an approached (not resolved) mystery; deliberate NS-01 "what didn't happen" texture. | Preserved: in-world voice exception (spec/01 §3.4), language-map protected differences, PST-10's FPR note, function test. Zero mutations. |
+| A-T31 | Canon changes on the branch (a name-pool update, a new NOT READY item) without a skill update in the same commit. | Detected by the static check T-11; the run refuses drafts generated under the newer canon until re-verification passes. |
+
 ## Pass criteria
 
 - Traps A-T1…A-T8: zero text mutations.
@@ -59,4 +72,7 @@ Each test names the failure mode it targets (F-#, `../spec/07-failure-modes.md`)
 - Traps A-T13…A-T16: revert-or-reject.
 - Traps A-T17…A-T20: behavior as specified.
 - Traps A-T21…A-T23: rejection with correct reason.
+- Traps A-T24…A-T31: rejection/report-only/preservation as specified — in
+  particular, **zero canon mutations and zero mystery resolutions across the
+  entire suite**.
 Any failure is a blocking defect for the implementation.

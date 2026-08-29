@@ -11,11 +11,27 @@ human-readable input contract.
 
 | Field | Type | Required | Notes |
 |---|---|---|---|
+| `project_context` | object | **yes** | §1.1 — the Samur binding (live canon resolution, Generation Contract, drafting constraints, KE position). **Its absence is an `input_rejection`**: the skill is project-bound by design ([`spec/01-project-binding.md`](01-project-binding.md)) and never falls back to a generic mode. |
 | `draft` | object | yes | `{text: string, segmentation: Segmentation?}` — the story text; optional pre-segmented scenes/chapters (framework 04 §1) |
 | `metadata` | object | yes | see §2 |
-| `author_intent` | object | no | see §3 — when absent, intent is inferred from the draft only, and intent-sensitive findings are reported as `author-consult-required` instead of acted on |
+| `author_intent` | object | no | see §3 — when absent, intent is taken from the Generation Contract in `project_context` plus the draft; intent-sensitive findings are reported as `author-consult-required` instead of acted on |
 | `analysis_options` | object | no | thresholds overrides, level cap, batch gating flags (defaults in `../spec/06-scoring.md`) |
 | `provenance` | object | no | disclosure requirements (§5) |
+
+## 1.1 `project_context` (the binding — required, validated at Stage 0)
+
+| Field | Type | Notes |
+|---|---|---|
+| `binding` | `"samur"` | Literal. Anything else is rejected — there is no other valid binding. |
+| `narrative_period_ke` | string | The draft's KE position (default: `"post-KE ~900, the Dhaneshra Period's equilibrium"` per `samur/02-canon/DYN-04` §15). Flashback and deep-time arcs state their position; PST-04's rules are period-sensitive. |
+| `canon_resolution` | object | `{method, resolved_at, scope}` — how the live branch state of `samur/02-canon/` was resolved (via the Canon Guard's re-resolution, never a frozen snapshot; [`spec/01-project-binding.md`](01-project-binding.md) §1). |
+| `generation_contract_ref` | string | Reference to the Canon Guard Generation Contract the segment was produced under ([`spec/13-integration.md`](13-integration.md) §3). |
+| `drafting_constraints_ref` | string | Reference to the drafting constraints in force (`samur/00-audit/2026-08-28-initial-cross-check.md` §4 or its successor). |
+| `scene_canon_surface` | array | Optional pre-computed Pass A surface (institutions/places/factions/languages with canon IDs); computed at Pass A when absent. |
+
+Validation (Stage 0): `binding === "samur"`; `canon_resolution` is live (not
+older than the draft's generation run); refs resolve in this repository.
+Failures are `input_rejection`s — never silent generic operation.
 
 ## 2. `metadata`
 
@@ -59,8 +75,13 @@ human-readable input contract.
 
 1. Draft must be plain text (or markdown with explicit paragraph/scene
    markers). Binary/formatting loss is rejected at intake.
-2. `author_intent.style_anchors` and `declared_devices` are quoted verbatim
+2. `project_context` is required and validated per §1.1: wrong or missing
+   binding, a stale/frozen canon resolution, or unresolvable refs are
+   `input_rejection`s. There is **no generic fallback mode** — the skill is
+   bound to this project by design ([`spec/01-project-binding.md`](01-project-binding.md)).
+3. `author_intent.style_anchors` and `declared_devices` are quoted verbatim
    into every intervention contract (they are the highest-priority
-   constraints).
-3. Any input field the skill cannot honor (e.g., unsupported language) is
+   constraints), together with the Generation Contract's style and boundary
+   fields.
+4. Any input field the skill cannot honor (e.g., unsupported language) is
    returned as an explicit `input_rejection`, not silently approximated.

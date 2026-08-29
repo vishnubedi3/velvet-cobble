@@ -7,31 +7,47 @@ store, no custom models.
 
 ## Components
 
-1. **Two LLM prompt contracts** (per `../spec/02-api-interface.md` §3):
+1. **The Stage 0 binding check** (non-negotiable even at this tier):
+   validate `project_context` (`../spec/01-project-binding.md` §1;
+   `../spec/03-input-schema.md` §1.1) — binding literal, live canon
+   resolution, resolvable refs. **No generic mode exists at any tier**;
+   the minimal build rejects unbound input exactly like the advanced one.
+2. **Two LLM prompt contracts** (per `../spec/02-api-interface.md` §3):
    - `C-02 tell-detect` (analysis), with the taxonomy index
-     (`../taxonomy/README.md`), the causal model section (research/01 §1.3),
+     (`../taxonomy/README.md`), **the project-tell catalog
+     (`../taxonomy/19-project-tells.md`) and the scene canon surface**
+     (Pass B0 runs in the minimal build too — PST-09 name resolution and
+     PST-03 wind-position are cheap, and they are the project's
+     highest-value checks), the causal model section (research/01 §1.3),
      frameworks 01–05 loaded as knowledge, and the AnalysisReport schema as
      the output contract.
    - `C-03 intervene-level-N` (a single merged prompt for Levels 1–3;
      Levels 4–6 gated behind a second, more heavily constrained variant),
-     with interventions/01–03 loaded.
-2. **Deterministic validators** (plain code, ~200 lines):
-   - schema validation for findings/edits;
+     with interventions/01–03 (including §8, the supremacy laws) loaded.
+3. **Deterministic validators** (plain code, ~200 lines):
+   - schema validation for findings/edits (incl. `authority` and
+     `report_only` routing);
    - evidence check (finding must cite a quoted span + an objective pattern
-     count, not an adjective);
-   - preservation-check simulator (the 14 PV dimensions as a checklist run
-     against the story model + diff);
+     count or canon citation, not an adjective);
+   - preservation-check simulator (the 14 PV dimensions **+ the project
+     supremacy laws** as a checklist run against the story model + diff);
    - ledger diffs for continuity (string-level: names, dates, objects —
      a minimal fact ledger extracted by `C-01`).
-3. **The story model** (`../interventions/03-story-model.md`) — extracted by a
+4. **The story model** (`../interventions/03-story-model.md`) — extracted by a
    simplified `C-01` prompt in the minimal build (characters, facts,
    timeline, information-state; voice profiles optional at this tier and
-   marked `unknown` when absent).
-4. **Orchestrator** (script): stage order, level ordering, batch gate,
-   revert logic — the pipeline invariants I-1…I-6 from `../spec/05-pipeline.md`.
+   marked `unknown` when absent; the **narrator voice baseline is required
+   even here** — it is cheap (5–8 quoted signals) and the final read depends
+   on it).
+5. **Orchestrator** (script): stage order, level ordering, batch gate,
+   revert logic, final read (Stage 4b) — the pipeline invariants I-1…I-7
+   from `../spec/05-pipeline.md`.
 
 ## What the minimal build does
 
+- Validates the Samur binding and runs the cheap PST checks (name register,
+  wind position, epistemology, mystery list) with canon citations;
+  report-only routing for canon contradictions.
 - Detects the high-confidence tell clusters (repetition, explicitness,
   continuity, uniformity) with Medium/High confidence only.
 - Applies Levels 0–3 fixes; Levels 4+ require the advanced build's

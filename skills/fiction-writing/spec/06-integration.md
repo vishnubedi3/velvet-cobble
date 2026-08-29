@@ -4,7 +4,7 @@
 
 ## 1. Where this skill lives
 
-`skills/fiction-writing/` on the branch that contains it. Completing this directory fulfills the charter's named pre-generation canon guard. It does not reorganize `samur/02-canon/`.
+`skills/fiction-writing/` on the branch that contains it. Completing this directory fulfills the charter's named **Canon Guard**. It does not reorganize `samur/02-canon/`.
 
 ---
 

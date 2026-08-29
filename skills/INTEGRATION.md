@@ -128,7 +128,7 @@ revised; the InterventionLog (byte-level revertible) is retained for audit.
 
 - **English-first.** Non-English runs need retuned lexicons; until then findings are marked `uncalibrated` and edits are capped at Level 3. (The Samur narrative will be in English, so this is not currently a constraint.)
 - **Level 0 is the default** — the skill's bias is toward *not* editing; a clean draft yields zero edits. It is a *reduction* layer, not a rewrite engine.
-- **Canonicity is out of scope for the tell skill.** It does not check that names/institutions/places come from current canon — that is the Pre-Generation Canon Guard (`skills/fiction-writing/SKILL.md`).
+- **Canonicity is out of scope for the tell skill.** It does not check that names/institutions/places come from current canon — that is the Canon Guard (`skills/fiction-writing/SKILL.md`).
 - **It does not generate story.** It is post-generation only; it cannot open the narrative stage or write the draft.
 - **Intent-sensitive findings** (worldview-touching, style-anchored) are author-gated or reported `author-consult-required` when `author_intent` is absent — so the canon-derived `author_intent` must be supplied for a full run.
 - **No detector scores** are an objective, threshold, or escalation criterion anywhere in the pipeline.
@@ -152,7 +152,7 @@ and none will be.
 5. **Updated `PROJECT.md`** (§2 gate, §5 phases, §6 map) and **`skills/fiction-writing/STATUS.md`** to reference the skill and its stage.
 6. **Did NOT invoke the skill** (narrative stage BLOCKED) and **did NOT begin the next worldbuilding stage** (per the instruction).
 
-**Next (when the narrative stage is authorized):** run the Pre-Generation Canon
+**Next (when the narrative stage is authorized):** run the Canon
 Guard first; only on PASS / PASS_WITH_WARNINGS generate; then load the tell
 skill's minimum viable knowledge base, supply `SkillInput` (draft +
 `author_intent` from the Generation Contract), run the pipeline (analyze →

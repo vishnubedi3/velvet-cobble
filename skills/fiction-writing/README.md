@@ -1,10 +1,10 @@
-# Pre-Generation Canon Guard
+# Canon Guard
 
-**This folder is the complete, distributable skill** for this repository's pre-generation canon verification layer.
+**This folder is the complete, distributable Canon Guard skill** for this repository's canon-protection ecosystem.
 
 It is **standalone and model-agnostic**: documentation, JSON Schemas, prompt contracts, a deterministic reference core, fixtures, and tests. It has no runtime vendor dependencies. It does **not** contain a copy of the world's facts.
 
-The skill continuously determines the current relevant canon from the **current state of the project's branches** and uses that state to verify every new generation request **before generation begins**.
+The skill continuously determines the current relevant canon from the **current state of the project's branches**, verifies every generation request **before generation begins**, emits a **locked** contract, and verifies structured output **after generation**.
 
 - **Primary specification:** [`SKILL.md`](SKILL.md) — start there.
 - **Agent hosting notes:** [`AGENTS.md`](AGENTS.md)

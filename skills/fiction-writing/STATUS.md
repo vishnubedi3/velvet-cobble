@@ -6,6 +6,7 @@
 - **2026-08-28:** architecture updated for **Main vs Arena Splash**. `main` is the default canonical baseline. `arena/*` is not automatically canon, not an independent timeline, and not irrelevant. Splash content is classified against `main` and labeled in the Generation Contract. See [`BRANCH_RELATIONSHIP.md`](BRANCH_RELATIONSHIP.md).
 - **2026-08-28:** architecture revised: **`main` = established canonical baseline; Arena = current working / authoring state.** Two questions (canon consistency vs current direction). Contract separates ESTABLISHED_CANON from CURRENT_WORKING_DEVELOPMENT / AUTHORIAL_DIRECTION / PROVISIONAL / CONFLICTS. Arena is consulted aggressively and is not automatic canon.
 - **2026-08-29:** Canon Guard expanded into a **lifecycle ecosystem** (not a rebuild): locked contracts, hard/soft bands, post-generation verification, contamination/bypass/continuity, severity, adversarial tests A28–A37. See [`ECOSYSTEM.md`](ECOSYSTEM.md).
+- **2026-08-29:** skill name is **Canon Guard** (dropped the “Pre-Generation” prefix; the package now covers the locked contract and post-generation canon verification as well).
 
 ## Gate
 

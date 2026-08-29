@@ -1,4 +1,4 @@
-# Skill: Pre-Generation Canon Guard
+# Skill: Canon Guard
 
 **Type:** standalone, model-agnostic, project-specialized canon-protection ecosystem (pre-generation gate + locked contract + post-generation verification).
 **Host location:** `skills/fiction-writing/` (this directory is the complete skill package).

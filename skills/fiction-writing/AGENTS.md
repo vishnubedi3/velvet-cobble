@@ -1,4 +1,4 @@
-# AGENTS.md — Hosting the Pre-Generation Canon Guard
+# AGENTS.md — Hosting the Canon Guard
 
 This file tells an agent how to **host** this skill. It is not the repository's world charter. It is not a copy of any branch's operational novel-authoring protocol. Those live in the project (`PROJECT.md`, and `AGENTS.md` at repo root **if that file exists on the applicable branch** — it may not).
 

@@ -1,4 +1,4 @@
-"""Deterministic reference core for the Pre-Generation Canon Guard.
+"""Deterministic reference core for the Canon Guard.
 
 Operates on structured Canon States (already resolved). It does not read
 the project's fictional sources and must not be fed them by tests.

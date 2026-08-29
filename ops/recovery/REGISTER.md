@@ -6,6 +6,8 @@ This file documents all recovery points (annotated git tags) created during proj
 
 | Tag | Created | Protects | Operation |
 |---|---|---|---|
+| `recovery/pre-site-directory` | 2026-08-29 | The state before the `site/` directory was created (reader-facing website environment) | Site directory creation |
+| `recovery/pre-skill-rerun` | 2026-08-28 | The state before the Canon Guard + AI Fictional Tells fresh re-run against the pilot | Skill re-run |
 | `recovery/pre-full-restructure` | 2026-08-28 | The complete repository state before the full organizational restructure (AGENTS.md creation, skills consolidation, ops folder creation) | Full restructure |
 | `recovery/pre-narrative-restructure` | 2026-08-28 | The state before the narrative/quality directory separation | Narrative/quality separation |
 | `recovery/pre-pilot-chapter` | 2026-08-28 | The state before the pilot chapter was written | Pilot chapter creation |

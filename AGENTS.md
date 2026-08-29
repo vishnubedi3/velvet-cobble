@@ -208,10 +208,12 @@ velvet-cobble/
 │   ├── ai-fictional-tells-skill/      # Post-generation artifact reduction
 │   ├── INTEGRATION.md                 # Skill integration record
 │   └── README.md                      # Skills overview
-└── ops/                               # Operational records
-    ├── logs/                          # Agent operation logs
-    ├── recovery/                      # Recovery point documentation
-    └── README.md                      # Ops overview
+├── ops/                               # Operational records
+│   ├── logs/                          # Agent operation logs
+│   ├── recovery/                      # Recovery point documentation
+│   └── README.md                      # Ops overview
+└── site/                              # Reader-facing website (SEPARATE ENVIRONMENT)
+    └── README.md                      # Scope, ownership, boundary rules
 ```
 
 ### 6.2 Separation Rules
@@ -222,6 +224,7 @@ velvet-cobble/
 - **`samur/01-research/`** contains only real-world comparative research. Never canon by location change.
 - **`ops/`** contains operational records. Never canon, never narrative prose.
 - **`skills/`** contains agent skills. Never canon, never narrative prose.
+- **`site/`** is the reader-facing website environment. It is a **separate working environment** — owned by the website agent, not the authoring agent. It may consume approved narrative material from `samur/narrative/` for publication, but it must not contain canon, lore, research, narrative development, quality analysis, or any authoring-system artefact. The authoring agent must not operate in `site/`.
 
 ### 6.3 Naming Conventions
 
@@ -246,6 +249,7 @@ Every major folder has a `README.md` explaining its purpose, contents, relations
 - `samur/narrative/README.md` — narrative purpose, naming, governance, relationship to canon
 - `skills/README.md` — skills overview, invocation rules
 - `ops/README.md` — operational records purpose, logging rules
+- `site/README.md` — website scope, ownership, boundary rules (separate environment)
 
 ---
 

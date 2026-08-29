@@ -225,7 +225,6 @@ velvet-cobble/
 - **`ops/`** contains operational records. Never canon, never narrative prose.
 - **`skills/`** contains agent skills. Never canon, never narrative prose.
 - **`site/`** is the reader-facing website environment. It is a **separate working environment** — owned by the website agent, not the authoring agent. It may consume approved narrative material from `samur/narrative/` for publication, but it must not contain canon, lore, research, narrative development, quality analysis, or any authoring-system artefact. The authoring agent must not operate in `site/`.
-
 ### 6.3 Naming Conventions
 
 - **Canon files:** `<DOMAIN>-<NN>_<slug>.md` (e.g., `GEO-01_material_geographic_foundation.md`)
@@ -249,7 +248,21 @@ Every major folder has a `README.md` explaining its purpose, contents, relations
 - `samur/narrative/README.md` — narrative purpose, naming, governance, relationship to canon
 - `skills/README.md` — skills overview, invocation rules
 - `ops/README.md` — operational records purpose, logging rules
-- `site/README.md` — website scope, ownership, boundary rules (separate environment)
+- `site/README.md` — website project overview (independent)
+
+### 6.5 Website Directory Isolation (Permanent Boundary)
+
+`site/` is a **completely separate project** that exists within the repository but is **outside the authoring project**. The root `AGENTS.md`, `PROJECT.md`, and all authoring directives have **no authority** over `site/`. The website agent independently defines its own governance, architecture, workflow, and documentation.
+
+**The authoring agent must:**
+- Not develop, modify, manage, govern, review, or otherwise interfere with `site/`.
+- Not consult, reference, inspect, acknowledge, or incorporate `site/` contents into any decision about the world, lore, research, canon, narrative, or authoring workflow.
+- Treat `site/` as outside its operational awareness during all normal authoring work.
+- Not assume anything about how the website agent will develop the website.
+
+**The only permitted interaction** is practical interoperability when explicitly required — such as allowing the website agent to receive approved narrative material from `samur/narrative/` for publication. Even then, the authoring agent does not operate inside `site/`; it makes the material available in its own canonical location.
+
+This boundary is permanent and applies to every agent operating under this directive.
 
 ---
 

@@ -16,13 +16,15 @@ author / agent request
 Canon Guard (this skill)          ← always
         ↓
   BLOCK / CLARIFY / CHANGE  → stop
-  PASS / PASS_WITH_WARNINGS → Generation Contract
+  PASS / PASS_WITH_WARNINGS → locked Generation Contract
         ↓
 generator (any model)
         ↓
+Canon Guard post_verify           ← structured output claims; never admits
+        ↓
 draft (narrative/ or proposed canon text, per kind)
         ↓
-ai-fictional-tells-skill          ← narrative drafts only
+ai-fictional-tells-skill          ← narrative drafts only (tells, not canon)
         ↓
 review
         ↓
@@ -49,7 +51,7 @@ Never write into `02-canon/` or into prose files.
 
 ## 5. Acceptance
 
-- Adaptive suite green (A01–A27, including main vs Arena working state): `python3 skills/fiction-writing/tests/run_adaptive_tests.py`
+- Adaptive suite green (A01–A33 + adversarial A31–A37): `python3 skills/fiction-writing/tests/run_adaptive_tests.py`
 - Static checklist: [`../tests/02-static-consistency-checklist.md`](../tests/02-static-consistency-checklist.md)
 - No Samur lore bodies copied into this package (spot-check: no dynastic lists, no copied city tables)
 - `02-canon/` untouched by the skill's own commits except if an unrelated project operation happens

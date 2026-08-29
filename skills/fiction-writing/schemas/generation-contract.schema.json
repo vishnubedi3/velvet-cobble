@@ -18,6 +18,8 @@
     "canon_state_id": { "type": "string" },
     "branch_context": { "type": "object" },
     "evaluated_at": { "type": "string" },
+    "locked": { "type": "boolean" },
+    "lock_hash": { "type": "string" },
     "must_remain_unchanged": { "type": "array", "items": { "type": "object" } },
     "character_constraints": { "type": "array", "items": { "type": "object" } },
     "relationship_constraints": { "type": "array", "items": { "type": "object" } },
@@ -27,12 +29,26 @@
     "political_faction_constraints": { "type": "array", "items": { "type": "object" } },
     "causal_constraints": { "type": "array", "items": { "type": "object" } },
     "world_rules": { "type": "array", "items": { "type": "object" } },
-    "permitted_creative_space": { "type": "array", "items": { "type": "object" } },
+    "permitted_creative_space": {
+      "type": "array",
+      "items": { "type": ["string", "object"] }
+    },
     "warnings": { "type": "array", "items": { "type": "string" } },
     "uncertainties": { "type": "array", "items": { "type": "string" } },
     "forbidden_assumptions": { "type": "array", "items": { "type": "string" } },
     "authorized_changes": { "type": "array", "items": { "type": "object" } },
     "working_canon_context": { "type": "object" },
+    "constraint_bands": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "HARD_CONSTRAINTS": { "type": "array", "items": { "type": "object" } },
+        "SOFT_CONTEXT": { "type": "array", "items": { "type": "object" } },
+        "CURRENT_AUTHORIAL_DIRECTION": { "type": "array", "items": { "type": "object" } },
+        "PROVISIONAL_MATERIAL": { "type": "array", "items": { "type": "object" } },
+        "FORBIDDEN_ASSUMPTIONS": { "type": "array", "items": { "type": "string" } }
+      }
+    },
     "source_status": {
       "type": "object",
       "additionalProperties": false,

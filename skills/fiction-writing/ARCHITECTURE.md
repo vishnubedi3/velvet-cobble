@@ -36,14 +36,20 @@ The Canon Guard is a **living verification layer**, not a database of the world.
 └──────────────────────────┬──────────────────────────────────┘
                            │
 ┌──────────────────────────▼──────────────────────────────────┐
-│  Decision + Contract                                        │
+│  Decision + locked Contract                                 │
 │  PASS / PASS_WITH_WARNINGS / REQUIRES_CLARIFICATION /       │
 │  BLOCK / CANON_CHANGE_REQUIRED                              │
-│  Contract is bound to the evaluated Canon State             │
+│  Contract is bound to the evaluated Canon State and locked  │
+└──────────────────────────┬──────────────────────────────────┘
+                           │
+┌──────────────────────────▼──────────────────────────────────┐
+│  Post-generation verification (same Canon State identity)   │
+│  Stale / bypass / contamination / continuity / same verify  │
+│  Never replaces the pre-generation gate; never admits       │
 └─────────────────────────────────────────────────────────────┘
 ```
 
-Generation, review, and admission sit **outside** this diagram. The guard neither generates nor admits.
+Generation, review, and admission sit **outside** this diagram. The guard neither generates nor admits. Post-generation *canon* verification is inside the skill; tell reduction is not.
 
 ---
 
@@ -106,6 +112,8 @@ Details: [`spec/03-invalidation.md`](spec/03-invalidation.md). High-impact class
 - If a relevant source is unreadable → `REQUIRES_CLARIFICATION`, not a pass on remaining files.
 - If the derived index is stale → ignore it; re-resolve.
 - If an LLM extraction is malformed → discard it; do not generate from it.
+- If the generator mutates the contract → `CX-BYPASS` BLOCK.
+- If post-generation is skipped because pre-generation passed → failed run.
 
 ---
 

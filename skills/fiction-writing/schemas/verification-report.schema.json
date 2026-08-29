@@ -16,6 +16,14 @@
     "canon_state_id": { "type": "string" },
     "branch_context": { "type": "object" },
     "evaluated_at": { "type": "string" },
+    "layer": {
+      "type": "string",
+      "enum": ["pre_generation", "post_generation"]
+    },
+    "pre_generation_contract_id": { "type": ["string", "null"] },
+    "lock_hash": { "type": ["string", "null"] },
+    "admitted": { "type": "boolean" },
+    "must_re_resolve": { "type": "boolean" },
     "relevant_sources": {
       "type": "array",
       "items": { "type": "object" }
@@ -36,6 +44,17 @@
         "properties": {
           "class": { "type": "string" },
           "severity": { "type": "string" },
+          "band": {
+            "type": "string",
+            "enum": [
+              "informational",
+              "low",
+              "warning",
+              "significant",
+              "blocking",
+              "canon_change"
+            ]
+          },
           "summary": { "type": "string" },
           "evidence": { "type": "object" }
         }

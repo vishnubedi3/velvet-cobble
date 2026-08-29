@@ -21,5 +21,9 @@ Host-overridable parameters. None of these are world facts.
 | `not_ready_invention` | `block` | Stewardship |
 | `hash_algorithm` | `sha256` | Content hashes |
 | `require_provenance` | `true` | Constraints without provenance are dropped |
+| `post_generation_required` | `true` | Must stay true. Pre-gen PASS does not skip post-gen |
+| `contract_locked` | `true` | Must stay true. Generator may not mutate the contract |
+| `generator_may_mutate_contract` | `false` | Must stay false |
+| `skip_pre_generation` | `false` | Must stay false |
 
-Validation: if a host sets `re_resolve_every_request`, `world_model_is_authority`, `research_is_canon`, `drafts_are_canon`, or `recovery_tags_are_live` to a non-compliant value, the skill must refuse to run.
+Validation: if a host sets `re_resolve_every_request`, `world_model_is_authority`, `research_is_canon`, `drafts_are_canon`, `recovery_tags_are_live`, `post_generation_required`, `contract_locked`, `generator_may_mutate_contract`, or `skip_pre_generation` to a non-compliant value, the skill must refuse to run.

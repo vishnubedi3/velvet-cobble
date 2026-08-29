@@ -56,7 +56,7 @@ bypassed, not reproduced manually).
 
 | Capability | Layer | When |
 |---|---|---|
-| `skills/fiction-writing/` (**Pre-Generation Canon Guard** — `SKILL.md`; living branch resolution, verification, Generation Contract) | **Pre-generation** canon-compliance + generation gate | Before every generation request |
+| `skills/fiction-writing/` (**Canon Guard ecosystem** — `SKILL.md`; living branch resolution, locked Generation Contract, pre- and post-generation canon verification) | **Canon-compliance** gate + second-layer output check | Before every generation request, and after generation on structured claims (not tell reduction) |
 | `skills/fiction-writing/anti-patterns.md` (preserved prose/craft checklist) | During authorized narrative generation | Craft only; not a fact cache |
 | `ai-fictional-tells-skill` (tell **detection + minimal intervention** pipeline) | **Post-generation** artifact reduction | After a draft (or per chapter, long-form) exists |
 
@@ -163,6 +163,7 @@ with the author.
 ## 14. Canon Guard completion (2026-08-28)
 
 `skills/fiction-writing/` is no longer a draft skeleton. It is the complete
-Pre-Generation Canon Guard package. It reads living branches; it does not
-duplicate or freeze canon; it does not modify `samur/02-canon/`. Adaptive
-tests: `python3 skills/fiction-writing/tests/run_adaptive_tests.py`.
+Canon Guard ecosystem (pre-generation gate, locked contract, post-generation
+canon verification). It reads living branches; it does not duplicate or freeze
+canon; it does not modify `samur/02-canon/`. Adaptive tests:
+`python3 skills/fiction-writing/tests/run_adaptive_tests.py`.

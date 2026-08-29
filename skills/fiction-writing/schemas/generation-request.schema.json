@@ -43,8 +43,20 @@
     "text": { "type": ["string", "null"] },
     "explicit_canon_change": { "type": "boolean", "default": false },
     "uses_unadmitted_as_canon": { "type": "boolean", "default": false },
+    "treat_unadmitted_as_canon": { "type": "boolean", "default": false },
     "continue_splash_storyline": { "type": "boolean", "default": false },
-    "ignore_arena_development": { "type": "boolean", "default": false }
+    "ignore_arena_development": { "type": "boolean", "default": false },
+    "ambiguous": { "type": "boolean", "default": false },
+    "redefines_constraints": { "type": "boolean", "default": false },
+    "contract_override": { "type": "boolean", "default": false },
+    "skip_pre_generation": { "type": "boolean", "default": false },
+    "promote_provisional_to_hard": { "type": "boolean", "default": false },
+    "cites_contract_as_canon": { "type": "boolean", "default": false },
+    "presents_generated_as_canon": { "type": "boolean", "default": false },
+    "continuity_ledger": {
+      "type": "array",
+      "items": { "type": "object" }
+    }
   },
   "$defs": {
     "claim": {
@@ -62,7 +74,17 @@
         },
         "resolves_question": { "type": ["string", "null"] },
         "high_impact": { "type": "boolean", "default": false },
-        "treat_as_established": { "type": "boolean", "default": false }
+        "treat_as_established": { "type": "boolean", "default": false },
+        "presents_as_canon": { "type": "boolean", "default": false },
+        "cites_contract": { "type": "boolean", "default": false },
+        "cites_unadmitted": { "type": "boolean", "default": false },
+        "cited_status": { "type": ["string", "null"] },
+        "expansion": { "type": "boolean", "default": false },
+        "requires_knowledge_of": { "type": ["string", "null"] },
+        "as_if_public": { "type": "boolean", "default": false },
+        "needs_cause": { "type": ["string", "null"] },
+        "event": { "type": ["string", "null"] },
+        "source": { "type": ["object", "null"] }
       }
     }
   }

@@ -33,5 +33,11 @@ Each scenario evaluates the **same kind of request** against T0 and T1 source st
 | A25 | Arena development **abandoned** | PASS_WITH_WARNINGS | PASS (no longer controls) |
 | A26 | Competing Arena directions | PASS | REQUIRES_CLARIFICATION |
 | A27 | Arena direction **changes** after a prior check | PASS | PASS_WITH_WARNINGS |
+| A28 | Generated claim `presents_as_canon` | BLOCK `CX-CONTAMINATION` | PASS after admission |
+| A29 | Generator `redefines_constraints` | PASS | BLOCK `CX-BYPASS` |
+| A30 | Continuity ledger inverted | PASS | BLOCK `CX-CONTINUITY` |
+| A33 | Expansion of a different predicate vs ledger | PASS | PASS (false-reject pressure) |
+
+Adversarial extras (A31–A37): [`04-adversarial-suite.md`](04-adversarial-suite.md).
 
 Pass criteria: all rows green under `run_adaptive_tests.py`.

@@ -56,17 +56,29 @@ Invariant **I-6:** the contract's `canon_state_id` equals the report's.
 
 ## Stage 6 — (outside the skill) Generation
 
-Only after PASS / PASS_WITH_WARNINGS. The generator is not this skill.
+Only after PASS / PASS_WITH_WARNINGS. The generator is not this skill. It receives the **locked** contract and must not mutate it.
+
+Invariant **I-8:** the generator cannot add, drop, or relabel HARD_CONSTRAINTS.
 
 ---
 
-## Stage 7 — (outside the skill) Admission
+## Stage 7 — Post-generation verification (this skill)
+
+`post_verify`. Same Canon State identity. Stale contracts are not honored. Contamination, bypass, continuity, and the same `verify()` checks.
+
+Invariant **I-9:** post-generation never replaces Stage 3–5. A pre-generation PASS is not a skip.
+
+Invariant **I-10:** neither layer admits material to `02-canon/`.
+
+---
+
+## Stage 8 — (outside the skill) Admission
 
 [`../CANON_ADMISSION_PROTOCOL.md`](../CANON_ADMISSION_PROTOCOL.md).
 
 ---
 
-## Stage 8 — Next time
+## Stage 9 — Next time
 
 Detect changes. Invalidate. Do not reuse Stage 4's decision.
 

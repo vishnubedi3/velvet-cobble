@@ -2,6 +2,10 @@
 
 One entry per canon change (add / revise / retire), newest first. Each entry records: date, affected files, dependent files updated (or flagged), reason, and — for high-impact changes — the dependency-sweep notes.
 
+## 2026-08-29
+
+- **Canon Guard ecosystem expansion (`skills/fiction-writing/` — not a canon change).** Locked Generation Contract; hard/soft/direction/provisional/forbidden bands; `post_verify` second layer; contamination / bypass / continuity; severity and escalation; adversarial tests A28–A37. `main` remains the established baseline; Arena remains classified working state. **No canon file revised or retired.**
+
 ## 2026-08-28
 
 - **Canon Guard architecture revised: main = canonical baseline, Arena = current working branch (`skills/fiction-writing/` — not a canon change).** Arena is consulted aggressively as the author's live workspace and classified against `main` (confirms / clarifies / extends / intended / proposed / developmental / exploratory / contradicts / retcon / abandoned / unresolved). A request does not PASS merely by not contradicting `main`; ignoring strong current Arena development is a warning. Differing from Arena is not a BLOCK. Generation Contract separates ESTABLISHED_CANON from CURRENT_WORKING_DEVELOPMENT / AUTHORIAL_DIRECTION / PROVISIONAL / CONFLICTS / OPEN_QUESTIONS. **No canon file revised or retired.**

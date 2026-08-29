@@ -14,7 +14,7 @@ Construct a credible, internally coherent fictional medieval empire — the **Sa
 
 - **No story writing.** No chapters, scenes, dialogue, narrative prose, or publication-ready fiction — in this repository or in chat — unless explicitly authorized by a subsequent, **distinct** system command opening the narrative stage.
 - Ambiguous prompts (e.g., "show me a scene", "write a moment") are treated as requests for historical/institutional context, not fiction.
-- Narrative-stage authorization, if it arrives, is validated against this clause and gated by the narrative-stage capabilities: the **pre-generation canon guard** (`skills/fiction-writing/` — complete skill package; re-resolves live branch state before every generation) and the **post-generation artifact-reduction skill** (`ai-fictional-tells-skill`, on `main`; integrated per `skills/INTEGRATION.md`).
+- Narrative-stage authorization, if it arrives, is validated against this clause and gated by the narrative-stage capabilities: the **Canon Guard** (`skills/fiction-writing/` — complete skill package; re-resolves live branch state before every generation; locked contract; post-generation *canon* verification of output) and the **post-generation artifact-reduction skill** (`ai-fictional-tells-skill`, on `main`; tells, not canon; integrated per `skills/INTEGRATION.md`).
 
 ## 3. Canon Status Taxonomy
 

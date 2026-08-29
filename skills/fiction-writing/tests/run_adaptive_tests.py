@@ -18,9 +18,11 @@ from canon_guard import (  # noqa: E402
     build_canon_state,
     classify_splash_material,
     contract_is_stale,
+    contract_was_mutated,
     detect_changes,
     invalidate,
     make_contract,
+    post_verify,
     run,
     verify,
 )
@@ -158,6 +160,22 @@ def run_scenario(sc: dict) -> None:
             got1 == spec["to"],
             f"{sid} T1 class {got1} != {spec['to']}",
         )
+
+    if extra.get("check_locked"):
+        _assert(out0["contract"] is not None, f"{sid} T0 need locked contract")
+        _assert(out0["contract"].get("locked") is True, f"{sid} T0 contract not locked")
+        _assert(out0["contract"].get("lock_hash"), f"{sid} T0 missing lock_hash")
+        _assert(
+            (out0["contract"].get("constraint_bands") or {}).get("HARD_CONSTRAINTS") is not None,
+            f"{sid} T0 missing HARD_CONSTRAINTS",
+        )
+
+    if extra.get("check_constraint_band"):
+        band = extra["check_constraint_band"]
+        src_c = out1["contract"] or out0["contract"]
+        _assert(src_c is not None, f"{sid} need contract for constraint band")
+        bands = src_c.get("constraint_bands") or {}
+        _assert(bands.get(band), f"{sid} constraint_bands.{band} empty in {list(bands)}")
 
     if extra.get("check_admission"):
         # T0 unadmitted must not be in CANON sources
@@ -459,6 +477,294 @@ def test_uninspected_splash_is_not_ignored() -> None:
     _assert(any(f["class"] == "CX-AMBIGUITY" for f in out["report"]["findings"]), out["report"])
 
 
+def _alive_branch(commit: str = "c0") -> dict:
+    return {
+        "commit": commit,
+        "charter": {"narrative_authorized": True},
+        "canon": [
+            {
+                "id": "CHR-01",
+                "status": "CANON",
+                "hash": f"hash-{commit}",
+                "facts": [{"entity": "Lia", "predicate": "vital_status", "value": "alive"}],
+            }
+        ],
+    }
+
+
+def test_post_verify_catches_introduced_contradiction() -> None:
+    """A31 — pre-gen PASS does not waive post-gen contradiction."""
+    branch = _alive_branch()
+    req = {
+        "request_id": "A31",
+        "generation_kind": "narrative",
+        "target_branch": "main",
+        "claims": [{"entity": "Lia", "predicate": "vital_status", "value": "alive"}],
+    }
+    pre = run(req, "main", branch)
+    _assert(pre["report"]["decision"] == "PASS", pre["report"])
+    _assert(pre["report"]["layer"] == "pre_generation", pre["report"])
+    output = {
+        "request_id": "A31-out",
+        "generation_kind": "narrative",
+        "target_branch": "main",
+        "claims": [{"entity": "Lia", "predicate": "vital_status", "value": "dead"}],
+    }
+    post = post_verify(output, pre["contract"], pre["state"])
+    _assert(post["report"]["decision"] == "BLOCK", post["report"])
+    _assert(any(f["class"] == "CX-DIRECT" for f in post["report"]["findings"]), post["report"])
+    _assert(post["report"]["layer"] == "post_generation", post["report"])
+    _assert(post["admitted"] is False, post)
+    _assert(post["contract"] is None, "post_verify must not emit a generation contract")
+
+
+def test_post_verify_stale_contract() -> None:
+    """A32 — stale contract at post-gen is not honored."""
+    req = {
+        "request_id": "A32",
+        "generation_kind": "narrative",
+        "target_branch": "main",
+        "claims": [{"entity": "Lia", "predicate": "vital_status", "value": "alive"}],
+    }
+    pre = run(req, "main", _alive_branch("c0"))
+    later = run(req, "main", _alive_branch("c1"))
+    post = post_verify(
+        req,
+        pre["contract"],
+        pre["state"],
+        current_state=later["state"],
+    )
+    _assert(post["report"]["decision"] == "REQUIRES_CLARIFICATION", post["report"])
+    _assert(any(f["class"] == "CX-STALE" for f in post["report"]["findings"]), post["report"])
+    _assert(post["report"].get("must_re_resolve") is True, post["report"])
+
+
+def test_post_verify_requires_pre_gen_contract() -> None:
+    """A34 — skipping the pre-generation gate is CX-BYPASS."""
+    branch = _alive_branch()
+    state = build_canon_state("main", branch)
+    output = {
+        "request_id": "A34",
+        "generation_kind": "narrative",
+        "target_branch": "main",
+        "skip_pre_generation": True,
+        "claims": [{"entity": "Lia", "predicate": "vital_status", "value": "alive"}],
+    }
+    post = post_verify(output, None, state)
+    _assert(post["report"]["decision"] == "BLOCK", post["report"])
+    _assert(any(f["class"] == "CX-BYPASS" for f in post["report"]["findings"]), post["report"])
+
+
+def test_post_verify_arena_following_is_not_block() -> None:
+    """A35 — following labeled Arena direction after generation is not a false reject."""
+    main_branch = _alive_branch()
+    splash = {
+        "name": "arena/session",
+        "branch": {
+            "commit": "c9",
+            "charter": {"narrative_authorized": True},
+            "canon": [
+                {
+                    "id": "GEO-N",
+                    "status": "CANON",
+                    "facts": [
+                        {
+                            "entity": "Lia",
+                            "predicate": "located_in",
+                            "value": "Brannford",
+                            "relation": "intended",
+                        }
+                    ],
+                }
+            ],
+        },
+    }
+    req = {
+        "request_id": "A35",
+        "generation_kind": "narrative",
+        "claims": [{"entity": "Lia", "predicate": "located_in", "value": "Brannford"}],
+    }
+    pre = run(req, "main", main_branch, live_heads={"main": "c0", "arena/session": "c9"}, splash=splash)
+    _assert(pre["report"]["decision"] == "PASS", pre["report"])
+    post = post_verify(
+        req,
+        pre["contract"],
+        pre["state"],
+        live_heads={"main": "c0", "arena/session": "c9"},
+        splash_state=pre["splash_state"],
+    )
+    _assert(post["report"]["decision"] == "PASS", post["report"])
+    _assert(post["admitted"] is False, post)
+    loc = [
+        i
+        for i in pre["contract"]["source_status"]["ESTABLISHED_CANON"]
+        if i.get("predicate") == "located_in" and i.get("value") == "Brannford"
+    ]
+    _assert(not loc, "Arena location must not enter ESTABLISHED_CANON")
+    _assert(pre["contract"]["constraint_bands"]["CURRENT_AUTHORIAL_DIRECTION"], pre["contract"])
+
+
+def test_post_verify_contamination_and_contract_as_canon() -> None:
+    """A36/A37 — post-gen contamination and citing the contract as a world source."""
+    pre = run(
+        {
+            "request_id": "A36",
+            "generation_kind": "narrative",
+            "target_branch": "main",
+            "claims": [{"entity": "Lia", "predicate": "vital_status", "value": "alive"}],
+        },
+        "main",
+        _alive_branch(),
+    )
+    contaminated = {
+        "request_id": "A36-out",
+        "generation_kind": "narrative",
+        "target_branch": "main",
+        "claims": [
+            {
+                "entity": "Nila",
+                "predicate": "role",
+                "value": "scribe",
+                "presents_as_canon": True,
+            }
+        ],
+    }
+    post = post_verify(contaminated, pre["contract"], pre["state"])
+    _assert(post["report"]["decision"] == "BLOCK", post["report"])
+    _assert(any(f["class"] == "CX-CONTAMINATION" for f in post["report"]["findings"]), post["report"])
+
+    cites = {
+        "request_id": "A37-out",
+        "generation_kind": "narrative",
+        "target_branch": "main",
+        "cites_contract_as_canon": True,
+        "claims": [{"entity": "Lia", "predicate": "vital_status", "value": "alive"}],
+    }
+    post2 = post_verify(cites, pre["contract"], pre["state"])
+    _assert(post2["report"]["decision"] == "BLOCK", post2["report"])
+    _assert(any(f["class"] == "CX-CONTAMINATION" for f in post2["report"]["findings"]), post2["report"])
+
+
+def test_mutated_contract_is_bypass() -> None:
+    pre = run(
+        {
+            "request_id": "mut",
+            "generation_kind": "narrative",
+            "target_branch": "main",
+            "claims": [{"entity": "Lia", "predicate": "vital_status", "value": "alive"}],
+        },
+        "main",
+        _alive_branch(),
+    )
+    presented = json.loads(json.dumps(pre["contract"]))
+    presented["constraint_bands"]["HARD_CONSTRAINTS"] = []
+    presented["source_status"]["ESTABLISHED_CANON"] = []
+    _assert(contract_was_mutated(pre["contract"], presented), "mutation not detected")
+    post = post_verify(
+        {
+            "request_id": "mut-out",
+            "generation_kind": "narrative",
+            "target_branch": "main",
+            "claims": [{"entity": "Lia", "predicate": "vital_status", "value": "alive"}],
+        },
+        pre["contract"],
+        pre["state"],
+        presented_contract=presented,
+    )
+    _assert(post["report"]["decision"] == "BLOCK", post["report"])
+    _assert(any(f["class"] == "CX-BYPASS" for f in post["report"]["findings"]), post["report"])
+
+
+def test_temporal_and_retired() -> None:
+    branch = {
+        "commit": "c0",
+        "charter": {"narrative_authorized": True},
+        "canon": [
+            {
+                "id": "GEO-01",
+                "status": "CANON",
+                "facts": [
+                    {
+                        "entity": "Helwick",
+                        "predicate": "exists",
+                        "value": True,
+                        "story_time_start": 50,
+                    }
+                ],
+            }
+        ],
+    }
+    early = run(
+        {
+            "request_id": "tmp",
+            "generation_kind": "narrative",
+            "target_branch": "main",
+            "claims": [
+                {
+                    "entity": "Helwick",
+                    "predicate": "exists",
+                    "value": True,
+                    "story_time_ordinal": 10,
+                }
+            ],
+        },
+        "main",
+        branch,
+    )
+    _assert(early["report"]["decision"] == "BLOCK", early["report"])
+    _assert(any(f["class"] == "CX-TEMPORAL" for f in early["report"]["findings"]), early["report"])
+
+    retired = run(
+        {
+            "request_id": "ret",
+            "generation_kind": "worldbuilding",
+            "target_branch": "main",
+            "claims": [
+                {
+                    "entity": "OldLaw",
+                    "predicate": "binds",
+                    "value": True,
+                    "cited_status": "RETIRED",
+                }
+            ],
+        },
+        "main",
+        {
+            "commit": "c0",
+            "charter": {"narrative_authorized": False},
+            "canon": [
+                {
+                    "id": "LAW-01",
+                    "status": "CANON",
+                    "facts": [{"entity": "SaltLaw", "predicate": "world_rule", "value": "seasonal"}],
+                }
+            ],
+        },
+    )
+    _assert(retired["report"]["decision"] == "BLOCK", retired["report"])
+    _assert(any(f["class"] == "CX-RETIRED" for f in retired["report"]["findings"]), retired["report"])
+
+
+def test_locked_contract_bands() -> None:
+    out = run(
+        {
+            "request_id": "lock",
+            "generation_kind": "narrative",
+            "target_branch": "main",
+            "claims": [{"entity": "Lia", "predicate": "vital_status", "value": "alive"}],
+        },
+        "main",
+        _alive_branch(),
+    )
+    c = out["contract"]
+    _assert(c["locked"] is True, c)
+    _assert(c.get("lock_hash"), c)
+    _assert(c["constraint_bands"]["HARD_CONSTRAINTS"], c)
+    _assert(c.get("working_canon_context"), c)
+    findings = out["report"]["findings"]
+    _assert(all("band" in f for f in findings) or findings == [], out["report"])
+
+
 def test_classify_splash_helper() -> None:
     main_state = build_canon_state(
         "main",
@@ -535,6 +841,14 @@ def main() -> int:
         ("newer-splash-does-not-override", test_newer_splash_does_not_override_main),
         ("uninspected-splash", test_uninspected_splash_is_not_ignored),
         ("classify-splash-helper", test_classify_splash_helper),
+        ("A31-post-verify-contradiction", test_post_verify_catches_introduced_contradiction),
+        ("A32-post-verify-stale", test_post_verify_stale_contract),
+        ("A34-skip-pre-gen", test_post_verify_requires_pre_gen_contract),
+        ("A35-arena-follow-not-block", test_post_verify_arena_following_is_not_block),
+        ("A36-A37-contamination", test_post_verify_contamination_and_contract_as_canon),
+        ("mutated-contract-bypass", test_mutated_contract_is_bypass),
+        ("temporal-and-retired", test_temporal_and_retired),
+        ("locked-contract-bands", test_locked_contract_bands),
     )
     for name, fn in extra_tests:
         try:

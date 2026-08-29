@@ -13,7 +13,7 @@ Invoke this skill **before every generation operation**, including:
 - filling an OPEN narrative-detail question
 - any request that implies a fact about the world
 
-Do not invoke the post-generation tell-reduction skill as a substitute. Do not skip the guard because a previous request passed.
+Do not invoke the post-generation tell-reduction skill as a substitute for this guard. Do not skip the guard because a previous request passed. After a permitted generation, run `post_verify` on structured output claims against the locked contract.
 
 If the applicable branch's charter currently forbids the requested kind of generation, the guard's decision is **BLOCK**. Extra `arena/*` heads are **not** a reason to skip the guard or to treat Splash as established canon. Inspect Splash, classify it against `main`, and label source status. That is a correct result, not a reason to bypass the skill.
 
@@ -33,7 +33,7 @@ If the applicable branch's charter currently forbids the requested kind of gener
 Minimum:
 
 1. Build a `GenerationRequest` ([`schemas/generation-request.schema.json`](schemas/generation-request.schema.json)).
-2. `resolve_branches` → `resolve_canon` → `verify` → `decide` → `contract`.
+2. `resolve_branches` → `resolve_canon` → `verify` → `decide` → `contract` (locked). After generation: `post_verify(output, contract, state)`.
 3. Persist the `VerificationReport` where the host stores quality/audit records. On this project, **if** the applicable branch has `samur/05-quality/`, put canon-guard reports there. If it does not, do **not** invent that directory as a side effect of a verification; store the report with the host's audit log and record the path in the report. Never write reports into `samur/02-canon/` or into narrative prose files.
 4. If the decision is not PASS / PASS_WITH_WARNINGS, **do not generate**.
 
@@ -54,7 +54,9 @@ LLM-hosted extraction (optional) uses prompt contracts C-CG-01…C-CG-04 in [`sp
 
 ## 5. After generation
 
-Generated output is **proposed**. Admission is [`CANON_ADMISSION_PROTOCOL.md`](CANON_ADMISSION_PROTOCOL.md). If the project later accepts material into a canonical source, the next guard run must re-resolve that source. The previous contract is then potentially stale.
+1. Run **post-generation canon verification** (`post_verify`) against the locked contract and the same Canon State identity. A pre-generation PASS does not waive this.
+2. Generated output remains **proposed**. Admission is [`CANON_ADMISSION_PROTOCOL.md`](CANON_ADMISSION_PROTOCOL.md).
+3. If the project later accepts material into a canonical source, the next guard run must re-resolve that source. The previous contract is then potentially stale.
 
 ---
 

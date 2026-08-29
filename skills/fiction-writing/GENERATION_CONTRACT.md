@@ -1,6 +1,6 @@
 # GENERATION_CONTRACT.md
 
-A Generation Contract is permission to generate **against one evaluated Canon State**. It is not a replacement for the branches. It is not durable canon.
+A Generation Contract is permission to generate **against one evaluated Canon State**. It is **locked** upstream of the generator. It is not a replacement for the branches. It is not durable canon. The generator may not add, drop, or relabel constraints (`CX-BYPASS`).
 
 Schema: [`schemas/generation-contract.schema.json`](schemas/generation-contract.schema.json).
 
@@ -35,6 +35,9 @@ Emitted only with `PASS` or `PASS_WITH_WARNINGS`. Other decisions emit no contra
 | `authorized_changes` | Empty unless a completed canon-change protocol listed them |
 | `working_canon_context` | Established canon + classified Arena developments + direction + conflicts. Not a merge. |
 | `source_status` | **ESTABLISHED_CANON** (`main`); **CURRENT_WORKING_DEVELOPMENT** (Arena); **CANON_CLARIFICATIONS**; **AUTHORIAL_DIRECTION**; **PROVISIONAL**; **CONFLICTS**; **OPEN_QUESTIONS**. |
+| `constraint_bands` | **HARD_CONSTRAINTS** (obey); **SOFT_CONTEXT** (understand, not extra established facts); **CURRENT_AUTHORIAL_DIRECTION**; **PROVISIONAL_MATERIAL**; **FORBIDDEN_ASSUMPTIONS**. |
+| `locked` / `lock_hash` | Immutable for the generator. Mutation is `CX-BYPASS`. |
+| `working_canon_context` | Established canon + classified Arena. Not a merge. |
 
 Every constraint in the contract must be traceable to a source document. Established facts are sourced to `main`. Arena items are labeled. If a constraint cannot be sourced, it does not belong in the contract.
 
@@ -64,7 +67,7 @@ The generator (whatever model) receives:
 - this contract
 - (optionally) the relevant source excerpts, not a skill-owned factbook
 
-The post-generation tell skill may receive `author_intent` derived from the contract's world-rules and style constraints. That is input to a different skill, not a second canon.
+The **Canon Guard** `post_verify` layer receives this same contract and structured output claims. The post-generation *tell* skill may receive `author_intent` derived from the contract's world-rules and style constraints. That is a different skill, not a second canon.
 
 ---
 

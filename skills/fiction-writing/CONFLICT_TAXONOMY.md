@@ -26,6 +26,9 @@ Findings are typed. Severity is not a vibe: it is the decision-protocol input.
 | **CX-UNRESOLVED-REGISTER** | Active item in `CONTRADICTIONS.md` intersects the request | REQUIRES_CLARIFICATION (unless the request is specifically to resolve it via the change protocol) |
 | **CX-STALE** | Evaluation or contract is bound to a Canon State whose hashes no longer match | Re-verify; do not honor the old PASS |
 | **CX-ADMISSION** | Treating unadmitted generated material as CANON | BLOCK (contamination) |
+| **CX-CONTAMINATION** | Generated, provisional, or contract material presented as established `main` canon | BLOCK |
+| **CX-BYPASS** | Generator redefines, skips, or mutates the locked contract / skips pre-generation | BLOCK |
+| **CX-CONTINUITY** | Same entity+predicate, overlapping story-time, incompatible with a prior chapter ledger | BLOCK |
 | **CX-RETIRED** | Citing RETIRED canon as live | BLOCK |
 | **CX-EXPANSION** | New compatible information | Not a conflict — permitted creative space |
 | **CX-CHANGE-INTENT** | User explicitly wants an incompatible outcome | CANON_CHANGE_REQUIRED |

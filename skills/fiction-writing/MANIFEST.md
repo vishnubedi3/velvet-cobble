@@ -18,8 +18,13 @@
 | [`CANON_ADMISSION_PROTOCOL.md`](CANON_ADMISSION_PROTOCOL.md) | Drafts are not canon |
 | [`CONFIG.md`](CONFIG.md) | Parameters |
 | [`glossary.md`](glossary.md) | Terminology |
+| [`ECOSYSTEM.md`](ECOSYSTEM.md) | Lifecycle and cooperating layers |
+| [`TRUST.md`](TRUST.md) | Trust boundaries |
+| [`SEVERITY.md`](SEVERITY.md) | Finding bands |
+| [`ESCALATION.md`](ESCALATION.md) | Proceed / warn / clarify / block / change |
 | [`MANIFEST.md`](MANIFEST.md) | This file |
 | [`STATUS.md`](STATUS.md) | Directory status (updated) |
+| [`CHANGELOG.md`](CHANGELOG.md) | Skill-package versions |
 | [`anti-patterns.md`](anti-patterns.md) | Preserved prose rules (not canon) |
 
 ## Spec
@@ -32,6 +37,13 @@
 | [`spec/04-branch-awareness.md`](spec/04-branch-awareness.md) | Observed ref roles |
 | [`spec/05-project-specialization.md`](spec/05-project-specialization.md) | How to read this repo |
 | [`spec/06-integration.md`](spec/06-integration.md) | Hook points |
+| [`spec/07-failure-modes.md`](spec/07-failure-modes.md) | Generator/host failures |
+| [`spec/08-lifecycle.md`](spec/08-lifecycle.md) | Lifecycle invariants |
+| [`spec/09-evaluation.md`](spec/09-evaluation.md) | False accept / false reject |
+| [`spec/11-minimal-architecture.md`](spec/11-minimal-architecture.md) | Host without an LLM |
+| [`spec/12-advanced-architecture.md`](spec/12-advanced-architecture.md) | Optional LLM extraction |
+| [`spec/13-architectural-audit.md`](spec/13-architectural-audit.md) | Weaknesses found and fixed |
+| [`layers/`](layers/) | Continuity, post-generation, contamination, audit, constraint bands |
 
 ## Schemas
 
@@ -53,6 +65,7 @@
 | [`tests/01-adaptive-suite.md`](tests/01-adaptive-suite.md) | Adaptive scenarios |
 | [`tests/02-static-consistency-checklist.md`](tests/02-static-consistency-checklist.md) | Doc/schema checks |
 | [`tests/03-decision-cases.md`](tests/03-decision-cases.md) | Extra project-mechanism cases |
+| [`tests/04-adversarial-suite.md`](tests/04-adversarial-suite.md) | False-accept and false-reject cases |
 | [`tests/run_adaptive_tests.py`](tests/run_adaptive_tests.py) | Runner |
 | [`fixtures/README.md`](fixtures/README.md) | Synthetic worlds only |
 | [`fixtures/adaptive/*.json`](fixtures/adaptive/) | T0/T1 scenario data |

@@ -1,9 +1,11 @@
 # Skill: Pre-Generation Canon Guard
 
-**Type:** standalone, model-agnostic, project-specialized, pre-generation skill.
+**Type:** standalone, model-agnostic, project-specialized canon-protection ecosystem (pre-generation gate + locked contract + post-generation verification).
 **Host location:** `skills/fiction-writing/` (this directory is the complete skill package).
-**Objective:** before any generation begins, resolve the *current* applicable canon from the *current* state of this project's branches, verify the request against that state, and either block generation or emit a Generation Contract bound to that state.
-**Non-objective (explicit):** storing a copy of the world's facts; freezing today's canon; auto-merging Arena Splash into `main`; dismissing Splash as non-canon; promoting drafts to canon; generating prose; reducing AI fictional tells.
+**Objective:** resolve the *current* applicable canon from the *current* state of this project's branches, verify the request **before** generation, emit a **locked** Generation Contract, then verify generated claims **after** generation against that same Canon State. Either layer may block. Neither admits material to `02-canon/`.
+**Non-objective (explicit):** storing a copy of the world's facts; freezing today's canon; auto-merging Arena Splash into `main`; dismissing Splash as non-canon; promoting drafts to canon; generating prose; reducing AI fictional tells; replacing the Canon Guard concept with a generic writing framework.
+
+Ecosystem map: [`ECOSYSTEM.md`](ECOSYSTEM.md). Trust: [`TRUST.md`](TRUST.md). Severity: [`SEVERITY.md`](SEVERITY.md).
 
 This file is the binding skill contract. Mechanism details live in the sibling documents listed in [`README.md`](README.md).
 
@@ -34,11 +36,13 @@ CONSISTENCY VERIFICATION
         ↓
 DECISION
         ↓
-GENERATION CONTRACT
+GENERATION CONTRACT (locked)
         ↓
 GENERATION
         ↓
-NEW MATERIAL
+POST-GENERATION CANON VERIFICATION
+        ↓
+NEW MATERIAL (still proposed)
         ↓
 CANON ADMISSION / BRANCH UPDATE
         ↓
@@ -65,6 +69,8 @@ A PASS does **not** mean: *this request will always be canonically valid.* It al
 10. **Do not modify fictional canon by implementing or running this skill.** The skill reads sources and emits decisions. Admission is a separate, explicit protocol.
 11. **Model-agnostic.** No LLM vendor, API, agent framework, memory provider, or programming language is required. The skill is portable inputs, operations, and outputs.
 12. **Conservative under uncertainty.** If the current branch state does not provide enough reliable information to determine validity, the decision is `REQUIRES_CLARIFICATION`, not a guessed PASS.
+13. **Locked contract.** The generator must not add, drop, or relabel constraints. Mutation is `CX-BYPASS`.
+14. **Post-generation is a second layer.** A pre-generation PASS does not waive it. Post-generation PASS does not admit the text. Skipping pre-generation is `CX-BYPASS`.
 
 ---
 
@@ -73,8 +79,9 @@ A PASS does **not** mean: *this request will always be canonically valid.* It al
 **For:**
 - Pre-generation verification of narrative requests (when the applicable branch authorizes narrative).
 - Pre-generation verification of worldbuilding / canon-expansion requests.
-- Detection of contradiction, ambiguity, stale derived state, and unauthorized canon contamination.
-- Production of an auditable decision and a state-bound Generation Contract.
+- Post-generation verification of structured output against the **same** locked contract and Canon State.
+- Detection of contradiction, ambiguity, stale derived state, continuity breaks, bypass, and unauthorized canon contamination.
+- Production of an auditable decision and a state-bound, **locked** Generation Contract (hard / soft / direction / provisional / forbidden).
 - Invalidation of derived state after source changes.
 
 **Not for:**
@@ -116,7 +123,8 @@ Full pipeline: [`spec/02-pipeline.md`](spec/02-pipeline.md). Every generation re
 12. **Detect ambiguity.** Missing facts, unresolved Splash overlapping the request, register-vs-file disagreement, WORLD-MODEL-vs-canon-file disagreement (canon file wins; the disagreement is still a finding). Extra `arena/*` heads are classified, not treated as automatic `REQUIRES_CLARIFICATION`.
 13. **Detect unresolved conflicts.** Live entries in the contradictions register; unresolved high-impact disagreements.
 14. **Produce a decision** from [`DECISION_PROTOCOL.md`](DECISION_PROTOCOL.md).
-15. **Produce a Generation Contract** if generation is permitted ([`GENERATION_CONTRACT.md`](GENERATION_CONTRACT.md)). The contract is valid only for the evaluated canon state. It must separate **ESTABLISHED_CANON** (`main`) from **CURRENT_WORKING_DEVELOPMENT**, **CANON_CLARIFICATIONS**, **AUTHORIAL_DIRECTION**, **PROVISIONAL**, **CONFLICTS**, and **OPEN_QUESTIONS**.
+15. **Produce a Generation Contract** if generation is permitted ([`GENERATION_CONTRACT.md`](GENERATION_CONTRACT.md)). The contract is valid only for the evaluated canon state. It is **locked**. It must separate **ESTABLISHED_CANON** (`main`) from **CURRENT_WORKING_DEVELOPMENT**, **CANON_CLARIFICATIONS**, **AUTHORIAL_DIRECTION**, **PROVISIONAL**, **CONFLICTS**, and **OPEN_QUESTIONS**, and expose **HARD_CONSTRAINTS** / **SOFT_CONTEXT** / **CURRENT_AUTHORIAL_DIRECTION** / **PROVISIONAL_MATERIAL** / **FORBIDDEN_ASSUMPTIONS**.
+16. **After generation, run post-generation verification** (`post_verify`) on structured claims from the output, using the same contract identity. Stale contracts are not honored. See [`layers/post-generation.md`](layers/post-generation.md).
 
 ---
 
@@ -132,6 +140,7 @@ Minimum viable load:
 - [`GENERATION_CONTRACT.md`](GENERATION_CONTRACT.md)
 - [`spec/02-pipeline.md`](spec/02-pipeline.md)
 - [`spec/05-project-specialization.md`](spec/05-project-specialization.md)
+- [`ECOSYSTEM.md`](ECOSYSTEM.md), [`TRUST.md`](TRUST.md), [`SEVERITY.md`](SEVERITY.md), [`ESCALATION.md`](ESCALATION.md)
 
 Progressively load: conflict taxonomy, change protocol, admission protocol, invalidation spec, branch-awareness spec, branch-relationship spec, schemas.
 
@@ -151,7 +160,8 @@ resolve_canon(branch_context, req)  -> CanonState
 classify_splash(main_state, splash) -> SplashClassification[]
 verify(request, canon_state)        -> VerificationReport
 decide(report)                      -> Decision
-contract(request, state, report)    -> GenerationContract | null
+contract(request, state, report)    -> GenerationContract | null  # locked
+post_verify(output, contract, state)-> VerificationReport         # second layer; never admits
 detect_changes(prev_state, next)    -> ChangeSet
 invalidate(derived, change_set)     -> DerivedState
 admit(proposal, workflow)           -> AdmissionRecord   # never implicit
@@ -167,7 +177,7 @@ A small deterministic reference core (structured states only) lives in [`referen
 
 | Layer | Path | When |
 |---|---|---|
-| **This skill** | `skills/fiction-writing/` | Before generation |
+| **This skill** | `skills/fiction-writing/` | Before generation **and** after (canon verification of output; not tell reduction) |
 | Prose anti-patterns (draft rules, preserved) | [`anti-patterns.md`](anti-patterns.md) | During narrative generation, if authorized |
 | Post-generation tell reduction | `ai-fictional-tells-skill/` (root on `main`; may move under `skills/` on other branches — resolve live) | After a draft exists |
 | Integration record | `skills/INTEGRATION.md` | Host wiring |
@@ -192,4 +202,4 @@ Source → Detect Change → Invalidate Affected Derived State
 
 ## 10. Auditability
 
-Every verification identifies the canon state it evaluated. Minimum audit record: generation request, applicable branch context, canon state/version (commits + content hashes), relevant sources, constraints extracted, checks performed, findings, decision, Generation Contract (if any), timestamp. Schema: [`schemas/verification-report.schema.json`](schemas/verification-report.schema.json).
+Every verification identifies the canon state it evaluated. Minimum audit record: generation request, applicable branch context, canon state/version (commits + content hashes), layer (`pre_generation` / `post_generation`), relevant sources, constraints extracted, checks performed, findings (with severity band), decision, Generation Contract id / lock hash (if any), timestamp. Schema: [`schemas/verification-report.schema.json`](schemas/verification-report.schema.json). Post-generation reports bind the same `canon_state_id` and `contract_id`. Historical PASSes are not patched in place.

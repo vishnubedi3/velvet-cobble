@@ -5,7 +5,7 @@ Manual / host checks on the skill package (not on the world).
 | ID | Check |
 |---|---|
 | T-1 | Every markdown link inside this folder is file-relative and resolves |
-| T-2 | `SKILL.md` lists the five decisions and the 15-step gate |
+| T-2 | `SKILL.md` lists the five decisions and the operating-procedure gate (including locked contract and post-generation) |
 | T-3 | No file in this package contains a copied dynastic list, city table, or other `02-canon/` body |
 | T-4 | `MANIFEST.md` lists every skill file that the tests and specs reference |
 | T-5 | JSON schemas parse as JSON |

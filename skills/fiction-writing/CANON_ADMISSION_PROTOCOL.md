@@ -3,7 +3,8 @@
 Generated material does **not** automatically become canon.
 
 ```
-CANON → GUARD → GENERATION → REVIEW / ADMISSION → UPDATED CANON → GUARD → NEXT GENERATION
+CANON → GUARD (pre) → LOCKED CONTRACT → GENERATION → GUARD (post_verify)
+      → REVIEW / ADMISSION → UPDATED CANON → GUARD → NEXT GENERATION
 ```
 
 ---

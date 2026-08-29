@@ -8,7 +8,7 @@ The skill continuously determines the current relevant canon from the **current 
 
 - **Primary specification:** [`SKILL.md`](SKILL.md) — start there.
 - **Agent hosting notes:** [`AGENTS.md`](AGENTS.md)
-- **Version:** 1.1.0 · **Status:** active · **Format:** documentation + JSON Schemas + reference core (Python, optional).
+- **Version:** 1.2.0 · **Status:** active · **Format:** documentation + JSON Schemas + reference core (Python, optional). Ecosystem: [`ECOSYSTEM.md`](ECOSYSTEM.md).
 
 ---
 
@@ -18,7 +18,8 @@ The skill continuously determines the current relevant canon from the **current 
 |---|---|---|
 | **Core skill definition** | [`SKILL.md`](SKILL.md), [`ARCHITECTURE.md`](ARCHITECTURE.md) | Binding contract and runtime architecture |
 | **Canon mechanics** | [`CANON_MODEL.md`](CANON_MODEL.md), [`CANON_RESOLUTION.md`](CANON_RESOLUTION.md), [`BRANCH_RELATIONSHIP.md`](BRANCH_RELATIONSHIP.md) | Living Canon State; how to resolve it from branches; main vs Arena Splash |
-| **Verification** | [`CONFLICT_TAXONOMY.md`](CONFLICT_TAXONOMY.md), [`DECISION_PROTOCOL.md`](DECISION_PROTOCOL.md), [`GENERATION_CONTRACT.md`](GENERATION_CONTRACT.md) | Findings, decisions, contracts |
+| **Verification** | [`CONFLICT_TAXONOMY.md`](CONFLICT_TAXONOMY.md), [`DECISION_PROTOCOL.md`](DECISION_PROTOCOL.md), [`GENERATION_CONTRACT.md`](GENERATION_CONTRACT.md), [`layers/`](layers/) | Findings, decisions, locked contracts, post-gen |
+| **Ecosystem** | [`ECOSYSTEM.md`](ECOSYSTEM.md), [`TRUST.md`](TRUST.md), [`SEVERITY.md`](SEVERITY.md), [`ESCALATION.md`](ESCALATION.md) | Lifecycle, trust, severity |
 | **Evolution** | [`CANON_CHANGE_PROTOCOL.md`](CANON_CHANGE_PROTOCOL.md), [`CANON_ADMISSION_PROTOCOL.md`](CANON_ADMISSION_PROTOCOL.md), [`spec/03-invalidation.md`](spec/03-invalidation.md) | Intentional change; admission; stale-state handling |
 | **Project specialization** | [`spec/04-branch-awareness.md`](spec/04-branch-awareness.md), [`spec/05-project-specialization.md`](spec/05-project-specialization.md) | Observed branch roles and source layout — *how to read*, not a fact dump |
 | **Interfaces** | [`spec/01-interfaces.md`](spec/01-interfaces.md), [`spec/02-pipeline.md`](spec/02-pipeline.md), [`schemas/`](schemas/) | Portable operations and JSON contracts |
@@ -34,7 +35,7 @@ The skill continuously determines the current relevant canon from the **current 
 2. Before generating anything, run the 15-step gate in [`spec/02-pipeline.md`](spec/02-pipeline.md).
 3. Resolve `main` as the canonical baseline, then classify relevant Arena Splash against it — never from this folder's text.
 4. Emit a decision. If permitted, emit a Generation Contract bound to the evaluated commits/hashes.
-5. After generation, do **not** treat the output as canon. Follow [`CANON_ADMISSION_PROTOCOL.md`](CANON_ADMISSION_PROTOCOL.md).
+5. After generation, run `post_verify` on structured output claims against the **same** locked contract. Do **not** treat the output as canon. Follow [`CANON_ADMISSION_PROTOCOL.md`](CANON_ADMISSION_PROTOCOL.md).
 6. After any source change, invalidate derived state ([`spec/03-invalidation.md`](spec/03-invalidation.md)) and re-resolve next time.
 
 Run the adaptive tests (synthetic fixtures, no project lore):

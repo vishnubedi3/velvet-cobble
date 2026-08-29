@@ -40,6 +40,36 @@ CHECKS = (
     "charter",
     "splash",
     "working_direction",
+    "contamination",
+    "bypass",
+    "continuity",
+    "stale",
+    "retired",
+)
+
+SEVERITY_TO_BAND = {
+    "info": "informational",
+    "warn": "warning",
+    "stop": "significant",
+    "block": "blocking",
+}
+
+CONSTRAINT_BAND_KEYS = (
+    "HARD_CONSTRAINTS",
+    "SOFT_CONTEXT",
+    "CURRENT_AUTHORIAL_DIRECTION",
+    "PROVISIONAL_MATERIAL",
+    "FORBIDDEN_ASSUMPTIONS",
+)
+
+LOCK_COMPARE_KEYS = (
+    "canon_state_id",
+    "must_remain_unchanged",
+    "source_hashes",
+    "source_status",
+    "constraint_bands",
+    "forbidden_assumptions",
+    "authorized_changes",
 )
 
 SPLASH_CLASSES = (
@@ -479,6 +509,312 @@ def contract_is_stale(contract: dict, current_state: dict) -> bool:
     return False
 
 
+def _finding(cls: str, severity: str, summary: str, evidence: dict | None = None) -> dict:
+    band = "canon_change" if cls == "CX-CHANGE-INTENT" else SEVERITY_TO_BAND.get(severity, "warning")
+    item = {
+        "class": cls,
+        "severity": severity,
+        "band": band,
+        "summary": summary,
+    }
+    if evidence is not None:
+        item["evidence"] = evidence
+    return item
+
+
+def _annotate_bands(findings: list[dict]) -> list[dict]:
+    for f in findings:
+        if "band" not in f:
+            if f.get("class") == "CX-CHANGE-INTENT":
+                f["band"] = "canon_change"
+            else:
+                f["band"] = SEVERITY_TO_BAND.get(f.get("severity"), "warning")
+    return findings
+
+
+def _request_ordinal(request: dict) -> float | None:
+    if request.get("story_time") and request["story_time"].get("ordinal") is not None:
+        return request["story_time"]["ordinal"]
+    return None
+
+
+def _on_established_main(
+    state: dict, entity: str, predicate: str, value: Any, ordinal: float | None
+) -> bool:
+    for fact in _matching_facts(state, entity, predicate, ordinal):
+        if (fact.get("polarity") or "asserted") == "asserted" and not _incompatible(
+            fact.get("value"), value
+        ):
+            return True
+    return False
+
+
+def build_continuity_ledger(state: dict) -> list[dict]:
+    """Derived ledger from an evaluated Canon State. Cache only; hashes must still match."""
+    rows = []
+    for fact in state.get("facts") or []:
+        src = fact.get("source") or {}
+        rows.append(
+            {
+                "entity": fact.get("entity"),
+                "predicate": fact.get("predicate"),
+                "value": fact.get("value"),
+                "story_time_start": fact.get("story_time_start"),
+                "story_time_end": fact.get("story_time_end"),
+                "source_hash": src.get("hash"),
+            }
+        )
+    return rows
+
+
+def _continuity_findings(request: dict, ledger: list | None) -> list[dict]:
+    if not ledger:
+        return []
+    findings = []
+    ordinal = _request_ordinal(request)
+    for claim in request.get("claims") or []:
+        entity, predicate, value = claim.get("entity"), claim.get("predicate"), claim.get("value")
+        c_ord = claim.get("story_time_ordinal")
+        if c_ord is None:
+            c_ord = ordinal
+        for row in ledger:
+            if row.get("entity") != entity or row.get("predicate") != predicate:
+                continue
+            window = {
+                "story_time_start": row.get("story_time_start"),
+                "story_time_end": row.get("story_time_end"),
+            }
+            if not _time_overlaps(window, c_ord):
+                continue
+            if _incompatible(row.get("value"), value):
+                findings.append(
+                    _finding(
+                        "CX-CONTINUITY",
+                        "block",
+                        (
+                            f"{entity}.{predicate}={value!r} breaks continuity "
+                            f"with prior {row.get('value')!r}"
+                        ),
+                        evidence={"source_hash": row.get("source_hash")}
+                        if row.get("source_hash")
+                        else None,
+                    )
+                )
+    return findings
+
+
+def _contamination_findings(request: dict, state: dict) -> list[dict]:
+    findings = []
+    if request.get("cites_contract_as_canon") or request.get("presents_generated_as_canon"):
+        findings.append(
+            _finding(
+                "CX-CONTAMINATION",
+                "block",
+                "Generated or contract material presented as established canon",
+            )
+        )
+    ordinal = _request_ordinal(request)
+    for claim in request.get("claims") or []:
+        c_ord = claim.get("story_time_ordinal")
+        if c_ord is None:
+            c_ord = ordinal
+        src = claim.get("source") or {}
+        cites_contract = bool(claim.get("cites_contract")) or str(src.get("path") or "").startswith(
+            "contract:"
+        ) or src.get("kind") == "generation_contract"
+        if cites_contract:
+            findings.append(
+                _finding(
+                    "CX-CONTAMINATION",
+                    "block",
+                    f"Claim {claim.get('entity')}.{claim.get('predicate')} cites the Generation Contract as a world source",
+                )
+            )
+            continue
+        if claim.get("presents_as_canon"):
+            if not _on_established_main(
+                state, claim["entity"], claim["predicate"], claim["value"], c_ord
+            ):
+                findings.append(
+                    _finding(
+                        "CX-CONTAMINATION",
+                        "block",
+                        (
+                            f"Claim {claim['entity']}.{claim['predicate']} presented as "
+                            "established canon is not on main"
+                        ),
+                    )
+                )
+    return findings
+
+
+def _bypass_findings(request: dict) -> list[dict]:
+    findings = []
+    if (
+        request.get("redefines_constraints")
+        or request.get("contract_override")
+        or request.get("skip_pre_generation")
+        or request.get("promote_provisional_to_hard")
+    ):
+        findings.append(
+            _finding(
+                "CX-BYPASS",
+                "block",
+                "Generator attempted to redefine, skip, or relabel locked constraints",
+            )
+        )
+    return findings
+
+
+def lock_contract(contract: dict) -> dict:
+    """Mark a Generation Contract immutable for the generator. Mutates and returns it."""
+    contract["locked"] = True
+    payload = {k: contract[k] for k in contract if k != "lock_hash"}
+    contract["lock_hash"] = _hash_obj(payload)
+    return contract
+
+
+def contract_was_mutated(locked: dict, presented: dict) -> bool:
+    """True when the generator altered hard/status/hash fields of a locked contract."""
+    if not locked or not presented:
+        return False
+    for key in LOCK_COMPARE_KEYS:
+        if _hash_obj(locked.get(key)) != _hash_obj(presented.get(key)):
+            return True
+    return False
+
+
+def _constraint_bands(state: dict, source_status: dict) -> dict:
+    hard = list(source_status.get("ESTABLISHED_CANON") or [])
+    for fact in state.get("facts") or []:
+        pol = fact.get("polarity") or "asserted"
+        if pol in ("forbidden", "denied"):
+            hard.append(
+                {
+                    "entity": fact.get("entity"),
+                    "predicate": fact.get("predicate"),
+                    "value": fact.get("value"),
+                    "polarity": pol,
+                    "source": fact.get("source"),
+                    "band": "HARD_CONSTRAINTS",
+                }
+            )
+    for q in state.get("questions") or []:
+        status = (q.get("status") or "").upper()
+        if "INTENTIONALLY UNRESOLVED" in status or "NOT READY" in status or status in (
+            "INTENTIONALLY_UNRESOLVED",
+            "NOT_READY",
+        ):
+            hard.append(
+                {
+                    "id": q.get("id"),
+                    "status": q.get("status"),
+                    "band": "HARD_CONSTRAINTS",
+                    "kind": "mystery_or_not_ready",
+                }
+            )
+    extensions = [
+        x
+        for x in (source_status.get("CURRENT_WORKING_DEVELOPMENT") or [])
+        if x.get("class") == "EXTENDS_CANON"
+    ]
+    soft = list(source_status.get("CANON_CLARIFICATIONS") or []) + extensions
+    return {
+        "HARD_CONSTRAINTS": hard,
+        "SOFT_CONTEXT": soft,
+        "CURRENT_AUTHORIAL_DIRECTION": list(source_status.get("AUTHORIAL_DIRECTION") or []),
+        "PROVISIONAL_MATERIAL": list(source_status.get("PROVISIONAL") or []),
+        "FORBIDDEN_ASSUMPTIONS": [
+            "unadmitted drafts are not canon",
+            "research is not canon",
+            "do not resolve intentional mysteries",
+            "Arena Splash is not automatically canon",
+            "do not present proposed or developmental splash as established canon",
+            "do not override main merely because splash is newer",
+            "the generator must not redefine locked constraints",
+            "do not cite the Generation Contract as a world source",
+        ],
+    }
+
+
+def post_verify(
+    output: dict,
+    contract: dict | None,
+    state: dict,
+    *,
+    live_heads: dict | None = None,
+    splash_state: dict | None = None,
+    current_state: dict | None = None,
+    presented_contract: dict | None = None,
+    continuity_ledger: list | None = None,
+) -> dict:
+    """Second layer. Does not replace pre-generation. Never admits material."""
+    extra: list[dict] = []
+    if contract is None:
+        extra.append(
+            _finding(
+                "CX-BYPASS",
+                "block",
+                "Post-generation without a locked pre-generation contract",
+            )
+        )
+    else:
+        if not contract.get("locked") or not contract.get("lock_hash"):
+            extra.append(
+                _finding(
+                    "CX-BYPASS",
+                    "block",
+                    "Pre-generation contract was not locked",
+                )
+            )
+        if presented_contract is not None and contract_was_mutated(contract, presented_contract):
+            extra.append(
+                _finding(
+                    "CX-BYPASS",
+                    "block",
+                    "Generator mutated the locked Generation Contract",
+                )
+            )
+        check_state = current_state if current_state is not None else state
+        if contract_is_stale(contract, check_state):
+            extra.append(
+                _finding(
+                    "CX-STALE",
+                    "stop",
+                    "Generation Contract is stale relative to the current Canon State",
+                )
+            )
+        if contract.get("canon_state_id") != state.get("canon_state_id"):
+            extra.append(
+                _finding(
+                    "CX-STALE",
+                    "stop",
+                    "Post-generation Canon State identity does not match the locked contract",
+                )
+            )
+    eval_state = state
+    ledger = continuity_ledger or (state.get("continuity_ledger") if state else None)
+    if ledger:
+        eval_state = dict(state)
+        eval_state["continuity_ledger"] = ledger
+    inner = verify(
+        output,
+        eval_state,
+        live_heads=live_heads,
+        splash_state=splash_state,
+        classifications=eval_state.get("splash_classifications") or [],
+    )
+    inner["findings"] = extra + list(inner.get("findings") or [])
+    _annotate_bands(inner["findings"])
+    inner["decision"] = decide(inner["findings"], output)
+    inner["layer"] = "post_generation"
+    inner["pre_generation_contract_id"] = (contract or {}).get("contract_id")
+    inner["admitted"] = False
+    inner["checks_performed"] = list(CHECKS) + ["post_generation"]
+    inner["must_re_resolve"] = any(f.get("class") == "CX-STALE" for f in inner["findings"])
+    return {"report": inner, "admitted": False, "contract": None}
+
+
 def _matching_facts(state: dict, entity: str, predicate: str, ordinal: float | None):
     for fact in state.get("facts", []):
         if fact.get("status_override") == "RETIRED":
@@ -628,6 +964,33 @@ def verify(
             )
 
         matches = list(_matching_facts(state, entity, predicate, c_ord))
+        if c_ord is not None and not matches:
+            for fact in state.get("facts") or []:
+                if fact.get("status_override") == "RETIRED":
+                    continue
+                if fact.get("entity") != entity or fact.get("predicate") != predicate:
+                    continue
+                start = fact.get("story_time_start")
+                if start is None:
+                    continue
+                if (
+                    c_ord < start
+                    and (fact.get("polarity") or "asserted") == "asserted"
+                    and not _incompatible(fact.get("value"), value)
+                    and not _time_overlaps(fact, c_ord)
+                ):
+                    findings.append(
+                        {
+                            "class": "CX-TEMPORAL",
+                            "severity": "block",
+                            "summary": (
+                                f"{entity}.{predicate}={value!r} is not yet established "
+                                f"at story-time {c_ord} (starts {start})"
+                            ),
+                            "evidence": fact.get("source"),
+                        }
+                    )
+                    break
         for fact in matches:
             pol = fact.get("polarity") or "asserted"
             if pol == "forbidden":
@@ -730,15 +1093,24 @@ def verify(
                         }
                     )
 
-        # Authority: citing non-canon
+        # Authority: citing non-canon. RETIRED is a hard block, not a guess.
         if claim.get("cited_status") and claim["cited_status"] not in ("CANON", None):
-            findings.append(
-                {
-                    "class": "CX-AUTHORITY",
-                    "severity": "stop",
-                    "summary": f"Claim cites {claim['cited_status']} as canon",
-                }
-            )
+            if claim["cited_status"] == "RETIRED":
+                findings.append(
+                    {
+                        "class": "CX-RETIRED",
+                        "severity": "block",
+                        "summary": f"Claim cites RETIRED material as live canon",
+                    }
+                )
+            else:
+                findings.append(
+                    {
+                        "class": "CX-AUTHORITY",
+                        "severity": "stop",
+                        "summary": f"Claim cites {claim['cited_status']} as canon",
+                    }
+                )
 
     # Active contradictions intersecting request entities
     req_entities = {c["entity"] for c in request.get("claims") or []}
@@ -942,6 +1314,16 @@ def verify(
                     }
                 )
 
+    findings.extend(_bypass_findings(request))
+    findings.extend(_contamination_findings(request, state))
+    findings.extend(
+        _continuity_findings(
+            request,
+            state.get("continuity_ledger") or request.get("continuity_ledger") or [],
+        )
+    )
+    _annotate_bands(findings)
+
     decision = decide(findings, request)
     report = {
         "request_id": request.get("request_id") or "req",
@@ -968,6 +1350,8 @@ def verify(
         "splash_classifications": classifications,
         "working_canon_context": state.get("working_canon_context")
         or build_working_canon_context(state),
+        "layer": "pre_generation",
+        "admitted": False,
     }
     return report
 
@@ -980,6 +1364,9 @@ def decide(findings: list[dict], request: dict) -> str:
         ("CX-DIVERGENCE", "REQUIRES_CLARIFICATION"),
         ("CX-BRANCH", "BLOCK"),
         ("CX-ADMISSION", "BLOCK"),
+        ("CX-CONTAMINATION", "BLOCK"),
+        ("CX-BYPASS", "BLOCK"),
+        ("CX-CONTINUITY", "BLOCK"),
         ("CX-MYSTERY", "BLOCK"),
         ("CX-NOT-READY", "BLOCK"),
         ("CX-HIGH-IMPACT-SMUGGLE", "BLOCK"),
@@ -991,6 +1378,7 @@ def decide(findings: list[dict], request: dict) -> str:
         ("CX-CAUSAL", "BLOCK"),
         ("CX-UNRESOLVED-REGISTER", "REQUIRES_CLARIFICATION"),
         ("CX-AMBIGUITY", "REQUIRES_CLARIFICATION"),
+        ("CX-STALE", "REQUIRES_CLARIFICATION"),
         ("CX-AUTHORITY", "REQUIRES_CLARIFICATION"),
     ]
     for cls, result in order:
@@ -1092,13 +1480,17 @@ def make_contract(request: dict, state: dict, report: dict) -> dict | None:
         "authorized_changes": [],
         "source_hashes": hashes,
         "source_status": _contract_source_status(state),
+        "working_canon_context": state.get("working_canon_context")
+        or build_working_canon_context(state),
     }
-    for item in (state.get("splash_classifications") or []):
-        if item.get("class") == "CONTRADICTORY":
+    contract["constraint_bands"] = _constraint_bands(state, contract["source_status"])
+    for item in state.get("splash_classifications") or []:
+        if item.get("class") in ("CONTRADICTORY", "CONTRADICTS_CANON"):
             contract["forbidden_assumptions"].append(
                 f"conflict: splash {item.get('entity')}.{item.get('predicate')}="
                 f"{item.get('value')!r} vs main — classified, not silently resolved"
             )
+    lock_contract(contract)
     report["contract_id"] = contract["contract_id"]
     return contract
 
@@ -1149,8 +1541,12 @@ def run(
     *,
     live_heads: dict | None = None,
     splash: dict | None = None,
+    continuity_ledger: list | None = None,
 ) -> dict:
     state = build_canon_state(branch_name, branch)
+    ledger = continuity_ledger or request.get("continuity_ledger")
+    if ledger:
+        state["continuity_ledger"] = ledger
     splash_state = None
     if splash:
         splash_state = attach_splash(state, splash["name"], splash["branch"])
@@ -1162,6 +1558,9 @@ def run(
         classifications=state.get("splash_classifications") or [],
     )
     contract = make_contract(request, state, report)
+    if contract:
+        report["contract_id"] = contract["contract_id"]
+        report["lock_hash"] = contract.get("lock_hash")
     return {
         "state": state,
         "report": report,

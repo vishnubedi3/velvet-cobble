@@ -23,15 +23,17 @@ If the Canon State is stale relative to the repo at evaluation time, do not deci
 5. **CX-BRANCH** (kind forbidden on this branch, e.g. narrative while the live charter forbids it — Splash charter applies only when continuing a Splash storyline) → `BLOCK`.
 6. Request has `explicit_canon_change: true` **or** finding `CX-CHANGE-INTENT` → `CANON_CHANGE_REQUIRED` (even if other conflicts exist; the change protocol then lists them).
 7. **CX-ADMISSION** (using draft as canon) → `BLOCK`.
-8. **CX-MYSTERY** or **CX-NOT-READY** or **CX-HIGH-IMPACT-SMUGGLE** or **CX-RETIRED** → `BLOCK`.
-9. **CX-DIRECT** / **CX-INDIRECT** / **CX-TEMPORAL** / **CX-KNOWLEDGE** / **CX-CAUSAL** → `BLOCK`.
-10. **CX-UNRESOLVED-REGISTER** intersecting the request → `REQUIRES_CLARIFICATION`.
-11. **CX-AUTHORITY** (unclear citation) → `REQUIRES_CLARIFICATION`.
-12. **CX-WORKING-DIRECTION** (ignore or diverge from current Arena development) → `PASS_WITH_WARNINGS`. Not a BLOCK.
-13. Warnings only (OPEN narrative-detail fill, classified Arena conflict that does not replace `main`, provisional working material, WORLD-MODEL lagging its files, permitted expansion) → `PASS_WITH_WARNINGS`.
-14. No findings → `PASS`.
+8. **CX-CONTAMINATION** / **CX-BYPASS** / **CX-CONTINUITY** → `BLOCK`.
+9. **CX-MYSTERY** or **CX-NOT-READY** or **CX-HIGH-IMPACT-SMUGGLE** or **CX-RETIRED** → `BLOCK`.
+10. **CX-DIRECT** / **CX-INDIRECT** / **CX-TEMPORAL** / **CX-KNOWLEDGE** / **CX-CAUSAL** → `BLOCK`.
+11. **CX-UNRESOLVED-REGISTER** intersecting the request → `REQUIRES_CLARIFICATION`.
+12. **CX-AUTHORITY** (unclear citation) → `REQUIRES_CLARIFICATION`.
+13. **CX-STALE** (post-generation against a moved Canon State / mutated identity) → `REQUIRES_CLARIFICATION`; do not honor the old PASS. Re-resolve.
+14. **CX-WORKING-DIRECTION** (ignore or diverge from current Arena development) → `PASS_WITH_WARNINGS`. Not a BLOCK.
+15. Warnings only (OPEN narrative-detail fill, classified Arena conflict that does not replace `main`, provisional working material, WORLD-MODEL lagging its files, permitted expansion) → `PASS_WITH_WARNINGS`.
+16. No findings → `PASS`.
 
-`CX-STALE` is handled before this table by re-verification. A stale contract is never itself a PASS.
+A stale contract is never itself a PASS. Post-generation uses this same table; it never admits material.
 
 ---
 

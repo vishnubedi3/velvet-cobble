@@ -16,7 +16,13 @@ Terms that must not drift between files.
 | **CX-*** | Conflict class IDs in `CONFLICT_TAXONOMY.md`. |
 | **Derived index** | Optional cache of extracted facts. Never the authority. |
 | **Divergence** | Materially different facts or charters on live refs. Not silently merged. Extra `arena/*` is classified Splash, not automatic `REQUIRES_CLARIFICATION`. |
-| **Source status** | Contract bands: CANONICAL / CANON_CLARIFICATION / AUTHORIAL_INTENT / PROPOSED / CONFLICT. |
+| **Source status** | Contract bands: ESTABLISHED_CANON / CURRENT_WORKING_DEVELOPMENT / CANON_CLARIFICATIONS / AUTHORIAL_DIRECTION / PROVISIONAL / CONFLICTS / OPEN_QUESTIONS. |
+| **Constraint bands** | HARD_CONSTRAINTS (obey) / SOFT_CONTEXT / CURRENT_AUTHORIAL_DIRECTION / PROVISIONAL_MATERIAL / FORBIDDEN_ASSUMPTIONS. |
+| **Locked contract** | Generation Contract hashed and immutable for the generator. |
+| **Post-generation verification** | Second canon layer (`post_verify`). Not tell reduction. Never admits. |
+| **Contamination** | Working or generated material presented as established `main` canon. |
+| **Bypass** | Generator redefines or skips locked constraints / the pre-generation gate. |
+| **Continuity ledger** | Derived prior-chapter states keyed by entity, predicate, story-time, source hash. Cache only. |
 | **Epistemology** | How a source dates or knows a claim (`exact`, `range`, `order`, `relative`, in-world vs author-level). |
 | **Generation Contract** | State-bound permission object. Stale when hashes move. |
 | **High-impact** | Header flag on a canon file; changes trigger broad invalidation and dependency sweeps. |

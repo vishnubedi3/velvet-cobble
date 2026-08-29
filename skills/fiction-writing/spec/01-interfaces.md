@@ -12,7 +12,8 @@ resolve_canon(branch_context, request) -> CanonState
 classify_splash(main_state, splash_state) -> SplashClassification[]
 verify(request, canon_state) -> VerificationReport
 decide(report) -> Decision
-contract(request, canon_state, report) -> GenerationContract | null
+contract(request, canon_state, report) -> GenerationContract | null  # locked
+post_verify(output, contract, canon_state) -> VerificationReport     # never admits
 detect_changes(prev: CanonState, next: CanonState) -> ChangeSet
 invalidate(derived_index, change_set) -> InvalidationReport
 admit(proposal, workflow_result) -> AdmissionRecord

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "canon-change-proposal.schema.json",
+  "title": "CanonChangeProposal",
+  "type": "object",
+  "required": [
+    "target_branch",
+    "evaluated_canon_state_id",
+    "requested_outcome",
+    "affected_sources",
+    "scope"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "target_branch": { "type": "string" },
+    "evaluated_canon_state_id": { "type": "string" },
+    "requested_outcome": { "type": "string" },
+    "affected_sources": { "type": "array", "items": { "type": "object" } },
+    "dependents": { "type": "array", "items": { "type": "object" } },
+    "scope": { "type": "string", "enum": ["local", "temporal", "systemic"] },
+    "mystery_impact": { "type": "string" },
+    "required_project_steps": { "type": "array", "items": { "type": "string" } },
+    "recovery_point_required": { "type": "boolean" },
+    "invalidation_plan": { "type": "object" }
+  }
+}

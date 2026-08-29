@@ -2,7 +2,21 @@
 
 One entry per canon change (add / revise / retire), newest first. Each entry records: date, affected files, dependent files updated (or flagged), reason, and — for high-impact changes — the dependency-sweep notes.
 
+## 2026-08-29
+
+- **Canon Guard package directory renamed (`skills/fiction-writing/` → `skills/canon-guard/` — not a canon change).** The skill package moved to match the skill name. Historical audit and changelog entries keep the former path. **No canon file revised or retired.**
+
+- **Canon Guard renamed (`skills/fiction-writing/` — not a canon change).** The skill name is **Canon Guard** (was “Pre-Generation Canon Guard”). The package still includes the pre-generation gate; the old prefix was inaccurate once post-generation canon verification belonged to the same skill. **No canon file revised or retired.**
+
+- **Canon Guard ecosystem expansion (`skills/fiction-writing/` — not a canon change).** Locked Generation Contract; hard/soft/direction/provisional/forbidden bands; `post_verify` second layer; contamination / bypass / continuity; severity and escalation; adversarial tests A28–A37. `main` remains the established baseline; Arena remains classified working state. **No canon file revised or retired.**
+
 ## 2026-08-28
+
+- **Canon Guard architecture revised: main = canonical baseline, Arena = current working branch (`skills/fiction-writing/` — not a canon change).** Arena is consulted aggressively as the author's live workspace and classified against `main` (confirms / clarifies / extends / intended / proposed / developmental / exploratory / contradicts / retcon / abandoned / unresolved). A request does not PASS merely by not contradicting `main`; ignoring strong current Arena development is a warning. Differing from Arena is not a BLOCK. Generation Contract separates ESTABLISHED_CANON from CURRENT_WORKING_DEVELOPMENT / AUTHORIAL_DIRECTION / PROVISIONAL / CONFLICTS / OPEN_QUESTIONS. **No canon file revised or retired.**
+
+- **Canon Guard architecture: Main vs Arena Splash (`skills/fiction-writing/` — not a canon change).** `main` is the default canonical baseline. Arena Splash (`arena/*`) is not automatically canon, not an independent timeline, and not irrelevant. Splash content is classified against current `main` and labeled in the Generation Contract. Extra `arena/*` heads no longer force `REQUIRES_CLARIFICATION` by existence alone. Splash is not auto-merged and not dismissed. **No canon file revised or retired.**
+
+- **Pre-Generation Canon Guard completed (`skills/fiction-writing/` — not a canon change).** The designated pre-generation layer is now a standalone, model-agnostic skill package (`SKILL.md` + resolution/decision/contract/change/admission specs, schemas, synthetic adaptive tests). It re-resolves the **current** applicable branch state before every generation; it does **not** copy `02-canon/` into the skill; it does **not** freeze today's facts; generated material remains non-canon until admission. `anti-patterns.md` preserved as craft rules. Adaptive suite: `python3 skills/fiction-writing/tests/run_adaptive_tests.py`. **No canon file revised or retired.**
 
 - **Contradiction-resolution cycle 1 — the contradictions register created (CONTRADICTIONS.md); CC-01 → CC-07 resolved + verified; CC-08 carried unresolved.**
   - **Recovery point:** `recovery/pre-contradiction-cycle-01` (the last clean state before the cycle — d8f7a15).

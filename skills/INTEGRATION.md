@@ -43,7 +43,7 @@ never imposes a house style, and never edits for the sake of editing.
 **The narrative stage — as a post-generation quality layer.** It operates on
 **generated narrative prose (story drafts)**, not on canon. It is the full,
 formal, research-backed realization of the goal that the project's own
-`skills/fiction-writing/anti-patterns.md` draft gestures at ("reduce AI-fiction
+`skills/canon-guard/anti-patterns.md` draft gestures at ("reduce AI-fiction
 patterns"), but it is a *detection + intervention pipeline*, not a static rule list.
 
 The narrative stage is **BLOCKED** (PROJECT.md §2 — no story writing without a
@@ -52,22 +52,23 @@ It is integrated and documented so that, when the narrative stage is authorized
 and narrative text is generated, the skill is used fully and correctly (not
 bypassed, not reproduced manually).
 
-### How it fits with the existing `skills/fiction-writing/` draft
+### How it fits with `skills/canon-guard/` (Canon Guard)
 
 | Capability | Layer | When |
 |---|---|---|
-| `skills/fiction-writing/anti-patterns.md` (pre-flight **canon check** + Samur-specific anti-patterns) | **Pre-generation** canon-compliance + generation guard | Before/during generation |
+| `skills/canon-guard/` (**Canon Guard ecosystem** — `SKILL.md`; living branch resolution, locked Generation Contract, pre- and post-generation canon verification) | **Canon-compliance** gate + second-layer output check | Before every generation request, and after generation on structured claims (not tell reduction) |
+| `skills/canon-guard/anti-patterns.md` (preserved prose/craft checklist) | During authorized narrative generation | Craft only; not a fact cache |
 | `ai-fictional-tells-skill` (tell **detection + minimal intervention** pipeline) | **Post-generation** artifact reduction | After a draft (or per chapter, long-form) exists |
 
-The two are **complementary, not redundant**: the pre-flight canon check ensures
-the draft is *canon-compliant* (names/institutions/places from the Samur canon —
-the DYN-02 name pool, CUL-01 toponymy, `02-canon/`); the skill ensures the draft
-is *free of AI tells*. The skill is **canon-agnostic** (it does not validate
-canon-compliance); the pre-flight check is **tell-agnostic** (it does not run the
-tell pipeline). The skill's `author_intent` (genre, perspective, style_anchors,
-content_boundaries, worldview_constraints) is **fed from the Samur canon**, which
-is what binds the skill's PV-5 (setting), PV-6 (world rules), PV-13 (thematic
-intent), and PV-14 (stylistic intent) preservation dimensions to the Samur world.
+The two are **complementary, not redundant**. The Canon Guard
+(`skills/canon-guard/SKILL.md`) ensures a request is compatible with the
+**current applicable branch state** of `samur/02-canon/` *before* generation.
+The tell skill ensures a draft is *free of AI tells* *after* generation. The
+tell skill is **canon-agnostic**; the Canon Guard is **tell-agnostic**. The
+tell skill's `author_intent` may be fed from the Generation Contract emitted
+by the guard (bounds for PV-5/PV-6/PV-13/PV-14) — always from a **re-resolved
+Canon State**, never from a frozen cheat sheet. The guard must be re-run for
+every request; a prior PASS is not reusable.
 
 ## 5. What the skill does to material (classification)
 
@@ -127,7 +128,7 @@ revised; the InterventionLog (byte-level revertible) is retained for audit.
 
 - **English-first.** Non-English runs need retuned lexicons; until then findings are marked `uncalibrated` and edits are capped at Level 3. (The Samur narrative will be in English, so this is not currently a constraint.)
 - **Level 0 is the default** — the skill's bias is toward *not* editing; a clean draft yields zero edits. It is a *reduction* layer, not a rewrite engine.
-- **Canonicity is out of scope.** The skill does not check that names/institutions/places come from the Samur canon — that is the pre-flight canon check's job (`skills/fiction-writing/anti-patterns.md`).
+- **Canonicity is out of scope for the tell skill.** It does not check that names/institutions/places come from current canon — that is the Canon Guard (`skills/canon-guard/SKILL.md`).
 - **It does not generate story.** It is post-generation only; it cannot open the narrative stage or write the draft.
 - **Intent-sensitive findings** (worldview-touching, style-anchored) are author-gated or reported `author-consult-required` when `author_intent` is absent — so the canon-derived `author_intent` must be supplied for a full run.
 - **No detector scores** are an objective, threshold, or escalation criterion anywhere in the pipeline.
@@ -151,8 +152,18 @@ and none will be.
 5. **Updated `PROJECT.md`** (§2 gate, §5 phases, §6 map) and **`skills/fiction-writing/STATUS.md`** to reference the skill and its stage.
 6. **Did NOT invoke the skill** (narrative stage BLOCKED) and **did NOT begin the next worldbuilding stage** (per the instruction).
 
-**Next (when the narrative stage is authorized):** load the skill's minimum viable
-knowledge base, supply the canon-derived `SkillInput` (draft + author_intent), run
-the pipeline (analyze → prioritize → intervene → re-evaluate → report), store the
-SkillReport with the draft's version history, and review the Level ≥4 /
-worldview-gated proposals with the author.
+**Next (when the narrative stage is authorized):** run the Canon
+Guard first; only on PASS / PASS_WITH_WARNINGS generate; then load the tell
+skill's minimum viable knowledge base, supply `SkillInput` (draft +
+`author_intent` from the Generation Contract), run the pipeline (analyze →
+prioritize → intervene → re-evaluate → report), store the SkillReport with the
+draft's version history, and review the Level ≥4 / worldview-gated proposals
+with the author.
+
+## 14. Canon Guard completion (2026-08-28)
+
+`skills/canon-guard/` is no longer a draft skeleton. It is the complete
+Canon Guard ecosystem (pre-generation gate, locked contract, post-generation
+canon verification). It reads living branches; it does not duplicate or freeze
+canon; it does not modify `samur/02-canon/`. Adaptive tests:
+`python3 skills/canon-guard/tests/run_adaptive_tests.py`.

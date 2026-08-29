@@ -1,0 +1,29 @@
+# CONFIG.md
+
+Host-overridable parameters. None of these are world facts.
+
+| Key | Default | Meaning |
+|---|---|---|
+| `default_branch` | repository default (`main` if that is `origin/HEAD`) | Canonical baseline when the request is silent |
+| `main_is_canonical_baseline` | `true` | Must stay true. A host that sets this false is non-compliant |
+| `splash_is_automatically_canon` | `false` | Must stay false. Arena is the working branch, not automatic canon |
+| `splash_is_irrelevant` | `false` | Must stay false. Consult Arena aggressively; do not implement "Arena is non-canon" |
+| `conservative_on_divergence` | `true` | Uninspected Splash, or CONTRADICTORY Splash that the request would *establish* over `main`, → `REQUIRES_CLARIFICATION`. Extra `arena/*` existence alone is not this |
+| `re_resolve_every_request` | `true` | Must stay true. A host that sets this false is non-compliant |
+| `world_model_is_authority` | `false` | Must stay false for this project |
+| `research_is_canon` | `false` | Must stay false |
+| `drafts_are_canon` | `false` | Must stay false |
+| `recovery_tags_are_live` | `false` | Must stay false |
+| `high_impact_invalidation` | `systemic` | Broad revalidation |
+| `local_invalidation` | `targeted` | Direct dependents only |
+| `open_narrative_detail` | `pass_with_warnings` | Fill allowed in drafts; not admitted |
+| `mystery_resolution` | `block` | Unless explicit canon change |
+| `not_ready_invention` | `block` | Stewardship |
+| `hash_algorithm` | `sha256` | Content hashes |
+| `require_provenance` | `true` | Constraints without provenance are dropped |
+| `post_generation_required` | `true` | Must stay true. Pre-gen PASS does not skip post-gen |
+| `contract_locked` | `true` | Must stay true. Generator may not mutate the contract |
+| `generator_may_mutate_contract` | `false` | Must stay false |
+| `skip_pre_generation` | `false` | Must stay false |
+
+Validation: if a host sets `re_resolve_every_request`, `world_model_is_authority`, `research_is_canon`, `drafts_are_canon`, `recovery_tags_are_live`, `post_generation_required`, `contract_locked`, `generator_may_mutate_contract`, or `skip_pre_generation` to a non-compliant value, the skill must refuse to run.

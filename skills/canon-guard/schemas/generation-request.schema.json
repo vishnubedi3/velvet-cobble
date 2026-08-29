@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "generation-request.schema.json",
+  "title": "GenerationRequest",
+  "type": "object",
+  "required": ["request_id", "generation_kind"],
+  "additionalProperties": false,
+  "properties": {
+    "request_id": { "type": "string", "minLength": 1 },
+    "requested_at": { "type": "string" },
+    "generation_kind": {
+      "type": "string",
+      "enum": [
+        "narrative",
+        "worldbuilding",
+        "canon_change",
+        "question_resolution",
+        "revision",
+        "historical_audit"
+      ]
+    },
+    "target_branch": { "type": ["string", "null"] },
+    "story_time": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "properties": {
+        "label": { "type": "string" },
+        "ordinal": { "type": ["number", "null"] },
+        "epistemology": {
+          "type": "string",
+          "enum": ["exact", "range", "order", "relative", "unknown"]
+        }
+      }
+    },
+    "viewpoint_entities": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "claims": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/claim" }
+    },
+    "text": { "type": ["string", "null"] },
+    "explicit_canon_change": { "type": "boolean", "default": false },
+    "uses_unadmitted_as_canon": { "type": "boolean", "default": false },
+    "treat_unadmitted_as_canon": { "type": "boolean", "default": false },
+    "continue_splash_storyline": { "type": "boolean", "default": false },
+    "ignore_arena_development": { "type": "boolean", "default": false },
+    "ambiguous": { "type": "boolean", "default": false },
+    "redefines_constraints": { "type": "boolean", "default": false },
+    "contract_override": { "type": "boolean", "default": false },
+    "skip_pre_generation": { "type": "boolean", "default": false },
+    "promote_provisional_to_hard": { "type": "boolean", "default": false },
+    "cites_contract_as_canon": { "type": "boolean", "default": false },
+    "presents_generated_as_canon": { "type": "boolean", "default": false },
+    "continuity_ledger": {
+      "type": "array",
+      "items": { "type": "object" }
+    }
+  },
+  "$defs": {
+    "claim": {
+      "type": "object",
+      "required": ["entity", "predicate", "value"],
+      "additionalProperties": false,
+      "properties": {
+        "entity": { "type": "string" },
+        "predicate": { "type": "string" },
+        "value": true,
+        "story_time_ordinal": { "type": ["number", "null"] },
+        "known_by": {
+          "type": ["array", "null"],
+          "items": { "type": "string" }
+        },
+        "resolves_question": { "type": ["string", "null"] },
+        "high_impact": { "type": "boolean", "default": false },
+        "treat_as_established": { "type": "boolean", "default": false },
+        "presents_as_canon": { "type": "boolean", "default": false },
+        "cites_contract": { "type": "boolean", "default": false },
+        "cites_unadmitted": { "type": "boolean", "default": false },
+        "cited_status": { "type": ["string", "null"] },
+        "expansion": { "type": "boolean", "default": false },
+        "requires_knowledge_of": { "type": ["string", "null"] },
+        "as_if_public": { "type": "boolean", "default": false },
+        "needs_cause": { "type": ["string", "null"] },
+        "event": { "type": ["string", "null"] },
+        "source": { "type": ["object", "null"] }
+      }
+    }
+  }
+}

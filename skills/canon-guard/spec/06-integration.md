@@ -4,7 +4,7 @@
 
 ## 1. Where this skill lives
 
-`skills/fiction-writing/` on the branch that contains it. Completing this directory fulfills the charter's named **Canon Guard**. It does not reorganize `samur/02-canon/`.
+`skills/canon-guard/` on the branch that contains it. Completing this directory fulfills the charter's named **Canon Guard**. It does not reorganize `samur/02-canon/`.
 
 ---
 
@@ -51,7 +51,7 @@ Never write into `02-canon/` or into prose files.
 
 ## 5. Acceptance
 
-- Adaptive suite green (A01–A33 + adversarial A31–A37): `python3 skills/fiction-writing/tests/run_adaptive_tests.py`
+- Adaptive suite green (A01–A33 + adversarial A31–A37): `python3 skills/canon-guard/tests/run_adaptive_tests.py`
 - Static checklist: [`../tests/02-static-consistency-checklist.md`](../tests/02-static-consistency-checklist.md)
 - No Samur lore bodies copied into this package (spot-check: no dynastic lists, no copied city tables)
 - `02-canon/` untouched by the skill's own commits except if an unrelated project operation happens

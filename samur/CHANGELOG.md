@@ -4,6 +4,8 @@ One entry per canon change (add / revise / retire), newest first. Each entry rec
 
 ## 2026-08-29
 
+- **Canon Guard package directory renamed (`skills/fiction-writing/` → `skills/canon-guard/` — not a canon change).** The skill package moved to match the skill name. Historical audit and changelog entries keep the former path. **No canon file revised or retired.**
+
 - **Canon Guard renamed (`skills/fiction-writing/` — not a canon change).** The skill name is **Canon Guard** (was “Pre-Generation Canon Guard”). The package still includes the pre-generation gate; the old prefix was inaccurate once post-generation canon verification belonged to the same skill. **No canon file revised or retired.**
 
 - **Canon Guard ecosystem expansion (`skills/fiction-writing/` — not a canon change).** Locked Generation Contract; hard/soft/direction/provisional/forbidden bands; `post_verify` second layer; contamination / bypass / continuity; severity and escalation; adversarial tests A28–A37. `main` remains the established baseline; Arena remains classified working state. **No canon file revised or retired.**

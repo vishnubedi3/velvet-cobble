@@ -6,6 +6,8 @@ Skill-package history. Not the world's changelog (`samur/CHANGELOG.md`).
 
 Skill name: **Canon Guard** (was “Pre-Generation Canon Guard”; the old name is inaccurate now that post-generation verification is in the same package).
 
+Package directory: `skills/canon-guard/` (was `skills/fiction-writing/`).
+
 Ecosystem expansion of the existing Canon Guard (not a rebuild):
 
 - Locked Generation Contract (`locked`, `lock_hash`) and hard/soft/direction/provisional/forbidden bands.

@@ -41,7 +41,7 @@ The skill continuously determines the current relevant canon from the **current 
 Run the adaptive tests (synthetic fixtures, no project lore):
 
 ```
-python3 skills/fiction-writing/tests/run_adaptive_tests.py
+python3 skills/canon-guard/tests/run_adaptive_tests.py
 ```
 
 ---

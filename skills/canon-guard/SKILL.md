@@ -1,7 +1,7 @@
 # Skill: Canon Guard
 
 **Type:** standalone, model-agnostic, project-specialized canon-protection ecosystem (pre-generation gate + locked contract + post-generation verification).
-**Host location:** `skills/fiction-writing/` (this directory is the complete skill package).
+**Host location:** `skills/canon-guard/` (this directory is the complete skill package).
 **Objective:** resolve the *current* applicable canon from the *current* state of this project's branches, verify the request **before** generation, emit a **locked** Generation Contract, then verify generated claims **after** generation against that same Canon State. Either layer may block. Neither admits material to `02-canon/`.
 **Non-objective (explicit):** storing a copy of the world's facts; freezing today's canon; auto-merging Arena Splash into `main`; dismissing Splash as non-canon; promoting drafts to canon; generating prose; reducing AI fictional tells; replacing the Canon Guard concept with a generic writing framework.
 
@@ -177,7 +177,7 @@ A small deterministic reference core (structured states only) lives in [`referen
 
 | Layer | Path | When |
 |---|---|---|
-| **This skill** | `skills/fiction-writing/` | Before generation **and** after (canon verification of output; not tell reduction) |
+| **This skill** | `skills/canon-guard/` | Before generation **and** after (canon verification of output; not tell reduction) |
 | Prose anti-patterns (draft rules, preserved) | [`anti-patterns.md`](anti-patterns.md) | During narrative generation, if authorized |
 | Post-generation tell reduction | `ai-fictional-tells-skill/` (root on `main`; may move under `skills/` on other branches — resolve live) | After a draft exists |
 | Integration record | `skills/INTEGRATION.md` | Host wiring |

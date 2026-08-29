@@ -43,7 +43,7 @@ never imposes a house style, and never edits for the sake of editing.
 **The narrative stage — as a post-generation quality layer.** It operates on
 **generated narrative prose (story drafts)**, not on canon. It is the full,
 formal, research-backed realization of the goal that the project's own
-`skills/fiction-writing/anti-patterns.md` draft gestures at ("reduce AI-fiction
+`skills/canon-guard/anti-patterns.md` draft gestures at ("reduce AI-fiction
 patterns"), but it is a *detection + intervention pipeline*, not a static rule list.
 
 The narrative stage is **BLOCKED** (PROJECT.md §2 — no story writing without a
@@ -52,16 +52,16 @@ It is integrated and documented so that, when the narrative stage is authorized
 and narrative text is generated, the skill is used fully and correctly (not
 bypassed, not reproduced manually).
 
-### How it fits with `skills/fiction-writing/` (Canon Guard)
+### How it fits with `skills/canon-guard/` (Canon Guard)
 
 | Capability | Layer | When |
 |---|---|---|
-| `skills/fiction-writing/` (**Canon Guard ecosystem** — `SKILL.md`; living branch resolution, locked Generation Contract, pre- and post-generation canon verification) | **Canon-compliance** gate + second-layer output check | Before every generation request, and after generation on structured claims (not tell reduction) |
-| `skills/fiction-writing/anti-patterns.md` (preserved prose/craft checklist) | During authorized narrative generation | Craft only; not a fact cache |
+| `skills/canon-guard/` (**Canon Guard ecosystem** — `SKILL.md`; living branch resolution, locked Generation Contract, pre- and post-generation canon verification) | **Canon-compliance** gate + second-layer output check | Before every generation request, and after generation on structured claims (not tell reduction) |
+| `skills/canon-guard/anti-patterns.md` (preserved prose/craft checklist) | During authorized narrative generation | Craft only; not a fact cache |
 | `ai-fictional-tells-skill` (tell **detection + minimal intervention** pipeline) | **Post-generation** artifact reduction | After a draft (or per chapter, long-form) exists |
 
 The two are **complementary, not redundant**. The Canon Guard
-(`skills/fiction-writing/SKILL.md`) ensures a request is compatible with the
+(`skills/canon-guard/SKILL.md`) ensures a request is compatible with the
 **current applicable branch state** of `samur/02-canon/` *before* generation.
 The tell skill ensures a draft is *free of AI tells* *after* generation. The
 tell skill is **canon-agnostic**; the Canon Guard is **tell-agnostic**. The
@@ -128,7 +128,7 @@ revised; the InterventionLog (byte-level revertible) is retained for audit.
 
 - **English-first.** Non-English runs need retuned lexicons; until then findings are marked `uncalibrated` and edits are capped at Level 3. (The Samur narrative will be in English, so this is not currently a constraint.)
 - **Level 0 is the default** — the skill's bias is toward *not* editing; a clean draft yields zero edits. It is a *reduction* layer, not a rewrite engine.
-- **Canonicity is out of scope for the tell skill.** It does not check that names/institutions/places come from current canon — that is the Canon Guard (`skills/fiction-writing/SKILL.md`).
+- **Canonicity is out of scope for the tell skill.** It does not check that names/institutions/places come from current canon — that is the Canon Guard (`skills/canon-guard/SKILL.md`).
 - **It does not generate story.** It is post-generation only; it cannot open the narrative stage or write the draft.
 - **Intent-sensitive findings** (worldview-touching, style-anchored) are author-gated or reported `author-consult-required` when `author_intent` is absent — so the canon-derived `author_intent` must be supplied for a full run.
 - **No detector scores** are an objective, threshold, or escalation criterion anywhere in the pipeline.
@@ -162,8 +162,8 @@ with the author.
 
 ## 14. Canon Guard completion (2026-08-28)
 
-`skills/fiction-writing/` is no longer a draft skeleton. It is the complete
+`skills/canon-guard/` is no longer a draft skeleton. It is the complete
 Canon Guard ecosystem (pre-generation gate, locked contract, post-generation
 canon verification). It reads living branches; it does not duplicate or freeze
 canon; it does not modify `samur/02-canon/`. Adaptive tests:
-`python3 skills/fiction-writing/tests/run_adaptive_tests.py`.
+`python3 skills/canon-guard/tests/run_adaptive_tests.py`.

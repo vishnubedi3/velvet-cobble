@@ -3,7 +3,7 @@
 Synthetic only. These tests must never load `samur/02-canon/`.
 
 ```
-python3 skills/fiction-writing/tests/run_adaptive_tests.py
+python3 skills/canon-guard/tests/run_adaptive_tests.py
 ```
 
 | File | What it proves |

@@ -1,4 +1,4 @@
-# Fiction-Writing Skill — Status
+# Canon Guard — Status
 
 - **2026-08-26:** directory created as a draft foundation (`anti-patterns.md` only). Narrative stage BLOCKED.
 - **2026-08-26:** relationship to `ai-fictional-tells-skill` documented (pre-generation vs post-generation).
@@ -7,6 +7,7 @@
 - **2026-08-28:** architecture revised: **`main` = established canonical baseline; Arena = current working / authoring state.** Two questions (canon consistency vs current direction). Contract separates ESTABLISHED_CANON from CURRENT_WORKING_DEVELOPMENT / AUTHORIAL_DIRECTION / PROVISIONAL / CONFLICTS. Arena is consulted aggressively and is not automatic canon.
 - **2026-08-29:** Canon Guard expanded into a **lifecycle ecosystem** (not a rebuild): locked contracts, hard/soft bands, post-generation verification, contamination/bypass/continuity, severity, adversarial tests A28–A37. See [`ECOSYSTEM.md`](ECOSYSTEM.md).
 - **2026-08-29:** skill name is **Canon Guard** (dropped the “Pre-Generation” prefix; the package now covers the locked contract and post-generation canon verification as well).
+- **2026-08-29:** package directory renamed `skills/fiction-writing/` → `skills/canon-guard/`. Historical audit and changelog entries keep the former path.
 
 ## Gate
 

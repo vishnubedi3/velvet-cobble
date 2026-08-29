@@ -4,7 +4,7 @@ Terms that must not drift between files.
 
 | Term | Meaning |
 |---|---|
-| **Canon Guard** | This skill (`skills/fiction-writing/`). Canon-protection ecosystem: resolve, verify, lock, post-verify. Not tell reduction. |
+| **Canon Guard** | This skill (`skills/canon-guard/`). Canon-protection ecosystem: resolve, verify, lock, post-verify. Not tell reduction. |
 | **Applicable branch** | The ref a request is evaluated against. `main` is the default canonical baseline. |
 | **Arena** | Live `arena/*` session heads. The **current working / authoring state**. Not automatically established canon. Consulted aggressively and classified against `main`. |
 | **Current Working Canon Context** | Established `main` canon plus classified Arena developments for one request. Not a merge. |
